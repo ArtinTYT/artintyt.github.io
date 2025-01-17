@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
+
+  <script>
+    // 检查用户是否在中国
+    function isInChina() {
+      var chinaIPs = ['CN', 'HK', 'MO', 'TW']; // 可根据需要扩展
+      return chinaIPs.includes(new Intl.Locale(navigator.language).region);
+    }
+
+    if (!isInChina()) {
+      // 加载 Google Tag Manager
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-T7DKLJ7M');
+
+      // 加载 Google Analytics
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-C6BLGNVD6K";
+      document.head.appendChild(gtagScript);
+
+      gtagScript.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C6BLGNVD6K');
+      };
+    } else {
+      console.log("用户在中国地区，未加载 Google Tag Manager 和 Google Analytics");
+    }
+  </script>
+
+
+
+  
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/IMG_0191.webp">
+  <link rel="icon" href="/img/IMG_0191.webp">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Artin Tan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。  使用文章的 updated 属性判断文章是否有更新。 在模板中为“Updated”标志添加 data-updated 属性，记录更新时间。 使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.文章显示“更新”标志">
+<meta property="og:url" content="http://artintyt.github.io/2025/01/14/2-%E6%96%87%E7%AB%A0%E6%98%BE%E7%A4%BA%E6%9B%B4%E6%96%B0%E6%A0%87%E5%BF%97/index.html">
+<meta property="og:site_name" content="小苦瓜的博客">
+<meta property="og:description" content="博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。  使用文章的 updated 属性判断文章是否有更新。 在模板中为“Updated”标志添加 data-updated 属性，记录更新时间。 使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-14T15:11:20.000Z">
+<meta property="article:modified_time" content="2025-01-15T18:54:01.802Z">
+<meta property="article:author" content="Artin Tan">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Fluid">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>2.文章显示“更新”标志 - 小苦瓜的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"artintyt.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-C6BLGNVD6K"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-C6BLGNVD6K", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-C6BLGNVD6K');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7DKLJ7M"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>好吃的小苦瓜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2.文章显示“更新”标志"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-14 23:11" pubdate>
+          2025年1月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">2.文章显示“更新”标志</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2025-01-16T02:54:01+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。</p>
+<ol>
+<li>使用文章的 <code>updated</code> 属性判断文章是否有更新。</li>
+<li>在模板中为“Updated”标志添加 <code>data-updated</code> 属性，记录更新时间。</li>
+<li>使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标志的显示或隐藏。</li>
+<li>使用 CSS 为“Updated”标志添加样式。</li>
+</ol>
+<hr>
+<h3 id="步骤-1：修改文章模板"><a href="#步骤-1：修改文章模板" class="headerlink" title="步骤 1：修改文章模板"></a><strong>步骤 1：修改文章模板</strong></h3><p>我们需要在文章列表模板中添加“Updated”标志。找到 <code>index.ejs</code>（首页），通常路径：<code>themes/fluid/layout/index.ejs</code></p>
+<p>在模板文件中找到<code>index-btm post-metas</code>（如日期显示的位置), 插入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs ejs">&lt;div class=&quot;index-btm post-metas&quot;&gt;<br>  &lt;% if (theme.index.post_meta.date) &#123; %&gt;<br>    &lt;div class=&quot;post-meta&quot;&gt;<br>      &lt;i class=&quot;iconfont icon-date&quot;&gt;&lt;/i&gt;<br>      &lt;time datetime=&quot;&lt;%= full_date(post.date, &#x27;YYYY-MM-DD HH:mm&#x27;) %&gt;&quot; pubdate&gt;<br>        &lt;%- date(post.date, config.date_format) %&gt;<br>      &lt;/time&gt;<br><br>      &lt;%# -------- 加入以下内容 --------%&gt;<br>      &lt;% if (post.updated) &#123; %&gt;<br>        &lt;% const updatedDays = (new Date() - new Date(post.updated)) / (1000 * 60 * 60 * 24); %&gt;<br>        &lt;% if (updatedDays &lt;= 7) &#123; %&gt;<br>          &lt;span class=&quot;updated-flag&quot; data-updated=&quot;&lt;%= post.updated.toISOString() %&gt;&quot;&gt;Updated&lt;/span&gt;<br>        &lt;% &#125; %&gt;<br>      &lt;% &#125; %&gt;<br>      &lt;%# ----------------------------%&gt;<br><br>    &lt;/div&gt;<br>  &lt;% &#125; %&gt;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h4><ol>
+<li><strong><code>post.updated</code></strong>：检查文章是否有 <code>updated</code> 属性。</li>
+<li><strong>计算时间差</strong>：<code>(new Date() - new Date(post.updated)) / (1000 * 60 * 60 * 24)</code> 将更新时间差转换为天数。</li>
+<li><strong>判断 7 天内</strong>：如果更新时间差小于等于 7 天，显示“Updated”标志。</li>
+<li><strong><code>data-updated</code> 属性</strong>：将更新时间以 ISO 格式写入 <code>data-updated</code>，供 JavaScript 使用。</li>
+</ol>
+<h3 id="步骤-2：创建动态脚本"><a href="#步骤-2：创建动态脚本" class="headerlink" title="步骤 2：创建动态脚本"></a><strong>步骤 2：创建动态脚本</strong></h3><p>在主题的 <code>source/js/</code> 文件夹中创建一个新的文件 <code>update-flag.js</code>，用于动态隐藏过期的标志。</p>
+<p>文件路径：<code>themes/fluid/source/js/update-flag.js</code></p>
+<p>添加以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;DOM fully loaded&quot;</span>);<br>  <span class="hljs-keyword">const</span> updateFlags = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;.updated-flag&#x27;</span>);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Found updated flags:&quot;</span>, updateFlags);<br><br>  <span class="hljs-keyword">const</span> expiryDays = <span class="hljs-number">7</span>; <span class="hljs-comment">// 设置有效期为 7 天</span><br>  <span class="hljs-keyword">const</span> expiryTime = expiryDays * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>; <span class="hljs-comment">// 转换为毫秒</span><br><br>  updateFlags.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">flag</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> updatedDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(flag.<span class="hljs-property">dataset</span>.<span class="hljs-property">updated</span>); <span class="hljs-comment">// 从 data-updated 获取时间</span><br>    <span class="hljs-keyword">const</span> timeDiff = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - updatedDate.<span class="hljs-title function_">getTime</span>(); <span class="hljs-comment">// 当前时间与更新时间的差</span><br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Article updated on: <span class="hljs-subst">$&#123;updatedDate&#125;</span>, Time difference: <span class="hljs-subst">$&#123;timeDiff / (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>)&#125;</span> days`</span>);<br><br>    <span class="hljs-keyword">if</span> (timeDiff &gt; expiryTime) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hiding outdated updated flag&quot;</span>);<br>      flag.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>; <span class="hljs-comment">// 隐藏过期标志</span><br>    &#125;<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="步骤-3：确保脚本被加载"><a href="#步骤-3：确保脚本被加载" class="headerlink" title="步骤 3：确保脚本被加载"></a><strong>步骤 3：确保脚本被加载</strong></h3><p>在主题的 <code>scripts.ejs</code> 文件中。<br>通常位于 <code>themes/fluid/layout/_partial/scripts.ejs</code>），添加对 <code>update-flag.js</code> 的引用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/update-flag.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>defer</code> 确保脚本在页面内容加载完成后执行。</p>
+<h3 id="步骤-4：定义样式"><a href="#步骤-4：定义样式" class="headerlink" title="步骤 4：定义样式"></a><strong>步骤 4：定义样式</strong></h3><p>为“Updated”标志添加样式，使其在页面上显眼且美观。找到主题的 CSS 文件。<br>通常是<code>themes/fluid/source/css/_pages/color-schema.styl</code>，在文件末尾添加以下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.updated-flag</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0000</span>; <span class="hljs-comment">/* 红色背景 */</span><br>  <span class="hljs-attribute">color</span>: white;             <span class="hljs-comment">/* 白色文字 */</span><br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8em</span>;         <span class="hljs-comment">/* 小字号 */</span><br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span> <span class="hljs-number">5px</span>;         <span class="hljs-comment">/* 内边距 */</span><br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;       <span class="hljs-comment">/* 圆角 */</span><br>  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;         <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>虽然<code>styl</code>文件支持css，但是以防万一，可以使用以下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs styl"><span class="hljs-selector-class">.updated-flag</span><br>  <span class="hljs-attribute">background-color</span> <span class="hljs-number">#5d8744</span><br>  <span class="hljs-attribute">color</span> white<br>  <span class="hljs-attribute">font-size</span> <span class="hljs-number">0.8em</span><br>  <span class="hljs-attribute">padding</span> <span class="hljs-number">2px</span> <span class="hljs-number">5px</span><br>  <span class="hljs-attribute">border-radius</span> <span class="hljs-number">3px</span><br>  <span class="hljs-attribute">margin-left</span> <span class="hljs-number">5px</span> <br></code></pre></td></tr></table></figure>
+
+
+<h3 id="步骤-5：测试并验证"><a href="#步骤-5：测试并验证" class="headerlink" title="步骤 5：测试并验证"></a><strong>步骤 5：测试并验证</strong></h3><h4 id="1-创建测试文件"><a href="#1-创建测试文件" class="headerlink" title="1. 创建测试文件"></a>1. <strong>创建测试文件</strong></h4><p>   在<code>source/_posts</code>下面创建文章<code>test.md</code>。修改某篇文章的 Front Matter，让 <code>updated</code> 时间为近期或较早的日期，此文章超过7天，<code>updated</code>标志消失，可以修改其文章已测试显示<code>updated</code>：<br>   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">test</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2025-01-01</span><br><span class="hljs-attr">updated:</span> <span class="hljs-number">2025-01-08</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="2-生成和部署"><a href="#2-生成和部署" class="headerlink" title="2. 生成和部署"></a>2. <strong>生成和部署</strong></h4><p>   运行以下命令生成并查看网站：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo server<br></code></pre></td></tr></table></figure></p>
+<h4 id="3-检查浏览器"><a href="#3-检查浏览器" class="headerlink" title="3. 检查浏览器"></a>3. <strong>检查浏览器</strong></h4><p>   打开开发者工具（<code>F12</code>），切换到 <strong>Console</strong>，确认是否有调试信息输出，如：<br>   <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">DOM</span> fully loaded<br><span class="hljs-attribute">Found</span> updated flags: NodeList(<span class="hljs-number">4</span>)<span class="hljs-meta"> [...]</span><br><span class="hljs-attribute">Article</span> updated <span class="hljs-literal">on</span>: Thu Jan <span class="hljs-number">08</span> <span class="hljs-number">2025</span> ...<br><span class="hljs-attribute">Hiding</span> outdated updated flag<br></code></pre></td></tr></table></figure></p>
+<ol start="4">
+<li><strong>验证效果</strong>  <ul>
+<li>如果文章的更新时间在 7 天内，页面应显示“Updated”标志。</li>
+<li>如果超过 7 天，标志应动态隐藏。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>通过以上步骤，我们实现了以下功能：</p>
+<ol>
+<li>在 Hexo 模板中添加“Updated”标志。</li>
+<li>使用 JavaScript 动态判断标志的显示时间（如 7 天内有效）。</li>
+<li>为标志添加自定义样式，使其更具吸引力。</li>
+</ol>
+<p>希望本教程能帮助你优化博客的用户体验！如有任何问题，欢迎留言交流！ 🚀</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2/" class="category-chain-item">Hexo博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
+      
+        <a href="/tags/Fluid/" class="print-no-link">#Fluid</a>
+      
+        <a href="/tags/HTML/" class="print-no-link">#HTML</a>
+      
+        <a href="/tags/js/" class="print-no-link">#js</a>
+      
+        <a href="/tags/css/" class="print-no-link">#css</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2.文章显示“更新”标志</div>
+      <div>http://artintyt.github.io/2025/01/14/2-文章显示更新标志/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Artin Tan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月14日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年1月16日</div>
+        </div>
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/16/3-%E5%88%86%E7%B1%BB%E5%86%85%E6%96%87%E7%AB%A0%E6%8C%89%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/" title="3.分类内文章按时间排序">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">3.分类内文章按时间排序</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/13/1-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="1.博客搭建">
+                        <span class="hidden-mobile">1.博客搭建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    
+
+<div class="footer-inner">
+  
+    <div class="footer-content">
+       <div style="text-align: center;"> <p>© 2025 Artin Tan. All rights reserved.</p> <ul style="list-style:none; padding: 0; margin: 10px 0; display: inline-flex; flex-wrap: wrap; gap: 15px; justify-content: center;"> <li style="display: flex; align-items: center;"> <i class="iconfont icon-github-fill"></i> <a href="https://github.com/ArtinTYT" target="_blank" rel="nofollow noopener" style="margin-left: 5px;">GitHub</a> </li> </ul> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div> 
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<script src="/js/update-flag.js" defer></script>
+
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
