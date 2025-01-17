@@ -6,48 +6,13 @@
 
 
 <head>
-  <!-- Google Site Verification -->
   <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
-
-  <script>
-    // 检查用户是否在中国
-    function isInChina() {
-      var chinaIPs = ['CN', 'HK', 'MO', 'TW']; // 可根据需要扩展
-      return chinaIPs.includes(new Intl.Locale(navigator.language).region);
-    }
-
-    if (!isInChina()) {
-      // 加载 Google Tag Manager
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-T7DKLJ7M');
-
-      // 加载 Google Analytics
-      var gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-C6BLGNVD6K";
-      document.head.appendChild(gtagScript);
-
-      gtagScript.onload = function() {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-C6BLGNVD6K');
-      };
-    } else {
-      console.log("用户在中国地区，未加载 Google Tag Manager 和 Google Analytics");
-    }
-  </script>
-
-
-
+  
   
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/IMG_0191.webp">
-  <link rel="icon" href="/img/IMG_0191.webp">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/webicon.webp">
+  <link rel="icon" href="/img/webicon.webp">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -59,21 +24,23 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="欢迎来到小苦瓜的博客，我与于2021~2024在布里斯托大学做修理论统计机器学习与数据分析编程相关内容。同时对算法、应用机器学习、深度学习、大模型感兴趣，博客将不定期更新，关于应用机器学习，深度学习，大模型算法等内容。  EducationBSc. Data Science, Mathematics School, University of BristolSep 2021 – Aug 2024">
+    <meta name="description" content="欢迎来到我们的博客！ 在 2021 至 2024 年间，专注于理论统计机器学习以及科学数据分析编程的学习与研究。接下来，我们将不定期分享关于应用机器学习、深度学习、大模型算法等方面的内容，期待与大家一起交流与成长！  Education BSc. Data Science, Mathematics School, University of Bristol, UKSep 2021 – Aug 20">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
 <meta property="og:url" content="http://artintyt.github.io/about/index.html">
-<meta property="og:site_name" content="小苦瓜的博客">
-<meta property="og:description" content="欢迎来到小苦瓜的博客，我与于2021~2024在布里斯托大学做修理论统计机器学习与数据分析编程相关内容。同时对算法、应用机器学习、深度学习、大模型感兴趣，博客将不定期更新，关于应用机器学习，深度学习，大模型算法等内容。  EducationBSc. Data Science, Mathematics School, University of BristolSep 2021 – Aug 2024">
+<meta property="og:site_name" content="好吃的小苦瓜">
+<meta property="og:description" content="欢迎来到我们的博客！ 在 2021 至 2024 年间，专注于理论统计机器学习以及科学数据分析编程的学习与研究。接下来，我们将不定期分享关于应用机器学习、深度学习、大模型算法等方面的内容，期待与大家一起交流与成长！  Education BSc. Data Science, Mathematics School, University of Bristol, UKSep 2021 – Aug 20">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-17T08:10:53.214Z">
-<meta property="article:modified_time" content="2025-01-17T08:10:53.214Z">
+<meta property="og:image" content="http://artintyt.github.io/img/support.webp">
+<meta property="article:published_time" content="2025-01-17T18:09:10.103Z">
+<meta property="article:modified_time" content="2025-01-17T17:45:30.301Z">
 <meta property="article:author" content="Artin Tan">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://artintyt.github.io/img/support.webp">
   
   
   
-  <title>关于 - 小苦瓜的博客</title>
+  <title>关于 - 好吃的小苦瓜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -111,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"artintyt.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-C6BLGNVD6K"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"artintyt.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-FC96VM1C7N"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -128,13 +95,13 @@
     <!-- Google tag (gtag.js) -->
     <script async>
       if (!Fluid.ctx.dnt) {
-        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-C6BLGNVD6K", function() {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-FC96VM1C7N", function() {
           window.dataLayer = window.dataLayer || [];
           function gtag() {
             dataLayer.push(arguments);
           }
           gtag('js', new Date());
-          gtag('config', 'G-C6BLGNVD6K');
+          gtag('config', 'G-FC96VM1C7N');
         });
       }
     </script>
@@ -157,21 +124,10 @@
 <body>
   
 
-
-
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7DKLJ7M"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-
-
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -311,7 +267,7 @@
 <div class="text-center">
   <div class="about-info">
     <div class="about-name">Artin Tan</div>
-    <div class="about-intro">前沿科技，种植物，小动物 | 理想是提钱退休 | 细节控和工业设计控</div>
+    <div class="about-intro">植物+小动物 / 理想是提钱退休 / 细节控+工业设计控</div>
     <div class="about-icons">
       
         
@@ -329,18 +285,6 @@
         
         
         
-        <a href=https://douban.com class="
-           hint--bottom hint--rounded"
-           aria-label="豆瓣"
-           target="_blank"
-        >
-          <i class="iconfont icon-douban-fill" aria-hidden="true"></i>
-          
-        </a>
-      
-        
-        
-        
         <a  class="qr-trigger
            "
            
@@ -348,7 +292,7 @@
         >
           <i class="iconfont icon-wechat-fill" aria-hidden="true"></i>
           
-            <img class="qr-img" src="/img/IMG_0191.webp" srcset="/img/loading.gif" lazyload alt="qrcode" />
+            <img class="qr-img" src="/img/support.webp" srcset="/img/loading.gif" lazyload alt="qrcode" />
           
         </a>
       
@@ -358,14 +302,33 @@
 
 <article class="about-content page-content mt-5">
   <div class="markdown-body">
-    <p>欢迎来到小苦瓜的博客，我与于2021~2024在布里斯托大学做修理论统计机器学习与数据分析编程相关内容。同时对算法、应用机器学习、深度学习、大模型感兴趣，博客将不定期更新，关于应用机器学习，深度学习，大模型算法等内容。</p>
+    <p>欢迎来到我们的博客！</p>
+<p>在 2021 至 2024 年间，专注于理论统计机器学习以及科学数据分析编程的学习与研究。接下来，我们将不定期分享关于应用机器学习、深度学习、大模型算法等方面的内容，期待与大家一起交流与成长！</p>
 <hr>
-<h4 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h4><p><strong>BSc. Data Science, Mathematics School, University of Bristol</strong><br><em>Sep 2021 – Aug 2024</em></p>
-<hr>
-<h4 id="Experience"><a href="#Experience" class="headerlink" title="Experience"></a>Experience</h4><p><strong>Data Analyst Intern (Dubai - Remote)</strong><br><em>Sep 2023 – Mar 2024</em>  </p>
-<h4 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h4><p><strong>Student Ambassador, Mathematics School Team</strong><br><em>Aug 2023 – Jul 2024</em>  </p>
+<h3 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h3><blockquote>
+<p><strong>BSc. Data Science, Mathematics School, University of Bristol, UK</strong><br><em>Sep 2021 – Aug 2024</em></p>
+</blockquote>
+<h3 id="Experience"><a href="#Experience" class="headerlink" title="Experience"></a>Experience</h3><blockquote>
+<p><strong>Data Analyst Intern (Dubai - Remote)</strong><br><em>Sep 2023 – Mar 2024</em>  </p>
+</blockquote>
+<h4 id="Other："><a href="#Other：" class="headerlink" title="Other："></a>Other：</h4><blockquote>
+<p><strong>Student Ambassador, Mathematics School Team</strong><br><em>Aug 2023 – Jul 2024</em>  </p>
+</blockquote>
+<blockquote>
 <p><strong>Workshop Creator Group, Bristol Data Science Society</strong><br><em>May 2023 – Apr 2024</em>  </p>
+</blockquote>
+<blockquote>
 <p><strong>BSc. Data Science Course Rep, Mathematics School</strong><br><em>Apr 2023 – Apr 2024</em>   </p>
+</blockquote>
+<h3 id="赞赏"><a href="#赞赏" class="headerlink" title="赞赏"></a>赞赏</h3><p>如果你觉得这个博客有帮助，并愿意支持它的发展，可以通过以下方式支持我们的开源创作：</p>
+<div style="text-align: center;" >
+  <img src="/img/support.webp" srcset="/img/loading.gif" lazyload alt="微信赞赏码" style="width:28%; height:auto;  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);">
+  <p style="margin-top: 5px; color: darkgoldenrod;">微信赞赏码</p>
+</div>
+
+
+
+<p>同时我们也支持商业合作，如果贵公司在本博客展示产品（广告位）获得更多的流量曝光，或者有其他赞助或合作，请发送邮件至: <em>artin_tan <strong>£</strong> outlook.com</em> (将 <strong>£</strong> 替换为 <strong>@</strong> )。</p>
 
   </div>
 
@@ -439,9 +402,7 @@
   </main>
 
   <footer>
-    
-
-<div class="footer-inner">
+    <div class="footer-inner">
   
     <div class="footer-content">
        <div style="text-align: center;"> <p>© 2025 Artin Tan. All rights reserved.</p> <ul style="list-style:none; padding: 0; margin: 10px 0; display: inline-flex; flex-wrap: wrap; gap: 15px; justify-content: center;"> <li style="display: flex; align-items: center;"> <i class="iconfont icon-github-fill"></i> <a href="https://github.com/ArtinTYT" target="_blank" rel="nofollow noopener" style="margin-left: 5px;">GitHub</a> </li> </ul> </div> 
@@ -496,8 +457,6 @@
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
-
-
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -590,8 +549,8 @@
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
+<!-- 显示"updated"标志 -->
 <script src="/js/update-flag.js" defer></script>
-
 
 
   

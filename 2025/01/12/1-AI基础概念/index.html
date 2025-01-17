@@ -6,48 +6,13 @@
 
 
 <head>
-  <!-- Google Site Verification -->
   <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
-
-  <script>
-    // 检查用户是否在中国
-    function isInChina() {
-      var chinaIPs = ['CN', 'HK', 'MO', 'TW']; // 可根据需要扩展
-      return chinaIPs.includes(new Intl.Locale(navigator.language).region);
-    }
-
-    if (!isInChina()) {
-      // 加载 Google Tag Manager
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-T7DKLJ7M');
-
-      // 加载 Google Analytics
-      var gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-C6BLGNVD6K";
-      document.head.appendChild(gtagScript);
-
-      gtagScript.onload = function() {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-C6BLGNVD6K');
-      };
-    } else {
-      console.log("用户在中国地区，未加载 Google Tag Manager 和 Google Analytics");
-    }
-  </script>
-
-
-
+  
   
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/IMG_0191.webp">
-  <link rel="icon" href="/img/IMG_0191.webp">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/webicon.webp">
+  <link rel="icon" href="/img/webicon.webp">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -61,13 +26,13 @@
   
     <meta name="description" content="什么是AI（Artificial intelligence 人工智能）：通过机器学习，深度学习等算法，使得系统具备学习、推理、自我修正和解决问题等功能。  语言 语音 视觉 多模态感知和决策  意图识别；情绪识别；表情识别 NL 自然语言NLP 自然语言处理自然语言处理（Natural Language Processing, NLP）是人工智能的一个子领域，致力于实现计算机对人类语言的理解、和生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1. AI基础概念">
+<meta property="og:title" content="1.AI基础概念">
 <meta property="og:url" content="http://artintyt.github.io/2025/01/12/1-AI%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/index.html">
-<meta property="og:site_name" content="小苦瓜的博客">
+<meta property="og:site_name" content="好吃的小苦瓜">
 <meta property="og:description" content="什么是AI（Artificial intelligence 人工智能）：通过机器学习，深度学习等算法，使得系统具备学习、推理、自我修正和解决问题等功能。  语言 语音 视觉 多模态感知和决策  意图识别；情绪识别；表情识别 NL 自然语言NLP 自然语言处理自然语言处理（Natural Language Processing, NLP）是人工智能的一个子领域，致力于实现计算机对人类语言的理解、和生">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-12T07:35:21.000Z">
-<meta property="article:modified_time" content="2025-01-15T18:55:20.849Z">
+<meta property="article:modified_time" content="2025-01-17T16:52:48.183Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="深度学习">
@@ -77,7 +42,7 @@
   
   
   
-  <title>1. AI基础概念 - 小苦瓜的博客</title>
+  <title>1.AI基础概念 - 好吃的小苦瓜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -115,7 +80,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"artintyt.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-C6BLGNVD6K"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"artintyt.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-FC96VM1C7N"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -132,13 +97,13 @@
     <!-- Google tag (gtag.js) -->
     <script async>
       if (!Fluid.ctx.dnt) {
-        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-C6BLGNVD6K", function() {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-FC96VM1C7N", function() {
           window.dataLayer = window.dataLayer || [];
           function gtag() {
             dataLayer.push(arguments);
           }
           gtag('js', new Date());
-          gtag('config', 'G-C6BLGNVD6K');
+          gtag('config', 'G-FC96VM1C7N');
         });
       }
     </script>
@@ -160,17 +125,6 @@
 
 <body>
   
-
-
-
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7DKLJ7M"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-
 
   <header>
     
@@ -281,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="1. AI基础概念"></span>
+            <span id="subtitle" data-typed-text="1.AI基础概念"></span>
           
         </div>
 
@@ -304,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          727 字
+          955 字
         
       </span>
     
@@ -315,7 +269,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -361,12 +315,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">1. AI基础概念</h1>
+            <h1 id="seo-header">1.AI基础概念</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-16T02:55:20+08:00
+                    本文最后更新于 2025-01-18T00:52:48+08:00
                   
                   
 
@@ -393,7 +347,7 @@
 <h3 id="NLU-自然语言理解"><a href="#NLU-自然语言理解" class="headerlink" title="NLU 自然语言理解"></a>NLU 自然语言理解</h3><p>自然语言理解（Natural Language Understanding）是NLP的一个子领域，专注于使计算机能够理解人类语言的含义。NLU涉及语义分析、意图识别、实体识别等任务。</p>
 <p>例子:</p>
 <ul>
-<li>意图识别: 在智能语音助手中，当用户说“帮我订一张明天去纽约的机票”，系统需要识别用户的意图是“订票”。</li>
+<li>意图识别: 当对语音助手说“帮我订一张明天去纽约的机票”，系统需要识别用户的意图是“订票”。</li>
 <li>实体识别: 在同一句话中，系统需要识别出“纽约”是一个地名，“明天”是一个时间表达。</li>
 </ul>
 <h3 id="NLG-自然语言生成"><a href="#NLG-自然语言生成" class="headerlink" title="NLG 自然语言生成"></a>NLG 自然语言生成</h3><p>自然语言生成（Natural Language Generation）是NLP的另一个子领域，专注于计算机能生成人类的语言, 非常贴近真人说话的方式。NLG通常用于自动报告生成、内容创作等场景。<br>例子:</p>
@@ -421,7 +375,20 @@
 </ul>
 </li>
 </ol>
-<h2 id="监督学习-Supervised-Learning"><a href="#监督学习-Supervised-Learning" class="headerlink" title="监督学习(Supervised Learning)"></a>监督学习(Supervised Learning)</h2><h2 id="无监督学习（Unsupervised-Learning）"><a href="#无监督学习（Unsupervised-Learning）" class="headerlink" title="无监督学习（Unsupervised Learning）"></a>无监督学习（Unsupervised Learning）</h2><h2 id="强化学习（Reinforcement-Learning）"><a href="#强化学习（Reinforcement-Learning）" class="headerlink" title="强化学习（Reinforcement Learning）"></a>强化学习（Reinforcement Learning）</h2><h2 id="机器学习效果评估"><a href="#机器学习效果评估" class="headerlink" title="机器学习效果评估"></a>机器学习效果评估</h2><h2 id="深度学习-Deep-Learning"><a href="#深度学习-Deep-Learning" class="headerlink" title="深度学习 (Deep Learning)"></a>深度学习 (Deep Learning)</h2><h2 id="神经网络-Neural-Networks"><a href="#神经网络-Neural-Networks" class="headerlink" title="神经网络 (Neural Networks)"></a>神经网络 (Neural Networks)</h2><h2 id="CNN（卷积神经网络）"><a href="#CNN（卷积神经网络）" class="headerlink" title="CNN（卷积神经网络）"></a>CNN（卷积神经网络）</h2><h2 id="RNN（循环神经网络"><a href="#RNN（循环神经网络" class="headerlink" title="RNN（循环神经网络)"></a>RNN（循环神经网络)</h2><h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><h2 id="GPT（生成式预训练）"><a href="#GPT（生成式预训练）" class="headerlink" title="GPT（生成式预训练）"></a>GPT（生成式预训练）</h2><h2 id="向量数据库"><a href="#向量数据库" class="headerlink" title="向量数据库"></a>向量数据库</h2><h2 id="嵌入（Embeddings）"><a href="#嵌入（Embeddings）" class="headerlink" title="嵌入（Embeddings）"></a>嵌入（Embeddings）</h2><h2 id="LLM（大语言模型）"><a href="#LLM（大语言模型）" class="headerlink" title="LLM（大语言模型）"></a>LLM（大语言模型）</h2><h2 id="Model-Size"><a href="#Model-Size" class="headerlink" title="Model Size"></a>Model Size</h2><h2 id="OpenAI-简介"><a href="#OpenAI-简介" class="headerlink" title="OpenAI 简介"></a>OpenAI 简介</h2>
+<h2 id="监督学习-Supervised-Learning"><a href="#监督学习-Supervised-Learning" class="headerlink" title="监督学习(Supervised Learning)"></a>监督学习(Supervised Learning)</h2><p>监督学习是一种机器学习方法，模型通过已知的输入和输出数据进行训练，直到模型能够准确地匹配输入和输出的关系。</p>
+<h3 id="分类（Classification）"><a href="#分类（Classification）" class="headerlink" title="分类（Classification）"></a>分类（Classification）</h3><p>分类任务是将输入数据分为离散的类别。</p>
+<ul>
+<li>例子：垃圾邮件过滤。给定一封电子邮件，模型需要判断这封邮件是垃圾邮件（spam）还是正常邮件（ham）。</li>
+</ul>
+<h3 id="回归（Regression）"><a href="#回归（Regression）" class="headerlink" title="回归（Regression）"></a>回归（Regression）</h3><p>回归任务是预测连续的数值输出。</p>
+<ul>
+<li>例子：房价预测。根据特征（如房子的面积、位置等），模型预测房子的价格。</li>
+</ul>
+<h3 id="关联规则（Association-Rule）"><a href="#关联规则（Association-Rule）" class="headerlink" title="关联规则（Association Rule）"></a>关联规则（Association Rule）</h3><p>关联规则是寻找数据中不同项之间的关系或模式。</p>
+<ul>
+<li>例子：购物篮分析。超市可以通过关联规则发现哪些商品常常一起被购买，比如“如果顾客买了面包和黄油，他们也很可能会买牛奶”。</li>
+</ul>
+<h2 id="无监督学习（Unsupervised-Learning）"><a href="#无监督学习（Unsupervised-Learning）" class="headerlink" title="无监督学习（Unsupervised Learning）"></a>无监督学习（Unsupervised Learning）</h2><h2 id="强化学习（Reinforcement-Learning）"><a href="#强化学习（Reinforcement-Learning）" class="headerlink" title="强化学习（Reinforcement Learning）"></a>强化学习（Reinforcement Learning）</h2><h2 id="机器学习效果评估"><a href="#机器学习效果评估" class="headerlink" title="机器学习效果评估"></a>机器学习效果评估</h2><h2 id="深度学习-Deep-Learning"><a href="#深度学习-Deep-Learning" class="headerlink" title="深度学习 (Deep Learning)"></a>深度学习 (Deep Learning)</h2><h2 id="神经网络-Neural-Networks"><a href="#神经网络-Neural-Networks" class="headerlink" title="神经网络 (Neural Networks)"></a>神经网络 (Neural Networks)</h2><h2 id="CNN（卷积神经网络）"><a href="#CNN（卷积神经网络）" class="headerlink" title="CNN（卷积神经网络）"></a>CNN（卷积神经网络）</h2><h2 id="RNN（循环神经网络"><a href="#RNN（循环神经网络" class="headerlink" title="RNN（循环神经网络)"></a>RNN（循环神经网络)</h2><h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><h2 id="GPT（生成式预训练）"><a href="#GPT（生成式预训练）" class="headerlink" title="GPT（生成式预训练）"></a>GPT（生成式预训练）</h2><h2 id="向量数据库"><a href="#向量数据库" class="headerlink" title="向量数据库"></a>向量数据库</h2><h2 id="嵌入（Embeddings）"><a href="#嵌入（Embeddings）" class="headerlink" title="嵌入（Embeddings）"></a>嵌入（Embeddings）</h2><h2 id="LLM（大语言模型）"><a href="#LLM（大语言模型）" class="headerlink" title="LLM（大语言模型）"></a>LLM（大语言模型）</h2><h2 id="Model-Size"><a href="#Model-Size" class="headerlink" title="Model Size"></a>Model Size</h2><h2 id="OpenAI-简介"><a href="#OpenAI-简介" class="headerlink" title="OpenAI 简介"></a>OpenAI 简介</h2>
                 
               </div>
             
@@ -472,7 +439,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>1. AI基础概念</div>
+      <div>1.AI基础概念</div>
       <div>http://artintyt.github.io/2025/01/12/1-AI基础概念/</div>
     </div>
     <div class="license-meta">
@@ -491,7 +458,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年1月16日</div>
+          <div>2025年1月18日</div>
         </div>
       
       
@@ -617,9 +584,7 @@
   </main>
 
   <footer>
-    
-
-<div class="footer-inner">
+    <div class="footer-inner">
   
     <div class="footer-content">
        <div style="text-align: center;"> <p>© 2025 Artin Tan. All rights reserved.</p> <ul style="list-style:none; padding: 0; margin: 10px 0; display: inline-flex; flex-wrap: wrap; gap: 15px; justify-content: center;"> <li style="display: flex; align-items: center;"> <i class="iconfont icon-github-fill"></i> <a href="https://github.com/ArtinTYT" target="_blank" rel="nofollow noopener" style="margin-left: 5px;">GitHub</a> </li> </ul> </div> 
@@ -674,8 +639,6 @@
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
-
-
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -835,8 +798,8 @@
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
+<!-- 显示"updated"标志 -->
 <script src="/js/update-flag.js" defer></script>
-
 
 
   

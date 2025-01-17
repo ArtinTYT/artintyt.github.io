@@ -1,21 +1,19 @@
-console.log("Update-flag.js loaded successfully");
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded");
   const updateFlags = document.querySelectorAll('.updated-flag');
   console.log("Found updated flags:", updateFlags);
 
-  const expiryDays = 7;
-  const expiryTime = expiryDays * 24 * 60 * 60 * 1000;
+  const expiryDays = 7; // 设置有效期为 7 天
+  const expiryTime = expiryDays * 24 * 60 * 60 * 1000; // 转换为毫秒
 
   updateFlags.forEach(flag => {
-    const updatedDate = new Date(flag.dataset.updated);
-    console.log(`Article updated on: ${updatedDate}`);
-    const timeDiff = Date.now() - updatedDate.getTime();
-    console.log(`Time difference in days: ${timeDiff / (1000 * 60 * 60 * 24)}`);
+    const updatedDate = new Date(flag.dataset.updated); // 从 data-updated 获取时间
+    const timeDiff = Date.now() - updatedDate.getTime(); // 当前时间与更新时间的差
+
+    console.log(`Article updated on: ${updatedDate}, Time difference: ${timeDiff / (1000 * 60 * 60 * 24)} days`);
 
     if (timeDiff > expiryTime) {
-      console.log("Hiding flag for outdated article");
+      console.log("Hiding outdated updated flag");
       flag.style.display = 'none'; // 隐藏过期标志
     }
   });
