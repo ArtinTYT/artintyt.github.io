@@ -8,8 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateFlags.forEach(flag => {
     const updatedDate = new Date(flag.dataset.updated); // 从 data-updated 获取时间
-    const timeDiff = Date.now() - updatedDate.getTime(); // 当前时间与更新时间的差
+    if (isNaN(updatedDate)) {
+      console.warn("Invalid updated date:", flag.dataset.updated);
+      return;
+    }
 
+    const timeDiff = Date.now() - updatedDate.getTime(); // 当前时间与更新时间的差
     console.log(`Article updated on: ${updatedDate}, Time difference: ${timeDiff / (1000 * 60 * 60 * 24)} days`);
 
     if (timeDiff > expiryTime) {
@@ -18,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {

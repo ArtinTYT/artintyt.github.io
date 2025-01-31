@@ -8,7 +8,6 @@
 <head>
   <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
   
-  
 
   
   <meta charset="UTF-8">
@@ -26,26 +25,23 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。  使用文章的 updated 属性判断文章是否有更新。 在模板中为“Updated”标志添加 data-updated 属性，记录更新时间。 使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标">
+    <meta name="description" content="以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。 官网下载安装下载mini conda：https:&#x2F;&#x2F;www.anaconda.com&#x2F;download&#x2F;success 安装完成后测试使用以下命令查看版本和测试安装是否成功： 1conda --verison  Terminal显示如下状态： 1conda 24.11.1  验证Base环境">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文章显示“更新”标志">
-<meta property="og:url" content="http://artintyt.github.io/2025/01/14/%E6%96%87%E7%AB%A0%E6%98%BE%E7%A4%BA%E6%9B%B4%E6%96%B0%E6%A0%87%E5%BF%97/index.html">
+<meta property="og:title" content="conda环境配置">
+<meta property="og:url" content="http://artintyt.github.io/2025/01/24/conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="好吃的小苦瓜">
-<meta property="og:description" content="博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。  使用文章的 updated 属性判断文章是否有更新。 在模板中为“Updated”标志添加 data-updated 属性，记录更新时间。 使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标">
+<meta property="og:description" content="以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。 官网下载安装下载mini conda：https:&#x2F;&#x2F;www.anaconda.com&#x2F;download&#x2F;success 安装完成后测试使用以下命令查看版本和测试安装是否成功： 1conda --verison  Terminal显示如下状态： 1conda 24.11.1  验证Base环境">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-14T15:11:20.000Z">
-<meta property="article:modified_time" content="2025-01-17T22:29:05.812Z">
+<meta property="article:published_time" content="2025-01-24T11:10:48.000Z">
+<meta property="article:modified_time" content="2025-01-24T21:20:44.319Z">
 <meta property="article:author" content="Artin Tan">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Fluid">
-<meta property="article:tag" content="HTML">
-<meta property="article:tag" content="js">
-<meta property="article:tag" content="css">
+<meta property="article:tag" content="conda">
+<meta property="article:tag" content="MacOS">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>文章显示“更新”标志 - 好吃的小苦瓜</title>
+  <title>conda环境配置 - 好吃的小苦瓜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -123,6 +119,10 @@
 
 
   
+
+
+  
+
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="文章显示“更新”标志"></span>
+            <span id="subtitle" data-typed-text="conda环境配置"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-14 23:11" pubdate>
-          2025年1月14日 晚上
+        <time datetime="2025-01-24 19:10" pubdate>
+          2025年1月24日 晚上
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          980 字
+          998 字
         
       </span>
     
@@ -318,12 +318,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">文章显示“更新”标志</h1>
+            <h1 id="seo-header">conda环境配置</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-18T06:29:05+08:00
+                    本文最后更新于 2025-01-25T05:20:44+08:00
                   
                   
 
@@ -333,52 +333,85 @@
             
               <div class="markdown-body">
                 
-                <p>博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。</p>
-<ol>
-<li>使用文章的 <code>updated</code> 属性判断文章是否有更新。</li>
-<li>在模板中为“Updated”标志添加 <code>data-updated</code> 属性，记录更新时间。</li>
-<li>使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标志的显示或隐藏。</li>
-<li>使用 CSS 为“Updated”标志添加样式。</li>
-</ol>
-<hr>
-<h3 id="步骤-1：修改文章模板"><a href="#步骤-1：修改文章模板" class="headerlink" title="步骤 1：修改文章模板"></a><strong>步骤 1：修改文章模板</strong></h3><p>我们需要在文章列表模板中添加“Updated”标志。找到 <code>index.ejs</code>（首页），通常路径：<code>themes/fluid/layout/index.ejs</code></p>
-<p>在模板文件中找到<code>index-btm post-metas</code>（如日期显示的位置), 插入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs ejs">&lt;div class=&quot;index-btm post-metas&quot;&gt;<br>  &lt;% if (theme.index.post_meta.date) &#123; %&gt;<br>    &lt;div class=&quot;post-meta&quot;&gt;<br>      &lt;i class=&quot;iconfont icon-date&quot;&gt;&lt;/i&gt;<br>      &lt;time datetime=&quot;&lt;%= full_date(post.date, &#x27;YYYY-MM-DD HH:mm&#x27;) %&gt;&quot; pubdate&gt;<br>        &lt;%- date(post.date, config.date_format) %&gt;<br>      &lt;/time&gt;<br><br>      &lt;%# -------- 加入以下内容 --------%&gt;<br>      &lt;% if (post.updated) &#123; %&gt;<br>        &lt;% const updatedDays = (new Date() - new Date(post.updated)) / (1000 * 60 * 60 * 24); %&gt;<br>        &lt;% if (updatedDays &lt;= 7) &#123; %&gt;<br>          &lt;span class=&quot;updated-flag&quot; data-updated=&quot;&lt;%= post.updated.toISOString() %&gt;&quot;&gt;Updated within 7 days&lt;/span&gt;<br>        &lt;% &#125; %&gt;<br>      &lt;% &#125; %&gt;<br>      &lt;%# ----------------------------%&gt;<br><br>    &lt;/div&gt;<br>  &lt;% &#125; %&gt;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+                <p>以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。</p>
+<h2 id="官网下载安装"><a href="#官网下载安装" class="headerlink" title="官网下载安装"></a>官网下载安装</h2><p>下载mini conda：<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/success">https://www.anaconda.com/download/success</a></p>
+<h3 id="安装完成后测试"><a href="#安装完成后测试" class="headerlink" title="安装完成后测试"></a>安装完成后测试</h3><p>使用以下命令查看版本和测试安装是否成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda --verison<br></code></pre></td></tr></table></figure>
 
+<p>Terminal显示如下状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">conda 24.11.1<br></code></pre></td></tr></table></figure>
+
+<h3 id="验证Base环境"><a href="#验证Base环境" class="headerlink" title="验证Base环境"></a>验证Base环境</h3><p>Conda 的 (base) 表示你已经激活了默认环境。如果想查看安装的环境列表，可以运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br></code></pre></td></tr></table></figure>
+<p>可能会看到下面的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda environments:</span><br><span class="hljs-comment">#</span><br>base                 * /opt/miniconda3<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看默认Python版本"><a href="#查看默认Python版本" class="headerlink" title="查看默认Python版本"></a>查看默认Python版本</h3><p>查看 conda 默认的 Python 版本，后面会创建指定 Python 某版本的环境。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python --version<br></code></pre></td></tr></table></figure>
+<p>可能看到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">Python 3.12.8<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Conda常用命令"><a href="#Conda常用命令" class="headerlink" title="Conda常用命令"></a>Conda常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda –<span class="hljs-built_in">help</span> <span class="hljs-comment"># 查看帮助</span><br>conda info <span class="hljs-comment"># 查看 conda 信息</span><br>conda version  <span class="hljs-comment"># 查看 conda 版本</span><br>conda update conda  <span class="hljs-comment"># 更新Conda（慎用）</span><br>conda clean –all <span class="hljs-comment"># 清理不再需要的包</span><br>conda &lt;指令&gt; <span class="hljs-built_in">help</span> <span class="hljs-comment"># 查看某一个指令的详细帮助</span><br>conda config show <span class="hljs-comment">#查看 conda 的环境配置</span><br>conda clean -p  <span class="hljs-comment"># 清理没有用，没有安装的包</span><br>conda clean -t  <span class="hljs-comment"># 清理 tarball</span><br>conda clean all  <span class="hljs-comment"># 清理所有包和 conda 的缓存文件</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="环境管理"><a href="#环境管理" class="headerlink" title="环境管理"></a>环境管理</h2><h3 id="查看conda环境路径是否正确设置"><a href="#查看conda环境路径是否正确设置" class="headerlink" title="查看conda环境路径是否正确设置"></a>查看conda环境路径是否正确设置</h3><p>通过一下命令查看环境设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">conda config --show<br></code></pre></td></tr></table></figure>
+<p>可能会看到你的环境存储路径如下：</p>
 <blockquote>
-<p><code>span</code>标签显示”Updated within 7 days“，也可以换成”Updated“ 或者”更新“。</p>
-</blockquote>
-<h4 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h4><ol>
-<li><strong><code>post.updated</code></strong>：检查文章是否有 <code>updated</code> 属性。</li>
-<li><strong>计算时间差</strong>：<code>(new Date() - new Date(post.updated)) / (1000 * 60 * 60 * 24)</code> 将更新时间差转换为天数。</li>
-<li><strong>判断 7 天内</strong>：如果更新时间差小于等于 7 天，显示“Updated”标志。</li>
-<li><strong><code>data-updated</code> 属性</strong>：将更新时间以 ISO 格式写入 <code>data-updated</code>，供 JavaScript 使用。</li>
+<ol>
+<li>   &#x2F;opt&#x2F;miniconda3&#x2F;envs（默认路径，位于 Miniconda 安装目录）</li>
+<li>   &#x2F;Users&#x2F;username&#x2F;.conda&#x2F;envs（用户目录下的备用路径）</li>
 </ol>
-<h3 id="步骤-2：创建动态脚本"><a href="#步骤-2：创建动态脚本" class="headerlink" title="步骤 2：创建动态脚本"></a><strong>步骤 2：创建动态脚本</strong></h3><p>在主题的 <code>source/js/</code> 文件夹中创建一个新的文件 <code>update-flag.js</code>，用于动态隐藏过期的标志。</p>
-<p>文件路径：<code>themes/fluid/source/js/update-flag.js</code></p>
-<p>添加以下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;DOM fully loaded&quot;</span>);<br>  <span class="hljs-keyword">const</span> updateFlags = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;.updated-flag&#x27;</span>);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Found updated flags:&quot;</span>, updateFlags);<br><br>  <span class="hljs-keyword">const</span> expiryDays = <span class="hljs-number">7</span>; <span class="hljs-comment">// 设置有效期为 7 天</span><br>  <span class="hljs-keyword">const</span> expiryTime = expiryDays * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>; <span class="hljs-comment">// 转换为毫秒</span><br><br>  updateFlags.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">flag</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> updatedDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(flag.<span class="hljs-property">dataset</span>.<span class="hljs-property">updated</span>); <span class="hljs-comment">// 从 data-updated 获取时间</span><br>    <span class="hljs-keyword">const</span> timeDiff = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - updatedDate.<span class="hljs-title function_">getTime</span>(); <span class="hljs-comment">// 当前时间与更新时间的差</span><br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Article updated on: <span class="hljs-subst">$&#123;updatedDate&#125;</span>, Time difference: <span class="hljs-subst">$&#123;timeDiff / (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>)&#125;</span> days`</span>);<br><br>    <span class="hljs-keyword">if</span> (timeDiff &gt; expiryTime) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hiding outdated updated flag&quot;</span>);<br>      flag.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>; <span class="hljs-comment">// 隐藏过期标志</span><br>    &#125;<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="步骤-3：确保脚本被加载"><a href="#步骤-3：确保脚本被加载" class="headerlink" title="步骤 3：确保脚本被加载"></a><strong>步骤 3：确保脚本被加载</strong></h3><p>在主题的 <code>scripts.ejs</code> 文件中。<br>通常位于 <code>themes/fluid/layout/_partial/scripts.ejs</code>），添加对 <code>update-flag.js</code> 的引用：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/update-flag.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p><code>defer</code> 确保脚本在页面内容加载完成后执行。</p>
-<h3 id="步骤-4：定义样式"><a href="#步骤-4：定义样式" class="headerlink" title="步骤 4：定义样式"></a><strong>步骤 4：定义样式</strong></h3><p>为“Updated”标志添加样式，使其在页面上显眼且美观。找到主题的 CSS 文件。<br>通常是<code>themes/fluid/source/css/_pages/_base/color-schema.styl</code>，在文件末尾添加以下代码：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.updated-flag</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0000</span>; <span class="hljs-comment">/* 红色背景 */</span><br>  <span class="hljs-attribute">color</span>: white;             <span class="hljs-comment">/* 白色文字 */</span><br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8em</span>;         <span class="hljs-comment">/* 小字号 */</span><br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span> <span class="hljs-number">5px</span>;         <span class="hljs-comment">/* 内边距 */</span><br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;       <span class="hljs-comment">/* 圆角 */</span><br>  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;         <br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>虽然<code>styl</code>文件支持css，但是以防万一，可以使用以下代码：</p>
-<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs styl"><span class="hljs-selector-class">.updated-flag</span><br>  <span class="hljs-attribute">background-color</span> <span class="hljs-number">#5d8744</span><br>  <span class="hljs-attribute">color</span> white<br>  <span class="hljs-attribute">font-size</span> <span class="hljs-number">0.8em</span><br>  <span class="hljs-attribute">padding</span> <span class="hljs-number">2px</span> <span class="hljs-number">5px</span><br>  <span class="hljs-attribute">border-radius</span> <span class="hljs-number">3px</span><br>  <span class="hljs-attribute">margin-left</span> <span class="hljs-number">5px</span> <br></code></pre></td></tr></table></figure>
-
-
-<h3 id="步骤-5：测试并验证"><a href="#步骤-5：测试并验证" class="headerlink" title="步骤 5：测试并验证"></a><strong>步骤 5：测试并验证</strong></h3><h4 id="1-创建测试文件"><a href="#1-创建测试文件" class="headerlink" title="1. 创建测试文件"></a>1. <strong>创建测试文件</strong></h4><p>   在<code>source/_posts</code>下面创建文章<code>test.md</code>。修改某篇文章的 Front Matter，让 <code>updated</code> 时间为近期或较早的日期，此文章超过7天，<code>updated</code>标志消失，可以修改其文章已测试显示<code>updated</code>：<br>   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">test</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2025-01-01</span><br><span class="hljs-attr">updated:</span> <span class="hljs-number">2025-01-08</span><br></code></pre></td></tr></table></figure></p>
-<h4 id="2-生成和部署"><a href="#2-生成和部署" class="headerlink" title="2. 生成和部署"></a>2. <strong>生成和部署</strong></h4><p>   运行以下命令生成并查看网站：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo server<br></code></pre></td></tr></table></figure></p>
-<h4 id="验证效果"><a href="#验证效果" class="headerlink" title="验证效果"></a><strong>验证效果</strong></h4><ul>
-<li>如果文章的更新时间在 7 天内，页面应显示“Updated”标志。</li>
-<li>如果超过 7 天，标志应动态隐藏。</li>
+<p>这些路径是 Conda 的默认配置，如果你对存储位置没有特别要求，无需修改 <code>envs_dirs</code>。</p>
+</blockquote>
+<h3 id="envs-dirs是什么？"><a href="#envs-dirs是什么？" class="headerlink" title="envs_dirs是什么？"></a>envs_dirs是什么？</h3><p>在 Conda 中，<code>envs</code> 是用来存储 虚拟环境（environments） 的目录。虚拟环境是一个独立的 Python 运行环境，包含特定的 Python 版本以及该环境所需的库和依赖。</p>
+<h4 id="什么是-Conda-环境？"><a href="#什么是-Conda-环境？" class="headerlink" title="什么是 Conda 环境？"></a>什么是 Conda 环境？</h4><p>Conda 环境是一种隔离机制，用于防止不同项目之间的库和依赖冲突。每个环境都可以有自己的：</p>
+<ul>
+<li>Python 版本（例如 <code>Python 3.8</code> 或 <code>Python 3.12</code>）。</li>
+<li>库版本（例如 <code>NumPy 1.20</code> 和 <code>NumPy 1.25</code> 可以在不同环境中共存）。</li>
+<li>配置和依赖。</li>
 </ul>
-<p>希望本教程能帮助你优化博客的用户体验！如有任何问题，欢迎留言交流！ 🚀</p>
+<h4 id="envs-是做什么的？"><a href="#envs-是做什么的？" class="headerlink" title="envs 是做什么的？"></a>envs 是做什么的？</h4><p>Conda 使用 <code>envs</code> 目录来存储所有的虚拟环境。默认情况下：</p>
+<ul>
+<li>主环境 (base) 会存储在 Conda 的安装目录（例如 <code>/opt/miniconda3</code> 或 <code>/opt/anaconda3</code>）。</li>
+<li>其他环境 会存储在 <code>envs</code> 文件夹中。<blockquote>
+<p>例如：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 默认路径下，`envs` 的位置</span><br>/opt/miniconda3/envs/<br></code></pre></td></tr></table></figure>
+<p>  每个虚拟环境都会有一个独立的子目录。例如，如果你创建了名为 myenv 的环境，它可能位于：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/opt/miniconda3/envs/myenv/<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="为什么需要-Conda-环境？"><a href="#为什么需要-Conda-环境？" class="headerlink" title="为什么需要 Conda 环境？"></a>为什么需要 Conda 环境？</h4><p>以下是使用 Conda 环境的几个关键优势：</p>
+<ol>
+<li>避免冲突：不同项目可能需要不同的 Python 和库版本，环境隔离可以避免这些冲突。</li>
+<li>提高灵活性：可以根据需求快速切换环境。</li>
+<li>可移植性：可以轻松导出和导入环境（通过 <code>.yml</code> 文件）。</li>
+<li>安全性：在独立环境中安装和测试库，不会影响系统全局配置。</li>
+</ol>
+<h3 id="如何管理-Conda-环境？"><a href="#如何管理-Conda-环境？" class="headerlink" title="如何管理 Conda 环境？"></a>如何管理 Conda 环境？</h3><h4 id="1-查看现有环境"><a href="#1-查看现有环境" class="headerlink" title="1. 查看现有环境"></a>1. 查看现有环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-创建新环境"><a href="#2-创建新环境" class="headerlink" title="2. 创建新环境"></a>2. 创建新环境</h4><p>使用 conda 可以创建相互隔离的 Python 环境，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 语法</span><br>conda create name &lt;env_name&gt; python=&lt;version&gt; [package_name1]<br>[package_name2] [...]<br><br><span class="hljs-comment"># 样例 创建一个名为 learn 的环境，python 版本为3.10是3.10.XX最新的版本。</span><br>conda create name modelscope python=3.10 <span class="hljs-comment"># name 可以简写为 -n</span><br></code></pre></td></tr></table></figure>
+
+<p>通过 <code>conda env list</code> 查看刚刚创建的环境如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># conda environments:</span><br><span class="hljs-comment">#</span><br>base                 * /opt/miniconda3<br>modelscope             /opt/miniconda3/envs/modelscope<br></code></pre></td></tr></table></figure>
+
+<p>可以看到有一个新的环境叫 <code>modelscope</code>。</p>
+<h4 id="3-激活环境"><a href="#3-激活环境" class="headerlink" title="3. 激活环境"></a>3. 激活环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate modelscope<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-退出环境"><a href="#4-退出环境" class="headerlink" title="4. 退出环境"></a>4. 退出环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br></code></pre></td></tr></table></figure>
+
+<h4 id="5-删除环境"><a href="#5-删除环境" class="headerlink" title="5. 删除环境"></a>5. 删除环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda remove --name modelscope --all<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-指定-envs-目录"><a href="#6-指定-envs-目录" class="headerlink" title="6. 指定 envs 目录"></a>6. 指定 envs 目录</h4><p>默认情况下，Conda 会将环境存储在其安装目录的 <code>envs</code> 文件夹中。如果需要自定义，可以通过设置 <code>envs_dirs</code> 改变存储路径（例如将环境存储到外部硬盘）。</p>
+<p>设置命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --add envs_dirs /path/to/custom_envs<br></code></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><code>envs</code> 是 Conda 用来存储虚拟环境的文件夹。</li>
+<li>Conda 环境有助于管理不同项目的依赖，避免冲突。</li>
+<li>默认配置已经足够大部分场景，只有特殊需求时才需要修改 <code>envs</code> 的存储路径。</li>
+</ul>
 
                 
               </div>
@@ -397,7 +430,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2/" class="category-chain-item">Hexo博客</a>
+  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">大模型</a>
   
   
 
@@ -412,15 +445,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
+        <a href="/tags/conda/" class="print-no-link">#conda</a>
       
-        <a href="/tags/Fluid/" class="print-no-link">#Fluid</a>
-      
-        <a href="/tags/HTML/" class="print-no-link">#HTML</a>
-      
-        <a href="/tags/js/" class="print-no-link">#js</a>
-      
-        <a href="/tags/css/" class="print-no-link">#css</a>
+        <a href="/tags/MacOS/" class="print-no-link">#MacOS</a>
       
     </div>
   
@@ -432,8 +459,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>文章显示“更新”标志</div>
-      <div>http://artintyt.github.io/2025/01/14/文章显示更新标志/</div>
+      <div>conda环境配置</div>
+      <div>http://artintyt.github.io/2025/01/24/conda环境配置/</div>
     </div>
     <div class="license-meta">
       
@@ -445,13 +472,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月14日</div>
+          <div>2025年1月24日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年1月18日</div>
+          <div>2025年1月25日</div>
         </div>
       
       
@@ -466,18 +493,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/16/%E5%88%86%E7%B1%BB%E5%86%85%E6%96%87%E7%AB%A0%E6%8C%89%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/" title="”分类“中文章按时间排序">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">”分类“中文章按时间排序</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/13/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="博客搭建">
-                        <span class="hidden-mobile">博客搭建</span>
+                      <a href="/2025/01/18/SSH-%E8%BF%9E%E6%8E%A5-GitHub%EF%BC%9A%E5%91%8A%E5%88%AB-Token/" title="SSH 连接 GitHub：告别 Token">
+                        <span class="hidden-mobile">SSH 连接 GitHub：告别 Token</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -793,6 +814,7 @@
 
 <!-- 显示"updated"标志 -->
 <script src="/js/update-flag.js" defer></script>
+
 
 
   

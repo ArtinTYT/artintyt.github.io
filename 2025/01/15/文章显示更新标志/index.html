@@ -25,26 +25,26 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在使用 Hexo 框架将博客部署到 GitHub 时，总是遇到了 Error: Spawn failed 错误，具体错误信息如下： 1234Error: Spawn failed    at ChildProcess.&lt;anonymous&gt; (&#x2F;Users&#x2F;&lt;Username&gt;&#x2F;hexo-blog&#x2F;node_modules&#x2F;hexo-deployer-git&#x2F;node_mo">
+    <meta name="description" content="博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。  使用文章的 updated 属性判断文章是否有更新。 在模板中为“Updated”标志添加 data-updated 属性，记录更新时间。 使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标">
 <meta property="og:type" content="article">
-<meta property="og:title" content="成功解决Error:Spawn failed错误">
-<meta property="og:url" content="http://artintyt.github.io/2025/01/18/%E8%A7%A3%E5%86%B3Error-Spawn-failed%E9%94%99%E8%AF%AF/index.html">
+<meta property="og:title" content="文章显示“更新”标志">
+<meta property="og:url" content="http://artintyt.github.io/2025/01/15/%E6%96%87%E7%AB%A0%E6%98%BE%E7%A4%BA%E6%9B%B4%E6%96%B0%E6%A0%87%E5%BF%97/index.html">
 <meta property="og:site_name" content="好吃的小苦瓜">
-<meta property="og:description" content="在使用 Hexo 框架将博客部署到 GitHub 时，总是遇到了 Error: Spawn failed 错误，具体错误信息如下： 1234Error: Spawn failed    at ChildProcess.&lt;anonymous&gt; (&#x2F;Users&#x2F;&lt;Username&gt;&#x2F;hexo-blog&#x2F;node_modules&#x2F;hexo-deployer-git&#x2F;node_mo">
+<meta property="og:description" content="博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。  使用文章的 updated 属性判断文章是否有更新。 在模板中为“Updated”标志添加 data-updated 属性，记录更新时间。 使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-18T04:57:15.000Z">
-<meta property="article:modified_time" content="2025-01-18T13:17:55.455Z">
+<meta property="article:published_time" content="2025-01-14T23:11:20.000Z">
+<meta property="article:modified_time" content="2025-01-17T22:29:05.812Z">
 <meta property="article:author" content="Artin Tan">
-<meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Error">
-<meta property="article:tag" content="Git">
-<meta property="article:tag" content="Homebr">
+<meta property="article:tag" content="Fluid">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="css">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>成功解决Error:Spawn failed错误 - 好吃的小苦瓜</title>
+  <title>文章显示“更新”标志 - 好吃的小苦瓜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -241,7 +241,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="成功解决Error:Spawn failed错误"></span>
+            <span id="subtitle" data-typed-text="文章显示“更新”标志"></span>
           
         </div>
 
@@ -252,8 +252,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-18 12:57" pubdate>
-          2025年1月18日 下午
+        <time datetime="2025-01-15 07:11" pubdate>
+          2025年1月15日 早上
         </time>
       </span>
     
@@ -264,7 +264,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          980 字
         
       </span>
     
@@ -275,7 +275,7 @@
         
         
         
-          12 分钟
+          9 分钟
         
       </span>
     
@@ -321,12 +321,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">成功解决Error:Spawn failed错误</h1>
+            <h1 id="seo-header">文章显示“更新”标志</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-18T21:17:55+08:00
+                    本文最后更新于 2025-01-18T06:29:05+08:00
                   
                   
 
@@ -336,86 +336,52 @@
             
               <div class="markdown-body">
                 
-                <p>在使用 Hexo 框架将博客部署到 GitHub 时，总是遇到了 <code>Error: Spawn failed</code> 错误，具体错误信息如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">Error: Spawn failed<br>    at ChildProcess.&lt;anonymous&gt; (/Users/&lt;Username&gt;/hexo-blog/node_modules/hexo-deployer-git/node_modules/hexo-util/lib/spawn.js:51:21)<br>    at ChildProcess.emit (node:events:524:28)<br>    at ChildProcess._handle.onexit (node:internal/child_process:293:12)<br></code></pre></td></tr></table></figure>
-<p>通过查看 Hexo 官方文档发现，或许是 <code>Git</code> 包不完整导致的 <code>Error: Spawn failed</code> 错误。在检查 macOS系统 后发现自带一个不完整版 Git ，需要通过 <code>Homebrew</code> 来安装 Git 最新版本。</p>
-<p>所以本文将介绍安装配置 <code>Homebrew</code> 和 <code>Git</code>，最终解决这个问题。同时推荐更换 <code>Token</code>，使用 <code>SSH</code> 来部署项目，下一篇文章介绍如何更换和配置 <code>SSH</code> ，做到丝滑部署项目不卡顿。</p>
+                <p>博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。</p>
+<ol>
+<li>使用文章的 <code>updated</code> 属性判断文章是否有更新。</li>
+<li>在模板中为“Updated”标志添加 <code>data-updated</code> 属性，记录更新时间。</li>
+<li>使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标志的显示或隐藏。</li>
+<li>使用 CSS 为“Updated”标志添加样式。</li>
+</ol>
 <hr>
-<h3 id="1-参考-Hexo-官方文档："><a href="#1-参考-Hexo-官方文档：" class="headerlink" title="1. 参考 Hexo 官方文档："></a>1. 参考 Hexo 官方文档：</h3><p>首先，我查阅了 <a target="_blank" rel="noopener" href="https://hexo.io/docs/">Hexo 官方文档</a> <strong>再次确认</strong>安装和部署的相关步骤。发现我并没有安装<a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>。</p>
-<h3 id="2-检查-Homebrew-和-Git"><a href="#2-检查-Homebrew-和-Git" class="headerlink" title="2. 检查 Homebrew 和 Git"></a>2. 检查 Homebrew 和 Git</h3><p>根据错误提示，问题可能与 Git 的配置有关。通过查看系统环境，发现我的 MacBook Air M2 使用的是 Apple 自带的 Git，而不是通过 Homebrew 安装的版本。这可能导致了 <code>hexo-deployer-git</code> 插件无法正确调用 Git。</p>
-<h3 id="3-在-macOS-安装-Homebrew"><a href="#3-在-macOS-安装-Homebrew" class="headerlink" title="3. 在 macOS 安装 Homebrew"></a>3. 在 macOS 安装 Homebrew</h3><h4 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h4><p>访问 <a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew 官网</a>，获取最新的安装命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="步骤-1：修改文章模板"><a href="#步骤-1：修改文章模板" class="headerlink" title="步骤 1：修改文章模板"></a><strong>步骤 1：修改文章模板</strong></h3><p>我们需要在文章列表模板中添加“Updated”标志。找到 <code>index.ejs</code>（首页），通常路径：<code>themes/fluid/layout/index.ejs</code></p>
+<p>在模板文件中找到<code>index-btm post-metas</code>（如日期显示的位置), 插入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs ejs">&lt;div class=&quot;index-btm post-metas&quot;&gt;<br>  &lt;% if (theme.index.post_meta.date) &#123; %&gt;<br>    &lt;div class=&quot;post-meta&quot;&gt;<br>      &lt;i class=&quot;iconfont icon-date&quot;&gt;&lt;/i&gt;<br>      &lt;time datetime=&quot;&lt;%= full_date(post.date, &#x27;YYYY-MM-DD HH:mm&#x27;) %&gt;&quot; pubdate&gt;<br>        &lt;%- date(post.date, config.date_format) %&gt;<br>      &lt;/time&gt;<br><br>      &lt;%# -------- 加入以下内容 --------%&gt;<br>      &lt;% if (post.updated) &#123; %&gt;<br>        &lt;% const updatedDays = (new Date() - new Date(post.updated)) / (1000 * 60 * 60 * 24); %&gt;<br>        &lt;% if (updatedDays &lt;= 7) &#123; %&gt;<br>          &lt;span class=&quot;updated-flag&quot; data-updated=&quot;&lt;%= post.updated.toISOString() %&gt;&quot;&gt;Updated within 7 days&lt;/span&gt;<br>        &lt;% &#125; %&gt;<br>      &lt;% &#125; %&gt;<br>      &lt;%# ----------------------------%&gt;<br><br>    &lt;/div&gt;<br>  &lt;% &#125; %&gt;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
 
-<p>复制并粘贴到终端中执行，Homebrew 将自动下载并安装。</p>
-<h4 id="大陆镜像源安装"><a href="#大陆镜像源安装" class="headerlink" title="大陆镜像源安装"></a>大陆镜像源安装</h4><p>由于某些地区（如中国大陆）访问 GitHub 时可能会受到限制，导致安装 Homebrew 或通过 Homebrew 下载软件包时速度缓慢或失败。可以使用清华大学提供的 Homebrew 的镜像源来解决这个问题。通过先设置镜像源，然后安装 Homebrew。</p>
-<ul>
-<li>设置 Homebrew 使用清华镜像：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="测试是否安装成功"><a href="#测试是否安装成功" class="headerlink" title="测试是否安装成功"></a>测试是否安装成功</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew --version<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>span</code>标签显示”Updated within 7 days“，也可以换成”Updated“ 或者”更新“。</p>
+</blockquote>
+<h4 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h4><ol>
+<li><strong><code>post.updated</code></strong>：检查文章是否有 <code>updated</code> 属性。</li>
+<li><strong>计算时间差</strong>：<code>(new Date() - new Date(post.updated)) / (1000 * 60 * 60 * 24)</code> 将更新时间差转换为天数。</li>
+<li><strong>判断 7 天内</strong>：如果更新时间差小于等于 7 天，显示“Updated”标志。</li>
+<li><strong><code>data-updated</code> 属性</strong>：将更新时间以 ISO 格式写入 <code>data-updated</code>，供 JavaScript 使用。</li>
+</ol>
+<h3 id="步骤-2：创建动态脚本"><a href="#步骤-2：创建动态脚本" class="headerlink" title="步骤 2：创建动态脚本"></a><strong>步骤 2：创建动态脚本</strong></h3><p>在主题的 <code>source/js/</code> 文件夹中创建一个新的文件 <code>update-flag.js</code>，用于动态隐藏过期的标志。</p>
+<p>文件路径：<code>themes/fluid/source/js/update-flag.js</code></p>
+<p>添加以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;DOM fully loaded&quot;</span>);<br>  <span class="hljs-keyword">const</span> updateFlags = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;.updated-flag&#x27;</span>);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Found updated flags:&quot;</span>, updateFlags);<br><br>  <span class="hljs-keyword">const</span> expiryDays = <span class="hljs-number">7</span>; <span class="hljs-comment">// 设置有效期为 7 天</span><br>  <span class="hljs-keyword">const</span> expiryTime = expiryDays * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>; <span class="hljs-comment">// 转换为毫秒</span><br><br>  updateFlags.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">flag</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> updatedDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(flag.<span class="hljs-property">dataset</span>.<span class="hljs-property">updated</span>); <span class="hljs-comment">// 从 data-updated 获取时间</span><br>    <span class="hljs-keyword">const</span> timeDiff = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - updatedDate.<span class="hljs-title function_">getTime</span>(); <span class="hljs-comment">// 当前时间与更新时间的差</span><br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Article updated on: <span class="hljs-subst">$&#123;updatedDate&#125;</span>, Time difference: <span class="hljs-subst">$&#123;timeDiff / (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>)&#125;</span> days`</span>);<br><br>    <span class="hljs-keyword">if</span> (timeDiff &gt; expiryTime) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hiding outdated updated flag&quot;</span>);<br>      flag.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>; <span class="hljs-comment">// 隐藏过期标志</span><br>    &#125;<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<h4 id="如果需更新版本"><a href="#如果需更新版本" class="headerlink" title="如果需更新版本"></a>如果需更新版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew update<br></code></pre></td></tr></table></figure>
 
-<ul>
-<li><p>如果更新时发现以下错误：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) artin@Artins-MacBook-Air homebrew % brew update<br><br>Error: /opt/homebrew is not writable. You should change the<br>ownership and permissions of /opt/homebrew back to your<br>user account:<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R artin /opt/homebrew<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>这个错误表明 <code>/opt/homebrew</code> 目录的所有权不属于当前用户 <code>artin</code>，导致无法进行更新。你可以按照提示的步骤，使用 <code>chown</code> 命令更改该目录的所有权。具体操作如下：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R artin /opt/homebrew<br></code></pre></td></tr></table></figure>
-<p>再次尝试<code>brew update</code>即可。</p>
-</li>
-</ul>
-<h3 id="4-安装-Git"><a href="#4-安装-Git" class="headerlink" title="4. 安装 Git"></a>4. 安装 Git</h3><h4 id="检查-git-仓库"><a href="#检查-git-仓库" class="headerlink" title="检查 git 仓库"></a>检查 git 仓库</h4><ul>
-<li>成功安装Homebrew检查git仓库是否完整：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /opt/homebrew<br>git status<br></code></pre></td></tr></table></figure>
-<ul>
-<li>或许会出现下面错误：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">fatal: detected dubious ownership <span class="hljs-keyword">in</span> repository at <span class="hljs-string">&#x27;/opt/homebrew&#x27;</span><br>To add an exception <span class="hljs-keyword">for</span> this directory, call:<br>git config --global --add safe.directory /opt/homebrew<br></code></pre></td></tr></table></figure>
-  这个错误是因为 Git 检测到 <code>/opt/homebrew</code> 目录的所有权不匹配或不安全（通常发生在文件系统上的权限问题）。Git 出于安全原因默认会阻止不安全的目录操作，你可以通过添加目录为“安全”目录来解决这个问题。<br>  运行以下命令来将 <code>/opt/homebrew</code> 目录添加为 Git 的安全目录：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --add safe.directory /opt/homebrew<br></code></pre></td></tr></table></figure><br>  然后，重新运行 <code>git status</code> 来检查仓库的状态，你可能会看到如下内容：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) artin@Artins-MacBook-Air homebrew % git status<br><br>On branch master<br>Your branch is up to <span class="hljs-built_in">date</span> with <span class="hljs-string">&#x27;origin/master&#x27;</span>.<br><br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h4><ul>
-<li><p>通过 Homebrew 安装 Git：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install git<br></code></pre></td></tr></table></figure>
-<p> 这会安装最新的 Git 版本，并确保你在 Hexo 部署过程中使用的是更新版本的 Git。</p>
-</li>
-<li><p>检查git的系统路径<br>  确保 Homebrew 的路径正确，并且 git 能够从终端找到。你可以检查 git 是否已正确安装在 PATH 中：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> git<br></code></pre></td></tr></table></figure>
 
-<p>  此时我发现有两个git，一个是Apple的MacBookAir自带的，另一个是Homebrew下载的。首先确认 Git 是否通过 Homebrew 安装，运行以下命令：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew list git<br></code></pre></td></tr></table></figure>
-<ul>
-<li><p>如果结果为空，说明 Git 不是通过 Homebrew 安装的。</p>
-</li>
-<li><p>如果返回路径，说明 Git 是通过 Homebrew 安装的。</p>
-</li>
-<li><p>如果发现以下错误：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) artin@Artins-MacBook-Air ~ % brew list git<br>Error: No such keg: /opt/homebrew/Cellar/git<br></code></pre></td></tr></table></figure>
-<p>  首先，确保 Homebrew 安装的 Git 是在 <code>/opt/homebrew/bin/git</code> 路径下。你可以使用以下命令检查 Homebrew Git 的安装路径：</p>
-</li>
-</ul>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> -a git<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>将 Git 添加到环境变量<br>  这将列出所有 Git 可执行文件的路径。如果你看到 <code>/opt/homebrew/bin/git</code> 路径，那么我们就可以将其优先加载。<br>  需要修改你的 PATH 环境变量。编辑你的 ~&#x2F;.zshrc 配置文件（如果你使用的是 Zsh shell）：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.zshrc<br></code></pre></td></tr></table></figure>
-<p>  在文件末尾添加以下内容：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;/opt/homebrew/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br></code></pre></td></tr></table></figure>
-<p>  如果你使用 <code>nano</code>，按 <code>Ctrl + X</code>，然后按 <code>Y</code> 确认保存，最后按 <code>Enter</code> 退出.<br>  重新加载配置文件：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.zshrc  <span class="hljs-comment"># 如果你使用 zsh</span><br></code></pre></td></tr></table></figure></li>
-<li><p>验证Git</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs BASH"><span class="hljs-built_in">which</span> git<br>git --version<br></code></pre></td></tr></table></figure>
-<p>  你应该看到 <code>/opt/homebrew/bin/git</code> 路径下有git版本号出现。</p>
-</li>
-</ul>
-<p>现在应该可以成功通过以下代码部署项目到GitHub上：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo g<br>hexo d<br></code></pre></td></tr></table></figure>
+<h3 id="步骤-3：确保脚本被加载"><a href="#步骤-3：确保脚本被加载" class="headerlink" title="步骤 3：确保脚本被加载"></a><strong>步骤 3：确保脚本被加载</strong></h3><p>在主题的 <code>scripts.ejs</code> 文件中。<br>通常位于 <code>themes/fluid/layout/_partial/scripts.ejs</code>），添加对 <code>update-flag.js</code> 的引用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/update-flag.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>如果还有链接还是有问题，可以试着将本地文件备份，并删除 Github 所以内容，删除 Token, 从 Token 更换为SSH认证的方式，提升连接和部署效率。详细教程在下一章，手把手教程。</p>
-<h3 id="经验总结："><a href="#经验总结：" class="headerlink" title="经验总结："></a>经验总结：</h3><ul>
-<li><strong>Hexo 部署的关键点：</strong> 确保 Git 配置正确，尤其是在使用 GitHub 部署时，建议使用 SSH 而非 HTTPS。为此，需要生成并配置 SSH 密钥。</li>
-<li><strong>使用 Homebrew 安装 Git：</strong> macOS 默认的 Git 版本可能存在兼容性问题，因此建议通过 Homebrew 安装和管理 Git 版本。</li>
-<li><strong>GitHub 配置：</strong> 如果遇到与 GitHub 连接的问题，首先检查 SSH 配置，并确保 SSH 密钥已正确添加到 GitHub 中。</li>
-<li><strong>错误调试：</strong> 在遇到部署错误时，仔细查看错误信息，通常能够提供解决问题的线索，比如此处的 <code>Spawn failed</code> 错误，提示 Git 配置问题。</li>
+<p><code>defer</code> 确保脚本在页面内容加载完成后执行。</p>
+<h3 id="步骤-4：定义样式"><a href="#步骤-4：定义样式" class="headerlink" title="步骤 4：定义样式"></a><strong>步骤 4：定义样式</strong></h3><p>为“Updated”标志添加样式，使其在页面上显眼且美观。找到主题的 CSS 文件。<br>通常是<code>themes/fluid/source/css/_pages/_base/color-schema.styl</code>，在文件末尾添加以下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.updated-flag</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0000</span>; <span class="hljs-comment">/* 红色背景 */</span><br>  <span class="hljs-attribute">color</span>: white;             <span class="hljs-comment">/* 白色文字 */</span><br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8em</span>;         <span class="hljs-comment">/* 小字号 */</span><br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span> <span class="hljs-number">5px</span>;         <span class="hljs-comment">/* 内边距 */</span><br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;       <span class="hljs-comment">/* 圆角 */</span><br>  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;         <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>虽然<code>styl</code>文件支持css，但是以防万一，可以使用以下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs styl"><span class="hljs-selector-class">.updated-flag</span><br>  <span class="hljs-attribute">background-color</span> <span class="hljs-number">#5d8744</span><br>  <span class="hljs-attribute">color</span> white<br>  <span class="hljs-attribute">font-size</span> <span class="hljs-number">0.8em</span><br>  <span class="hljs-attribute">padding</span> <span class="hljs-number">2px</span> <span class="hljs-number">5px</span><br>  <span class="hljs-attribute">border-radius</span> <span class="hljs-number">3px</span><br>  <span class="hljs-attribute">margin-left</span> <span class="hljs-number">5px</span> <br></code></pre></td></tr></table></figure>
+
+
+<h3 id="步骤-5：测试并验证"><a href="#步骤-5：测试并验证" class="headerlink" title="步骤 5：测试并验证"></a><strong>步骤 5：测试并验证</strong></h3><h4 id="1-创建测试文件"><a href="#1-创建测试文件" class="headerlink" title="1. 创建测试文件"></a>1. <strong>创建测试文件</strong></h4><p>   在<code>source/_posts</code>下面创建文章<code>test.md</code>。修改某篇文章的 Front Matter，让 <code>updated</code> 时间为近期或较早的日期，此文章超过7天，<code>updated</code>标志消失，可以修改其文章已测试显示<code>updated</code>：<br>   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">test</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2025-01-01</span><br><span class="hljs-attr">updated:</span> <span class="hljs-number">2025-01-08</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="2-生成和部署"><a href="#2-生成和部署" class="headerlink" title="2. 生成和部署"></a>2. <strong>生成和部署</strong></h4><p>   运行以下命令生成并查看网站：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo server<br></code></pre></td></tr></table></figure></p>
+<h4 id="验证效果"><a href="#验证效果" class="headerlink" title="验证效果"></a><strong>验证效果</strong></h4><ul>
+<li>如果文章的更新时间在 7 天内，页面应显示“Updated”标志。</li>
+<li>如果超过 7 天，标志应动态隐藏。</li>
 </ul>
-<p>如果在部署过程中遇到类似问题，可以参考此解决流程来排查和修复。</p>
+<p>希望本教程能帮助你优化博客的用户体验！如有任何问题，欢迎留言交流！ 🚀</p>
 
                 
               </div>
@@ -449,15 +415,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/GitHub/" class="print-no-link">#GitHub</a>
-      
         <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
       
-        <a href="/tags/Error/" class="print-no-link">#Error</a>
+        <a href="/tags/Fluid/" class="print-no-link">#Fluid</a>
       
-        <a href="/tags/Git/" class="print-no-link">#Git</a>
+        <a href="/tags/HTML/" class="print-no-link">#HTML</a>
       
-        <a href="/tags/Homebr/" class="print-no-link">#Homebr</a>
+        <a href="/tags/js/" class="print-no-link">#js</a>
+      
+        <a href="/tags/css/" class="print-no-link">#css</a>
       
     </div>
   
@@ -469,8 +435,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>成功解决Error:Spawn failed错误</div>
-      <div>http://artintyt.github.io/2025/01/18/解决Error-Spawn-failed错误/</div>
+      <div>文章显示“更新”标志</div>
+      <div>http://artintyt.github.io/2025/01/15/文章显示更新标志/</div>
     </div>
     <div class="license-meta">
       
@@ -482,7 +448,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月18日</div>
+          <div>2025年1月15日</div>
         </div>
       
       
@@ -503,9 +469,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/18/SSH-%E8%BF%9E%E6%8E%A5-GitHub%EF%BC%9A%E5%91%8A%E5%88%AB-Token/" title="SSH 连接 GitHub：告别 Token">
+                      <a href="/2025/01/16/%E5%88%86%E7%B1%BB%E5%86%85%E6%96%87%E7%AB%A0%E6%8C%89%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/" title="”分类“中文章按时间排序">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSH 连接 GitHub：告别 Token</span>
+                        <span class="hidden-mobile">”分类“中文章按时间排序</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -513,8 +479,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/16/%E5%88%86%E7%B1%BB%E5%86%85%E6%96%87%E7%AB%A0%E6%8C%89%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/" title="”分类“中文章按时间排序">
-                        <span class="hidden-mobile">”分类“中文章按时间排序</span>
+                      <a href="/2025/01/13/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="博客搭建">
+                        <span class="hidden-mobile">博客搭建</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
