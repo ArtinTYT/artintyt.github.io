@@ -4,7 +4,7 @@ name: Deploy Hexo Blog             # 这是 Actions 的名字，随意命名
 on:
   push:
     branches:
-      - main                       # 当推送到 main 分支时触发部署（根据你的分支选择）
+      - master                       # 当推送到 master 分支时触发部署（根据你的分支选择）
 
 jobs:
   deploy:
@@ -15,13 +15,13 @@ jobs:
     - name: Checkout repository     # 从 GitHub 仓库拉取代码
       uses: actions/checkout@v2
       with:
-        ref: main                   # 选择部署的分支（这里是 main）
+        ref: master                   # 选择部署的分支
 
     # 步骤 2：设置 Node 环境
     - name: Setup Node.js           # 安装 Node.js 环境
       uses: actions/setup-node@v2
       with:
-        node-version: 'v22'      # 设置 Node.js 版本（你提到使用的是 v22）
+        node-version: 'v22'      # 设置 Node.js 版本
 
     # 步骤 3：安装依赖
     - name: Install dependencies    # 安装 Hexo 和相关依赖
