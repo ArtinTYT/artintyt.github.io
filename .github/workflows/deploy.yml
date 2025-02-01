@@ -4,7 +4,7 @@ name: Deploy Hexo Blog             # 这是 Actions 的名字，随意命名
 on:
   push:
     branches:
-      - deploy                       # 当推送到 master 分支时触发部署（根据你的分支选择）
+      - master                       # 当推送到 master 分支时触发部署（根据你的分支选择）
 
 jobs:
   deploy:
