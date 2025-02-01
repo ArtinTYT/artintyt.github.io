@@ -212,7 +212,7 @@ git commit -m "Save changes to the GitHub Actions deployment post"
 
 
 ## 6. 参数的安全隐患及优化方式
-如何安全地存储敏感信息，使用 GitHub Secrets 代替明文配置，你的 deploy.yml 里目前可能有类似的内容：
+如何安全地存储敏感信息，使用 GitHub Secrets 代替明文配置，你的 **deploy.yml** 里目前可能有类似的内容：
 ```yaml
 env:
   GIT_NAME: <your username>
@@ -220,10 +220,10 @@ env:
 ```
 
 ### 优化方式 1 ：使用 Secret 变量名替代
-1. 进入你的 GitHub 仓库 → Settings → Secrets and variables → Actions
-2. 点击 **New repository secret** 创建 Secrets 变量（之前SSH_PRIVATE同样的地方）：
-- GIT_NAME → <your username>
-- GIT_EMAIL → <your email address>
+1. 进入你的 **GitHub 仓库** → **Settings** → **Secrets and variables** → **Actions**
+2. 点击 **New repository secret** 创建 Secrets 变量（之前`SSH_PRIVATE`同样的地方）：
+- GIT_NAME → `<your username>`
+- GIT_EMAIL → `<your email address>`
 - SSH_PRIVATE_KEY → 存储你的 SSH 私钥
 - 点击 **Add secret**
 3. 修改 deploy.yml，使用 Secrets：
@@ -234,7 +234,7 @@ env:
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 ```
-这样，即使别人能看到 deploy.yml 文件，也无法获取你的邮箱和 SSH 私钥。
+这样，即使别人能看到 **deploy.yml** 文件，也无法获取你的邮箱和 SSH 私钥。
 
 ### 优化方式 2 ：隐藏 `.github/workflows/`
 
