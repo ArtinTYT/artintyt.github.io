@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>test2</title>
+    <link href="/2025/02/01/test2/"/>
+    <url>/2025/02/01/test2/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用 GitHub Actions 自动部署 Hexo 博客</title>
     <link href="/2025/02/01/%E4%BD%BF%E7%94%A8-GitHub-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/"/>
     <url>/2025/02/01/%E4%BD%BF%E7%94%A8-GitHub-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</url>
