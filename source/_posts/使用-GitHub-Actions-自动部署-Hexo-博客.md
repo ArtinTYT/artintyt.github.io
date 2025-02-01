@@ -10,7 +10,7 @@ categories:
 ---
 
 
-## **前言**
+### **前言**
 在本篇博客中，我们将介绍如何使用 **GitHub Actions** 来实现 **Hexo 博客的自动化部署**，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 `hexo deploy`。同时，我们也会介绍如何使用专门的 `gh-pages`（或你命名的 `ph-pages`）分支来存放生成的静态页面，从而保持源码和生成文件的分离。
 
 ---
@@ -144,7 +144,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 4. 将 **Value** 粘贴你私钥（`id_rsa`）的内容。
 5. 点击 **"Add secret"** 完成设置。
 
->注意：前面 `deploy.yml` 文件中配置了 `SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE }}` 其中 `SSH_PRIVATE` 与你写的 `Name` 对应即可。
+>注意：前面 **deploy.yml** 文件中配置了 `SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE }}` 其中 `SSH_PRIVATE` 与你写的 `Name` 对应即可。
 ---
 
 ## **3. 提交并触发 GitHub Actions**
@@ -193,7 +193,7 @@ Hi ArtinTYT! You've successfully authenticated, but GitHub does not provide shel
 ```bash
 hexo clean
 hexo generate
-hexo server
+hexo deploy
 ```
 GitHub Actions 会自动运行并更新静态页面到 `gh-pages` 分支，GitHub Pages 会随之更新。
 
