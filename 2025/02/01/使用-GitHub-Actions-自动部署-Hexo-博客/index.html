@@ -33,7 +33,7 @@
 <meta property="og:description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-31T20:29:31.000Z">
-<meta property="article:modified_time" content="2025-02-01T00:49:37.122Z">
+<meta property="article:modified_time" content="2025-02-01T01:13:51.789Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Hexo">
@@ -324,7 +324,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-01T08:49:37+08:00
+                    本文最后更新于 2025-02-01T09:13:51+08:00
                   
                   
 
@@ -361,7 +361,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br></code></pre></td></tr></table></figure>
 <p>替换 <code>&quot;your_email@example.com&quot;</code> 为你的 GitHub 绑定邮箱，然后一路按 <strong>Enter</strong> 即可。</p>
 <blockquote>
-<p>注意：如果公钥Github说已经被使用，可以使用生成命令再次生成私钥和公钥，同时去Github修改项目下的 Setting 就可以了。</p>
+<p>注意：如果 Github 说公钥 <code>已经被使用</code> ，可以使用命令再次生成私钥和公钥，同时去Github修改项目下的 <code>Setting</code> 就可以了。</p>
 </blockquote>
 <hr>
 <h3 id="2-2-添加公钥到-GitHub"><a href="#2-2-添加公钥到-GitHub" class="headerlink" title="2.2 添加公钥到 GitHub"></a><strong>2.2 添加公钥到 GitHub</strong></h3><ol>
@@ -394,7 +394,6 @@
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">Hi ArtinTYT! You<span class="hljs-symbol">&#x27;ve</span> successfully authenticated, but GitHub does <span class="hljs-keyword">not</span> provide shell <span class="hljs-keyword">access</span>.<br></code></pre></td></tr></table></figure>
 
 
-<hr>
 <h2 id="4-检查部署状态"><a href="#4-检查部署状态" class="headerlink" title="4. 检查部署状态"></a><strong>4. 检查部署状态</strong></h2><h3 id="4-1-查看-GitHub-Actions-状态"><a href="#4-1-查看-GitHub-Actions-状态" class="headerlink" title="4.1 查看 GitHub Actions 状态"></a><strong>4.1 查看 GitHub Actions 状态</strong></h3><ol>
 <li>打开 GitHub 仓库页面，点击 <strong>Actions</strong> 选项卡。</li>
 <li>查看最新的 Workflow 运行记录。如果显示绿色 ✅，说明部署成功；否则查看日志查找错误信息。</li>
@@ -406,11 +405,9 @@
 <li>保存设置，等待几分钟后访问：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">https://artintyt.github.io<br></code></pre></td></tr></table></figure>
 如果页面显示你的博客内容，则部署成功。</li>
 </ol>
-<hr>
 <h2 id="5-本地更新博客并触发部署"><a href="#5-本地更新博客并触发部署" class="headerlink" title="5. 本地更新博客并触发部署"></a><strong>5. 本地更新博客并触发部署</strong></h2><p>当你在本地更新博客内容后，使用以下命令提交并推送：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo server<br></code></pre></td></tr></table></figure>
 <p>GitHub Actions 会自动运行并更新静态页面到 <code>gh-pages</code> 分支，GitHub Pages 会随之更新。</p>
-<hr>
 <h2 id="6-GitHub-Actions-的优点"><a href="#6-GitHub-Actions-的优点" class="headerlink" title="6. GitHub Actions 的优点"></a><strong>6. GitHub Actions 的优点</strong></h2><p>使用 GitHub Actions 有以下几个明显的优点：</p>
 <ul>
 <li><strong>自动化部署：</strong> 每次代码提交后自动触发构建和部署流程，无需手动干预。</li>
@@ -420,7 +417,6 @@
 <li><strong>与 GitHub 深度集成：</strong> 无需额外配置第三方 CI&#x2F;CD 工具，所有操作均在 GitHub 平台上完成。</li>
 <li><strong>易于监控和调试：</strong> 提供详细的日志记录，可在 GitHub Actions 页面直观查看每一步执行状态。</li>
 </ul>
-<hr>
 <h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a><strong>7. 总结</strong></h2><ul>
 <li><strong>配置 GitHub Actions</strong>：实现博客自动部署，无需手动执行 <code>hexo deploy</code>。</li>
 <li><strong>设置 SSH 密钥</strong>：保证 GitHub Actions 有权限将生成的静态页面推送到 <code>gh-pages</code> 分支。</li>
