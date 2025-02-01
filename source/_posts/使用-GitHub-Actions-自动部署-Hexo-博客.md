@@ -7,10 +7,10 @@ tags:
 categories:
   - Hexo博客
 ---
-# 使用 GitHub Actions 自动部署 Hexo 博客
 
-## **前言**
-在本篇博客中，我们将介绍如何使用 **GitHub Actions** 来实现 **Hexo 博客的自动化部署**，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 `hexo deploy`。
+
+### **前言**
+在本篇博客中，我们将介绍如何使用 **GitHub Actions** 来实现 **Hexo 博客的自动化部署**，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 `hexo deploy`。同时，我们也会介绍如何使用专门的 `gh-pages`（或你命名的 `ph-pages`）分支来存放生成的静态页面，从而保持源码和生成文件的分离。
 
 ---
 
@@ -24,33 +24,33 @@ mkdir -p .github/workflows
 nano .github/workflows/deploy.yml
 ```
 
-然后，在 `deploy.yml` 文件中添加以下内容（如果你的远程仓库是 `main` 分支，需要修改 `branches` 为 `main`）：
+在 **deploy.yml** 文件中添加以下内容（如果你的远程仓库是 `main` 分支，需要修改 `branches` 为 `main`）：
 
 ```yaml
-name: Deploy Hexo Blog             # 这是 Actions 的名字，随意命名
+name: Deploy Hexo Blog             # GitHub Actions 的名称，可自行命名
 
 # 当 push 事件发生时触发部署
 on:
   push:
     branches:
-      - main                       # 当推送到 main 分支时触发部署（根据你的分支选择）
+      - master                       # 当推送到 master 分支时触发部署（根据你的分支选择）
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest          # 选择运行环境，这里选择最新的 Ubuntu
+    runs-on: ubuntu-latest          # 运行环境选择最新的 Ubuntu
 
     steps:
     # 步骤 1：拉取代码
     - name: Checkout repository     # 从 GitHub 仓库拉取代码
       uses: actions/checkout@v2
       with:
-        ref: main                   # 选择部署的分支
+        ref: master                   # 拉取 master 分支代码
 
     # 步骤 2：设置 Node 环境
     - name: Setup Node.js           # 安装 Node.js 环境
       uses: actions/setup-node@v2
       with:
-        node-version: 'v22'      # 设置 Node.js 版本
+        node-version: 'v22'           # 设置 Node.js 版本
 
     # 步骤 3：安装依赖
     - name: Install dependencies    # 安装 Hexo 和相关依赖
@@ -59,45 +59,69 @@ jobs:
         npm install                 # 安装项目依赖
 
     # 步骤 4：生成静态文件
-    - name: Hexo Generate           # 使用 Hexo 生成静态文件
+    - name: Hexo Generate            # 使用 Hexo 生成静态文件
       run: |
         hexo clean                  # 清理旧的生成文件
         hexo generate               # 生成新的静态文件
 
-    # 步骤 5：部署到 GitHub Pages
-    - name: Deploy to GitHub Pages  # 使用 Hexo 部署到 GitHub Pages
+    # 步骤 5：部署到 GitHub Pages (部署到 gh-pages 分支)
+    - name: Deploy to GitHub Pages   # 使用 Hexo 部署到 GitHub Pages
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE }}   # 使用 GitHub Secrets 中存储的 SSH 私钥
-        GIT_NAME: ArtinTYT            # Git 用户名
-        GIT_EMAIL: artin_tan@outlook.com # Git 用户邮箱
+        GIT_NAME: <Git 用户名>                           # Git 用户名
+        GIT_EMAIL: <Git用户邮箱>             # Git 用户邮箱
       run: |
-        mkdir -p ~/.ssh/            # 创建 SSH 配置目录
+        mkdir -p ~/.ssh/                              # 创建 SSH 配置目录
         echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa  # 将私钥写入文件
-        chmod 600 ~/.ssh/id_rsa     # 设置私钥权限
-        ssh-keyscan github.com >> ~/.ssh/known_hosts  # 将 GitHub 的 SSH 公钥添加到 known_hosts 中
+        chmod 600 ~/.ssh/id_rsa                       # 设置私钥权限
+        ssh-keyscan github.com >> ~/.ssh/known_hosts  # 添加 GitHub 的 SSH 公钥到 known_hosts
         git config --global user.name "$GIT_NAME"     # 配置 Git 用户名
-        git config --global user.email "$GIT_EMAIL"   # 配置 Git 用户邮箱
-        hexo deploy                  # 使用 Hexo 部署博客
-
+        git config --global user.email "$GIT_EMAIL"    # 配置 Git 用户邮箱
+        hexo deploy                                   # 使用 Hexo 部署博客
 ```
 
----
+>注意：
+>- 在 Hexo 配置文件 **_config.yml** 中，部署部分应配置为使用 `gh-pages` 分支（或你命名的 `ph-pages` 分支），例如：
+  ```bash
+  deploy:
+    type: git
+    repo: git@github.com:ArtinTYT/你的仓库.git
+    branch: gh-pages    # 或者根据你的实际情况设置为 ph-pages 
+  ```
+>- 这样可以保证你的源代码存放在 `master` 分支，而生成的静态页面将推送到 `gh-pages` 分支，从而使博客部署更清晰规范。
+
 
 ## **2. 配置 SSH 密钥**
 
 ### **2.1 生成 SSH 密钥**
 
-如果你还没有 SSH 密钥，可以在本地执行以下命令生成：
+#### 检查是否已有 SSH 密钥
+你可以运行下面的命令来确认是否已有 SSH 密钥：
+```bash
+ls ~/.ssh
+```
+如果看到 `id_rsa` 和 `id_rsa.pub`，说明你已经生成了 SSH 密钥。
+
+#### 查看秘钥内容
+- **查看私钥（不要泄露此文件）：**
+```bash
+cat ~/.ssh/id_rsa
+```
+- **查看公钥（可公开分享）：**
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+#### 生成新的 SSH 密钥（如果没有）
+如果没有密钥，可以使用下面的命令生成：
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
-然后，找到生成的 `id_rsa.pub` 文件，使用以下命令查看并复制公钥：
+替换 `your_email@example.com` 为你的 GitHub 绑定邮箱，然后一路按 Enter 即可。
 
-```bash
-cat ~/.ssh/id_rsa.pub
-```
+>注意：如果 Github 说公钥 已经被使用 ，可以使用命令再次生成私钥和公钥，同时去 Github 修改项目下的 `Setting` 就可以了。
 
 ### **2.2 添加公钥到 GitHub**
 
@@ -116,48 +140,63 @@ cat ~/.ssh/id_rsa.pub
 4. **Value**: 粘贴 `id_rsa` 的私钥内容。
 5. **点击 "Add secret"**。
 
+>注意：前面 `deploy.yml` 文件中配置了 `SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE }}`` 其中 `SSH_PRIVATE` 与你写的 **Name** 对应即可。
 ---
 
 ## **3. 提交并触发 GitHub Actions**
 
-执行以下命令，将 `deploy.yml` 配置文件提交到 GitHub：
+将 `deploy.yml` 文件提交到仓库，以触发 GitHub Actions 自动部署 (如果你的远程分支是 master)：
 
 ```bash
 git add .github/workflows/deploy.yml
 git commit -m "Add GitHub Actions for Hexo deployment"
-git push origin main  # 如果你的远程分支是 main
+git push origin master  
 ```
 
-推送代码后，GitHub Actions 会自动执行部署。
+推送代码后，GitHub Actions 会自动运行部署流程，并将 Hexo 生成的静态文件推送到 `gh-pages` 分支。
 
----
+### 测试 SSH 连接到 GitHub
+在 SSH 设置完成后，你可以运行：
+
+```bash
+ssh -T git@github.com
+```
+
+如果成功，你会看到：
+```bash
+Hi ArtinTYT! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
 ## **4. 检查 GitHub Actions 是否成功**
 
-### **4.1 查看 Actions 运行状态**
-1. 打开 GitHub 仓库。
-2. 点击 **Actions** 选项卡。
-3. 查看最新的 Workflow 运行记录。
-4. 如果显示绿色 ✅，说明部署成功；如果失败，则查看日志分析问题。
+### **4.1 查看 GitHub Actions 状态**
+1. 打开 GitHub 仓库页面，点击 **Actions** 选项卡。
+2. 查看最新的 Workflow 运行记录。如果显示绿色 ✅，说明部署成功；否则查看日志查找错误信息。
 
-### **4.2 访问你的博客**
-GitHub Pages 更新可能需要几分钟，稍等后访问：
+
+### **4.2 配置 GitHub Pages**
+进入 GitHub 仓库页面：
+
+点击 **Settings** → **Pages**。
+将 **Source** 设置为 `gh-pages`（或你使用的分支，如 `ph-pages`）。
+保存设置，等待几分钟后访问：
 ```bash
 https://artintyt.github.io
 ```
-如果看到最新内容，说明部署成功！🎉
+如果页面显示你的博客内容，则部署成功。
 
----
+
 
 ## **5. 本地更新博客并推送**
 
-当你本地修改博客内容后，使用以下命令提交并触发 GitHub Actions：
+当你在本地更新博客内容后，使用以下命令提交并推送: 
 
 ```bash
-git add .
-git commit -m "Update blog content"
-git push origin main  # 远程是 main
+hexo clean
+hexo g -d
 ```
+GitHub Actions 会自动运行并更新静态页面到 gh-pages 分支，GitHub Pages 会随之更新。
+
 
 然后等待 GitHub Actions 自动更新你的博客。
 >注意：当要修改 `.github/workflows/deploy.yml` 文件时，记得切换到 `master` 分支，使用以下：
@@ -165,24 +204,29 @@ git push origin main  # 远程是 main
 >git checkout master 
 >```
 
----
+记得修改后要提交更改，使用一下命令：
+```bash
+git add source/_posts/使用-GitHub-xxxx.md
+git commit -m "Save changes to the GitHub Actions deployment post"
 
-## **6. 总结**
+```
 
-- **配置 GitHub Actions**，让博客自动部署。
-- **设置 SSH 密钥**，让 GitHub Actions 有权限推送代码。
-- **每次 `git push`，GitHub Actions 自动触发部署**。
-- **博客自动更新到 GitHub Pages，无需手动运行 `hexo deploy`**。
+## **6. GitHub Actions 的优点**
+使用 GitHub Actions 有以下几个明显的优点：
+- **自动化部署：** 每次代码提交后自动触发构建和部署流程，无需手动干预。
+- **持续集成：** 可集成测试、代码检查等流程，确保部署前代码质量。
+- **持续集成：** 可集成测试、代码检查等流程，确保部署前代码质量。
+- **高度自定义：** 支持自定义工作流程和并行任务，可根据项目需求灵活配置。
+- **跨平台支持：** 支持在 Ubuntu、Windows、macOS 等不同平台上运行，无需额外环境搭建。
+- **与 GitHub 深度集成：** 无需额外配置第三方 CI/CD 工具，所有操作均在 GitHub 平台上完成。
+- **易于监控和调试：** 提供详细的日志记录，可在 GitHub Actions 页面直观查看每一步执行状态。
 
-这样，你的 Hexo 博客就实现了 **全自动化部署**，再也不需要手动执行 `hexo deploy` 了！🎉
 
----
+### 总结
+- **配置 GitHub Actions：**实现博客自动部署，无需手动执行 hexo deploy。
+- **设置 SSH 密钥：**保证 GitHub Actions 有权限将生成的静态页面推送到 gh-pages 分支。
+- **分支管理：**源代码存放在 master 分支，生成的静态页面存放在 gh-pages（或 ph-pages）分支，使仓库结构清晰。
+- **持续自动化：**每次 git push 后，GitHub Actions 自动触发部署流程，确保博客内容始终保持最新状态。
 
-### **💡 你学到了什么？**
-
-- **GitHub Actions 的基本使用方法**。
-- **如何使用 SSH 密钥进行自动部署**。
-- **如何让 Hexo 博客自动化更新**。
-
-如果你有任何问题，欢迎留言交流！🚀
+通过以上配置，你的 Hexo 博客将实现全自动化部署，并利用 GitHub Actions 强大的集成优势，让博客更新变得轻松高效！🎉
 
