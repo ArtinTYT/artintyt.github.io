@@ -160,6 +160,10 @@ git push origin main  # 远程是 main
 ```
 
 然后等待 GitHub Actions 自动更新你的博客。
+>注意：当要修改 `.github/workflows/deploy.yml` 文件时，记得切换到 `master` 分支，使用以下：
+>```bash
+>git checkout master 
+>```
 
 ---
 
