@@ -25,15 +25,15 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
+    <meta name="description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 xx-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 GitHub Actions 自动部署 Hexo 博客">
 <meta property="og:url" content="http://artintyt.github.io/2025/02/01/%E4%BD%BF%E7%94%A8-GitHub-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="好吃的小苦瓜">
-<meta property="og:description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
+<meta property="og:description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 xx-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-31T20:29:31.000Z">
-<meta property="article:modified_time" content="2025-02-01T03:36:13.332Z">
+<meta property="article:modified_time" content="2025-02-01T03:38:52.417Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Hexo">
@@ -324,7 +324,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-01T11:36:13+08:00
+                    本文最后更新于 2025-02-01T11:38:52+08:00
                   
                   
 
@@ -334,7 +334,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>在本篇博客中，我们将介绍如何使用 <strong>GitHub Actions</strong> 来实现 <strong>Hexo 博客的自动化部署</strong>，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 <code>hexo deploy</code>。同时，我们也会介绍如何使用专门的 <code>gh-pages</code>（或你命名的 <code>ph-pages</code>）分支来存放生成的静态页面，从而保持源码和生成文件的分离。</p>
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>在本篇博客中，我们将介绍如何使用 <strong>GitHub Actions</strong> 来实现 <strong>Hexo 博客的自动化部署</strong>，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 <code>hexo deploy</code>。同时，我们也会介绍如何使用专门的 <code>gh-pages</code>（或你命名的 <code>xx-pages</code>）分支来存放生成的静态页面，从而保持源码和生成文件的分离。</p>
 <hr>
 <h2 id="1-配置-GitHub-Actions"><a href="#1-配置-GitHub-Actions" class="headerlink" title="1. 配置 GitHub Actions"></a><strong>1. 配置 GitHub Actions</strong></h2><h3 id="1-1-创建-github-workflows-deploy-yml-文件"><a href="#1-1-创建-github-workflows-deploy-yml-文件" class="headerlink" title="1.1 创建 .github/workflows/deploy.yml 文件"></a><strong>1.1 创建 <code>.github/workflows/deploy.yml</code> 文件</strong></h3><p>在你的 Hexo 博客根目录下执行以下命令，创建 GitHub Actions 配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p .github/workflows<br>nano .github/workflows/deploy.yml<br></code></pre></td></tr></table></figure>
