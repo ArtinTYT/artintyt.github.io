@@ -199,9 +199,9 @@ GitHub Actions 会自动运行并更新静态页面到 `gh-pages` 分支，GitHu
 
 然后等待 GitHub Actions 自动更新你的博客。
 >注意：当要修改 `.github/workflows/deploy.yml` 文件时，记得切换到 `master` 分支，使用以下：
->```bash
->git checkout master 
->```
+> ```bash
+> git checkout master 
+> ```
 
 记得修改后要提交更改，使用一下命令：
 ```bash
@@ -219,7 +219,7 @@ env:
   GIT_EMAIL: <your email address>
 ```
 
-### 优化方式 1 ：使用 Secret 变量名替代
+### 优化方式：使用 Secret 变量名替代
 1. 进入你的 **GitHub 仓库** → **Settings** → **Secrets and variables** → **Actions**
 2. 点击 **New repository secret** 创建 Secrets 变量（之前`SSH_PRIVATE`同样的地方）：
 - GIT_NAME → `<your username>`
@@ -232,15 +232,12 @@ env:
   GIT_NAME: ${{ secrets.GIT_NAME }}
   GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
 ```
 这样，即使别人能看到 **deploy.yml** 文件，也无法获取你的邮箱和 SSH 私钥。
 
-### 优化方式 2 ：隐藏 `.github/workflows/`
 
 
-
-## **6. GitHub Actions 的优点**
+## **7. GitHub Actions 的优点**
 
 使用 GitHub Actions 有以下几个明显的优点：
 
