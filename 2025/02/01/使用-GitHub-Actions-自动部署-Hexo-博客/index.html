@@ -33,7 +33,7 @@
 <meta property="og:description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-31T20:29:31.000Z">
-<meta property="article:modified_time" content="2025-02-01T00:15:06.060Z">
+<meta property="article:modified_time" content="2025-02-01T00:47:46.703Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Hexo">
@@ -324,7 +324,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-01T08:15:06+08:00
+                    本文最后更新于 2025-02-01T08:47:46+08:00
                   
                   
 
@@ -380,6 +380,9 @@
 <li>将 <strong>Value</strong> 粘贴你私钥（<code>id_rsa</code>）的内容。</li>
 <li>点击 <strong>“Add secret”</strong> 完成设置。</li>
 </ol>
+<blockquote>
+<p>注意：前面 <code>deploy.yml</code> 文件中配置了 <code>SSH_PRIVATE_KEY: $&#123;&#123; secrets.SSH_PRIVATE &#125;&#125;</code> 其中 <code>SSH_PRIVATE</code> 与你写的 <code>Name</code> 对应即可。</p>
+</blockquote>
 <hr>
 <h2 id="3-提交并触发-GitHub-Actions"><a href="#3-提交并触发-GitHub-Actions" class="headerlink" title="3. 提交并触发 GitHub Actions"></a><strong>3. 提交并触发 GitHub Actions</strong></h2><p>将 <code>deploy.yml</code> 文件提交到仓库，以触发 GitHub Actions 自动部署：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .github/workflows/deploy.yml<br>git commit -m <span class="hljs-string">&quot;Add GitHub Actions for Hexo deployment&quot;</span><br>git push origin master  <span class="hljs-comment"># 如果你的远程分支是 master</span><br></code></pre></td></tr></table></figure>
