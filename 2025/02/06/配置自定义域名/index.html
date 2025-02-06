@@ -33,7 +33,7 @@
 <meta property="og:description" content="在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。  1. 配置 GitHub Actions1.1 修改 .github&#x2F;workflows&#x2F;deploy.yml 文件在 deploy.yml 文件中添加hexo deploy --cname &lt;name&gt;到">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-06T05:59:00.000Z">
-<meta property="article:modified_time" content="2025-02-06T06:34:59.711Z">
+<meta property="article:modified_time" content="2025-02-06T06:45:59.393Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Hexo">
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          733 字
+          739 字
         
       </span>
     
@@ -325,7 +325,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-06T14:34:59+08:00
+                    本文最后更新于 2025-02-06T14:45:59+08:00
                   
                   
 
@@ -370,7 +370,7 @@
 <li>等待 GitHub 解析你的域名，通常需要几分钟。</li>
 </ol>
 <h2 id="3-提交并触发-GitHub-Actions"><a href="#3-提交并触发-GitHub-Actions" class="headerlink" title="3. 提交并触发 GitHub Actions"></a><strong>3. 提交并触发 GitHub Actions</strong></h2><p>执行以下命令，将 <code>deploy.yml</code> 配置文件提交到 GitHub：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">git add .github/workflows/deploy.yml<br>git commit -m <span class="hljs-string">&quot;Add GitHub Actions for Hexo deployment&quot;</span><br>git push origin master  <span class="hljs-comment"># 如果你的远程分支是 master</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .github/workflows/deploy.yml<br>git commit -m <span class="hljs-string">&quot;Add GitHub Actions for Hexo deployment&quot;</span><br>git push origin master  <span class="hljs-comment"># 如果你的远程分支是 master</span><br></code></pre></td></tr></table></figure>
 
 <p>推送代码后，GitHub Actions 会自动执行部署。</p>
 <h2 id="4-检查-GitHub-Actions-是否成功"><a href="#4-检查-GitHub-Actions-是否成功" class="headerlink" title="4. 检查 GitHub Actions 是否成功"></a><strong>4. 检查 GitHub Actions 是否成功</strong></h2><h3 id="4-1-查看-Actions-运行状态"><a href="#4-1-查看-Actions-运行状态" class="headerlink" title="4.1 查看 Actions 运行状态"></a><strong>4.1 查看 Actions 运行状态</strong></h3><ol>
@@ -383,9 +383,11 @@
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">https:</span><span class="hljs-comment">//neurowave.tech</span><br></code></pre></td></tr></table></figure>
 <p>如果看到最新内容，说明部署成功！🎉</p>
 <h2 id="5-本地更新博客并推送"><a href="#5-本地更新博客并推送" class="headerlink" title="5. 本地更新博客并推送"></a><strong>5. 本地更新博客并推送</strong></h2><p>当你本地修改博客内容后，使用以下命令提交并触发 GitHub Actions：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">git add .<br>git commit -m <span class="hljs-string">&quot;Update blog content&quot;</span><br>git push origin master <br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br>git commit -m <span class="hljs-string">&quot;Update blog content&quot;</span><br>git push origin master <br></code></pre></td></tr></table></figure>
 
 <p>然后等待 GitHub Actions 自动更新你的博客。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy<br></code></pre></td></tr></table></figure>
+
 <h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a><strong>6. 总结</strong></h2><ul>
 <li><strong>配置 GitHub Actions</strong>，让博客自动部署。</li>
 <li><strong>创建 <code>CNAME</code> 文件，并确保 Hexo 部署时不会丢失自定义域名</strong>。</li>
