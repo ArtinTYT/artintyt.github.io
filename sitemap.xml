@@ -157,13 +157,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Fluid/</loc>
-    <lastmod>2025-02-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/Conda/</loc>
     <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -172,6 +165,13 @@
   
   <url>
     <loc>http://neurowave.tech/tags/MacOS/</loc>
+    <lastmod>2025-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Fluid/</loc>
     <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
