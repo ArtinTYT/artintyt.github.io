@@ -114,7 +114,8 @@ deploy:
   type: git
   repo: git@github.com:ArtinTYT/artintyt.github.io.git # 这里要用 SSH 地址
   branch: gh-pages  # 你的 GitHub Pages 分支
-  message: "Deploy from GitHub Actions"
+  message: "Update blog content"
+  cname: neurowave.tech
 
 
 # sitemap
