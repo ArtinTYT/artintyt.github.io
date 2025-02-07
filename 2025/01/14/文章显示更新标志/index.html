@@ -124,6 +124,7 @@
   
 
 
+
   
 
 <meta name="generator" content="Hexo 7.3.0"></head>
@@ -292,6 +293,18 @@
       
     
   </div>
+
+
+
+
+<!-- 在页面合适的位置添加显示评论数的占位符 
+<div class="article-meta-comments">
+  <span class="post-meta-item-icon"><i class="iconfont icon-comment"></i></span>
+  <span id="comment-count"></span>
+  条
+</div>
+
+-->
 
 
         
@@ -491,6 +504,40 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"欢迎留言交流~","avatar":"monsterid","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+
+    </article>
+  
+
+
+
+
           </article>
         </div>
       </div>

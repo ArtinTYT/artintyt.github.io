@@ -33,7 +33,7 @@
 <meta property="og:description" content="我创建了个人博客网站，基于 GitHub Pages 作为开源服务器，使用 Hexo 作为博客框架，Fluid 主题为界面设计。博客中使用 LeanCloud 作为阅读量统计工具，通过 GitHub 或者自己服务器进行部署。此博客网站完全免费，适合需要搭建个人博客的用户。  此部分内容基于CSDN博客作者的介绍。 以下为过程简述并添加注意部分。同时推荐阅读Hexo Fluid用户手册进行个性化设置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-13T04:21:36.000Z">
-<meta property="article:modified_time" content="2025-02-04T01:21:28.220Z">
+<meta property="article:modified_time" content="2025-02-06T10:56:58.564Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Fluid">
@@ -119,6 +119,7 @@
 
 
   
+
 
 
   
@@ -291,6 +292,18 @@
   </div>
 
 
+
+
+<!-- 在页面合适的位置添加显示评论数的占位符 
+<div class="article-meta-comments">
+  <span class="post-meta-item-icon"><i class="iconfont icon-comment"></i></span>
+  <span id="comment-count"></span>
+  条
+</div>
+
+-->
+
+
         
       </div>
 
@@ -323,7 +336,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-04T09:21:28+08:00
+                    本文最后更新于 2025-02-06T18:56:58+08:00
                   
                   
 
@@ -456,7 +469,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年2月4日</div>
+          <div>2025年2月6日</div>
         </div>
       
       
@@ -493,6 +506,40 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"欢迎留言交流~","avatar":"monsterid","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+
+    </article>
+  
+
+
+
+
           </article>
         </div>
       </div>
