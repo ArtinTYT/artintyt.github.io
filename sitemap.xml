@@ -319,35 +319,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Prompt-engineering/</loc>
-    <lastmod>2025-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Conda/</loc>
-    <lastmod>2025-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/macOS/</loc>
-    <lastmod>2025-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/%E9%80%9A%E7%9F%A5/</loc>
-    <lastmod>2025-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/%E6%9B%B4%E6%96%B0/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -369,6 +341,34 @@
   
   <url>
     <loc>http://neurowave.tech/tags/Python/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/%E9%80%9A%E7%9F%A5/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/%E6%9B%B4%E6%96%B0/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Prompt-engineering/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Conda/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
