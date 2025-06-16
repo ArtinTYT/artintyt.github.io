@@ -26,14 +26,14 @@ jobs:
     # 步骤 3：安装依赖
     - name: Install dependencies    # 安装 Hexo 和相关依赖
       run: |
-        npm install -g hexo-cli     # 安装 Hexo 命令行工具
-        npm install                 # 安装项目依赖
+        npm install -g hexo-cli    
+        npm install                 
 
     # 步骤 4：生成静态文件
     - name: Hexo Generate           # 使用 Hexo 生成静态文件
       run: |
-        hexo clean                  # 清理旧的生成文件
-        hexo generate               # 生成新的静态文件
+        hexo clean                 
+        hexo generate              
 
     # 步骤 5：部署到 GitHub Pages
     - name: Deploy to GitHub Pages  # 使用 Hexo 部署到 GitHub Pages
@@ -42,10 +42,10 @@ jobs:
         GIT_NAME: ${{ secrets.GIT_NAME }}            # Git 用户名
         GIT_EMAIL: ${{ secrets.GIT_EMAIL }}          # Git 用户邮箱
       run: |
-        mkdir -p ~/.ssh/            # 创建 SSH 配置目录
-        echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa  # 之前生成的秘钥将私钥写入文件
-        chmod 600 ~/.ssh/id_rsa     # 设置私钥权限
-        ssh-keyscan github.com >> ~/.ssh/known_hosts  # 将 GitHub 的 SSH 公钥添加到 known_hosts 中
-        git config --global user.name "$GIT_NAME"     # 配置 Git 用户名
-        git config --global user.email "$GIT_EMAIL"   # 配置 Git 用户邮箱
-        hexo deploy                  # 使用 Hexo 部署博客
+        mkdir -p ~/.ssh/            
+        echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        ssh-keyscan github.com >> ~/.ssh/known_hosts  
+        git config --global user.name "$GIT_NAME"     
+        git config --global user.email "$GIT_EMAIL"   
+        hexo deploy                  
