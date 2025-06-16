@@ -113,8 +113,8 @@ theme: fluid
 
 deploy:
   type: git
-  repo: git@github.com:ArtinTYT/artintyt.github.io.git # 这里要用 SSH 地址
-  branch: gh-pages  # 你的 GitHub Pages 分支
+  repo: git@github.com:ArtinTYT/artintyt.github.io.git
+  branch: main
   message: "Update blog content"
   cname: neurowave.tech
 
