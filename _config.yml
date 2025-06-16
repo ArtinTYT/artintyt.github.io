@@ -114,7 +114,7 @@ theme: fluid
 deploy:
   type: git
   repo: git@github.com:ArtinTYT/artintyt.github.io.git
-  branch: ph-pages
+  branch: gh-pages
   message: "Update blog content"
   cname: neurowave.tech
 
