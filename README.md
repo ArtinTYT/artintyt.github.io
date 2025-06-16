@@ -1,49 +1,57 @@
 [English](README.md) | [中文](README_CN.md)
 
-# 个人学习与成长博客
+# Artin's Tech Learning & Growth Blog
 
-欢迎来到我的个人博客，这里记录和分享我在各个技术领域的学习和成长历程。这个博客既是一个知识库，也是一个分享见解和经验的平台。
-
-## 内容分类
-
-### 机器学习与深度学习
-- 机器学习算法基础
-- 深度学习架构与实现
-- 实际应用与案例分析
-- 最新研究与发展
-
-### 数据科学
-- 数据分析与可视化
-- 统计方法与应用
-- 大数据处理与分析
-- 数据驱动决策
-
-### 大语言模型
-- LLM架构与训练
-- 微调与优化技术
-- 应用场景与案例
-- 领域最新发展
-
-### 网站开发
-- 技术实现细节
-- 最佳实践与技巧
-- 性能优化
-- 现代网站开发趋势
-
-### AI智能体
-- 智能体架构与设计
-- 实现策略
-- 应用场景
-- 未来发展
-
-## 关于本站
-
-本站使用Hexo框架构建，这是一个快速、简单且功能强大的博客框架。内容由AI智能体自动更新和维护，而想法和偏好则由我本人把控。
-
-## 联系方式
-
-如果您有任何问题或建议，欢迎随时联系！
+Hey there! Welcome to my personal blog — a space where I document what I’m learning, building, breaking, and fixing. Whether it’s machine learning, debugging weird system errors, or exploring AI agent architectures, this blog is my digital brain dump.
 
 ---
 
-*最后更新：2024年4月*
+## 🧭 What's in the blog?
+
+### 🤖 Machine Learning & Deep Learning
+- Core ML/DL algorithm concepts with code examples
+- Deep learning environment setup (manual + automated)
+- LLMs (Large Language Models): architecture, training, fine-tuning
+- Real-world applications and experimental notes
+
+### 🛠️ System Setup & Bug Fixes
+- Dev environment setup guides (Node, Git, VSCode, etc.)
+- Common errors and how I solved them (e.g. `spawn failed`, port issues)
+- Useful terminal tools and automation tips
+- CI/CD & GitHub Actions quirks I ran into
+
+### 🧩 Algorithms & Coding Interviews
+- LeetCode problem breakdowns
+- Interview question write-ups and patterns
+- Recursion, DP, two-pointers, and other core problem-solving strategies
+- Python & C++ snippets for common algorithm templates
+
+### 📊 Data Science & Visualization
+- Data cleaning, transformation & visualization workflows
+- Case studies using Pandas, NumPy, Matplotlib
+- Thoughts on data-driven decision making
+- End-to-end analysis projects
+
+### 🌐 Blog & Website Development
+- Building this blog using Hexo + GitHub Pages
+- Auto-deploy with GitHub Actions
+- Custom domain, password-protected posts, hidden drafts
+- Theme tweaks and plugin recommendations
+
+---
+
+## ✨ What makes this blog different?
+
+- 🧠 100% hands-on — I only post what I’ve personally tested or struggled with  
+- 🤖 AI helps me write, but I edit every line myself  
+- 🎯 Focused on clarity, not fluff. If I don’t get it, I won’t fake it.
+
+---
+
+## 📬 Reach out
+
+Got a question, feedback, or want to connect? Drop me a message or find me on GitHub. Let’s build and learn together.
+
+---
+
+_Last updated: April 2024_
