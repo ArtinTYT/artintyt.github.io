@@ -1,0 +1,25 @@
+<% if (theme.say.quote_nav && theme.say.quote_nav.enable) { %>
+<div class="quote-nav">
+  <div class="quote-nav-title">✨ 导航 ✨</div>
+  <div class="quote-nav-items">
+    <% theme.say.quote_nav.items.forEach(function(item) { %>
+      <a href="javascript:void(0);" class="quote-nav-item" data-link="<%= item.link %>"><%= item.name %></a>
+    <% }); %>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navItems = document.querySelectorAll('.quote-nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-link');
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+<% } %> 

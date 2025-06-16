@@ -1,0 +1,75 @@
+name: 'English'
+
+home:
+  menu: 'Home'
+  title: 'Home'
+
+archive:
+  menu: 'Archive'
+  title: 'Archive'
+  subtitle: 'Archive'
+  post_total: '%d Posts'
+
+category:
+  menu: 'Category'
+  title: 'Category'
+  subtitle: 'Category'
+  post_total: '%d Posts'
+  more: 'More...'
+
+tag:
+  menu: 'Tag'
+  title: 'Tag'
+  subtitle: 'Tag'
+  post_total: '%d Posts'
+
+say:
+  menu: 'Say'
+  title: 'Say'
+  subtitle: 'May we reach the flowers of the other shore, beyond all the most pleasant and satisfying things of this world.'
+
+about:
+  menu: 'About'
+  title: 'About'
+  subtitle: 'About'
+
+links:
+  menu: 'Links'
+  title: 'Links'
+  subtitle: 'Links'
+
+page404:
+  menu: 'Page Not Found'
+  title: 'Page Not Found'
+  subtitle: 'Page Not Found'
+
+post:
+  toc: 'Table of Contents'
+  prev_post: 'Previous'
+  next_post: 'Next'
+  updated: 'Updated on %s'
+  meta:
+    wordcount: '%s words'
+    min2read: '%s min read'
+    views: '{} views'
+  copyright:
+    author: 'Author'
+    posted: 'Posted on'
+    updated: 'Updated on'
+    licensed: 'Licensed under'
+    CC: 'CC - Creative Commons License'
+    BY: 'BY - Attribution'
+    SA: 'SA - Share Alike'
+    NC: 'NC - Non Commercial'
+    ND: 'ND - No Derivatives'
+    ZERO: 'CC0 - No Rights Reserved'
+
+footer:
+  pv: 'Total Views: {}'
+  uv: 'Total Visitors: {}'
+
+search:
+  title: 'Search'
+  keyword: 'Keyword'
+
+noscript_warning: 'This blog works best with JavaScript enabled'

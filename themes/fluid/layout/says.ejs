@@ -1,0 +1,10 @@
+<%
+page.layout = "says"
+page.title = theme.say.title || __('say.title')
+page.subtitle = theme.say.subtitle || __('say.subtitle')
+page.banner_img = theme.say.banner_img
+page.banner_img_height = theme.say.banner_img_height
+page.banner_mask_alpha = theme.say.banner_mask_alpha
+
+var posts = site.posts.filter(post => post.layout === 'say').sort('date', -1)
+%>

@@ -1,0 +1,164 @@
+<%
+page.banner_img = page.banner_img || theme.post.banner_img
+page.banner_img_height = page.banner_img_height || theme.post.banner_img_height
+page.banner_mask_alpha = page.banner_mask_alpha || theme.post.banner_mask_alpha
+%>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      <%- inject_point('postLeft') %>
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"><%= page.subtitle || page.title %></h1>
+            <% if (theme.post.updated.enable && theme.post.updated && compare_date(page.date, page.updated)) { %>
+              <p id="updated-time" class="note note-<%= theme.post.updated.note_class || 'info' %>" style="<%= theme.post.updated.relative ? 'display: none' : '' %>">
+                <% if (theme.post.updated.relative) { %>
+                  <% if (theme.post.updated.content) { %>
+                    <!-- compatible with older versions-->
+                    <%- theme.post.updated.content %><%- date(page.updated, 'YYYY-MM-DDTHH:mm:ssZ') %>
+                  <% } else { %>
+                    <%- __('post.updated', date(page.updated, 'YYYY-MM-DDTHH:mm:ssZ')) %>
+                  <% } %>
+                  <%- partial('_partials/plugins/moment.ejs') %>
+                <% } else { %>
+                  <% if (theme.post.updated.content) { %>
+                    <!-- compatible with older versions-->
+                    <%- theme.post.updated.content %><%- date(page.updated, theme.post.updated.date_format) %>
+                  <% } else { %>
+                    <%- __('post.updated', date(page.updated, theme.post.updated.date_format)) %>
+                  <% } %>
+                <% } %>
+              </p>
+            <% } %>
+
+
+
+            <% if (page.encrypt === true) { %>
+
+            <!-- 显示explanation信息 -->
+            <% if (page.explanation) { %>
+              <div id="password-explanation" class="password-explanation">
+                <p><%= page.explanation %></p>
+              </div>
+            <% } %>
+
+            <%- inject_point('postMarkdownBegin') %>
+            <%- page.content %>
+
+            <!-- 渲染密码框 -->
+            <%- partial('_partials/plugins/encrypt') %>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var passwordField = document.querySelector('input[type="password"]'); // 找到密码输入框
+                var explanationDiv = document.getElementById('password-explanation');  // 找到 explanation div
+
+                // 如果 passwordField 存在，监听其输入事件
+                if (passwordField && explanationDiv) {
+                  passwordField.addEventListener('input', function() {
+                    // 如果密码框有内容时，隐藏 explanation
+                    if (passwordField.value.length > 0) {
+                      explanationDiv.style.display = 'none';  // 隐藏 explanation
+                    } else {
+                      explanationDiv.style.display = 'block';  // 密码为空时，显示 explanation
+                    }
+                  });
+                }
+              });
+            </script>
+
+            <%- inject_point('postMarkdownEnd') %>
+          <% } else { %>
+            <div class="markdown-body">
+              <%- inject_point('postMarkdownBegin') %>
+              <%- page.content %>
+              <%- inject_point('postMarkdownEnd') %>
+            </div>
+          <% } %>
+
+
+            <hr/>
+
+
+            <!-- 添加打赏模块 -->
+            <div class="reward-container">
+              <% if (theme.donate.enable) { %>
+                <button id="rewardBtn" class="reward-btn">
+                  <% if (config.language == 'zh-CN') { %> 
+                    ❤ 打赏
+                  <% } else { %>
+                    Donate
+                  <% } %> 
+                </button>
+                <p class="tea">“<%= theme.donate.message %>”</p>
+                <div id="rewardImgContainer" class="reward-img-container">
+                      <div class="singleImgContainer">
+                          <img id="wechatImg" class="reward-img" src="<%= theme.donate.wechatpay %>" alt="微信二维码">
+                            <p class="wechatPay">微信支付</p>
+                        </div>
+                        <div class="singleImgContainer">
+                            <img id="alipayImg" class="reward-img" src="<%= theme.donate.alipay %>" alt="支付宝二维码">
+                            <p class="aliPay">支付宝支付</p>
+                        </div>
+                </div>
+              <% } %>
+            </div>
+            
+            <div>
+              <%- inject_point('postMetaBottom') %>
+
+              <%- inject_point('postCopyright') %>
+
+              <% if (theme.post.prev_next.enable && !page.hide) { %>
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    <% const prev = prev_post(page) %>
+                    <% if (prev) { %>
+                      <a href="<%= url_for(prev.path) %>" title="<%= prev.title %>">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"><%= prev.title %></span>
+                        <span class="visible-mobile"><%- __('post.prev_post') %></span>
+                      </a>
+                    <% } %>
+                  </article>
+                  <article class="post-next col-6">
+                    <% const next = next_post(page) %>
+                    <% if (next) { %>
+                      <a href="<%= url_for(next.path) %>" title="<%= next.title %>">
+                        <span class="hidden-mobile"><%= next.title %></span>
+                        <span class="visible-mobile"><%- __('post.next_post') %></span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    <% } %>
+                  </article>
+                </div>
+              <% } %>
+            </div>
+
+            <%- inject_point('postComments') %>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      <%- inject_point('postRight') %>
+    </div>
+  </div>
+</div>
+
+<%- partial('_partials/markdown-plugins') %>
+
+<% if(theme.post.custom && theme.post.custom.enable && theme.post.custom.content && page.custom !== false) { %>
+  <!-- Custom -->
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <%- page.custom || theme.post.custom.content %>
+    </div>
+  </div>
+<% } %>

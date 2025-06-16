@@ -1,0 +1,75 @@
+name: '简体中文'
+
+home:
+  menu: '首页'
+  title: '首页'
+
+archive:
+  menu: '归档'
+  title: '归档'
+  subtitle: '归档'
+  post_total: '共 %d 篇文章'
+
+category:
+  menu: '分类'
+  title: '分类'
+  subtitle: '分类'
+  post_total: '共 %d 个分类'
+  more: '更多...'
+
+tag:
+  menu: '标签'
+  title: '标签'
+  subtitle: '标签'
+  post_total: '共 %d 个标签'
+
+say:
+  menu: '说说'
+  title: '说说'
+  subtitle: '愿我们终得彼岸之花，超越此间最是愉悦最是满足的一切。—— Artin Tan'
+
+about:
+  menu: '关于'
+  title: '关于'
+  subtitle: '关于'
+
+links:
+  menu: '友链'
+  title: '友链'
+  subtitle: '友链'
+
+page404:
+  menu: '404'
+  title: '404'
+  subtitle: '404'
+
+post:
+  toc: '目录'
+  prev_post: '上一篇'
+  next_post: '下一篇'
+  updated: '更新于 %s'
+  meta:
+    wordcount: '%s 字'
+    min2read: '%s 分钟'
+    views: '{} 次阅读'
+  copyright:
+    author: '作者'
+    posted: '发布于'
+    updated: '更新于'
+    licensed: '许可协议'
+    CC: 'CC - 知识共享许可协议'
+    BY: 'BY - 署名'
+    SA: 'SA - 相同方式共享'
+    NC: 'NC - 非商业性'
+    ND: 'ND - 禁止演绎'
+    ZERO: 'CC0 - 放弃权利'
+
+footer:
+  pv: '总访问量 {} 次'
+  uv: '总访客数 {} 人'
+
+search:
+  title: '搜索'
+  keyword: '关键词'
+
+noscript_warning: '本博客需要启用 JavaScript 才能正常工作'

@@ -1,0 +1,18 @@
+<%
+page.layout = 'say'
+page.title = theme.say.title || __('say.title')
+page.subtitle = theme.say.subtitle || __('say.subtitle')
+page.banner_img = theme.say.banner_img
+page.banner_img_height = theme.say.banner_img_height
+page.banner_mask_alpha = theme.say.banner_mask_alpha
+%>
+
+<%- partial('_partials/quote-nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 m-auto">
+      <%- page.content %>
+    </div>
+  </div>
+</div>
