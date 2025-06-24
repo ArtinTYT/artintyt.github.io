@@ -25,12 +25,12 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
+    <meta name="description" content="前言 在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。   1.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 GitHub Actions 自动部署 Hexo 博客">
 <meta property="og:url" content="http://neurowave.tech/2025/02/01/1-%E4%BD%BF%E7%94%A8-GitHub-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="前言在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。  1. 配置">
+<meta property="og:description" content="前言 在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。   1.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-31T20:29:31.000Z">
 <meta property="article:modified_time" content="2025-02-21T11:55:51.914Z">
@@ -282,7 +282,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1.9k 字
         
       </span>
     
@@ -370,92 +370,106 @@
             
             <div class="markdown-body">
               
-              <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>在本篇博客中，我们将介绍如何使用 <strong>GitHub Actions</strong> 来实现 <strong>Hexo 博客的自动化部署</strong>，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 <code>hexo deploy</code>。同时，我们也会介绍如何使用专门的 <code>gh-pages</code>（或你命名的 <code>ph-pages</code>）分支来存放生成的静态页面，从而保持源码和生成文件的分离。</p>
+              <h3 id="前言"><a class="header-anchor" href="#前言"> </a><strong>前言</strong></h3>
+<p>在本篇博客中，我们将介绍如何使用 <strong>GitHub Actions</strong> 来实现 <strong>Hexo 博客的自动化部署</strong>，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 <code>hexo deploy</code>。同时，我们也会介绍如何使用专门的 <code>gh-pages</code>（或你命名的 <code>ph-pages</code>）分支来存放生成的静态页面，从而保持源码和生成文件的分离。</p>
 <hr>
-<h2 id="1-配置-GitHub-Actions"><a href="#1-配置-GitHub-Actions" class="headerlink" title="1. 配置 GitHub Actions"></a><strong>1. 配置 GitHub Actions</strong></h2><h3 id="1-1-创建-github-workflows-deploy-yml-文件"><a href="#1-1-创建-github-workflows-deploy-yml-文件" class="headerlink" title="1.1 创建 .github/workflows/deploy.yml 文件"></a><strong>1.1 创建 <code>.github/workflows/deploy.yml</code> 文件</strong></h3><p>在你的 Hexo 博客根目录下执行以下命令，创建 GitHub Actions 配置文件：</p>
+<h2 id="1-配置-GitHub-Actions"><a class="header-anchor" href="#1-配置-GitHub-Actions"> </a><strong>1. 配置 GitHub Actions</strong></h2>
+<h3 id="1-1-创建-github-workflows-deploy-yml-文件"><a class="header-anchor" href="#1-1-创建-github-workflows-deploy-yml-文件"> </a><strong>1.1 创建 <code>.github/workflows/deploy.yml</code> 文件</strong></h3>
+<p>在你的 Hexo 博客根目录下执行以下命令，创建 GitHub Actions 配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p .github/workflows<br>nano .github/workflows/deploy.yml<br></code></pre></td></tr></table></figure>
-
 <p>在 <strong>deploy.yml</strong> 文件中添加以下内容（如果你的远程仓库默认分支为 <code>master</code>，则触发条件与拉取分支都使用 <code>master</code>；如果你使用其他分支，请相应调整）：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">Blog</span>             <span class="hljs-comment"># GitHub Actions 的名称，可自行命名</span><br><br><span class="hljs-comment"># 当 push 事件发生时触发部署</span><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">master</span>                       <span class="hljs-comment"># 当推送到 master 分支时触发部署（根据你的分支选择）</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span>          <span class="hljs-comment"># 运行环境选择最新的 Ubuntu</span><br><br>    <span class="hljs-attr">steps:</span><br>    <span class="hljs-comment"># 步骤 1：拉取代码</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">repository</span>     <span class="hljs-comment"># 从 GitHub 仓库拉取代码</span><br>      <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span><br>      <span class="hljs-attr">with:</span><br>        <span class="hljs-attr">ref:</span> <span class="hljs-string">master</span>                   <span class="hljs-comment"># 拉取 master 分支代码</span><br><br>    <span class="hljs-comment"># 步骤 2：设置 Node 环境</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">Node.js</span>           <span class="hljs-comment"># 安装 Node.js 环境</span><br>      <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v2</span><br>      <span class="hljs-attr">with:</span><br>        <span class="hljs-attr">node-version:</span> <span class="hljs-string">&#x27;v22&#x27;</span>           <span class="hljs-comment"># 设置 Node.js 版本</span><br><br>    <span class="hljs-comment"># 步骤 3：安装依赖</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">dependencies</span>    <span class="hljs-comment"># 安装 Hexo 和相关依赖</span><br>      <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">        npm install -g hexo-cli     # 安装 Hexo 命令行工具</span><br><span class="hljs-string">        npm install                 # 安装项目依赖</span><br><span class="hljs-string"></span><br>    <span class="hljs-comment"># 步骤 4：生成静态文件</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">Generate</span>            <span class="hljs-comment"># 使用 Hexo 生成静态文件</span><br>      <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">        hexo clean                  # 清理旧的生成文件</span><br><span class="hljs-string">        hexo generate               # 生成新的静态文件</span><br><span class="hljs-string"></span><br>    <span class="hljs-comment"># 步骤 5：部署到 GitHub Pages (部署到 gh-pages 分支)</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Pages</span>   <span class="hljs-comment"># 使用 Hexo 部署到 GitHub Pages</span><br>      <span class="hljs-attr">env:</span><br>        <span class="hljs-attr">SSH_PRIVATE_KEY:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.SSH_PRIVATE</span> <span class="hljs-string">&#125;&#125;</span>   <span class="hljs-comment"># 使用 GitHub Secrets 中存储的 SSH 私钥</span><br>        <span class="hljs-attr">GIT_NAME:</span> <span class="hljs-string">&lt;Git</span> <span class="hljs-string">用户名&gt;</span>                           <span class="hljs-comment"># Git 用户名</span><br>        <span class="hljs-attr">GIT_EMAIL:</span> <span class="hljs-string">&lt;Git用户邮箱&gt;</span>             <span class="hljs-comment"># Git 用户邮箱</span><br>      <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">        mkdir -p ~/.ssh/                              # 创建 SSH 配置目录</span><br><span class="hljs-string">        echo &quot;$SSH_PRIVATE_KEY&quot; | tr -d &#x27;\r&#x27; &gt; ~/.ssh/id_rsa  # 将私钥写入文件</span><br><span class="hljs-string">        chmod 600 ~/.ssh/id_rsa                       # 设置私钥权限</span><br><span class="hljs-string">        ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts  # 添加 GitHub 的 SSH 公钥到 known_hosts</span><br><span class="hljs-string">        git config --global user.name &quot;$GIT_NAME&quot;     # 配置 Git 用户名</span><br><span class="hljs-string">        git config --global user.email &quot;$GIT_EMAIL&quot;    # 配置 Git 用户邮箱</span><br><span class="hljs-string">        hexo deploy                                   # 使用 Hexo 部署博客</span><br></code></pre></td></tr></table></figure>
-
 <blockquote>
-<p><strong>注意：</strong>  </p>
+<p><strong>注意：</strong></p>
 <ol>
-<li>在 Hexo 配置文件 <code>_config.yml</code> 中，部署部分应配置为使用 <code>gh-pages</code> 分支（或你命名的 <code>ph-pages</code> 分支），例如：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@github.com:你的用户名/你的仓库.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span>   <span class="hljs-comment"># 或者根据你的实际情况设置为 ph-pages</span><br></code></pre></td></tr></table></figure></li>
+<li>在 Hexo 配置文件 <code>_config.yml</code> 中，部署部分应配置为使用 <code>gh-pages</code> 分支（或你命名的 <code>ph-pages</code> 分支），例如：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@github.com:你的用户名/你的仓库.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span>   <span class="hljs-comment"># 或者根据你的实际情况设置为 ph-pages</span><br></code></pre></td></tr></table></figure>
+</li>
 <li>这样可以保证你的源代码存放在 <code>master</code> 分支，而生成的静态页面将推送到 <code>gh-pages</code> 分支，从而使博客部署更清晰规范。</li>
 </ol>
 </blockquote>
 <hr>
-<h2 id="2-配置-SSH-密钥"><a href="#2-配置-SSH-密钥" class="headerlink" title="2. 配置 SSH 密钥"></a><strong>2. 配置 SSH 密钥</strong></h2><h3 id="2-1-生成-SSH-密钥"><a href="#2-1-生成-SSH-密钥" class="headerlink" title="2.1 生成 SSH 密钥"></a><strong>2.1 生成 SSH 密钥</strong></h3><h4 id="检查是否已有-SSH-密钥"><a href="#检查是否已有-SSH-密钥" class="headerlink" title="检查是否已有 SSH 密钥"></a><strong>检查是否已有 SSH 密钥</strong></h4><p>你可以运行下面的命令来确认是否已有 SSH 密钥：</p>
+<h2 id="2-配置-SSH-密钥"><a class="header-anchor" href="#2-配置-SSH-密钥"> </a><strong>2. 配置 SSH 密钥</strong></h2>
+<h3 id="2-1-生成-SSH-密钥"><a class="header-anchor" href="#2-1-生成-SSH-密钥"> </a><strong>2.1 生成 SSH 密钥</strong></h3>
+<h4 id="检查是否已有-SSH-密钥"><a class="header-anchor" href="#检查是否已有-SSH-密钥"> </a><strong>检查是否已有 SSH 密钥</strong></h4>
+<p>你可以运行下面的命令来确认是否已有 SSH 密钥：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> ~/.ssh<br></code></pre></td></tr></table></figure>
 <p>如果看到 <code>id_rsa</code> 和 <code>id_rsa.pub</code>，说明你已经生成了 SSH 密钥。</p>
-<h4 id="查看密钥内容"><a href="#查看密钥内容" class="headerlink" title="查看密钥内容"></a><strong>查看密钥内容</strong></h4><ul>
-<li><strong>查看私钥</strong>（不要泄露此文件）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.ssh/id_rsa<br></code></pre></td></tr></table></figure></li>
-<li><strong>查看公钥</strong>（可公开分享）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure></li>
+<h4 id="查看密钥内容"><a class="header-anchor" href="#查看密钥内容"> </a><strong>查看密钥内容</strong></h4>
+<ul>
+<li><strong>查看私钥</strong>（不要泄露此文件）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.ssh/id_rsa<br></code></pre></td></tr></table></figure>
+</li>
+<li><strong>查看公钥</strong>（可公开分享）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h4 id="生成新的-SSH-密钥（如果没有）"><a href="#生成新的-SSH-密钥（如果没有）" class="headerlink" title="生成新的 SSH 密钥（如果没有）"></a><strong>生成新的 SSH 密钥（如果没有）</strong></h4><p>如果没有密钥，可以使用下面的命令生成：</p>
+<h4 id="生成新的-SSH-密钥（如果没有）"><a class="header-anchor" href="#生成新的-SSH-密钥（如果没有）"> </a><strong>生成新的 SSH 密钥（如果没有）</strong></h4>
+<p>如果没有密钥，可以使用下面的命令生成：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br></code></pre></td></tr></table></figure>
 <p>替换 <code>&quot;your_email@example.com&quot;</code> 为你的 GitHub 绑定邮箱，然后一路按 <strong>Enter</strong> 即可。</p>
 <blockquote>
 <p>注意：如果 Github 说公钥 <code>已经被使用</code> ，可以使用命令再次生成私钥和公钥，同时去 Github 修改项目下的 <code>Setting</code> 就可以了。</p>
 </blockquote>
 <hr>
-<h3 id="2-2-添加公钥到-GitHub"><a href="#2-2-添加公钥到-GitHub" class="headerlink" title="2.2 添加公钥到 GitHub"></a><strong>2.2 添加公钥到 GitHub</strong></h3><ol>
+<h3 id="2-2-添加公钥到-GitHub"><a class="header-anchor" href="#2-2-添加公钥到-GitHub"> </a><strong>2.2 添加公钥到 GitHub</strong></h3>
+<ol>
 <li>进入 GitHub 仓库页面，点击 <strong>Settings</strong> → <strong>Deploy keys</strong>。</li>
-<li>点击 <strong>“Add deploy key”</strong>。</li>
-<li>在 <strong>Title</strong> 中填写 “GitHub Actions Key”。</li>
+<li>点击 <strong>&quot;Add deploy key&quot;</strong>。</li>
+<li>在 <strong>Title</strong> 中填写 &quot;GitHub Actions Key&quot;。</li>
 <li>在 <strong>Key</strong> 中粘贴你通过 <code>cat ~/.ssh/id_rsa.pub</code> 获取的公钥内容。</li>
-<li>勾选 <strong>“Allow write access”</strong> 以允许写入权限。</li>
-<li>点击 <strong>“Add key”</strong> 完成设置。</li>
+<li>勾选 <strong>&quot;Allow write access&quot;</strong> 以允许写入权限。</li>
+<li>点击 <strong>&quot;Add key&quot;</strong> 完成设置。</li>
 </ol>
 <hr>
-<h3 id="2-3-添加私钥到-GitHub-Secrets"><a href="#2-3-添加私钥到-GitHub-Secrets" class="headerlink" title="2.3 添加私钥到 GitHub Secrets"></a><strong>2.3 添加私钥到 GitHub Secrets</strong></h3><ol>
+<h3 id="2-3-添加私钥到-GitHub-Secrets"><a class="header-anchor" href="#2-3-添加私钥到-GitHub-Secrets"> </a><strong>2.3 添加私钥到 GitHub Secrets</strong></h3>
+<ol>
 <li>进入 GitHub 仓库页面，点击 <strong>Settings</strong> → <strong>Secrets and variables</strong> → <strong>Actions</strong>。</li>
-<li>点击 <strong>“New repository secret”</strong>。</li>
+<li>点击 <strong>&quot;New repository secret&quot;</strong>。</li>
 <li>将 <strong>Name</strong> 填写为 <code>SSH_PRIVATE</code>。</li>
 <li>将 <strong>Value</strong> 粘贴你私钥（<code>id_rsa</code>）的内容。</li>
-<li>点击 <strong>“Add secret”</strong> 完成设置。</li>
+<li>点击 <strong>&quot;Add secret&quot;</strong> 完成设置。</li>
 </ol>
 <blockquote>
 <p>注意：前面 <strong>deploy.yml</strong> 文件中配置了 <code>SSH_PRIVATE_KEY: $&#123;&#123; secrets.SSH_PRIVATE &#125;&#125;</code> 其中 <code>SSH_PRIVATE</code> 与你写的 <code>Name</code> 对应即可。</p>
 </blockquote>
 <hr>
-<h2 id="3-提交并触发-GitHub-Actions"><a href="#3-提交并触发-GitHub-Actions" class="headerlink" title="3. 提交并触发 GitHub Actions"></a><strong>3. 提交并触发 GitHub Actions</strong></h2><p>将 <code>deploy.yml</code> 文件提交到仓库，以触发 GitHub Actions 自动部署：</p>
+<h2 id="3-提交并触发-GitHub-Actions"><a class="header-anchor" href="#3-提交并触发-GitHub-Actions"> </a><strong>3. 提交并触发 GitHub Actions</strong></h2>
+<p>将 <code>deploy.yml</code> 文件提交到仓库，以触发 GitHub Actions 自动部署：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .github/workflows/deploy.yml<br>git commit -m <span class="hljs-string">&quot;Add GitHub Actions for Hexo deployment&quot;</span><br>git push origin master  <span class="hljs-comment"># 如果你的远程分支是 master</span><br></code></pre></td></tr></table></figure>
-
 <p>推送代码后，GitHub Actions 会自动运行部署流程，并将 Hexo 生成的静态文件推送到 <code>gh-pages</code> 分支。</p>
-<h3 id="测试-SSH-连接到-GitHub"><a href="#测试-SSH-连接到-GitHub" class="headerlink" title="测试 SSH 连接到 GitHub"></a><strong>测试 SSH 连接到 GitHub</strong></h3><p>在 SSH 设置完成后，你可以运行：</p>
+<h3 id="测试-SSH-连接到-GitHub"><a class="header-anchor" href="#测试-SSH-连接到-GitHub"> </a><strong>测试 SSH 连接到 GitHub</strong></h3>
+<p>在 SSH 设置完成后，你可以运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
 <p>如果成功，你会看到：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Hi ArtinTYT! You<span class="hljs-string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure>
-
-
-<h2 id="4-检查部署状态"><a href="#4-检查部署状态" class="headerlink" title="4. 检查部署状态"></a><strong>4. 检查部署状态</strong></h2><h3 id="4-1-查看-GitHub-Actions-状态"><a href="#4-1-查看-GitHub-Actions-状态" class="headerlink" title="4.1 查看 GitHub Actions 状态"></a><strong>4.1 查看 GitHub Actions 状态</strong></h3><ol>
+<h2 id="4-检查部署状态"><a class="header-anchor" href="#4-检查部署状态"> </a><strong>4. 检查部署状态</strong></h2>
+<h3 id="4-1-查看-GitHub-Actions-状态"><a class="header-anchor" href="#4-1-查看-GitHub-Actions-状态"> </a><strong>4.1 查看 GitHub Actions 状态</strong></h3>
+<ol>
 <li>打开 GitHub 仓库页面，点击 <strong>Actions</strong> 选项卡。</li>
 <li>查看最新的 Workflow 运行记录。如果显示绿色 ✅，说明部署成功；否则查看日志查找错误信息。</li>
 </ol>
-<h3 id="4-2-配置-GitHub-Pages"><a href="#4-2-配置-GitHub-Pages" class="headerlink" title="4.2 配置 GitHub Pages"></a><strong>4.2 配置 GitHub Pages</strong></h3><p>进入 GitHub 仓库页面：</p>
+<h3 id="4-2-配置-GitHub-Pages"><a class="header-anchor" href="#4-2-配置-GitHub-Pages"> </a><strong>4.2 配置 GitHub Pages</strong></h3>
+<p>进入 GitHub 仓库页面：</p>
 <ol>
 <li>点击 <strong>Settings</strong> → <strong>Pages</strong>。</li>
 <li>将 <strong>Source</strong> 设置为 <code>gh-pages</code>（或你使用的分支，如 ph-pages）。</li>
 <li>保存设置，等待几分钟后访问：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">https://artintyt.github.io<br></code></pre></td></tr></table></figure>
 如果页面显示你的博客内容，则部署成功。</li>
 </ol>
-<h2 id="5-本地更新博客并触发部署"><a href="#5-本地更新博客并触发部署" class="headerlink" title="5. 本地更新博客并触发部署"></a><strong>5. 本地更新博客并触发部署</strong></h2><p>当你在本地更新博客内容后，使用以下命令提交并推送：</p>
+<h2 id="5-本地更新博客并触发部署"><a class="header-anchor" href="#5-本地更新博客并触发部署"> </a><strong>5. 本地更新博客并触发部署</strong></h2>
+<p>当你在本地更新博客内容后，使用以下命令提交并推送：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo deploy<br></code></pre></td></tr></table></figure>
 <p>GitHub Actions 会自动运行并更新静态页面到 <code>gh-pages</code> 分支，GitHub Pages 会随之更新。</p>
 <p>然后等待 GitHub Actions 自动更新你的博客。</p>
 <blockquote>
 <p>注意：当要修改 <code>.github/workflows/deploy.yml</code> 文件时，记得切换到 <code>master</code> 分支，使用以下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout master <br></code></pre></td></tr></table></figure></blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout master <br></code></pre></td></tr></table></figure>
+</blockquote>
 <p>记得修改后要提交更改，使用一下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add <span class="hljs-built_in">source</span>/_posts/使用-GitHub-xxxx.md<br>git commit -m <span class="hljs-string">&quot;Save changes to the GitHub Actions deployment post&quot;</span><br><br></code></pre></td></tr></table></figure>
-
-
-<h2 id="6-参数的安全隐患及优化方式"><a href="#6-参数的安全隐患及优化方式" class="headerlink" title="6. 参数的安全隐患及优化方式"></a>6. 参数的安全隐患及优化方式</h2><p>如何安全地存储敏感信息，使用 GitHub Secrets 代替明文配置，你的 <strong>deploy.yml</strong> 里目前可能有类似的内容：</p>
+<h2 id="6-参数的安全隐患及优化方式"><a class="header-anchor" href="#6-参数的安全隐患及优化方式"> </a>6. 参数的安全隐患及优化方式</h2>
+<p>如何安全地存储敏感信息，使用 GitHub Secrets 代替明文配置，你的 <strong>deploy.yml</strong> 里目前可能有类似的内容：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">env:</span><br>  <span class="hljs-attr">GIT_NAME:</span> <span class="hljs-string">&lt;your</span> <span class="hljs-string">username&gt;</span><br>  <span class="hljs-attr">GIT_EMAIL:</span> <span class="hljs-string">&lt;your</span> <span class="hljs-string">email</span> <span class="hljs-string">address&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="优化方式：使用-Secret-变量名替代"><a href="#优化方式：使用-Secret-变量名替代" class="headerlink" title="优化方式：使用 Secret 变量名替代"></a>优化方式：使用 Secret 变量名替代</h3><ol>
+<h3 id="优化方式：使用-Secret-变量名替代"><a class="header-anchor" href="#优化方式：使用-Secret-变量名替代"> </a>优化方式：使用 Secret 变量名替代</h3>
+<ol>
 <li>进入你的 <strong>GitHub 仓库</strong> → <strong>Settings</strong> → <strong>Secrets and variables</strong> → <strong>Actions</strong></li>
 <li>点击 <strong>New repository secret</strong> 创建 Secrets 变量（之前<code>SSH_PRIVATE</code>同样的地方）：</li>
 </ol>
@@ -470,16 +484,18 @@
 </ol>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">env:</span><br>  <span class="hljs-attr">GIT_NAME:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GIT_NAME</span> <span class="hljs-string">&#125;&#125;</span><br>  <span class="hljs-attr">GIT_EMAIL:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GIT_EMAIL</span> <span class="hljs-string">&#125;&#125;</span><br>  <span class="hljs-attr">SSH_PRIVATE_KEY:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.SSH_PRIVATE_KEY</span> <span class="hljs-string">&#125;&#125;</span><br></code></pre></td></tr></table></figure>
 <p>这样，即使别人能看到 <strong>deploy.yml</strong> 文件，也无法获取你的邮箱和 SSH 私钥。</p>
-<h2 id="7-GitHub-Actions-的优点"><a href="#7-GitHub-Actions-的优点" class="headerlink" title="7. GitHub Actions 的优点"></a><strong>7. GitHub Actions 的优点</strong></h2><p>使用 GitHub Actions 有以下几个明显的优点：</p>
+<h2 id="7-GitHub-Actions-的优点"><a class="header-anchor" href="#7-GitHub-Actions-的优点"> </a><strong>7. GitHub Actions 的优点</strong></h2>
+<p>使用 GitHub Actions 有以下几个明显的优点：</p>
 <ul>
 <li><strong>自动化部署：</strong> 每次代码提交后自动触发构建和部署流程，无需手动干预。</li>
 <li><strong>持续集成：</strong> 可集成测试、代码检查等流程，确保部署前代码质量。</li>
 <li><strong>高度自定义：</strong> 支持自定义工作流程和并行任务，可根据项目需求灵活配置。</li>
 <li><strong>跨平台支持：</strong> 支持在 Ubuntu、Windows、macOS 等不同平台上运行，无需额外环境搭建。</li>
-<li><strong>与 GitHub 深度集成：</strong> 无需额外配置第三方 CI&#x2F;CD 工具，所有操作均在 GitHub 平台上完成。</li>
+<li><strong>与 GitHub 深度集成：</strong> 无需额外配置第三方 CI/CD 工具，所有操作均在 GitHub 平台上完成。</li>
 <li><strong>易于监控和调试：</strong> 提供详细的日志记录，可在 GitHub Actions 页面直观查看每一步执行状态。</li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><ul>
+<h2 id="总结"><a class="header-anchor" href="#总结"> </a><strong>总结</strong></h2>
+<ul>
 <li><strong>配置 GitHub Actions</strong>：实现博客自动部署，无需手动执行 <code>hexo deploy</code>。</li>
 <li><strong>设置 SSH 密钥</strong>：保证 GitHub Actions 有权限将生成的静态页面推送到 <code>gh-pages</code> 分支。</li>
 <li><strong>分支管理</strong>：源代码存放在 <code>master</code> 分支，生成的静态页面存放在 <code>gh-pages</code>（或 ph-pages）分支，使仓库结构清晰。</li>

@@ -25,18 +25,18 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="包括安装步骤、踩坑提示、适配d2l版本说明，适合写给想要在本地用 Jupyter Notebook 或者 PyCharm 学习这本书的朋友。 使用的环境配置（推荐）   组件 版本    Python 3.8   d2l 0.17.6   torch 1.13+   pandas &gt;&#x3D;1.2.4   jupyter notebook 看情况安装   版本过高，会导致一系列效果无法呈">
+    <meta name="description" content="包括安装步骤、踩坑提示、适配d2l版本说明，适合写给想要在本地用 Jupyter Notebook 或者 PyCharm 学习这本书的朋友。  使用的环境配置（推荐）    组件 版本     Python 3.8   d2l 0.17.6   torch 1.13+   pandas &gt;&#x3D;1.2.4   jupyter notebook 看情况安装    版本过高，会导致一系列效果无法呈现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="李沐《手动深度学习》环境配置">
 <meta property="og:url" content="http://neurowave.tech/2025/04/16/5-%E6%9D%8E%E6%B2%90-%E6%89%8B%E5%8A%A8DL%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="包括安装步骤、踩坑提示、适配d2l版本说明，适合写给想要在本地用 Jupyter Notebook 或者 PyCharm 学习这本书的朋友。 使用的环境配置（推荐）   组件 版本    Python 3.8   d2l 0.17.6   torch 1.13+   pandas &gt;&#x3D;1.2.4   jupyter notebook 看情况安装   版本过高，会导致一系列效果无法呈">
+<meta property="og:description" content="包括安装步骤、踩坑提示、适配d2l版本说明，适合写给想要在本地用 Jupyter Notebook 或者 PyCharm 学习这本书的朋友。  使用的环境配置（推荐）    组件 版本     Python 3.8   d2l 0.17.6   torch 1.13+   pandas &gt;&#x3D;1.2.4   jupyter notebook 看情况安装    版本过高，会导致一系列效果无法呈现">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-16T11:11:33.000Z">
 <meta property="article:modified_time" content="2025-06-24T09:46:57.695Z">
 <meta property="article:author" content="Artin Tan">
-<meta property="article:tag" content="Error">
 <meta property="article:tag" content="DL">
+<meta property="article:tag" content="Error">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -281,7 +281,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          352 字
+          347 字
         
       </span>
     
@@ -370,14 +370,16 @@
             <div class="markdown-body">
               
               <p>包括安装步骤、踩坑提示、适配d2l版本说明，适合写给想要在本地用 Jupyter Notebook 或者 PyCharm 学习这本书的朋友。</p>
-<h2 id="使用的环境配置（推荐）"><a href="#使用的环境配置（推荐）" class="headerlink" title="使用的环境配置（推荐）"></a>使用的环境配置（推荐）</h2><table>
+<h2 id="使用的环境配置（推荐）"><a class="header-anchor" href="#使用的环境配置（推荐）"> </a>使用的环境配置（推荐）</h2>
+<table>
 <thead>
 <tr>
 <th>组件</th>
 <th>版本</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Python</td>
 <td>3.8</td>
 </tr>
@@ -391,44 +393,42 @@
 </tr>
 <tr>
 <td>pandas</td>
-<td>&gt;&#x3D;1.2.4</td>
+<td>&gt;=1.2.4</td>
 </tr>
 <tr>
 <td>jupyter notebook</td>
 <td>看情况安装</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>版本过高，会导致一系列效果无法呈现的问题。</p>
-<h2 id="一、创建-Conda-虚拟环境"><a href="#一、创建-Conda-虚拟环境" class="headerlink" title="一、创建 Conda 虚拟环境"></a>一、创建 Conda 虚拟环境</h2><p>推荐使用 Conda 来管理环境，避免依赖冲突。首先创建一个 Python 3.8 的新环境：</p>
+<h2 id="一、创建-Conda-虚拟环境"><a class="header-anchor" href="#一、创建-Conda-虚拟环境"> </a>一、创建 Conda 虚拟环境</h2>
+<p>推荐使用 Conda 来管理环境，避免依赖冲突。首先创建一个 Python 3.8 的新环境：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n d2l-py38 python=3.8<br>conda activate d2l-py38<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="二、安装-d2l-与依赖"><a href="#二、安装-d2l-与依赖" class="headerlink" title="二、安装 d2l 与依赖"></a>二、安装 d2l 与依赖</h2><p>我们使用的是 <code>d2l==0.17.6</code> 版本，这是与《动手学深度学习（PyTorch）》最兼容的版本：</p>
+<h2 id="二、安装-d2l-与依赖"><a class="header-anchor" href="#二、安装-d2l-与依赖"> </a>二、安装 d2l 与依赖</h2>
+<p>我们使用的是 <code>d2l==0.17.6</code> 版本，这是与《动手学深度学习（PyTorch）》最兼容的版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install -c conda-forge d2l=0.17.6<br></code></pre></td></tr></table></figure>
-
 <p>安装其他依赖：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install torch torchvision matplotlib pandas jupyter<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="三、测试示例代码是否正常运行"><a href="#三、测试示例代码是否正常运行" class="headerlink" title="三、测试示例代码是否正常运行"></a>三、测试示例代码是否正常运行</h2><p>打开 Jupyter：</p>
+<h2 id="三、测试示例代码是否正常运行"><a class="header-anchor" href="#三、测试示例代码是否正常运行"> </a>三、测试示例代码是否正常运行</h2>
+<p>打开 Jupyter：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter notebook<br></code></pre></td></tr></table></figure>
-
 <p>我们使用的是 PyCharm 中集成的 notebook。</p>
-<h2 id="四、常见错误与解决方案"><a href="#四、常见错误与解决方案" class="headerlink" title="四、常见错误与解决方案"></a>四、常见错误与解决方案</h2><h3 id="🐛-1-AttributeError-module-d2l-torch-has-no-attribute-train-ch3"><a href="#🐛-1-AttributeError-module-d2l-torch-has-no-attribute-train-ch3" class="headerlink" title="🐛 1. AttributeError: module &#39;d2l.torch&#39; has no attribute &#39;train_ch3&#39;"></a>🐛 1. <code>AttributeError: module &#39;d2l.torch&#39; has no attribute &#39;train_ch3&#39;</code></h3><p>说明你装的是 <code>d2l</code> 新版本（比如 <code>0.17.7</code> 以后），该版本移除了一些旧函数。解决方法：</p>
+<h2 id="四、常见错误与解决方案"><a class="header-anchor" href="#四、常见错误与解决方案"> </a>四、常见错误与解决方案</h2>
+<h3 id="🐛-1-AttributeError-module-d2l-torch-has-no-attribute-train-ch3"><a class="header-anchor" href="#🐛-1-AttributeError-module-d2l-torch-has-no-attribute-train-ch3"> </a>🐛 1. <code>AttributeError: module 'd2l.torch' has no attribute 'train_ch3'</code></h3>
+<p>说明你装的是 <code>d2l</code> 新版本（比如 <code>0.17.7</code> 以后），该版本移除了一些旧函数。解决方法：</p>
 <p>✅ <strong>回退到 0.17.6</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install d2l==0.17.6<br></code></pre></td></tr></table></figure>
-
-
-<h3 id="🐛-2-Conda-报错-pandas-1-2-4-requires-python"><a href="#🐛-2-Conda-报错-pandas-1-2-4-requires-python" class="headerlink" title="🐛 2. Conda 报错 pandas 1.2.4 requires python&lt;3.10"></a>🐛 2. Conda 报错 <code>pandas 1.2.4 requires python&lt;3.10</code></h3><p>这是因为 <code>d2l==0.17.6</code> 依赖老版本 pandas（如 1.2.4），而 pandas 不兼容 Python 3.10。解决方法：</p>
+<h3 id="🐛-2-Conda-报错-pandas-1-2-4-requires-python-3-10"><a class="header-anchor" href="#🐛-2-Conda-报错-pandas-1-2-4-requires-python-3-10"> </a>🐛 2. Conda 报错 <code>pandas 1.2.4 requires python&lt;3.10</code></h3>
+<p>这是因为 <code>d2l==0.17.6</code> 依赖老版本 pandas（如 1.2.4），而 pandas 不兼容 Python 3.10。解决方法：</p>
 <p>✅ 使用 Python 3.8 或 3.9 创建环境。</p>
-<h2 id="五、删除不需要的-Conda-环境（可选）"><a href="#五、删除不需要的-Conda-环境（可选）" class="headerlink" title="五、删除不需要的 Conda 环境（可选）"></a>五、删除不需要的 Conda 环境（可选）</h2><p>查看所有环境：</p>
+<h2 id="五、删除不需要的-Conda-环境（可选）"><a class="header-anchor" href="#五、删除不需要的-Conda-环境（可选）"> </a>五、删除不需要的 Conda 环境（可选）</h2>
+<p>查看所有环境：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br></code></pre></td></tr></table></figure>
-
 <p>删除指定环境（比如 d2l-py310）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br>conda <span class="hljs-built_in">env</span> remove -n d2l-py310<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<h2 id="参考资料"><a class="header-anchor" href="#参考资料"> </a>参考资料</h2>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18p4y1h7Dr/">Bilibili 视频讲解：安装</a></li>
 </ul>
 
@@ -490,9 +490,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Error/" class="print-no-link">#Error</a>
-      
         <a href="/tags/DL/" class="print-no-link">#DL</a>
+      
+        <a href="/tags/Error/" class="print-no-link">#Error</a>
       
     </div>
   

@@ -25,12 +25,12 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。  1. 配置 GitHub Actions1.1 修改 .github&#x2F;workflows&#x2F;deploy.yml 文件在 deploy.yml 文件中添加hexo deploy --cname &lt;name&gt;到">
+    <meta name="description" content="在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。   1. 配置 GitHub Actions  1.1 修改 .github&#x2F;workflows&#x2F;deploy.yml 文件 在 deploy.yml 文件中添加hexo deploy --cname &lt;name&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置自定义域名">
 <meta property="og:url" content="http://neurowave.tech/2025/02/06/1-%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。  1. 配置 GitHub Actions1.1 修改 .github&#x2F;workflows&#x2F;deploy.yml 文件在 deploy.yml 文件中添加hexo deploy --cname &lt;name&gt;到">
+<meta property="og:description" content="在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。   1. 配置 GitHub Actions  1.1 修改 .github&#x2F;workflows&#x2F;deploy.yml 文件 在 deploy.yml 文件中添加hexo deploy --cname &lt;name&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-06T05:59:00.000Z">
 <meta property="article:modified_time" content="2025-02-21T11:55:13.383Z">
@@ -283,7 +283,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          731 字
+          733 字
         
       </span>
     
@@ -373,58 +373,66 @@
               
               <p>在本篇博客中，我们将介绍如何使用 <strong>GitHub Actions</strong> 来实现 <strong>Hexo 博客的自动化部署</strong>，并且配置 <strong>自定义域名</strong>，确保 GitHub Pages 部署后不会丢失域名设置。</p>
 <hr>
-<h2 id="1-配置-GitHub-Actions"><a href="#1-配置-GitHub-Actions" class="headerlink" title="1. 配置 GitHub Actions"></a><strong>1. 配置 GitHub Actions</strong></h2><h3 id="1-1-修改-github-workflows-deploy-yml-文件"><a href="#1-1-修改-github-workflows-deploy-yml-文件" class="headerlink" title="1.1 修改 .github/workflows/deploy.yml 文件"></a><strong>1.1 修改 <code>.github/workflows/deploy.yml</code> 文件</strong></h3><p>在 <code>deploy.yml</code> 文件中添加<code>hexo deploy --cname &lt;name&gt;</code>到下面位置：</p>
+<h2 id="1-配置-GitHub-Actions"><a class="header-anchor" href="#1-配置-GitHub-Actions"> </a><strong>1. 配置 GitHub Actions</strong></h2>
+<h3 id="1-1-修改-github-workflows-deploy-yml-文件"><a class="header-anchor" href="#1-1-修改-github-workflows-deploy-yml-文件"> </a><strong>1.1 修改 <code>.github/workflows/deploy.yml</code> 文件</strong></h3>
+<p>在 <code>deploy.yml</code> 文件中添加<code>hexo deploy --cname &lt;name&gt;</code>到下面位置：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Pages</span>  <span class="hljs-comment"># 部署到 GitHub Pages</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          mkdir -p ~/.ssh/</span><br><span class="hljs-string">          echo &quot;$SSH_PRIVATE_KEY&quot; | tr -d &#x27;\r&#x27; &gt; ~/.ssh/id_rsa</span><br><span class="hljs-string">          chmod 600 ~/.ssh/id_rsa</span><br><span class="hljs-string">          ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span><br><span class="hljs-string">          git config --global user.name &quot;$GIT_NAME&quot;</span><br><span class="hljs-string">          git config --global user.email &quot;$GIT_EMAIL&quot;</span><br><span class="hljs-string">          hexo deploy --cname neurowave.tech  # 在这里指定域名</span><br></code></pre></td></tr></table></figure>
-
-
-<h2 id="2-配置自定义域名"><a href="#2-配置自定义域名" class="headerlink" title="2. 配置自定义域名"></a><strong>2. 配置自定义域名</strong></h2><h3 id="2-1-在阿里云配置域名解析"><a href="#2-1-在阿里云配置域名解析" class="headerlink" title="2.1 在阿里云配置域名解析"></a><strong>2.1 在阿里云配置域名解析</strong></h3><p>如果你使用的是 <strong>阿里云</strong> 购买的域名，需要在 <strong>阿里云 DNS 控制台</strong> 添加解析记录。</p>
+<h2 id="2-配置自定义域名"><a class="header-anchor" href="#2-配置自定义域名"> </a><strong>2. 配置自定义域名</strong></h2>
+<h3 id="2-1-在阿里云配置域名解析"><a class="header-anchor" href="#2-1-在阿里云配置域名解析"> </a><strong>2.1 在阿里云配置域名解析</strong></h3>
+<p>如果你使用的是 <strong>阿里云</strong> 购买的域名，需要在 <strong>阿里云 DNS 控制台</strong> 添加解析记录。</p>
 <ol>
 <li>进入 <strong>阿里云控制台</strong> → <strong>公网 DNS 解析</strong> → <strong>权威域名解析</strong>。</li>
 <li>选择你的域名，点击 <strong>添加记录</strong> 或 <strong>新手引导</strong>。</li>
 <li>选择 <strong>记录类型</strong> 为 <code>CNAME</code>。</li>
-<li>在 <strong>主机记录</strong> 选择：<ul>
+<li>在 <strong>主机记录</strong> 选择：
+<ul>
 <li><code>www</code>（用于 <code>www.yourdomain.com</code>）</li>
 <li><code>@</code>（用于 <code>yourdomain.com</code>）。</li>
 </ul>
 </li>
-<li>在 <strong>记录值</strong> 中填写你的 GitHub Pages 地址，例如：<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">artintyt.github.<span class="hljs-built_in">io</span><br></code></pre></td></tr></table></figure></li>
+<li>在 <strong>记录值</strong> 中填写你的 GitHub Pages 地址，例如：<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">artintyt.github.<span class="hljs-built_in">io</span><br></code></pre></td></tr></table></figure>
+</li>
 <li>点击 <strong>保存</strong>。</li>
 </ol>
-<h3 id="2-2-生成-CNAME-文件"><a href="#2-2-生成-CNAME-文件" class="headerlink" title="2.2 生成 CNAME 文件"></a><strong>2.2 生成 <code>CNAME</code> 文件</strong></h3><p>如果你的博客使用自定义域名（如 <code>neurowave.tech</code>），你需要在 <code>source/</code> 目录下创建 <code>CNAME</code> 文件：</p>
+<h3 id="2-2-生成-CNAME-文件"><a class="header-anchor" href="#2-2-生成-CNAME-文件"> </a><strong>2.2 生成 <code>CNAME</code> 文件</strong></h3>
+<p>如果你的博客使用自定义域名（如 <code>neurowave.tech</code>），你需要在 <code>source/</code> 目录下创建 <code>CNAME</code> 文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;neurowave.tech&quot;</span> &gt; <span class="hljs-built_in">source</span>/CNAME<br></code></pre></td></tr></table></figure>
-
 <p>然后提交到 <code>master</code> branch：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add <span class="hljs-built_in">source</span>/CNAME<br>git commit -m <span class="hljs-string">&quot;Add CNAME file&quot;</span><br>git push origin master<br></code></pre></td></tr></table></figure>
 <p>你也可以手动创建一个叫 <code>CNAME</code> 文件到 <code>source/</code>。</p>
-<h3 id="2-3-确保-CNAME-在-Hexo-部署时不会丢失"><a href="#2-3-确保-CNAME-在-Hexo-部署时不会丢失" class="headerlink" title="2.3 确保 CNAME 在 Hexo 部署时不会丢失"></a><strong>2.3 确保 <code>CNAME</code> 在 Hexo 部署时不会丢失</strong></h3><p>在 Hexo 的 <code>_config.yml</code> 文件中，确保 <code>deploy</code> 部分包含 <code>cname</code> 和你的自定义域名：</p>
+<h3 id="2-3-确保-CNAME-在-Hexo-部署时不会丢失"><a class="header-anchor" href="#2-3-确保-CNAME-在-Hexo-部署时不会丢失"> </a><strong>2.3 确保 <code>CNAME</code> 在 Hexo 部署时不会丢失</strong></h3>
+<p>在 Hexo 的 <code>_config.yml</code> 文件中，确保 <code>deploy</code> 部分包含 <code>cname</code> 和你的自定义域名：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span>  <span class="hljs-comment"># 你的 GitHub Pages 分支</span><br>  <span class="hljs-attr">message:</span> <span class="hljs-string">&quot;Deploy blog updates&quot;</span><br>  <span class="hljs-attr">cname:</span> <span class="hljs-string">neurowave.tech</span>  <span class="hljs-comment"># 自定义域名</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="2-4-在-GitHub-Pages-启用自定义域名"><a href="#2-4-在-GitHub-Pages-启用自定义域名" class="headerlink" title="2.4 在 GitHub Pages 启用自定义域名"></a><strong>2.4 在 GitHub Pages 启用自定义域名</strong></h3><ol>
+<h3 id="2-4-在-GitHub-Pages-启用自定义域名"><a class="header-anchor" href="#2-4-在-GitHub-Pages-启用自定义域名"> </a><strong>2.4 在 GitHub Pages 启用自定义域名</strong></h3>
+<ol>
 <li><strong>进入 GitHub 仓库</strong> → <strong>Settings</strong> → <strong>Pages</strong>。</li>
 <li>在 <strong>Custom domain</strong> 输入 <code>neurowave.tech</code>。</li>
-<li><strong>勾选 “Enforce HTTPS”</strong>，确保 HTTPS 正常工作。</li>
+<li><strong>勾选 &quot;Enforce HTTPS&quot;</strong>，确保 HTTPS 正常工作。</li>
 <li>等待 GitHub 解析你的域名，通常需要几分钟。</li>
 </ol>
-<h2 id="3-提交并触发-GitHub-Actions"><a href="#3-提交并触发-GitHub-Actions" class="headerlink" title="3. 提交并触发 GitHub Actions"></a><strong>3. 提交并触发 GitHub Actions</strong></h2><p>执行以下命令，将 <code>deploy.yml</code> 配置文件提交到 GitHub：</p>
+<h2 id="3-提交并触发-GitHub-Actions"><a class="header-anchor" href="#3-提交并触发-GitHub-Actions"> </a><strong>3. 提交并触发 GitHub Actions</strong></h2>
+<p>执行以下命令，将 <code>deploy.yml</code> 配置文件提交到 GitHub：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .github/workflows/deploy.yml<br>git commit -m <span class="hljs-string">&quot;Add GitHub Actions for Hexo deployment&quot;</span><br>git push origin master  <span class="hljs-comment"># 如果你的远程分支是 master</span><br></code></pre></td></tr></table></figure>
-
 <p>推送代码后，GitHub Actions 会自动执行部署。</p>
-<h2 id="4-检查-GitHub-Actions-是否成功"><a href="#4-检查-GitHub-Actions-是否成功" class="headerlink" title="4. 检查 GitHub Actions 是否成功"></a><strong>4. 检查 GitHub Actions 是否成功</strong></h2><h3 id="4-1-查看-Actions-运行状态"><a href="#4-1-查看-Actions-运行状态" class="headerlink" title="4.1 查看 Actions 运行状态"></a><strong>4.1 查看 Actions 运行状态</strong></h3><ol>
+<h2 id="4-检查-GitHub-Actions-是否成功"><a class="header-anchor" href="#4-检查-GitHub-Actions-是否成功"> </a><strong>4. 检查 GitHub Actions 是否成功</strong></h2>
+<h3 id="4-1-查看-Actions-运行状态"><a class="header-anchor" href="#4-1-查看-Actions-运行状态"> </a><strong>4.1 查看 Actions 运行状态</strong></h3>
+<ol>
 <li>打开 GitHub 仓库。</li>
 <li>点击 <strong>Actions</strong> 选项卡。</li>
 <li>查看最新的 Workflow 运行记录。</li>
 <li>如果显示绿色 ✅，说明部署成功；如果失败，则查看日志分析问题。</li>
 </ol>
-<h3 id="4-2-访问你的博客"><a href="#4-2-访问你的博客" class="headerlink" title="4.2 访问你的博客"></a><strong>4.2 访问你的博客</strong></h3><p>GitHub Pages 更新可能需要几分钟，稍等后访问：</p>
+<h3 id="4-2-访问你的博客"><a class="header-anchor" href="#4-2-访问你的博客"> </a><strong>4.2 访问你的博客</strong></h3>
+<p>GitHub Pages 更新可能需要几分钟，稍等后访问：</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">https:</span><span class="hljs-comment">//neurowave.tech</span><br></code></pre></td></tr></table></figure>
 <p>如果看到最新内容，说明部署成功！🎉</p>
-<h2 id="5-本地更新博客并推送"><a href="#5-本地更新博客并推送" class="headerlink" title="5. 本地更新博客并推送"></a><strong>5. 本地更新博客并推送</strong></h2><p>当你本地修改博客内容后，使用以下命令提交并触发 GitHub Actions：</p>
+<h2 id="5-本地更新博客并推送"><a class="header-anchor" href="#5-本地更新博客并推送"> </a><strong>5. 本地更新博客并推送</strong></h2>
+<p>当你本地修改博客内容后，使用以下命令提交并触发 GitHub Actions：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br>git commit -m <span class="hljs-string">&quot;Update blog content&quot;</span><br>git push origin master <br></code></pre></td></tr></table></figure>
-
 <p>然后等待 GitHub Actions 自动更新你的博客。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy<br></code></pre></td></tr></table></figure>
-
-<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a><strong>6. 总结</strong></h2><ul>
+<h2 id="6-总结"><a class="header-anchor" href="#6-总结"> </a><strong>6. 总结</strong></h2>
+<ul>
 <li><strong>配置 GitHub Actions</strong>，让博客自动部署。</li>
 <li><strong>创建 <code>CNAME</code> 文件，并确保 Hexo 部署时不会丢失自定义域名</strong>。</li>
 <li><strong>每次 <code>git push</code>，GitHub Actions 自动触发部署</strong>。</li>

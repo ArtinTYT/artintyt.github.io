@@ -25,12 +25,12 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在 macOS M2 设备上，有时我们需要进入 恢复模式（Recovery Mode）来执行一些系统级的操作，比如关闭或开启 SIP（System Integrity Protection）。本文将详细介绍如何进入恢复模式，并管理 SIP 设置。 进入恢复模式 关闭 Mac：如果 Mac 处于开机状态，先正常关机。 进入恢复模式：按住 电源键，直到看到 Apple 标志和“启动选项”的窗口。 选择">
+    <meta name="description" content="在 macOS M2 设备上，有时我们需要进入 恢复模式（Recovery Mode）来执行一些系统级的操作，比如关闭或开启 SIP（System Integrity Protection）。本文将详细介绍如何进入恢复模式，并管理 SIP 设置。  进入恢复模式  关闭 Mac：如果 Mac 处于开机状态，先正常关机。 进入恢复模式：按住 电源键，直到看到 Apple 标志和“启动选项”的窗口。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MacOS-M2 如何进入恢复模式管理SIP">
 <meta property="og:url" content="http://neurowave.tech/2025/02/17/3-macOS-M2%E5%A6%82%E4%BD%95%E5%BC%80%E5%85%B3SIP/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="在 macOS M2 设备上，有时我们需要进入 恢复模式（Recovery Mode）来执行一些系统级的操作，比如关闭或开启 SIP（System Integrity Protection）。本文将详细介绍如何进入恢复模式，并管理 SIP 设置。 进入恢复模式 关闭 Mac：如果 Mac 处于开机状态，先正常关机。 进入恢复模式：按住 电源键，直到看到 Apple 标志和“启动选项”的窗口。 选择">
+<meta property="og:description" content="在 macOS M2 设备上，有时我们需要进入 恢复模式（Recovery Mode）来执行一些系统级的操作，比如关闭或开启 SIP（System Integrity Protection）。本文将详细介绍如何进入恢复模式，并管理 SIP 设置。  进入恢复模式  关闭 Mac：如果 Mac 处于开机状态，先正常关机。 进入恢复模式：按住 电源键，直到看到 Apple 标志和“启动选项”的窗口。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-17T03:44:53.000Z">
 <meta property="article:modified_time" content="2025-03-01T10:45:25.231Z">
@@ -369,34 +369,41 @@
             <div class="markdown-body">
               
               <p>在 macOS M2 设备上，有时我们需要进入 <strong>恢复模式</strong>（Recovery Mode）来执行一些系统级的操作，比如关闭或开启 SIP（System Integrity Protection）。本文将详细介绍如何进入恢复模式，并管理 SIP 设置。</p>
-<h2 id="进入恢复模式"><a href="#进入恢复模式" class="headerlink" title="进入恢复模式"></a>进入恢复模式</h2><ol>
+<h2 id="进入恢复模式"><a class="header-anchor" href="#进入恢复模式"> </a>进入恢复模式</h2>
+<ol>
 <li><strong>关闭 Mac</strong>：如果 Mac 处于开机状态，先正常关机。</li>
 <li><strong>进入恢复模式</strong>：按住 <strong>电源键</strong>，直到看到 Apple 标志和“启动选项”的窗口。</li>
 <li><strong>选择恢复模式</strong>：在启动选项中，点击 <strong>选项（Options）</strong>，然后选择 <strong>继续（Continue）</strong>。</li>
-<li><strong>打开终端</strong>：<ul>
+<li><strong>打开终端</strong>：
+<ul>
 <li>在恢复模式界面，点击 <strong>左上角菜单</strong>。</li>
 <li>选择 <strong>Utilities（实用工具）</strong> &gt; <strong>Terminal（终端）</strong>。</li>
 </ul>
 </li>
 </ol>
-<h2 id="关闭-SIP"><a href="#关闭-SIP" class="headerlink" title="关闭 SIP"></a>关闭 SIP</h2><ol>
-<li>在终端中输入以下命令：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">csrutil <span class="hljs-built_in">disable</span><br></code></pre></td></tr></table></figure></li>
+<h2 id="关闭-SIP"><a class="header-anchor" href="#关闭-SIP"> </a>关闭 SIP</h2>
+<ol>
+<li>在终端中输入以下命令：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">csrutil <span class="hljs-built_in">disable</span><br></code></pre></td></tr></table></figure>
+</li>
 <li>按下 <strong>回车（Enter）</strong>。</li>
 <li>根据提示输入 <strong>管理员密码</strong>（不会显示输入内容，直接输入后按回车）。</li>
 <li>关闭 <strong>终端</strong>。</li>
 <li>点击 <strong>左上角苹果图标</strong>，选择 <strong>Restart（重启）</strong>，等待 Mac 重新启动。</li>
 <li>现在，SIP 已被关闭，你可以运行需要操作的文件。</li>
 </ol>
-<h2 id="重新开启-SIP"><a href="#重新开启-SIP" class="headerlink" title="重新开启 SIP"></a>重新开启 SIP</h2><p>完成所需操作后，建议重新启用 SIP 以保护系统安全。步骤如下：</p>
+<h2 id="重新开启-SIP"><a class="header-anchor" href="#重新开启-SIP"> </a>重新开启 SIP</h2>
+<p>完成所需操作后，建议重新启用 SIP 以保护系统安全。步骤如下：</p>
 <ol>
 <li><strong>重复进入恢复模式</strong>（参考上方步骤）。</li>
-<li><strong>打开终端</strong>，输入以下命令：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">csrutil <span class="hljs-built_in">enable</span><br></code></pre></td></tr></table></figure></li>
+<li><strong>打开终端</strong>，输入以下命令：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">csrutil <span class="hljs-built_in">enable</span><br></code></pre></td></tr></table></figure>
+</li>
 <li>按下 <strong>回车（Enter）</strong>。</li>
 <li>关闭 <strong>终端</strong>。</li>
 <li>点击 <strong>左上角苹果图标</strong>，选择 <strong>Restart（重启）</strong>，等待 Mac 重新启动。</li>
 <li>现在，SIP 已成功启用，系统受保护状态恢复。</li>
 </ol>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>SIP 是 macOS 的一项重要安全机制，通常情况下不建议关闭。只有在需要进行特定修改时才临时关闭，并在操作完成后立即重新启用，以确保系统安全稳定。</p>
+<h2 id="结语"><a class="header-anchor" href="#结语"> </a>结语</h2>
+<p>SIP 是 macOS 的一项重要安全机制，通常情况下不建议关闭。只有在需要进行特定修改时才临时关闭，并在操作完成后立即重新启用，以确保系统安全稳定。</p>
 
               
             </div>

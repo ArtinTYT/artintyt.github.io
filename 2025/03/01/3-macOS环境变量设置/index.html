@@ -25,12 +25,12 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。  1. 临时设置（仅对当前终端会话有效）在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot;  之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。  2. 永久设">
+    <meta name="description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。   1. 临时设置（仅对当前终端会话有效） 在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot; 之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。   2. 永">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macOS 环境变量">
 <meta property="og:url" content="http://neurowave.tech/2025/03/01/3-macOS%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。  1. 临时设置（仅对当前终端会话有效）在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot;  之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。  2. 永久设">
+<meta property="og:description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。   1. 临时设置（仅对当前终端会话有效） 在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot; 之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。   2. 永">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-01T10:28:12.000Z">
 <meta property="article:modified_time" content="2025-03-01T10:49:57.726Z">
@@ -370,42 +370,61 @@
               
               <p>在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。</p>
 <hr>
-<h2 id="1-临时设置（仅对当前终端会话有效）"><a href="#1-临时设置（仅对当前终端会话有效）" class="headerlink" title="1. 临时设置（仅对当前终端会话有效）"></a>1. 临时设置（仅对当前终端会话有效）</h2><p>在终端中直接使用 <code>export</code> 命令可以设置环境变量，这个变量只在当前会话内有效。例如：</p>
+<h2 id="1-临时设置（仅对当前终端会话有效）"><a class="header-anchor" href="#1-临时设置（仅对当前终端会话有效）"> </a>1. 临时设置（仅对当前终端会话有效）</h2>
+<p>在终端中直接使用 <code>export</code> 命令可以设置环境变量，这个变量只在当前会话内有效。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MY_VAR=<span class="hljs-string">&quot;my_value&quot;</span><br></code></pre></td></tr></table></figure>
-
 <p>之后，你可以通过 <code>echo $MY_VAR</code> 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。</p>
 <hr>
-<h2 id="2-永久设置（对所有终端会话有效）"><a href="#2-永久设置（对所有终端会话有效）" class="headerlink" title="2. 永久设置（对所有终端会话有效）"></a>2. 永久设置（对所有终端会话有效）</h2><p>要永久设置环境变量，需要将 <code>export</code> 命令写入到 shell 的配置文件中。macOS 默认使用 zsh（macOS Catalina 及以上版本）：</p>
+<h2 id="2-永久设置（对所有终端会话有效）"><a class="header-anchor" href="#2-永久设置（对所有终端会话有效）"> </a>2. 永久设置（对所有终端会话有效）</h2>
+<p>要永久设置环境变量，需要将 <code>export</code> 命令写入到 shell 的配置文件中。macOS 默认使用 zsh（macOS Catalina 及以上版本）：</p>
 <ul>
-<li><p><strong>如果你使用 zsh</strong>，可以编辑文件 <code>~/.zshrc</code> 或 <code>~/.zprofile</code>：</p>
+<li>
+<p><strong>如果你使用 zsh</strong>，可以编辑文件 <code>~/.zshrc</code> 或 <code>~/.zprofile</code>：</p>
 <ol>
-<li>打开终端，输入命令：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.zshrc<br></code></pre></td></tr></table></figure></li>
-<li>在文件末尾添加你需要的环境变量配置，例如：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MY_VAR=<span class="hljs-string">&quot;my_value&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/your/custom/path&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li>打开终端，输入命令：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.zshrc<br></code></pre></td></tr></table></figure>
+</li>
+<li>在文件末尾添加你需要的环境变量配置，例如：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MY_VAR=<span class="hljs-string">&quot;my_value&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/your/custom/path&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
 <li>保存并退出（在 nano 中按 <code>Control+O</code> 保存，然后 <code>Control+X</code> 退出）。</li>
-<li>使配置立即生效：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure></li>
+<li>使配置立即生效：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
-<li><p><strong>如果你使用 bash</strong>（较旧版本或自行切换到 bash），则修改 <code>~/.bash_profile</code> 或 <code>~/.bashrc</code>：</p>
+<li>
+<p><strong>如果你使用 bash</strong>（较旧版本或自行切换到 bash），则修改 <code>~/.bash_profile</code> 或 <code>~/.bashrc</code>：</p>
 <ol>
-<li>打开终端，输入命令：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.bash_profile<br></code></pre></td></tr></table></figure></li>
-<li>添加环境变量配置：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MY_VAR=<span class="hljs-string">&quot;my_value&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/your/custom/path&quot;</span><br></code></pre></td></tr></table></figure></li>
-<li>保存并退出，然后运行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bash_profile<br></code></pre></td></tr></table></figure></li>
+<li>打开终端，输入命令：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.bash_profile<br></code></pre></td></tr></table></figure>
+</li>
+<li>添加环境变量配置：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MY_VAR=<span class="hljs-string">&quot;my_value&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/your/custom/path&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>保存并退出，然后运行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bash_profile<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
 </ul>
-<h2 id="3-查看环境变量"><a href="#3-查看环境变量" class="headerlink" title="3. 查看环境变量"></a>3. 查看环境变量</h2><ol>
-<li><p><strong>使用 printenv 命令</strong><br>打开终端，输入以下命令查看所有环境变量：  </p>
+<h2 id="3-查看环境变量"><a class="header-anchor" href="#3-查看环境变量"> </a>3. 查看环境变量</h2>
+<ol>
+<li>
+<p><strong>使用 printenv 命令</strong><br>
+打开终端，输入以下命令查看所有环境变量：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">printenv</span><br></code></pre></td></tr></table></figure>
 <p>这条命令会列出当前会话中的所有环境变量及其值。</p>
 </li>
-<li><p><strong>使用 env 命令</strong><br>类似于 printenv，env 命令也可以显示环境变量：  </p>
+<li>
+<p><strong>使用 env 命令</strong><br>
+类似于 printenv，env 命令也可以显示环境变量：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">env</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p><strong>查看特定环境变量</strong><br>如果只想查看某个特定的环境变量，例如 PATH，可以这样输入：  </p>
+<li>
+<p><strong>查看特定环境变量</strong><br>
+如果只想查看某个特定的环境变量，例如 PATH，可以这样输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p><strong>使用 set 命令</strong><br>输入以下命令也可以显示当前的所有环境变量和 shell 函数，但输出可能会更长：  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span><br></code></pre></td></tr></table></figure></li>
+<li>
+<p><strong>使用 set 命令</strong><br>
+输入以下命令也可以显示当前的所有环境变量和 shell 函数，但输出可能会更长：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span><br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 
               
