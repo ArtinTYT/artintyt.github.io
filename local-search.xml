@@ -8,7 +8,7 @@
     <link href="/2025/06/24/5-2-RNN%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <url>/2025/06/24/5-2-RNN%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     
-    <content type="html"><![CDATA[<h1 id="2-RNN-相关技术"><a href="#2-RNN-相关技术" class="headerlink" title="2. RNN 相关技术"></a>2. RNN 相关技术</h1><h2 id="1-潜变量自回归模型与RNN"><a href="#1-潜变量自回归模型与RNN" class="headerlink" title="1. 潜变量自回归模型与RNN"></a>1. 潜变量自回归模型与RNN</h2><ul><li><p>RNN用<strong>潜变量 $h_t$ 总结历史信息</strong>，适合处理序列数据。</p></li><li><p><strong>隐藏状态更新公式</strong>：$$h_t &#x3D; \phi(W_{hh} h_{t-1} + W_{hx} x_t + b_h)$$</p><ul><li>$h_t$：当前时间步的隐藏状态（记忆）  </li><li>$h_{t-1}$：上一个时间步的隐藏状态（过去的记忆）  </li><li>$x_t$：当前输入（如词向量）  </li><li>$W_{hh}, W_{hx}$：可学习的权重矩阵，用于融合历史和当前输入  </li><li>$b$：偏置项  </li><li>$\phi$：激活函数（如 tanh 或 ReLU），引入非线性</li><li>如果去掉 $W_{hh} h_{t-1}$，RNN就退化成普通的MLP。</li><li>RNN 把过去的记忆 $h_{t-1}$ 和当前输入 $x_t$ 融合，经过变换和激活函数，得到新的记忆 $h_t$。这就是它记住上下文的方式。</li></ul></li><li><p><strong>输出层公式</strong>：$$o_t &#x3D; W_{ho} h_t + b_o$$</p></li><li><p><strong>训练目标</strong>：用当前词 $x_t$ 和前一状态 $h_{t-1}$ 计算 $h_t$，再预测下一个词 $x_{t+1}$，损失函数比较 $o_t$ 与 $x_{t+1}$ 的差异。</p></li></ul><h2 id="2-困惑度（Perplexity）"><a href="#2-困惑度（Perplexity）" class="headerlink" title="2. 困惑度（Perplexity）"></a>2. 困惑度（Perplexity）</h2><ul><li>衡量语言模型性能，常用<strong>平均交叉熵</strong>：$$\pi &#x3D; -\frac{1}{n} \sum_{i&#x3D;1}^n \log p(x_i | x_1, …, x_{i-1})$$</li><li>通常用 $\exp(\pi)$ 作为困惑度（perplexity）指标，表示模型对下一个词的不确定性，越小越好。</li><li>完美模型：perplexity&#x3D;1</li><li>越大越差（极端情况趋于无穷大）</li></ul><h2 id="3-梯度裁剪（Gradient-Clipping）"><a href="#3-梯度裁剪（Gradient-Clipping）" class="headerlink" title="3. 梯度裁剪（Gradient Clipping）"></a>3. 梯度裁剪（Gradient Clipping）</h2><ul><li>RNN 反向传播时，长序列会导致梯度爆炸或消失。</li><li><strong>梯度裁剪</strong>可有效防止梯度爆炸：$$g \leftarrow \min\left(1, \frac{\theta}{|g|}\right) g$$如果梯度范数超过阈值 $\theta$，则按比例缩放到阈值。(i.e. 当 $|g| &gt; \theta$ 时才裁剪)</li></ul><h2 id="4-RNN常见结构"><a href="#4-RNN常见结构" class="headerlink" title="4. RNN常见结构"></a>4. RNN常见结构</h2><ul><li>One to one：MLP（简化版，单输入单输出）</li><li>One to many：文本生成</li><li>Many to one：文本分类</li><li>Many to many：机器翻译、序列标注、问答等</li></ul><h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><ul><li>RNN 能处理序列相关性，其<em>输出</em> 由<strong>当前输入</strong>和<strong>历史隐状态</strong>共同决定。</li><li>语言模型中，RNN根据当前词预测下一个词。</li><li>困惑度（perplexity）是衡量语言模型效果的关键指标。</li></ul><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://zh.d2l.ai/chapter_recurrent-neural-networks/language-models-and-dataset.html">动手学深度学习（李沐）：语言模型和数据集</a></li><li><a href="https://zh.d2l.ai/chapter_recurrent-neural-networks/rnn.html">动手学深度学习（李沐）：循环神经网络</a></li><li><a href="https://www.bilibili.com/video/BV1ZX4y1F7K3/">Bilibili 视频讲解：语言模型和数据集</a></li><li><a href="https://www.bilibili.com/video/BV1D64y1z7CA/">Bilibili 视频讲解：循环神经网络</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="2-RNN-相关技术"><a href="#2-RNN-相关技术" class="headerlink" title="2. RNN 相关技术"></a>2. RNN 相关技术</h1><h2 id="1-潜变量自回归模型与RNN"><a href="#1-潜变量自回归模型与RNN" class="headerlink" title="1. 潜变量自回归模型与RNN"></a>1. 潜变量自回归模型与RNN</h2><ul><li><p>RNN用<strong>潜变量 $h_t$ 总结历史信息</strong>，适合处理序列数据。</p></li><li><p><strong>隐藏状态更新公式</strong>：[h_t &#x3D; \phi(W_{hh} h_{t-1} + W_{hx} x_t + b_h)]</p><ul><li>$h_t$：当前时间步的隐藏状态（记忆）  </li><li>$h_{t-1}$：上一个时间步的隐藏状态（过去的记忆）  </li><li>$x_t$：当前输入（如词向量）  </li><li>$W_{hh}, W_{hx}$：可学习的权重矩阵，用于融合历史和当前输入  </li><li>$b$：偏置项  </li><li>$\phi$：激活函数（如 tanh 或 ReLU），引入非线性</li><li>如果去掉 $W_{hh} h_{t-1}$，RNN就退化成普通的MLP。</li><li>RNN 把过去的记忆 $h_{t-1}$ 和当前输入 $x_t$ 融合，经过变换和激活函数，得到新的记忆 $h_t$。这就是它记住上下文的方式。</li></ul></li><li><p><strong>输出层公式</strong>：(o_t &#x3D; W_{ho} h_t + b_o)</p></li><li><p><strong>训练目标</strong>：用当前词 (x_t) 和前一状态 (h_{t-1}) 计算 (h_t)，再预测下一个词 (x_{t+1})，损失函数比较 (o_t) 与 (x_{t+1}) 的差异。</p></li></ul><h2 id="2-困惑度（Perplexity）"><a href="#2-困惑度（Perplexity）" class="headerlink" title="2. 困惑度（Perplexity）"></a>2. 困惑度（Perplexity）</h2><ul><li>衡量语言模型性能，常用<strong>平均交叉熵</strong>：[\pi &#x3D; -\frac{1}{n} \sum_{i&#x3D;1}^n \log p(x_i | x_1, …, x_{i-1})]</li><li>通常用 (\exp(\pi)) 作为困惑度（perplexity）指标，表示模型对下一个词的不确定性，越小越好。</li><li>完美模型：perplexity&#x3D;1</li><li>越大越差（极端情况趋于无穷大）</li></ul><h2 id="3-梯度裁剪（Gradient-Clipping）"><a href="#3-梯度裁剪（Gradient-Clipping）" class="headerlink" title="3. 梯度裁剪（Gradient Clipping）"></a>3. 梯度裁剪（Gradient Clipping）</h2><ul><li>RNN 反向传播时，长序列会导致梯度爆炸或消失。</li><li><strong>梯度裁剪</strong>可有效防止梯度爆炸：[g \leftarrow \min\left(1, \frac{\theta}{|g|}\right) g]如果梯度范数超过阈值 (\theta)，则按比例缩放到阈值。(i.e. 当 (|g| &gt; \theta) 时才裁剪)</li></ul><h2 id="4-RNN常见结构"><a href="#4-RNN常见结构" class="headerlink" title="4. RNN常见结构"></a>4. RNN常见结构</h2><ul><li>One to one：MLP（简化版，单输入单输出）</li><li>One to many：文本生成</li><li>Many to one：文本分类</li><li>Many to many：机器翻译、序列标注、问答等</li></ul><h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><ul><li>RNN 能处理序列相关性，其<em>输出</em> 由<strong>当前输入</strong>和<strong>历史隐状态</strong>共同决定。</li><li>语言模型中，RNN根据当前词预测下一个词。</li><li>困惑度（perplexity）是衡量语言模型效果的关键指标。</li></ul><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://zh.d2l.ai/chapter_recurrent-neural-networks/language-models-and-dataset.html">动手学深度学习（李沐）：语言模型和数据集</a></li><li><a href="https://zh.d2l.ai/chapter_recurrent-neural-networks/rnn.html">动手学深度学习（李沐）：循环神经网络</a></li><li><a href="https://www.bilibili.com/video/BV1ZX4y1F7K3/">Bilibili 视频讲解：语言模型和数据集</a></li><li><a href="https://www.bilibili.com/video/BV1D64y1z7CA/">Bilibili 视频讲解：循环神经网络</a></li></ul>]]></content>
     
     
     <categories>
@@ -20,9 +20,9 @@
     
     <tags>
       
-      <tag>DL</tag>
-      
       <tag>RNN</tag>
+      
+      <tag>DL</tag>
       
     </tags>
     
@@ -66,9 +66,9 @@
     
     <tags>
       
-      <tag>DL</tag>
-      
       <tag>RNN</tag>
+      
+      <tag>DL</tag>
       
     </tags>
     
@@ -313,9 +313,9 @@
     
     <tags>
       
-      <tag>GitHub</tag>
-      
       <tag>Hexo</tag>
+      
+      <tag>GitHub</tag>
       
       <tag>SSH</tag>
       
@@ -344,9 +344,9 @@
     
     <tags>
       
-      <tag>GitHub</tag>
-      
       <tag>Hexo</tag>
+      
+      <tag>GitHub</tag>
       
       <tag>SSH</tag>
       
@@ -373,9 +373,9 @@
     
     <tags>
       
-      <tag>Conda</tag>
-      
       <tag>macOS</tag>
+      
+      <tag>Conda</tag>
       
     </tags>
     
@@ -400,9 +400,9 @@
     
     <tags>
       
-      <tag>GitHub</tag>
-      
       <tag>Hexo</tag>
+      
+      <tag>GitHub</tag>
       
       <tag>SSH</tag>
       
@@ -431,9 +431,9 @@
     
     <tags>
       
-      <tag>GitHub</tag>
-      
       <tag>Hexo</tag>
+      
+      <tag>GitHub</tag>
       
       <tag>Error</tag>
       
@@ -551,13 +551,13 @@
     
     <tags>
       
-      <tag>AI</tag>
-      
-      <tag>DL</tag>
+      <tag>LLM</tag>
       
       <tag>ML</tag>
       
-      <tag>LLM</tag>
+      <tag>DL</tag>
+      
+      <tag>AI</tag>
       
     </tags>
     
