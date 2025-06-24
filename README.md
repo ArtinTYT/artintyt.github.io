@@ -1,56 +1,26 @@
 [English](README.md) | [中文](README_CN.md)
 
-# Artin's Tech Learning & Growth Blog
+# Artin's Tech Notes
 
-Hey there! Welcome to my personal blog — a space where I document what I’m learning, building, breaking, and fixing. Whether it’s machine learning, debugging weird system errors, or exploring AI agent architectures, this blog is my digital brain dump.
-
----
-
-## 🧭 What's in the blog?
-
-### 🤖 Machine Learning & Deep Learning
-- Core ML/DL algorithm concepts with code examples
-- Deep learning environment setup (manual + automated)
-- LLMs (Large Language Models): architecture, training, fine-tuning
-- Real-world applications and experimental notes
-
-### 🛠️ System Setup & Bug Fixes
-- Dev environment setup guides (Node, Git, VSCode, etc.)
-- Common errors and how I solved them (e.g. `spawn failed`, port issues)
-- Useful terminal tools and automation tips
-- CI/CD & GitHub Actions quirks I ran into
-
-### 🧩 Algorithms & Coding Interviews
-- LeetCode problem breakdowns
-- Interview question write-ups and patterns
-- Recursion, DP, two-pointers, and other core problem-solving strategies
-- Python & C++ snippets for common algorithm templates
-
-### 📊 Data Science & Visualization
-- Data cleaning, transformation & visualization workflows
-- Case studies using Pandas, NumPy, Matplotlib
-- Thoughts on data-driven decision making
-- End-to-end analysis projects
-
-### 🌐 Blog & Website Development
-- Building this blog using Hexo + GitHub Pages
-- Auto-deploy with GitHub Actions
-- Custom domain, password-protected posts, hidden drafts
-- Theme tweaks and plugin recommendations
+Hey! Welcome to my blog. Here I jot down what I learn, the problems I run into, and how I solve them. If you're also figuring things out on your tech journey, hope this helps you too!
 
 ---
 
-## ✨ What makes this blog different?
+## Main Topics
 
-- 🧠 100% hands-on — I only post what I’ve personally tested or struggled with  
-- 🤖 AI helps me write, but I edit every line myself  
-- 🎯 Focused on clarity, not fluff. If I don’t get it, I won’t fake it.
+- Machine Learning & Deep Learning: Simple explanations, hands-on tips, and real-world questions.
+- System Setup & Troubleshooting: Dev environment, tool configs, and weird bugs I’ve fixed.
+- Algorithms & Interview Prep: Coding patterns, common questions, and my interview notes.
+- Data Analysis & Visualization: Data cleaning, analysis flows, and quick viz tricks.
+- Blog Building & Deployment: Hexo, GitHub Actions, custom domains, and practical guides.
 
 ---
 
-## 📬 Reach out
+## Contact
 
-Got a question, feedback, or want to connect? Drop me a message or find me on GitHub. Let’s build and learn together.
+Questions or want to chat? Leave a comment or find me on GitHub. Let’s learn and grow together!
+
+Blog: https://neurowave.tech
 
 ---
 
