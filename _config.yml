@@ -122,3 +122,30 @@ deploy:
 # sitemap
 sitemap:
     path: sitemap.xml
+
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '""'''
+  plugins:
+    - markdown-it-footnote
+    - markdown-it-deflist
+    - markdown-it-abbr
+    - markdown-it-container
+    - markdown-it-mark
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-mathjax3
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ' '
+    case: 0
+    separator: '-'
