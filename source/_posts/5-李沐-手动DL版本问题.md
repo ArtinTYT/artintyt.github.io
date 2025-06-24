@@ -1,5 +1,5 @@
 ---
-title: 李沐-手动DL 环境配置
+title: 李沐《手动深度学习》环境配置
 date: 2025-04-16 19:11:33
 tags:
   - DL
@@ -95,4 +95,12 @@ conda env list
 conda deactivate
 conda env remove -n d2l-py310
 ```
+
+
+## 参考资料
+
+- [Bilibili 视频讲解：安装](https://www.bilibili.com/video/BV18p4y1h7Dr/)
+
+
+
 
