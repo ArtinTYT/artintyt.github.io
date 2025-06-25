@@ -3,10 +3,10 @@ title: 1.文本预处理
 date: 2025-04-17 12:22:16
 tags:
     - RNN
-    - DL
+    - Deep_Learning
     
 categories:
-    - Deep Learning
+    - RNN
 ---
 # 1. 文本预处理
 
@@ -58,7 +58,7 @@ categories:
 - 词表将文本单位（token）映射为数字索引，便于模型处理。
 
 ## 参考资料
-- [动手学深度学习（李沐）：序列模型](https://zh.d2l.ai/chapter_recurrent-neural-networks/sequence.html)
-- [动手学深度学习（李沐）：文本处理](https://zh.d2l.ai/chapter_recurrent-neural-networks/text-preprocessing.html)
-- [Bilibili 视频讲解：序列模型](https://www.bilibili.com/video/BV1L44y1m768/)
-- [Bilibili 视频讲解：文本处理](https://www.bilibili.com/video/BV1Fo4y1Q79L/)
+- [李沐《动手学深度学习》：序列模型](https://zh.d2l.ai/chapter_recurrent-neural-networks/sequence.html)
+- [李沐《动手学深度学习》：文本处理](https://zh.d2l.ai/chapter_recurrent-neural-networks/text-preprocessing.html)
+- [Bilibili：序列模型](https://www.bilibili.com/video/BV1L44y1m768/)
+- [Bilibili：文本处理](https://www.bilibili.com/video/BV1Fo4y1Q79L/)

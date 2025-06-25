@@ -2,10 +2,10 @@
 title: 4.长短期记忆网络 LSTM
 date: 2025-04-17 15:22:30
 tags:
-    - DL
+    - Deep_Learning
     - RNN
 categories:
-    - Deep Learning
+    - RNN
 ---
 # 4. 长短期记忆网络（Long short-term memory, LSTM）
 
@@ -64,5 +64,6 @@ H_t &= O_t \odot \tanh(C_t)
 - **通俗理解**：LSTM 就像一个“智能记事本”，能随时决定擦掉哪些旧内容、记下哪些新内容、对外展示哪些重点，让信息流动更有条理。
 
 ## 参考资料
-- [《动手学深度学习》（李沐）：LSTM](https://zh-v2.d2l.ai/chapter_recurrent-modern/lstm.html)
-- [Bilibili 视频讲解：LSTM](https://www.bilibili.com/video/BV1JU4y1H7PC/)
+
+- [李沐《动手学深度学习》：LSTM](https://zh-v2.d2l.ai/chapter_recurrent-modern/lstm.html)
+- [Bilibili：LSTM](https://www.bilibili.com/video/BV1JU4y1H7PC/)

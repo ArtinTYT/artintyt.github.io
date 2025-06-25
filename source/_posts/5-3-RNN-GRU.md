@@ -2,10 +2,10 @@
 title: 3.门控循环单元 GRU
 date: 2025-04-17 14:53:30
 tags:
-    - DL
+    - Deep_Learning
     - RNN
 categories:
-    - Deep Learning
+    - RNN
 ---
 
 # 3. 门控循环单元（Gated Recurrent Unit, GRU）
@@ -55,6 +55,6 @@ $$
 - **通俗理解**：GRU 就像"信息筛选器"，每个时间步自动判断保留多少旧知识、吸收多少新知识，让神经网络更聪明地理解和处理序列信息。
 
 ## 参考资料
-- [《动手学深度学习》（李沐）：GRU](https://zh-v2.d2l.ai/chapter_recurrent-modern/gru.html)
-- [Bilibili 视频讲解：GRU](https://www.bilibili.com/video/BV1mf4y157N2/)
+- [李沐《动手学深度学习》：GRU](https://zh-v2.d2l.ai/chapter_recurrent-modern/gru.html)
+- [Bilibili：GRU](https://www.bilibili.com/video/BV1mf4y157N2/)
 

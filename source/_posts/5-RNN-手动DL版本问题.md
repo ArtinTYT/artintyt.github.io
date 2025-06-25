@@ -1,12 +1,12 @@
 ---
-title: 李沐《手动深度学习》环境配置
+title: 李沐《手动深度学习》环境配置问题
 date: 2025-04-16 19:11:33
 tags:
-  - DL
+  - Deep_Learning
   - Error
 
 categories:
-  - Deep Learning
+  - NLP
 ---
 
 包括安装步骤、踩坑提示、适配d2l版本说明，适合写给想要在本地用 Jupyter Notebook 或者 PyCharm 学习这本书的朋友。

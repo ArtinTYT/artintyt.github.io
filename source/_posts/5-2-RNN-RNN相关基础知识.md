@@ -3,9 +3,9 @@ title: 2.RNN相关基础知识
 date: 2025-04-17 13:33:10
 tags:
     - RNN
-    - DL
+    - Deep_Learning
 categories:
-    - Deep Learning
+    - RNN
 ---
 # 2. RNN 相关技术
 
@@ -56,7 +56,7 @@ $$g \leftarrow \min\left(1, \frac{\theta}{\|g\|}\right) g$$
 - 困惑度（perplexity）是衡量语言模型效果的关键指标。
 
 ## 参考资料
-- [动手学深度学习（李沐）：语言模型和数据集](https://zh.d2l.ai/chapter_recurrent-neural-networks/language-models-and-dataset.html)
-- [动手学深度学习（李沐）：循环神经网络](https://zh.d2l.ai/chapter_recurrent-neural-networks/rnn.html)
-- [Bilibili 视频讲解：语言模型和数据集](https://www.bilibili.com/video/BV1ZX4y1F7K3/)
-- [Bilibili 视频讲解：循环神经网络](https://www.bilibili.com/video/BV1D64y1z7CA/)
+- [李沐《动手学深度学习》：语言模型和数据集](https://zh.d2l.ai/chapter_recurrent-neural-networks/language-models-and-dataset.html)
+- [李沐《动手学深度学习》：循环神经网络](https://zh.d2l.ai/chapter_recurrent-neural-networks/rnn.html)
+- [Bilibili：语言模型和数据集](https://www.bilibili.com/video/BV1ZX4y1F7K3/)
+- [Bilibili：循环神经网络](https://www.bilibili.com/video/BV1D64y1z7CA/)
