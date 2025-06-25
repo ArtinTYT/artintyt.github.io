@@ -4,7 +4,8 @@ date: 2025-04-18 10:12:30
 tags:
     - Deep_Learning
     - NLP
-	- Embedding
+    - Embedding
+
 categories:
     - NLP
 ---

@@ -1,5 +1,5 @@
 ---
-title: 1.Attention 理论
+title: 1.Attention 核心思想
 date: 2025-04-18 12:32:10
 tags:
     - Deep_Learning
@@ -47,7 +47,7 @@ categories:
   $$
 - 代入核回归公式后，$\alpha(x, x_i)$ 可写为 softmax 形式：
 	$$\begin{split}\begin{aligned} f(x) &=\sum_{i=1}^n \alpha(x, x_i) y_i\\ &= \sum_{i=1}^n \frac{\exp\left(-\frac{1}{2}(x - x_i)^2\right)}{\sum_{j=1}^n \exp\left(-\frac{1}{2}(x - x_j)^2\right)} y_i \\&= \sum_{i=1}^n \mathrm{softmax}\left(-\frac{1}{2}(x - x_i)^2\right) y_i. \end{aligned}\end{split}$$
- - 解释：$x$ 离哪个 $x_i$近 ，$y_i$ 被分配的权重越大。
+ - **解释**：$x$ 离哪个 $x_i$近 ，$y_i$ 被分配的权重越大。
  - **非参数模型**：无需显式参数，数据足够时有一致性，能逼近最优预测。
  
 ## 4. 带参数注意力池化（可学习）
@@ -56,10 +56,10 @@ categories:
   $$
   f(x) = \sum_{i=1}^n \text{softmax}\left(-\frac{1}{2}[(x - x_i) \cdot w]^2\right) \cdot y_i
   $$
-  - $w$ 可通过学习自适应分配 **注意力权重 $\alpha(x, x_i)$**，模型更灵活。
+- $w$ 可通过学习自适应分配 **注意力权重 $\alpha(x, x_i)$**，模型更灵活。
 
 
-### **总结**
+## 5. 总结
 
 - **注意力机制**核心在于通过query和key分配权重，有偏向性地聚合输入：
   $$
