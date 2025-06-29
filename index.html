@@ -290,14 +290,14 @@
           <i class="index-pin iconfont icon-top" title="Pinned post"></i>
         
         <a href="/2025/04/20/test/" target="_self">
-          重要通知：网站更新计划变更
+          通知 + 学习心得
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2025/04/20/test/" target="_self">
         <div>
-          重要通知：网站更新计划变更 自 2025年4月20日 起，建站内容将全面转向 AI Agent 自动更新。 其他内容聚焦 机器学习（ML）、深度学习（DL）、大语言模型（LLMs） 等领域的核心思考，不再更新建站相关技术分享。 历史文章仍可查阅，感谢支持，未来一起探索 AI 前沿！
+          重要通知：网站更新计划变更 自 2025年4月20日 起，建站内容将全面转向 AI Agent 自动更新。 其他内容聚焦 机器学习（ML）、深度学习（DL）、大语言模型（LLMs） 等领域的核心思考，不再更新建站相关技术分享。 历史文章仍可查阅，感谢支持，未来一起探索 AI 前沿！  学习过程+心得   李沐《手动深度学习》视频 + 书  李沐老师的讲解非常清晰，无论理论、实践还是应用发展，都很
         </div>
       </a>
 
@@ -312,7 +312,7 @@
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-24T09:19:50.147Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T15:16:29.538Z">Updated within 7 days</span>
               
             
             
@@ -329,6 +329,8 @@
             
               <a href="/tags/%E9%80%9A%E7%9F%A5/">#通知</a>
             
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
           </div>
         
       </div>
@@ -341,15 +343,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/18/7-1-Attention/" target="_self">
-          1.Attention 核心思想
+        <a href="/2025/04/19/7-5-%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" target="_self">
+          5. Positional Encoding 位置编码
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/7-1-Attention/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/19/7-5-%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" target="_self">
         <div>
-          1. Attention 核心思想  1. 动机  灵感：人类处理信息时，会选择性关注关键部分，注意力机制模仿了这一处理方式。 作用：序列模型面对长输入时，注意力机制让模型能分配不同“权重”，聚焦重要信息片段。 实现：为每个输出位置，模型通过查询（query） 和 键（key） 计算相关性分数，对输入各部分进行加权汇聚，生成上下文表示。   2. 非参数注意力池化（Nadaraya-Watson
+          5. Positional Encoding 位置编码  1. 动机   为什么要加位置编码？  Self-Attention 本身不感知输入顺序，把序列当成无序集合（Set），缺乏序列（Sequence）信息。 必须人为注入&quot;位置信息&quot;，让模型知道&quot;顺序&quot; （Transformer需要）。    和其他架构对比：  CNN 通过卷积核隐式捕捉局部顺序 RN
         </div>
       </a>
 
@@ -357,14 +359,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-18 12:32" pubdate>
-              2025-04-18
+            <time datetime="2025-04-19 15:55" pubdate>
+              2025-04-19
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-25T16:27:13.054Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T19:22:29.426Z">Updated within 7 days</span>
               
             
             
@@ -418,15 +420,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/18/6-2-NLP-%E8%AF%8D%E5%B5%8C%E5%85%A5/" target="_self">
-          1.词嵌入（Word Embedding，Word2Vec）
+        <a href="/2025/04/19/7-6-%E5%A4%9A%E5%A4%B4%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/" target="_self">
+          6. Multi-Head Self-Attention 多头自注意力
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/6-2-NLP-%E8%AF%8D%E5%B5%8C%E5%85%A5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/19/7-6-%E5%A4%9A%E5%A4%B4%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/" target="_self">
         <div>
-          1. 词嵌入（Word Embedding，Word2Vec）  1. 动机  **独热向量（one-hot）**的问题：  高维稀疏性：独热向量维度极高，且大部分元素为 0。 缺乏语义相似性：无法表达词语间的语义关系（例如，&quot;猫&quot;和&quot;狗&quot;都是动物，但向量点积为 0）。     2. 自监督 Word2Vec  目标：将每个词映射到一个低维稠密向量，使语义相
+          6. Multi-Head Self-Attention 多头自注意力  1. 核心思想  多头注意力（Multi-Head Attention） 是在自注意力（self-attention）基础上的扩展，通过并行设置多个&quot;注意力头&quot;（head），让模型能从不同子空间提取信息，提升表达能力和鲁棒性。   2. 基本结构  基本思路：将 query、key、value 线性投影到
         </div>
       </a>
 
@@ -434,14 +436,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-18 10:12" pubdate>
-              2025-04-18
+            <time datetime="2025-04-19 15:55" pubdate>
+              2025-04-19
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-25T16:28:57.060Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T19:23:01.828Z">Updated within 7 days</span>
               
             
             
@@ -462,7 +464,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
+  <a href="/categories/Attention/" class="category-chain-item">Attention</a>
   
   
 
@@ -481,7 +483,7 @@
             
               <a href="/tags/NLP/">#NLP</a>
             
-              <a href="/tags/Embedding/">#Embedding</a>
+              <a href="/tags/Attention/">#Attention</a>
             
           </div>
         
@@ -495,15 +497,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/17/5-4-RNN-LSTM/" target="_self">
-          4.长短期记忆网络 LSTM
+        <a href="/2025/04/19/7-4-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/" target="_self">
+          4. Self-Attention 自注意力
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/17/5-4-RNN-LSTM/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/19/7-4-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/" target="_self">
         <div>
-          4. 长短期记忆网络（Long short-term memory, LSTM）  核心思想：LSTM 通过引入“门控”机制，能够选择性地记住有用信息、忘记无用信息，有效缓解RNN在处理长序列时的“梯度消失”和“长期依赖”问题。   1. 门结构与功能  忘记门（Forget Gate）Ft：决定前一时刻记忆 Ct−1 有多少被保留到当前时刻，Ft 取0则完全遗忘，取1则全部保留。 输入门（Inp
+          4. Self-Attention 自注意力  1. 核心思想  自注意力（Self-Attention） 是一种用于序列建模的机制，可以让序列中的每个元素都与其他所有元素建立直接联系，实现对全局依赖的建模。 在 NLP、CV 及各种序列任务中，自注意力显著提升了模型对远距离依赖的捕捉能力、并行计算效率和表达力。    2. 基本定义与结构   输入：一个长度为 n 的序列 x1,...,xn，每
         </div>
       </a>
 
@@ -511,14 +513,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-17 15:22" pubdate>
-              2025-04-17
+            <time datetime="2025-04-19 14:11" pubdate>
+              2025-04-19
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-25T16:38:17.760Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T18:56:09.551Z">Updated within 7 days</span>
               
             
             
@@ -539,7 +541,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/RNN/" class="category-chain-item">RNN</a>
+  <a href="/categories/Attention/" class="category-chain-item">Attention</a>
   
   
 
@@ -553,11 +555,13 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/RNN/">#RNN</a>
             
               <a href="/tags/Deep-Learning/">#Deep_Learning</a>
             
+              <a href="/tags/NLP/">#NLP</a>
+            
+              <a href="/tags/Attention/">#Attention</a>
+            
           </div>
         
       </div>
@@ -570,15 +574,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/17/5-3-RNN-GRU/" target="_self">
-          3.门控循环单元 GRU
+        <a href="/2025/04/19/7-2-%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%88%86%E6%95%B0/" target="_self">
+          2. 注意力分数
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/17/5-3-RNN-GRU/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/19/7-2-%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%88%86%E6%95%B0/" target="_self">
         <div>
-          3. 门控循环单元（Gated Recurrent Unit, GRU）  核心思想：GRU 能动态决定当前时刻要“记住”多少过去的信息、要“遗忘”多少无用内容，从而有效缓解传统RNN的长期依赖问题。它通过“更新门”和“重置门”两个机制，灵活调整信息流。   1. 信息处理机制  不是每个历史信息都同等重要，GRU能自动筛选：  更新门（Update Gate）Zt：决定当前隐状态 Ht 有多少来
+          2. Attention Scoring Function  1. 基本思想  注意力机制的核心：根据查询（query，q）和键（key，ki）的相关性分配权重，从所有值（value，vi）中&quot;加权取信息&quot;。 定义：注意力机制通过给每个值 vi 分配权重 α(q,ki)，加权求和得到输出：  f(q)=∑i=1mα(q,ki)vi​  其中 α(q,ki) 是 attentio
         </div>
       </a>
 
@@ -586,14 +590,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-17 14:53" pubdate>
-              2025-04-17
+            <time datetime="2025-04-19 12:01" pubdate>
+              2025-04-19
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-25T12:12:34.362Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T19:34:38.832Z">Updated within 7 days</span>
               
             
             
@@ -614,7 +618,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/RNN/" class="category-chain-item">RNN</a>
+  <a href="/categories/Attention/" class="category-chain-item">Attention</a>
   
   
 
@@ -628,11 +632,13 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/RNN/">#RNN</a>
             
               <a href="/tags/Deep-Learning/">#Deep_Learning</a>
             
+              <a href="/tags/NLP/">#NLP</a>
+            
+              <a href="/tags/Attention/">#Attention</a>
+            
           </div>
         
       </div>
@@ -645,15 +651,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/17/5-2-RNN-RNN%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" target="_self">
-          2.RNN相关基础知识
+        <a href="/2025/04/19/7-3-Bahdanau%E6%B3%A8%E6%84%8F%E5%8A%9B/" target="_self">
+          3. Bahdanau 注意力（Seq2Seq + Attention）
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/17/5-2-RNN-RNN%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/19/7-3-Bahdanau%E6%B3%A8%E6%84%8F%E5%8A%9B/" target="_self">
         <div>
-          2. RNN 相关技术  1. 潜变量自回归模型与RNN   RNN用潜变量 ht 总结历史信息，适合处理序列数据。   隐藏状态更新公式： ht=ϕ(Whhht−1+Whxxt+bh) ht：当前时间步的隐藏状态（记忆） ht−1：上一个时间步的隐藏状态（过去的记忆） xt：当前输入（如词向量） Whh,Whx：可学习的权重矩阵，用于融合历史和当前输入 b：偏置项 ϕ：激活函数（如 tanh 或
+          3. Bahdanau 注意力（Seq2Seq + Attention）  1. 动机   经典 Seq2Seq（编码器-解码器）模型使用两个 RNN：  Encoder：把整个输入序列&quot;压缩&quot;为一个固定长度的上下文向量（context）。 Decoder：每一步都依赖这同一个 context 生成下一个输出。    局限性：  输入句子很长时，固定长度的 context 向量
         </div>
       </a>
 
@@ -661,14 +667,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-17 13:33" pubdate>
-              2025-04-17
+            <time datetime="2025-04-19 12:01" pubdate>
+              2025-04-19
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-25T12:12:08.440Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T18:54:56.137Z">Updated within 7 days</span>
               
             
             
@@ -689,7 +695,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/RNN/" class="category-chain-item">RNN</a>
+  <a href="/categories/Attention/" class="category-chain-item">Attention</a>
   
   
 
@@ -703,11 +709,13 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/RNN/">#RNN</a>
             
               <a href="/tags/Deep-Learning/">#Deep_Learning</a>
             
+              <a href="/tags/NLP/">#NLP</a>
+            
+              <a href="/tags/Attention/">#Attention</a>
+            
           </div>
         
       </div>
@@ -720,15 +728,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/17/5-1-RNN-%E6%96%87%E6%9C%AC%E9%A2%84%E5%A4%84%E7%90%86/" target="_self">
-          1.文本预处理
+        <a href="/2025/04/19/9-1-LLMs%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5/" target="_self">
+          Chapter 1:绪论
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/17/5-1-RNN-%E6%96%87%E6%9C%AC%E9%A2%84%E5%A4%84%E7%90%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/19/9-1-LLMs%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5/" target="_self">
         <div>
-          1. 文本预处理  1. 序列模型  序列数据（时序结构）：音乐，语言，视频，文本 建模方法：利用条件概率分解（Chain Rule）建模联合概率：P(a,b)=P(a)P(b|a)=P(b)P(a|b) 对条件概率的建模主要有两种方案：  马尔科夫假设：只依赖最近 τ 个历史数据点，简化模型复杂度 潜变量模型：用潜变量 ht=f(x1,...,xt−1) 概括历史信息，xt∼p(xt|ht)
+          Chapter 1：绪论 在阅读本章时，我的目标不是死记每个细节或参数，而是快速梳理大语言模型的来龙去脉，把握主要发展脉络和核心概念。 我要做的是：先建立一个清晰的大框架，了解最最基础的历史、技术变迁和关键节点，让自己知道 整本书能带来什么，以及 后续学习要关注哪些主线内容。这样后面学具体细节时，才不会迷路，也能做到有重点、成体系。  1.1 大语言模型的基本概念   什么是大语言模型？  大语言
         </div>
       </a>
 
@@ -736,14 +744,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-17 12:22" pubdate>
-              2025-04-17
+            <time datetime="2025-04-19 10:11" pubdate>
+              2025-04-19
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-25T12:11:48.387Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T15:17:01.636Z">Updated within 7 days</span>
               
             
             
@@ -764,7 +772,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/RNN/" class="category-chain-item">RNN</a>
+  <a href="/categories/LLMs%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/" class="category-chain-item">LLMs从理论到实践（第二版）</a>
   
   
 
@@ -779,10 +787,83 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/RNN/">#RNN</a>
+              <a href="/tags/LLMs/">#LLMs</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/18/8-4-CNN-%E5%A4%9A%E8%BE%93%E5%85%A5%E9%80%9A%E9%81%93/" target="_self">
+          4.多输入通道与多输出通道的卷积
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/8-4-CNN-%E5%A4%9A%E8%BE%93%E5%85%A5%E9%80%9A%E9%81%93/" target="_self">
+        <div>
+          4. 多输入通道与多输出通道的卷积  1. 多输入通道  彩色图像一般有 RGB 三个输入通道，直接转成灰度会丢失信息。  每个输入通道都有一个对应的卷积核，所有通道卷积后的结果相加，得到单通道的输出。  数学形式：  输入 X：ci×nh×nw 卷积核 W：ci×kh×kw 输出 Y：mh×mw 公式：Y=∑i=1ciXi,:,:⋆Wi,:,:     2. 多输出通道  卷积层的输出通道数是一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-18 19:19" pubdate>
+              2025-04-18
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-06-29T14:25:25.254Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CNNs/" class="category-chain-item">CNNs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Deep-Learning/">#Deep_Learning</a>
             
+              <a href="/tags/CNNs/">#CNNs</a>
+            
           </div>
         
       </div>
@@ -795,15 +876,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/16/6-1-NLP-%E6%89%8B%E5%8A%A8DL%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98/" target="_self">
-          李沐《手动深度学习》环境配置问题
+        <a href="/2025/04/18/8-3-CNN-%E5%A1%AB%E5%85%85%E5%92%8C%E6%AD%A5%E5%B9%85/" target="_self">
+          3.填充和步幅（padding &amp; stride）
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/16/6-1-NLP-%E6%89%8B%E5%8A%A8DL%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/8-3-CNN-%E5%A1%AB%E5%85%85%E5%92%8C%E6%AD%A5%E5%B9%85/" target="_self">
         <div>
-          包括安装步骤、踩坑提示、适配d2l版本说明，适合写给想要在本地用 Jupyter Notebook 或者 PyCharm 学习这本书的朋友。  使用的环境配置（推荐）    组件 版本     Python 3.8   d2l 0.17.6   torch 1.13+   pandas &gt;=1.2.4   jupyter notebook 看情况安装    版本过高，会导致一系列效果无法呈现
+          3. 填充和步幅（Padding &amp; Stride）  1.填充（Padding）  给定 32×32 的输入图像，应用 5×5 卷积核：  第1层输出大小为 28×28 第7层输出大小为 4×4   更大的卷积核会让输出尺寸更快减小  形状从 nh×nw 减少到 (nh−kh+1)×(nw−kw+1) 其中 nh,nw 是输入的高和宽，kh,kw 是卷积核的高和宽。   在输入周围添加格
         </div>
       </a>
 
@@ -811,14 +892,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-16 19:11" pubdate>
-              2025-04-16
+            <time datetime="2025-04-18 17:13" pubdate>
+              2025-04-18
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-06-25T16:37:52.365Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-06-29T14:25:27.223Z">Updated within 7 days</span>
               
             
             
@@ -839,7 +920,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
+  <a href="/categories/CNNs/" class="category-chain-item">CNNs</a>
   
   
 
@@ -853,18 +934,10 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Error/">#Error</a>
-            
-              <a href="/tags/Python/">#Python</a>
             
               <a href="/tags/Deep-Learning/">#Deep_Learning</a>
             
-              <a href="/tags/%E9%85%8D%E7%BD%AE/">#配置</a>
-            
-              <a href="/tags/PyTorch/">#PyTorch</a>
-            
-              <a href="/tags/Jupyter/">#Jupyter</a>
+              <a href="/tags/CNNs/">#CNNs</a>
             
           </div>
         
@@ -878,15 +951,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/01/3-2-macOS%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" target="_self">
-          macOS 环境变量
+        <a href="/2025/04/18/8-2-CNN-%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF/" target="_self">
+          2.图像卷积
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/01/3-2-macOS%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/8-2-CNN-%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF/" target="_self">
         <div>
-          在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。   1. 临时设置（仅对当前终端会话有效） 在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR=&quot;my_value&quot; 之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。   2. 永
+          2. 图像卷积  1. 卷积运算 → 互相关运算 (cross-correlation)  二维互相关：  定义：将输入和核矩阵进行交叉相乘，加上偏移后得到输出。 示例：     2. 输入输出尺寸  输入 X：大小为 nh×nw（超参数）。 核 (kernel) W：大小为 kh×kw。 偏置 b∈R。 输出 Y：大小为 (nh−kh+1)×(nw−kw+1)。  原因：核滑动时，边缘位置无法完
         </div>
       </a>
 
@@ -894,12 +967,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-01 18:28" pubdate>
-              2025-03-01
+            <time datetime="2025-04-18 15:55" pubdate>
+              2025-04-18
             </time>
 
                         
             
+              
+                <span class="updated-flag" data-updated="2025-06-29T14:25:22.419Z">Updated within 7 days</span>
               
             
             
@@ -920,7 +995,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/System/" class="category-chain-item">System</a>
+  <a href="/categories/CNNs/" class="category-chain-item">CNNs</a>
   
   
 
@@ -935,80 +1010,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/macOS/">#macOS</a>
+              <a href="/tags/Deep-Learning/">#Deep_Learning</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/02/27/2-4-prompt-engineering/" target="_self">
-          Prompt Engineering
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/27/2-4-prompt-engineering/" target="_self">
-        <div>
-          1. Prompt  1.1 Prompt 是什么？ Prompt 是一种人为构造的输入序列，用于引导 GPT 模型根据先前输入的内容生成相关的输出。简单来说，就是你向模型提供的 “提示词”。 在 ChatGpt 中，我们可以通过设计不同的 prompt，让模型生成与之相关的文本。例如，假设我们想让 ChatGpt 担任英语翻译。我们可以给模型提供以下 prompt： 1234我希望你能担任英语
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-02-27 11:45" pubdate>
-              2025-02-27
-            </time>
-
-                        
-            
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/LLM/" class="category-chain-item">LLM</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/LLM/">#LLM</a>
-            
-              <a href="/tags/Prompt-engineering/">#Prompt_engineering</a>
+              <a href="/tags/CNNs/">#CNNs</a>
             
           </div>
         
@@ -1020,7 +1024,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

@@ -287,15 +287,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/01/16/1-7-%E5%88%86%E7%B1%BB%E5%86%85%E6%96%87%E7%AB%A0%E6%8C%89%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/" target="_self">
-          ”分类“中文章按时间排序
+        <a href="/2025/02/21/2-2-OpenAI%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/" target="_self">
+          OpenAI 常用参数
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/16/1-7-%E5%88%86%E7%B1%BB%E5%86%85%E6%96%87%E7%AB%A0%E6%8C%89%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/21/2-2-OpenAI%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/" target="_self">
         <div>
-          找到Fluid主题下_config.yml文件，搜索category page,可以看到: 1post_order_by: &quot;-date&quot; 文章的排序字段，前面带减号是倒序，不带减号是正序. 1post_order_by: &quot;date&quot; 可以看到菜单栏 - 分类 - 博客 中文章原本排序为： 3.AAA 2.BBB 1.CCC 现在为： 1.CCC 2.BB
+          max_tokens：控制生成内容的长度。 temperature：控制生成内容的随机性和创造性。 n：生成多个回答供选择。 top_p：通过概率控制生成内容的多样性。 presence_penalty：鼓励生成新内容，避免重复。 frequency_penalty：减少词语重复，提高多样性。 stream：控制生成的文本是否以流式方式逐步发送。   1. temperature（温度参数）
         </div>
       </a>
 
@@ -303,12 +303,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-01-16 02:55" pubdate>
-              2025-01-16
+            <time datetime="2025-02-21 18:23" pubdate>
+              2025-02-21
             </time>
 
                         
             
+              
+                <span class="updated-flag" data-updated="2025-06-29T14:37:22.528Z">Updated within 7 days</span>
               
             
             
@@ -329,7 +331,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
   
   
 
@@ -344,9 +346,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Hexo/">#Hexo</a>
+              <a href="/tags/parameters/">#parameters</a>
             
-              <a href="/tags/Fluid/">#Fluid</a>
+              <a href="/tags/LLMs/">#LLMs</a>
             
           </div>
         
@@ -360,15 +362,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/01/14/1-6-%E6%96%87%E7%AB%A0%E6%98%BE%E7%A4%BA%E6%9B%B4%E6%96%B0%E6%A0%87%E5%BF%97/" target="_self">
-          文章显示“更新”标志
+        <a href="/2025/02/20/1-8-%E6%96%87%E7%AB%A0%E8%8D%89%E7%A8%BF-%E4%B8%8D%E6%98%BE%E7%A4%BA/" target="_self">
+          文章草稿-不显示
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/14/1-6-%E6%96%87%E7%AB%A0%E6%98%BE%E7%A4%BA%E6%9B%B4%E6%96%B0%E6%A0%87%E5%BF%97/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/20/1-8-%E6%96%87%E7%AB%A0%E8%8D%89%E7%A8%BF-%E4%B8%8D%E6%98%BE%E7%A4%BA/" target="_self">
         <div>
-          博客中，您可能希望标记哪些文章最近更新过，以便读者更方便地识别最新内容。本文将教您如何添加一个“Updated”标志，并基于更新时间动态隐藏标志（如超过 7 天后隐藏）。  使用文章的 updated 属性判断文章是否有更新。 在模板中为“Updated”标志添加 data-updated 属性，记录更新时间。 使用 JavaScript 脚本，在页面加载时计算更新时间与当前时间的差距，动态控制标
+          博客的半成品保存但是不想发布，可以使用 draft 来保存。 1hexo new draft &quot;foobar&quot; 文件会被保存到 source/_drafts 的文件夹中。如果想发表，可以直接移动到 source/_posts 中，或 执行 1hexo publish _drafts &lt;filename&gt;
         </div>
       </a>
 
@@ -376,8 +378,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-01-14 23:11" pubdate>
-              2025-01-14
+            <time datetime="2025-02-20 02:08" pubdate>
+              2025-02-20
             </time>
 
                         
@@ -419,7 +421,76 @@
             
               <a href="/tags/Hexo/">#Hexo</a>
             
-              <a href="/tags/Fluid/">#Fluid</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/02/19/1-9-%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" target="_self">
+          文章加密
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/19/1-9-%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" target="_self">
+        <div>
+          Here's something encrypted, password is required to continue reading.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-02-19 22:15" pubdate>
+              2025-02-19
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
             
               <a href="/tags/HTML/">#HTML</a>
             
@@ -439,15 +510,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/01/13/1-1-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" target="_self">
-          博客搭建
+        <a href="/2025/02/17/3-1-macOS-M2%E5%A6%82%E4%BD%95%E5%BC%80%E5%85%B3SIP/" target="_self">
+          MacOS-M2 如何进入恢复模式管理SIP
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/13/1-1-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/17/3-1-macOS-M2%E5%A6%82%E4%BD%95%E5%BC%80%E5%85%B3SIP/" target="_self">
         <div>
-          我创建了个人博客网站，基于 GitHub Pages 作为开源服务器，使用 Hexo 作为博客框架，Fluid 主题为界面设计。博客中使用 LeanCloud 作为阅读量统计工具，通过 GitHub 或者自己服务器进行部署。此博客网站完全免费，适合需要搭建个人博客的用户。  此部分内容基于CSDN博客作者的介绍。 以下为过程简述并添加注意部分。同时推荐阅读Hexo Fluid用户手册进行个性化设置
+          在 macOS M2 设备上，有时我们需要进入 恢复模式（Recovery Mode）来执行一些系统级的操作，比如关闭或开启 SIP（System Integrity Protection）。本文将详细介绍如何进入恢复模式，并管理 SIP 设置。  进入恢复模式  关闭 Mac：如果 Mac 处于开机状态，先正常关机。 进入恢复模式：按住 电源键，直到看到 Apple 标志和“启动选项”的窗口。
         </div>
       </a>
 
@@ -455,8 +526,160 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-01-13 12:21" pubdate>
-              2025-01-13
+            <time datetime="2025-02-17 11:44" pubdate>
+              2025-02-17
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/System/" class="category-chain-item">System</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/macOS/">#macOS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/02/12/4-1-%E5%AE%A2%E6%88%B7%E6%B5%81%E5%A4%B1%E9%97%AE%E9%A2%98/" target="_self">
+          数据科学 - 客户流失预测：基于随机森林的分析与优化
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/12/4-1-%E5%AE%A2%E6%88%B7%E6%B5%81%E5%A4%B1%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          项目概述 本项目旨在帮助PowerCo（一个大型公用事业公司，提供电力和天然气服务）解决客户流失的问题。PowerCo面临的主要挑战是中小型企业（SME）客户的流失，尤其是在当前充满竞争的能源市场中。为了帮助PowerCo更好地理解客户流失的原因，我们的目标是识别导致客户流失的关键因素，并提出改进客户留存率的具体建议。 在这个项目中，我们将通过数据科学的方法，结合探索性数据分析（EDA）、特征工
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-02-12 16:33" pubdate>
+              2025-02-12
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-06-24T12:20:54.133Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Projects/" class="category-chain-item">Projects</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GitHub/">#GitHub</a>
+            
+              <a href="/tags/ML/">#ML</a>
+            
+              <a href="/tags/Data-Science/">#Data_Science</a>
+            
+              <a href="/tags/Projects/">#Projects</a>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/02/06/1-5-%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/" target="_self">
+          配置自定义域名
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/06/1-5-%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/" target="_self">
+        <div>
+          在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。   1. 配置 GitHub Actions  1.1 修改 .github/workflows/deploy.yml 文件 在 deploy.yml 文件中添加hexo deploy --cname &lt;name&
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-02-06 13:59" pubdate>
+              2025-02-06
             </time>
 
                         
@@ -496,9 +719,13 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/GitHub/">#GitHub</a>
+            
               <a href="/tags/Hexo/">#Hexo</a>
             
-              <a href="/tags/Fluid/">#Fluid</a>
+              <a href="/tags/SSH/">#SSH</a>
+            
+              <a href="/tags/domain/">#domain</a>
             
           </div>
         
@@ -512,15 +739,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/01/12/2-1-AI%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" target="_self">
-          AI基础概念
+        <a href="/2025/02/01/1-4-%E4%BD%BF%E7%94%A8GitHub-Actions%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/" target="_self">
+          使用 GitHub Actions 自动部署 Hexo 博客
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/12/2-1-AI%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/01/1-4-%E4%BD%BF%E7%94%A8GitHub-Actions%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/" target="_self">
         <div>
-          什么是AI（Artificial intelligence 人工智能）：通过机器学习，深度学习等算法，使得系统具备学习、推理、自我修正和解决问题等功能。  语言 语音 视觉 多模态感知和决策  意图识别；情绪识别；表情识别  NL 自然语言  NLP 自然语言处理 自然语言处理（Natural Language Processing, NLP）是人工智能的一个子领域，致力于实现计算机对人类语言的理
+          前言 在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，让你每次提交新文章时，GitHub Actions 自动编译并部署你的博客到 GitHub Pages，无需手动执行 hexo deploy。同时，我们也会介绍如何使用专门的 gh-pages（或你命名的 ph-pages）分支来存放生成的静态页面，从而保持源码和生成文件的分离。   1.
         </div>
       </a>
 
@@ -528,8 +755,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-01-12 15:35" pubdate>
-              2025-01-12
+            <time datetime="2025-02-01 04:29" pubdate>
+              2025-02-01
             </time>
 
                         
@@ -554,7 +781,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/LLM/" class="category-chain-item">LLM</a>
+  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
   
   
 
@@ -569,13 +796,242 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/AI/">#AI</a>
+              <a href="/tags/GitHub/">#GitHub</a>
             
-              <a href="/tags/DL/">#DL</a>
+              <a href="/tags/Hexo/">#Hexo</a>
             
-              <a href="/tags/ML/">#ML</a>
+              <a href="/tags/SSH/">#SSH</a>
             
-              <a href="/tags/LLM/">#LLM</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/01/24/2-3-conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" target="_self">
+          Conda环境配置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/24/2-3-conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。  1. 官网下载安装 下载mini conda：https://www.anaconda.com/download/success  1.1 安装完成后测试 使用以下命令查看版本和测试安装是否成功： 1conda --verison Terminal显示如下状态： 1conda 24.11.1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-01-24 19:10" pubdate>
+              2025-01-24
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-06-29T14:37:30.848Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Conda/">#Conda</a>
+            
+              <a href="/tags/macOS/">#macOS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/01/18/1-2-SSH%E8%BF%9E%E6%8E%A5GitHub%EF%BC%9A%E5%91%8A%E5%88%AB-Token/" target="_self">
+          SSH 连接 GitHub：告别 Token
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/18/1-2-SSH%E8%BF%9E%E6%8E%A5GitHub%EF%BC%9A%E5%91%8A%E5%88%AB-Token/" target="_self">
+        <div>
+          在我开始使用 GitHub 管理代码和项目的过程中，我一直采用 token 认证的方式进行操作。这种方式简单快捷，适合大多数情况。然而，随着需求的变化，特别是在进行自动化部署时，我意识到使用 SSH 连接 GitHub会更加高效、安全。今天，我想分享一下从 token 认证切换到 SSH 认证的过程，以及成功连接并部署 GitHub 的经历。  为什么选择 SSH？ 虽然 token 认证在某些情
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-01-18 05:49" pubdate>
+              2025-01-18
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GitHub/">#GitHub</a>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/SSH/">#SSH</a>
+            
+              <a href="/tags/Token/">#Token</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/01/18/1-3-%E8%A7%A3%E5%86%B3Error-Spawn-failed%E9%94%99%E8%AF%AF/" target="_self">
+          成功解决Error:Spawn failed错误
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/18/1-3-%E8%A7%A3%E5%86%B3Error-Spawn-failed%E9%94%99%E8%AF%AF/" target="_self">
+        <div>
+          在使用 Hexo 框架将博客部署到 GitHub 时，总是遇到了 Error: Spawn failed 错误，具体错误信息如下： 1234Error: Spawn failed    at ChildProcess.&lt;anonymous&gt; (/Users/&lt;Username&gt;/hexo-blog/node_modules/hexo-deployer-git/node_mo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-01-18 04:57" pubdate>
+              2025-01-18
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GitHub/">#GitHub</a>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/Error/">#Error</a>
+            
+              <a href="/tags/Git/">#Git</a>
+            
+              <a href="/tags/Homebrew/">#Homebrew</a>
             
           </div>
         
@@ -587,7 +1043,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
