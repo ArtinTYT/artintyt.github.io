@@ -10,7 +10,7 @@ categories:
 
 # 3. 门控循环单元（Gated Recurrent Unit, GRU）
 
-- **核心思想**：GRU 能动态决定当前时刻要“记住”多少过去的信息、要“遗忘”多少无用内容，从而有效缓解传统RNN的长期依赖问题。它通过“更新门”和“重置门”两个机制，灵活调整信息流。
+- **核心思想**：GRU 能动态决定当前时刻要"记住"多少过去的信息、要"遗忘"多少无用内容，从而有效缓解传统RNN的长期依赖问题。它通过"更新门"和"重置门"两个机制，灵活调整信息流。
 
 ## 1. **信息处理机制**
 
@@ -28,16 +28,16 @@ categories:
     $$\tilde{H}_t = \tanh(X_t W_{xh} + (R_t \odot H_{t-1}) W_{hh} + b_h)$$
 	- $R_t$ 控制 $H_{t-1}$ 的遗忘程度
 	- $\odot$：元素相乘（Element-wise Multiplication）
-	- $R_t \odot H_{t-1}$ 表示历史信息“筛选”后参与计算。
+	- $R_t \odot H_{t-1}$ 表示历史信息"筛选"后参与计算。
 	- $tanh$ 激活将输出限制在 $[-1, 1]$。
-	- <img src="/images/RNN/img_GRU-preH.png" width=400 />
+	<img src="/images/img/img_GRU-preH.png" width=400 style="display: block; margin: 0 auto;" />
 
 
 - **隐状态（Hidden state）**：  
     $$H_t = Z_t \odot H_{t-1} + (1 - Z_t) \odot \tilde{H}_t$$
 	- $Z_t$：控制$H_t$保留多少旧信息
 	- $1-Z_t$：控制引入多少新信息
-	- <img src="/images/RNN/img_GRU_H.png" width=400 />
+	<img src="/images/img/img_GRU_H.png" width=400 style="display: block; margin: 0 auto;" />
 
 ## 3. **总结**
 

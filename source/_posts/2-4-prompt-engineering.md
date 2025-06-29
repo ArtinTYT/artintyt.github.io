@@ -3,9 +3,9 @@ title: Prompt Engineering
 date: 2025-02-27 11:45:27
 tags:
   - Prompt_engineering
-  - LLM
+  - LLMs
 categories:
-  - LLM
+  - LLMs
 ---
 
 ## 1. Prompt

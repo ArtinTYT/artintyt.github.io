@@ -12,7 +12,7 @@ layout: about
 --- 
 ### Projects
 
->**Doing**
+>**整理ing**
 >
 
 >
@@ -36,7 +36,10 @@ layout: about
 >
 >**Workshop Creator && Committee, Bristol Data Science Society** 
 >
->**Course Rep in Data Science, Maths School**     
+>**Course Rep in Data Science, Maths School**   
+>
+
+ 
 
 
 ### 赞赏

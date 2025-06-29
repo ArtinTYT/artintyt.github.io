@@ -9,7 +9,7 @@ categories:
 ---
 # 4. 长短期记忆网络（Long short-term memory, LSTM）
 
-- 核心思想：LSTM 通过引入“门控”机制，能够选择性地记住有用信息、忘记无用信息，有效缓解RNN在处理长序列时的“梯度消失”和“长期依赖”问题。
+- 核心思想：LSTM 通过引入"门控"机制，能够选择性地记住有用信息、忘记无用信息，有效缓解RNN在处理长序列时的"梯度消失"和"长期依赖"问题。
 
 ## 1. 门结构与功能
 
@@ -32,18 +32,18 @@ categories:
 - 候选记忆单元（candidate memory cell）
 	$$\tilde{C}_t = \tanh(X_t W_{xc} + H_{t-1} W_{hc} + b_c)$$
 	- $\tanh$ 输出范围$(-1, 1)$。
-	- <img src="/images/RNN/img_LSTM-PreM.png" width=380 />
+	<img src="/images/img/img_LSTM-PreM.png" width=380 style="display: block; margin: 0 auto;" />
 
 - 记忆单元（Memory Cell）更新
 	$$C_t = F_t \odot C_{t-1} + I_t \odot \tilde{C}_t$$
 	- $F_t$ 控制遗忘多少旧信息，$I_t$控制写入多少新信息。
 	- $\odot$ 表示元素乘。
-	- <img src="/images/RNN/img_LSTM-M.png" width=400 />
+	 <img src="/images/img/img_LSTM-M.png" width=400 style="display: block; margin: 0 auto;" />
 
 - 隐状态（Hidden State）输出
 	$$H_t = O_t \odot \tanh(C_t)$$
 	- $O_t$ 控制 $C_t$ 有多少被输出。
-	- <img src="/images/RNN/img_LSTM-H.png" width=400 />
+	<img src="/images/img/img_LSTM-H.png" width=400 style="display: block; margin: 0 auto;" />
 	  
 
 ## 3. 总结
@@ -61,7 +61,7 @@ O_t &= \sigma(X_t W_{xo} + H_{t-1} W_{ho} + b_o) \\
 C_t &= F_t \odot C_{t-1} + I_t \odot \tilde{C}_t \\
 H_t &= O_t \odot \tanh(C_t)
 \end{aligned}$$
-- **通俗理解**：LSTM 就像一个“智能记事本”，能随时决定擦掉哪些旧内容、记下哪些新内容、对外展示哪些重点，让信息流动更有条理。
+- **通俗理解**：LSTM 就像一个"智能记事本"，能随时决定擦掉哪些旧内容、记下哪些新内容、对外展示哪些重点，让信息流动更有条理。
 
 ## 参考资料
 

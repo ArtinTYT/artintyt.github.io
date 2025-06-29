@@ -6,7 +6,7 @@ tags:
   - macOS
 
 categories:
-  - LLM
+  - LLMs
 
 ---
 以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。

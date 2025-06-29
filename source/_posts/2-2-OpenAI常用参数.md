@@ -2,10 +2,10 @@
 title: OpenAI 常用参数
 date: 2025-02-21 18:23:09
 tags:
-  - LLM
+  - LLMs
   - parameters
 categories:
-  - LLM
+  - LLMs
 ---
 
 - `max_tokens`：控制生成内容的长度。

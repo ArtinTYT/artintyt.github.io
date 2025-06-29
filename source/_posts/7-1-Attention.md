@@ -1,5 +1,5 @@
 ---
-title: 1.Attention 核心思想
+title: 1. Attention 核心思想
 date: 2025-04-18 12:32:10
 tags:
     - Deep_Learning
@@ -13,7 +13,7 @@ categories:
 ## 1. 动机
 
 - **灵感**：人类处理信息时，会选择性关注关键部分，注意力机制模仿了这一处理方式。
-- **作用**：序列模型面对长输入时，注意力机制让模型能分配不同“权重”，聚焦重要信息片段。
+- **作用**：序列模型面对长输入时，注意力机制让模型能分配不同"权重"，聚焦重要信息片段。
 - **实现**：为每个输出位置，模型通过**查询（query）** 和 **键（key）** 计算相关性分数，对输入各部分进行加权汇聚，生成上下文表示。
 
 ## 2. 非参数注意力池化（Nadaraya-Watson 核回归）
@@ -73,4 +73,4 @@ categories:
 ## 参考资料
 
 [李沐《手动深度学习》：注意力提示](https://zh.d2l.ai/chapter_attention-mechanisms/attention-cues.html)
-[李沐《手动深度学习》：注意力汇聚：Nadaraya-Watson 核回归](https://zh.d2l.ai/chapter_attention-mechanisms/nadaraya-waston.html)
+[李沐《手动深度学习》：注意力汇聚 Nadaraya-Watson 核回归](https://zh.d2l.ai/chapter_attention-mechanisms/nadaraya-waston.html)
