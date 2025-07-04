@@ -1,10 +1,9 @@
-[English](README.md) | [中文](README_CN.md)
+[English](./README.md) | [中文](./README.zh.md)
 
 # Artin's Tech Notes
 
 Hey! Welcome to my blog. Here I jot down what I learn, the problems I run into, and how I solve them. If you're also figuring things out on your tech journey, hope this helps you too!
 
----
 
 ## Main Topics
 
@@ -14,7 +13,6 @@ Hey! Welcome to my blog. Here I jot down what I learn, the problems I run into, 
 - Data Analysis & Visualization: Data cleaning, analysis flows, and quick viz tricks.
 - Blog Building & Deployment: Hexo, GitHub Actions, custom domains, and practical guides.
 
----
 
 ## Contact
 
