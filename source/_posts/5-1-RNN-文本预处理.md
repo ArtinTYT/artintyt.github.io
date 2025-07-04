@@ -2,11 +2,11 @@
 title: 1.文本预处理
 date: 2025-04-17 12:22:16
 tags:
-    - RNN
+    - RNNs
     - Deep_Learning
     
 categories:
-    - RNN
+    - RNNs
 ---
 # 1. 文本预处理
 

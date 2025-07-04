@@ -3,9 +3,9 @@ title: 4.长短期记忆网络 LSTM
 date: 2025-04-17 15:22:30
 tags:
     - Deep_Learning
-    - RNN
+    - RNNs
 categories:
-    - RNN
+    - RNNs
 ---
 # 4. 长短期记忆网络（Long short-term memory, LSTM）
 

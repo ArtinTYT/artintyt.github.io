@@ -2,10 +2,10 @@
 title: 2.RNN相关基础知识
 date: 2025-04-17 13:33:10
 tags:
-    - RNN
+    - RNNs
     - Deep_Learning
 categories:
-    - RNN
+    - RNNs
 ---
 # 2. RNN 相关技术
 

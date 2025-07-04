@@ -1,5 +1,18 @@
 <% function render_categories(curCats, params = {}, depth = 0) { %>
-  <% return curCats.each((cat) => { %>
+  <% 
+    // 获取优先级关键词
+    var priorityKeywords = theme.category.priority_keywords || [];
+    // 对 curCats 进行排序
+    var sortedCats = curCats.data.slice().sort((a, b) => {
+      const aIdx = priorityKeywords.indexOf(a.name.trim());
+      const bIdx = priorityKeywords.indexOf(b.name.trim());
+      if (aIdx === -1 && bIdx === -1) return 0; // 都不在优先级表，保持原顺序
+      if (aIdx === -1) return 1; // a 不在，b 在，b 靠前
+      if (bIdx === -1) return -1; // b 不在，a 在，a 靠前
+      return aIdx - bIdx; // 都在，按表顺序
+    });
+  %>
+  <% return sortedCats.forEach((cat) => { %>
     <% var subCats = site.categories.find({ parent: cat._id }).sort(params.orderBy || 'name').filter(cat => cat.length) %>
     <% var collapsed = subCats.length === 0 || depth >= theme.category.collapse_depth %>
     <% if ((params.filterIds || []).includes(cat._id)) collapsed = false %>

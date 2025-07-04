@@ -1,6 +1,6 @@
 ---
-title: 成功解决Error:Spawn failed错误
-date: 2025-01-18 04:57:15
+title: 3.成功解决Error:Spawn failed错误
+date: 2025-01-15 04:57:15
 categories:
   - Hexo
 tags:

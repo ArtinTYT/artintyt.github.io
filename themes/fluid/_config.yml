@@ -975,6 +975,7 @@ category:
   banner_img: /img/default.webp
   banner_img_height: 70
   banner_mask_alpha: 0.3
+  priority_keywords: ["CNNs", "RNNs", "NLP", "Attention", "Transformer",  "LLMs", "System", "Hexo", "Projects"]
 
   # 分类的排序字段，前面带减号是倒序，不带减号是正序
   # Sort field for categories, with a minus sign is reverse order

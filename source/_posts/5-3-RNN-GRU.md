@@ -3,9 +3,9 @@ title: 3.门控循环单元 GRU
 date: 2025-04-17 14:53:30
 tags:
     - Deep_Learning
-    - RNN
+    - RNNs
 categories:
-    - RNN
+    - RNNs
 ---
 
 # 3. 门控循环单元（Gated Recurrent Unit, GRU）

@@ -1,6 +1,6 @@
 ---
-title: SSH 连接 GitHub：告别 Token
-date: 2025-01-18 05:49:44
+title: 2.SSH 连接 GitHub：告别 Token
+date: 2025-01-14 05:49:44
 categories:
   - Hexo
 tags:
