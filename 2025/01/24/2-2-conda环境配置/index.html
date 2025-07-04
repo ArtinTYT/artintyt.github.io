@@ -1,0 +1,1101 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+
+<head>
+  <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
+
+  
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/webicon.webp">
+  <link rel="icon" href="/img/webicon.webp">
+  
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Artin Tan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。  1. 官网下载安装 下载mini conda：https:&#x2F;&#x2F;www.anaconda.com&#x2F;download&#x2F;success  1.1 安装完成后测试 使用以下命令查看版本和测试安装是否成功： 1conda --verison Terminal显示如下状态： 1conda 24.11.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Conda环境配置">
+<meta property="og:url" content="http://neurowave.tech/2025/01/24/2-2-conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Neurowave">
+<meta property="og:description" content="以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。  1. 官网下载安装 下载mini conda：https:&#x2F;&#x2F;www.anaconda.com&#x2F;download&#x2F;success  1.1 安装完成后测试 使用以下命令查看版本和测试安装是否成功： 1conda --verison Terminal显示如下状态： 1conda 24.11.1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-24T11:10:48.000Z">
+<meta property="article:modified_time" content="2025-06-29T14:37:30.848Z">
+<meta property="article:author" content="Artin Tan">
+<meta property="article:tag" content="Conda">
+<meta property="article:tag" content="macOS">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Conda环境配置 - Neurowave</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/reward.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/custom/quote-nav.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"neurowave.tech","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-FC96VM1C7N"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-FC96VM1C7N", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-FC96VM1C7N');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+</head>
+<body>
+    
+    <header>
+      
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Neurowave</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/say/" target="_self">
+                <i class="iconfont icon-comment"></i>
+                <span>说说</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Conda环境配置"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-24 19:10" pubdate>
+          2025年1月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+
+
+<!-- 在页面合适的位置添加显示评论数的占位符 
+<div class="article-meta-comments">
+  <span class="post-meta-item-icon"><i class="iconfont icon-comment"></i></span>
+  <span id="comment-count"></span>
+  条
+</div>
+
+-->
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+    </header>
+    <main>
+      
+        
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Conda环境配置</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    更新于 2025-06-29T22:37:30+08:00
+                  
+                  
+
+                
+              </p>
+            
+
+
+
+            
+            <div class="markdown-body">
+              
+              <p>以下步骤基于 MacOS 系统（MacBookAir M2），如果是 Windows 系统，命令会不同。</p>
+<h2 id="1-官网下载安装"><a class="header-anchor" href="#1-官网下载安装"> </a>1. 官网下载安装</h2>
+<p>下载mini conda：<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/success">https://www.anaconda.com/download/success</a></p>
+<h3 id="1-1-安装完成后测试"><a class="header-anchor" href="#1-1-安装完成后测试"> </a>1.1 安装完成后测试</h3>
+<p>使用以下命令查看版本和测试安装是否成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda --verison<br></code></pre></td></tr></table></figure>
+<p>Terminal显示如下状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">conda 24.11.1<br></code></pre></td></tr></table></figure>
+<h3 id="1-2-验证Base环境"><a class="header-anchor" href="#1-2-验证Base环境"> </a>1.2 验证Base环境</h3>
+<p>Conda 的 (base) 表示你已经激活了默认环境。如果想查看安装的环境列表，可以运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br></code></pre></td></tr></table></figure>
+<p>可能会看到下面的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda environments:</span><br><span class="hljs-comment">#</span><br>base                 * /opt/miniconda3<br></code></pre></td></tr></table></figure>
+<h3 id="1-3-查看默认Python版本"><a class="header-anchor" href="#1-3-查看默认Python版本"> </a>1.3 查看默认Python版本</h3>
+<p>查看 conda 默认的 Python 版本，后面会创建指定 Python 某版本的环境。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python --version<br></code></pre></td></tr></table></figure>
+<p>可能看到（默认的，可能新 Conda 环境不会使用）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">Python 3.12.8<br></code></pre></td></tr></table></figure>
+<h2 id="2-Conda常用命令"><a class="header-anchor" href="#2-Conda常用命令"> </a>2. Conda常用命令</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda –<span class="hljs-built_in">help</span> <span class="hljs-comment"># 查看帮助</span><br>conda info <span class="hljs-comment"># 查看 conda 信息</span><br>conda version  <span class="hljs-comment"># 查看 conda 版本</span><br>conda update conda  <span class="hljs-comment"># 更新Conda（慎用）</span><br>conda clean –all <span class="hljs-comment"># 清理不再需要的包</span><br>conda &lt;指令&gt; <span class="hljs-built_in">help</span> <span class="hljs-comment"># 查看某一个指令的详细帮助</span><br>conda config show <span class="hljs-comment">#查看 conda 的环境配置</span><br>conda clean -p  <span class="hljs-comment"># 清理没有用，没有安装的包</span><br>conda clean -t  <span class="hljs-comment"># 清理 tarball</span><br>conda clean all  <span class="hljs-comment"># 清理所有包和 conda 的缓存文件</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-环境管理"><a class="header-anchor" href="#3-环境管理"> </a>3. 环境管理</h2>
+<h3 id="3-1-查看-Conda-环境路径是否正确设置"><a class="header-anchor" href="#3-1-查看-Conda-环境路径是否正确设置"> </a>3.1 查看 Conda 环境路径是否正确设置</h3>
+<p>通过一下命令查看环境设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">conda config --show<br></code></pre></td></tr></table></figure>
+<p>可能会看到你的环境存储路径如下：</p>
+<ol>
+<li><code>/opt/miniconda3/envs</code>（默认路径，位于 Miniconda 安装目录）</li>
+<li><code>/Users/username/.conda/envs</code>（用户目录下的备用路径）</li>
+</ol>
+<p>这些路径是 Conda 的默认配置，如果你对存储位置没有特别要求，无需修改 <code>envs_dirs</code>。</p>
+<h3 id="3-2-envs-dirs是什么？"><a class="header-anchor" href="#3-2-envs-dirs是什么？"> </a>3.2 envs_dirs是什么？</h3>
+<p>在 Conda 中，<code>envs</code> 是用来存储 虚拟环境（environments） 的目录。虚拟环境是一个独立的 Python 运行环境，包含特定的 Python 版本以及该环境所需的库和依赖。</p>
+<h4 id="什么是-Conda-环境？"><a class="header-anchor" href="#什么是-Conda-环境？"> </a>什么是 Conda 环境？</h4>
+<p>Conda 环境是一种隔离机制，用于防止不同项目之间的库和依赖冲突。每个环境都可以有自己的：</p>
+<ul>
+<li>Python 版本（例如 <code>Python 3.8</code> 或 <code>Python 3.12</code>）。</li>
+<li>库版本（例如 <code>NumPy 1.20</code> 和 <code>NumPy 1.25</code> 可以在不同环境中共存）。</li>
+<li>配置和依赖。</li>
+</ul>
+<h4 id="envs-是做什么的？"><a class="header-anchor" href="#envs-是做什么的？"> </a>envs 是做什么的？</h4>
+<p>Conda 使用 <code>envs</code> 目录来存储所有的虚拟环境。默认情况下：</p>
+<ul>
+<li>主环境 (base) 会存储在 Conda 的安装目录（例如 <code>/opt/miniconda3</code> 或 <code>/opt/anaconda3</code>）。</li>
+<li>其他环境 会存储在 <code>envs</code> 文件夹中。例如：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 默认路径下，`envs` 的位置</span><br>/opt/miniconda3/envs/<br></code></pre></td></tr></table></figure>
+每个虚拟环境都会有一个独立的子目录。例如，如果你创建了名为 myenv 的环境，它可能位于：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/opt/miniconda3/envs/myenv/<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="为什么需要-Conda-环境？"><a class="header-anchor" href="#为什么需要-Conda-环境？"> </a>为什么需要 Conda 环境？</h4>
+<p>以下是使用 Conda 环境的几个关键优势：</p>
+<ol>
+<li>避免冲突：不同项目可能需要不同的 Python 和库版本，环境隔离可以避免这些冲突。</li>
+<li>提高灵活性：可以根据需求快速切换环境。</li>
+<li>可移植性：可以轻松导出和导入环境（通过 <code>.yml</code> 文件）。</li>
+<li>安全性：在独立环境中安装和测试库，不会影响系统全局配置。</li>
+</ol>
+<h3 id="3-3-如何管理-Conda-环境？"><a class="header-anchor" href="#3-3-如何管理-Conda-环境？"> </a>3.3 如何管理 Conda 环境？</h3>
+<h4 id="1-查看现有-Conda-环境"><a class="header-anchor" href="#1-查看现有-Conda-环境"> </a>1. 查看现有 Conda 环境</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br></code></pre></td></tr></table></figure>
+<h4 id="2-创建新环境"><a class="header-anchor" href="#2-创建新环境"> </a>2. 创建新环境</h4>
+<p>使用 conda 可以创建相互隔离的 Python 环境，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 语法</span><br>conda create name &lt;env_name&gt; python=&lt;version&gt; [package_name1]<br>[package_name2] [...]<br><br><span class="hljs-comment"># 样例 创建一个名为 learn 的环境，python 版本为3.10是3.10.XX最新的版本。</span><br>conda create name modelscope python=3.10 <br><span class="hljs-comment"># name 可以简写为 -n</span><br></code></pre></td></tr></table></figure>
+<p>如果不指定 Python 版本，默认是 base 里面的 Python 版本。</p>
+<p>通过 <code>conda env list</code> 查看刚刚创建的环境如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># conda environments:</span><br><span class="hljs-comment">#</span><br>base                 * /opt/miniconda3<br>modelscope             /opt/miniconda3/envs/modelscope<br></code></pre></td></tr></table></figure>
+<p>可以看到有一个新的环境叫 <code>modelscope</code>。</p>
+<h4 id="3-激活-切换-环境"><a class="header-anchor" href="#3-激活-切换-环境"> </a>3. 激活(切换)环境</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate modelscope<br></code></pre></td></tr></table></figure>
+<h4 id="4-退出环境"><a class="header-anchor" href="#4-退出环境"> </a>4. 退出环境</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br></code></pre></td></tr></table></figure>
+<h4 id="5-删除环境"><a class="header-anchor" href="#5-删除环境"> </a>5. 删除环境</h4>
+<p>退出到 <code>base</code> 环境再执行删除环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 语法：conda remove --name &lt;conda name&gt; --all</span><br><br>conda remove --name modelscope --all<br></code></pre></td></tr></table></figure>
+<h4 id="6-克隆环境"><a class="header-anchor" href="#6-克隆环境"> </a>6. 克隆环境</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 语法：conda create --name &lt;NEW_ENV_NAME&gt; --clone &lt;OLD_ENV_NAME&gt;</span><br><br>conda create --name NEWclone --<span class="hljs-built_in">clone</span> modelscope<br></code></pre></td></tr></table></figure>
+<h4 id="6-指定-envs-目录"><a class="header-anchor" href="#6-指定-envs-目录"> </a>6. 指定 envs 目录</h4>
+<p>默认情况下，Conda 会将环境存储在其安装目录的 <code>envs</code> 文件夹中。如果需要自定义，可以通过设置 <code>envs_dirs</code> 改变存储路径（例如将环境存储到外部硬盘）。</p>
+<p>设置命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --add envs_dirs /path/to/custom_envs<br></code></pre></td></tr></table></figure>
+<h4 id="7-导出环境"><a class="header-anchor" href="#7-导出环境"> </a>7. 导出环境</h4>
+<p>将当前环境导出为一个YAML文件，方便共享：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 语法 conda env export &gt; &lt;filename.yml&gt;</span><br>conda <span class="hljs-built_in">env</span> <span class="hljs-built_in">export</span> &gt; environment.yml<br></code></pre></td></tr></table></figure>
+<p>项目经理可能给你一个配置文件，然后用配置文件创建新的环境。</p>
+<h4 id="8-导入环境：从文件创建环境"><a class="header-anchor" href="#8-导入环境：从文件创建环境"> </a>8. 导入环境：从文件创建环境</h4>
+<p>使用YAML文件创建一个新环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 语法 conda env create -f &lt;filename.yml&gt; -n &lt;new environment name&gt;</span><br>conda <span class="hljs-built_in">env</span> create -f environment.yml -n newenvi<br></code></pre></td></tr></table></figure>
+<p>如果不指定新名字， 可以不加后面 <code>-n &lt;new environment name&gt;</code>。</p>
+<h3 id="3-4-总结"><a class="header-anchor" href="#3-4-总结"> </a>3.4 总结</h3>
+<ul>
+<li><code>envs</code> 是 Conda 用来存储虚拟环境的文件夹。</li>
+<li>Conda 环境有助于管理不同项目的依赖，避免冲突。</li>
+<li>默认配置已经足够大部分场景，只有特殊需求时才需要修改 <code>envs</code> 的存储路径。</li>
+</ul>
+<h2 id="4-包管理"><a class="header-anchor" href="#4-包管理"> </a>4. 包管理</h2>
+<p>一旦激活了环境，你就可以使用 conda 在当前环境下安装你所需要的包。</p>
+<h3 id="4-1-安装包"><a class="header-anchor" href="#4-1-安装包"> </a>4.1 安装包</h3>
+<p>在激活的环境中安装包，例如安装NumPy：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install numpy<br></code></pre></td></tr></table></figure>
+<p>没有指定是最新版本，一般项目会指定版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install numpy=1.18<br></code></pre></td></tr></table></figure>
+<p>可以查看已经下好的包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip list<br></code></pre></td></tr></table></figure>
+<h3 id="4-2-更新包"><a class="header-anchor" href="#4-2-更新包"> </a>4.2 更新包</h3>
+<p>更新某个包到最新版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda update numpy<br></code></pre></td></tr></table></figure>
+<p>更新<strong>所有</strong>包到最新版本，但是不建议用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda update --all<br></code></pre></td></tr></table></figure>
+<p>执行命令后，Conda 将会对版本进行比较并列出可以升级的版本。同时，也会告知用<br>
+户其他相关包也会升级到相应版本。当较新的版本可以用于升级时，终端会显示<br>
+Proceed ([y]/n)? ，此时输入 y 即可进行升级。</p>
+<h3 id="4-3-卸载包"><a class="header-anchor" href="#4-3-卸载包"> </a>4.3 卸载包</h3>
+<p>如果不再需要某个包，可以将其卸载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda remove numpy<br></code></pre></td></tr></table></figure>
+<h3 id="4-4-查看环境所有包"><a class="header-anchor" href="#4-4-查看环境所有包"> </a>4.4 查看环境所有包</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda list<br></code></pre></td></tr></table></figure>
+<p>查看当前环境中已经安装的所有包（base 和 项目环境<code>&lt;modelscope&gt;</code>）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda list<br></code></pre></td></tr></table></figure>
+<h3 id="4-5-搜索包"><a class="header-anchor" href="#4-5-搜索包"> </a>4.5 搜索包</h3>
+<p>搜索可用的包及其版本信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda search &lt;package-name&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="5-使用通道"><a class="header-anchor" href="#5-使用通道"> </a>5. 使用通道</h2>
+<p>Conda 通道（Channel）是 Conda 用来查找和下载软件包的源。通道就像是软件仓库，用户可以从这些通道中获取需要的软件包。理解和有效管理 Conda 通道，可以帮助用户更好地控制软件包的来源、版本以及稳定性。</p>
+<h3 id="5-1-主要通道"><a class="header-anchor" href="#5-1-主要通道"> </a>5.1 主要通道</h3>
+<ul>
+<li><strong>默认通道</strong>：这是Conda自带的官方通道，由 Anaconda 维护，包含了常用的数据科学和机器学习包。默认通道提供的包经过测试和优化，通常是稳定且值得信赖的。</li>
+<li><strong>Conda-Forge</strong>：Conda-Forge是一个社区驱动的通道，拥有数量庞大的软件包和活跃的维护者社区。通常情况下，Conda-Forge提供更多的最新软件包版本，对于一些在默认通道中没有的包来说尤为重要。由于是社区维护，更新速度快，适合需要最新特性和支持的用户。</li>
+<li><strong>Bioconda</strong>：专为生物信息学和生物数据分析设计的通道。包含很多用于生物数据处理和分析的工具。</li>
+</ul>
+<h3 id="5-2-查看已配置的通道"><a class="header-anchor" href="#5-2-查看已配置的通道"> </a>5.2 查看已配置的通道</h3>
+<p>令查看当前配置的通道列表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --show channels<br></code></pre></td></tr></table></figure>
+<h3 id="5-3-添加新的通道"><a class="header-anchor" href="#5-3-添加新的通道"> </a>5.3 添加新的通道</h3>
+<p>如果需要从其他通道安装包，可以将其添加到Conda配置中。例如，添加CondaForge：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --add channels conda-forge<br></code></pre></td></tr></table></figure>
+<h3 id="5-4-设置通道顺序"><a class="header-anchor" href="#5-4-设置通道顺序"> </a>5.4 设置通道顺序</h3>
+<p>通道是按顺序搜索的，优先使用在前面的通道。可以通过以下命令调整顺序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --<span class="hljs-built_in">set</span> channel_priority strict<br></code></pre></td></tr></table></figure>
+<p>使用 <code>strict</code> 优先级时，Conda 会严格按照通道顺序来选择包。</p>
+<h3 id="5-5-删除通道"><a class="header-anchor" href="#5-5-删除通道"> </a>5.5 删除通道</h3>
+<p>如果不需要某个通道，可以将其移除：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config remove channels &lt;channel-name&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="5-6-临时使用特定通道"><a class="header-anchor" href="#5-6-临时使用特定通道"> </a>5.6 临时使用特定通道</h3>
+<p>你可以在安装包时临时指定通道，而不改变全局配置。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install package-name -c conda-forge<br></code></pre></td></tr></table></figure>
+<p>这样做会从 Conda-Forge 通道安装指定的包。</p>
+<h3 id="5-7-通道优先级"><a class="header-anchor" href="#5-7-通道优先级"> </a>5.7 通道优先级</h3>
+<p>Conda 允许设置通道优先级，以决定从哪个通道下载软件包。默认情况下，Conda会<br>
+根据通道列表的顺序依次查找包。你可以通过以下命令启用或禁用通道优先级：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config <span class="hljs-built_in">set</span> channel_priority <span class="hljs-literal">true</span>  <span class="hljs-comment"># 启用优先级</span><br>conda config <span class="hljs-built_in">set</span> channel_priority <span class="hljs-literal">false</span> <span class="hljs-comment"># 禁用优先级</span><br></code></pre></td></tr></table></figure>
+<p>启用优先级后，Conda会严格根据通道顺序来选择包，确保从首选通道安装。</p>
+<h3 id="5-8-创建自定义通道"><a class="header-anchor" href="#5-8-创建自定义通道"> </a>5.8 创建自定义通道</h3>
+<p>如果你需要在团队中共享包，或者需要托管私有包，可以创建自己的Conda通道。自定义通道可以通过简单的 HTTP 服务器（如 NGINX 或 Apache）托管，或者使用 Anaconda 的企业解决方案。</p>
+<h2 id="6-设置镜像"><a class="header-anchor" href="#6-设置镜像"> </a>6. 设置镜像</h2>
+<p>为了提高 Conda 包的下载速度，特别是在网络连接到默认的 Conda 服务器速度较慢的情况下,设置国内镜像（或其他更接近你的地理位置的镜像）是一个常见且有效的方法。</p>
+<h3 id="6-1-设置-Conda-镜像的步骤"><a class="header-anchor" href="#6-1-设置-Conda-镜像的步骤"> </a>6.1 设置 Conda 镜像的步骤</h3>
+<h4 id="方法一：通过命令行配置"><a class="header-anchor" href="#方法一：通过命令行配置"> </a>方法一：通过命令行配置</h4>
+<p>你可以使用conda config命令来添加镜像。例如，使用清华大学的Anaconda镜像。</p>
+<ul>
+<li>打开命令提示符或终端。</li>
+<li>添加镜像URL：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main<br>conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free<br>conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r<br>conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro<br>conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge<br>conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2<br>conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda<br>conda config add channels<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo<br>conda config <span class="hljs-built_in">set</span> show_channel_urls <span class="hljs-built_in">yes</span><br></code></pre></td></tr></table></figure>
+默认情况下，conda config 添加的通道会排在列表的头部，但你可以通过以下命令来<br>
+确认顺序：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config show channels<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="方法二：通过修改配置文件"><a class="header-anchor" href="#方法二：通过修改配置文件"> </a>方法二：通过修改配置文件</h4>
+<p>你也可以直接修改 Conda 的配置文件来设置镜像：</p>
+<ul>
+<li>找到并编辑 Conda 的配置文件：<code>~/.condarc</code>（Linux和macOS）或 <code>C:\Users&lt;用户名&gt;.condarc</code>（Windows）。TUNA 提供了 Anaconda 仓库与第三方源（conda-forge、msys2、pytorch等，各系统都可以通过修改用户目录下的 <code>.condarc</code> 文件来使用 TUNA 镜像源。Windows 用户无法直接创建名为 <code>.condarc</code> 的文件，可先执行 <code>conda config –set show_channel_urls yes</code> 生成该文件之后再修改。</li>
+<li>添加或修改如下内容：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">channels:<br>	- defaults<br>show_channel_urls: <span class="hljs-literal">true</span><br>default_channels:<br>	- https: mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main<br>	- https: mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r<br>	- https: mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2<br>custom_channels:<br>	conda-forge: https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud<br>	msys2: https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud<br>	bioconda: https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud<br>	menpo: https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud<br>	pytorch: https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud<br>	pytorch-lts: https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud<br>	simpleitk: https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud<br>	deepmodeling:<br>https: mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行 <code>conda clean -i</code> 清除索引缓存，保证用的是镜像站提供的索引。</p>
+<h4 id="验证和测试"><a class="header-anchor" href="#验证和测试"> </a>验证和测试</h4>
+<p>在设置完镜像后，你可以通过安装软件包来测试镜像是否工作正常。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install numpy<br></code></pre></td></tr></table></figure>
+<p>查看输出的信息，确保包是从你设置的镜像URL下载的。</p>
+<h2 id="Mamba-使用"><a class="header-anchor" href="#Mamba-使用"> </a>Mamba 使用</h2>
+<p>Mamba 是一个用于管理 Conda 环境和包的开源工具，旨在解决 Conda 在处理大型环境时的速度和性能问题。它与 Conda 兼容，但提供更快的依赖解析和包安装，这使得它在处理复杂环境时更加高效。</p>
+<h3 id="Mamba-的关键特点"><a class="header-anchor" href="#Mamba-的关键特点"> </a>Mamba 的关键特点</h3>
+<ul>
+<li><strong>快速的依赖解析</strong>： Mamba 使用一个高效的 C++ 库进行依赖解析，这使得在面对复杂的包依赖时能更快地找到解决方案。</li>
+<li><strong>并行下载</strong>：Mamba 可以并行下载和安装包，这大大减少了安装时间，特别是在需要下载大量包的情况下。</li>
+<li><strong>与 Conda 兼容</strong>：Mamba 可以无缝替代 Conda 的命令，你可以在几乎所有 Conda 命令中直接使用 mamba 来替换 conda。</li>
+<li><strong>更好的用户体验</strong>：提供更直观的输出信息和进度条，让用户可以更清晰地了解安装进度和过程。</li>
+</ul>
+<h3 id="安装-Mamba"><a class="header-anchor" href="#安装-Mamba"> </a>安装 Mamba</h3>
+<p>要安装 Mamba，你首先需要一个 Conda 环境。以下是在已有 Conda 环境中安装 Mamba 的步骤：<br>
+如果你希望在特定环境中安装 Mamba，可以先激活该环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate myenv<br></code></pre></td></tr></table></figure>
+<p>你可以通过 Conda-Forge 通道安装 Mamba，因为 Mamba 在该通道上维护得很好：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install mamba -n base -c conda-forge<br></code></pre></td></tr></table></figure>
+<p>这里 <code>-n base</code> 表示将 Mamba 安装在 base 环境中，这样你可以在任何环境中使用 Mamba。</p>
+<h3 id="使用-Mamba"><a class="header-anchor" href="#使用-Mamba"> </a>使用 Mamba</h3>
+<p>Mamba可以直接替代 Conda 的命令。以下是一些常见的 Conda 命令及其 Mamba 等效用法：</p>
+<ul>
+<li>创建环境：mamba create –name myenv python=3.8</li>
+<li>激活环境：conda activate myenv （Mamba不改变环境激活命令，你仍然使用 Conda 的激活命令）</li>
+<li>安装包：mamba install numpy</li>
+<li>更新包：mamba update numpy</li>
+<li>删除包：mamba remove numpy</li>
+<li>更新环境中的所有包：mamba update –all</li>
+</ul>
+<h3 id="优势"><a class="header-anchor" href="#优势"> </a>优势</h3>
+<ul>
+<li>速度：Mamba 在处理包管理和环境解决时速度快得多，这对大环境尤其有用。</li>
+<li>效率：并行下载和安装机制使得整体过程更加高效。</li>
+<li>兼容性：能够无缝替代 Conda，并与其生态系统兼容。</li>
+</ul>
+<h3 id="局限性"><a class="header-anchor" href="#局限性"> </a>局限性</h3>
+<ul>
+<li>新兴工具：作为一个较新的工具，Mamba可能在某些边缘情况下不如 Conda 稳定。</li>
+<li>社区支持：虽然 Mamba 的社区在快速增长，但它仍然没有 Conda 那么成熟。</li>
+</ul>
+<h2 id="Jupyter-Lab-使用"><a class="header-anchor" href="#Jupyter-Lab-使用"> </a>Jupyter Lab 使用</h2>
+<h3 id="Jupyter-介绍"><a class="header-anchor" href="#Jupyter-介绍"> </a>Jupyter 介绍</h3>
+<p>JupyterLab 是最新的基于 Web 的交互式开发环境，适用于 notebooks、代码和数据。其灵活的界面允许用户配置和安排数据科学、科学计算、计算新闻和机器学习中的工作流程。模块化设计允许扩展来扩展和丰富功能。</p>
+<h3 id="Jupyter-安装使用"><a class="header-anchor" href="#Jupyter-安装使用"> </a>Jupyter 安装使用</h3>
+<p>使用 安装 JupyterLab ： pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install jupyterlab<br></code></pre></td></tr></table></figure>
+<p>注意：如果您使用 conda 或 mamba 安装 JupyterLab，我们建议使用 condaforge 通道。安装后，使用以下命令启动 JupyterLab：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jupyter lab<br></code></pre></td></tr></table></figure>
+<h3 id="PyCharm-中使用-Conda-环境"><a class="header-anchor" href="#PyCharm-中使用-Conda-环境"> </a>PyCharm 中使用 Conda 环境</h3>
+<ol>
+<li>创建项目所需要的虚拟环境</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n llamaindex-rag python=3.10<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>创建项目，选择 自定义环境 ，类型选择 Conda ，环境选择 <code>llamaindex-rag</code> ，点击 <code>创建</code> 即可.</p>
+</li>
+<li>
+<p>查看项目环境配置</p>
+</li>
+</ol>
+<p>注意：项目中需要另外的依赖库，直接到 <code>Conda Powershell Prompt</code> 终端下，激活 <code>llamaindex-rag</code> 环境，使用 <code>pip</code> 安装依赖库即可！</p>
+<h3 id="关于-modelscope-的常用指令"><a class="header-anchor" href="#关于-modelscope-的常用指令"> </a>关于 modelscope 的常用指令</h3>
+<p>我们会先用 conda 创建项目，然后激活项目再下载库或模型：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">pip install modelscope<br></code></pre></td></tr></table></figure>
+<p>一般在项目中，我们会获得一个 <code>requirements.txt</code> 文件，里面写好了 各种配置的版本 比如 <code>python=3.10</code>，然后使用下面安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install -r ./requirements.txt<br></code></pre></td></tr></table></figure>
+
+              
+            </div>
+          
+
+
+            <hr/>
+
+
+            <!-- 添加打赏模块 -->
+            <div class="reward-container">
+              
+                <button id="rewardBtn" class="reward-btn">
+                   
+                    ❤ 打赏
+                   
+                </button>
+                <p class="tea">“觉得不错的话，给点打赏吧 ୧(๑•̀⌄•́๑)૭”</p>
+                <div id="rewardImgContainer" class="reward-img-container">
+                      <div class="singleImgContainer">
+                          <img id="wechatImg" class="reward-img" src="/img/wechatpay.webp" srcset="/img/loading.gif" lazyload alt="微信二维码">
+                            <p class="wechatPay">微信支付</p>
+                        </div>
+                        <div class="singleImgContainer">
+                            <img id="alipayImg" class="reward-img" src="/img/alipay.webp" srcset="/img/loading.gif" lazyload alt="支付宝二维码">
+                            <p class="aliPay">支付宝支付</p>
+                        </div>
+                </div>
+              
+            </div>
+            
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Conda/" class="print-no-link">#Conda</a>
+      
+        <a href="/tags/macOS/" class="print-no-link">#macOS</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Conda环境配置</div>
+      <div>http://neurowave.tech/2025/01/24/2-2-conda环境配置/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Artin Tan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年6月29日</div>
+        </div>
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/02/1-8-%E6%96%87%E7%AB%A0%E8%8D%89%E7%A8%BF-%E4%B8%8D%E6%98%BE%E7%A4%BA/" title="8.文章草稿-不显示">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">8.文章草稿-不显示</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/19/1-7-%E5%88%86%E7%B1%BB%E5%86%85%E6%96%87%E7%AB%A0%E6%8C%89%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/" title="7. “分类”中文章按时间排序">
+                        <span class="hidden-mobile">7. “分类”中文章按时间排序</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  
+  <div id="valine"></div>
+
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"请输入评论内容...（支持html）","avatar":"monsterid","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+
+    </article>
+  
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+      
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+    </main>
+    <footer>
+      <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/vvd_js/duration.js"></script>
+<p>Copyright © 2025 Artin Tan. All rights reserved.</p> </div> 
+    </div>
+
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div> 
+
+
+    </footer>
+    <!-- Scripts -->
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="/js/reward.js"></script>
+
+
+
+
+<script src="/js/tag-animation.js"></script>
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- 显示"updated"标志 -->
+<script src="/js/update-flag.js" defer></script>
+
+
+    
+    <noscript>
+      <div class="noscript-warning">本博客需要启用 JavaScript 才能正常工作</div>
+    </noscript>
+
+</body>
+</html>
