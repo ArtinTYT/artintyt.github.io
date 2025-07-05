@@ -25,27 +25,28 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。   1. 配置 GitHub Actions  1.1 修改 .github&#x2F;workflows&#x2F;deploy.yml 文件 在 deploy.yml 文件中添加hexo deploy --cname &lt;name&amp;">
+    <meta name="description" content="在这篇博客中，我将分享如何通过更换 DNS 服务器来管理你的域名，特别是如何将域名从阿里云迁移到 Cloudflare，并在 GitHub Pages 上成功配置自定义域名。我会详细介绍每一步的操作，确保你能够顺利完成 DNS 设置，避免常见的错误，并启用 HTTPS 保证站点的安全。  1. 在阿里云更换 DNS 服务器  步骤：   登录到阿里云控制台：  打开 阿里云官网。 使用你的账户登录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="5.配置自定义域名">
-<meta property="og:url" content="http://neurowave.tech/2025/01/17/1-5-%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/index.html">
+<meta property="og:title" content="12. 更换域名的 DNS 服务器">
+<meta property="og:url" content="http://neurowave.tech/2025/06/05/1-12-%E6%9B%B4%E6%8D%A2%E5%9F%9F%E5%90%8D%E6%89%98%E7%AE%A1%E5%88%B0Cloudflare/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="在本篇博客中，我们将介绍如何使用 GitHub Actions 来实现 Hexo 博客的自动化部署，并且配置 自定义域名，确保 GitHub Pages 部署后不会丢失域名设置。   1. 配置 GitHub Actions  1.1 修改 .github&#x2F;workflows&#x2F;deploy.yml 文件 在 deploy.yml 文件中添加hexo deploy --cname &lt;name&amp;">
+<meta property="og:description" content="在这篇博客中，我将分享如何通过更换 DNS 服务器来管理你的域名，特别是如何将域名从阿里云迁移到 Cloudflare，并在 GitHub Pages 上成功配置自定义域名。我会详细介绍每一步的操作，确保你能够顺利完成 DNS 设置，避免常见的错误，并启用 HTTPS 保证站点的安全。  1. 在阿里云更换 DNS 服务器  步骤：   登录到阿里云控制台：  打开 阿里云官网。 使用你的账户登录">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://neurowave.tech/images/DNS.png">
-<meta property="article:published_time" content="2025-01-17T05:59:00.000Z">
-<meta property="article:modified_time" content="2025-07-05T21:09:17.734Z">
+<meta property="article:published_time" content="2025-06-05T04:25:04.000Z">
+<meta property="article:modified_time" content="2025-07-05T21:01:34.836Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="GitHub">
-<meta property="article:tag" content="SSH">
+<meta property="article:tag" content="js">
 <meta property="article:tag" content="domain">
+<meta property="article:tag" content="DNS">
+<meta property="article:tag" content="Github">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://neurowave.tech/images/DNS.png">
   
   
   
-  <title>5.配置自定义域名 - Neurowave</title>
+  <title>12. 更换域名的 DNS 服务器 - Neurowave</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -262,7 +263,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="5.配置自定义域名"></span>
+            <span id="subtitle" data-typed-text="12. 更换域名的 DNS 服务器"></span>
           
         </div>
 
@@ -273,8 +274,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-17 13:59" pubdate>
-          2025年1月17日 下午
+        <time datetime="2025-06-05 12:25" pubdate>
+          2025年6月5日 中午
         </time>
       </span>
     
@@ -285,7 +286,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          958 字
         
       </span>
     
@@ -296,7 +297,7 @@
         
         
         
-          10 分钟
+          8 分钟
         
       </span>
     
@@ -355,12 +356,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">5.配置自定义域名</h1>
+            <h1 id="seo-header">12. 更换域名的 DNS 服务器</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-06T05:09:17+08:00
+                    更新于 2025-07-06T05:01:34+08:00
                   
                   
 
@@ -373,28 +374,75 @@
             
             <div class="markdown-body">
               
-              <p>在本篇博客中，我们将介绍如何使用 <strong>GitHub Actions</strong> 来实现 <strong>Hexo 博客的自动化部署</strong>，并且配置 <strong>自定义域名</strong>，确保 GitHub Pages 部署后不会丢失域名设置。</p>
-<hr>
-<h2 id="1-配置-GitHub-Actions"><a class="header-anchor" href="#1-配置-GitHub-Actions"> </a><strong>1. 配置 GitHub Actions</strong></h2>
-<h3 id="1-1-修改-github-workflows-deploy-yml-文件"><a class="header-anchor" href="#1-1-修改-github-workflows-deploy-yml-文件"> </a><strong>1.1 修改 <code>.github/workflows/deploy.yml</code> 文件</strong></h3>
-<p>在 <code>deploy.yml</code> 文件中添加<code>hexo deploy --cname &lt;name&gt;</code>到下面位置：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Pages</span>  <span class="hljs-comment"># 部署到 GitHub Pages</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          mkdir -p ~/.ssh/</span><br><span class="hljs-string">          echo &quot;$SSH_PRIVATE_KEY&quot; | tr -d &#x27;\r&#x27; &gt; ~/.ssh/id_rsa</span><br><span class="hljs-string">          chmod 600 ~/.ssh/id_rsa</span><br><span class="hljs-string">          ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span><br><span class="hljs-string">          git config --global user.name &quot;$GIT_NAME&quot;</span><br><span class="hljs-string">          git config --global user.email &quot;$GIT_EMAIL&quot;</span><br><span class="hljs-string">          hexo deploy --cname neurowave.tech  # 在这里指定域名</span><br></code></pre></td></tr></table></figure>
-<h2 id="2-配置自定义域名"><a class="header-anchor" href="#2-配置自定义域名"> </a><strong>2. 配置自定义域名</strong></h2>
-<h3 id="2-1-在阿里云配置域名解析"><a class="header-anchor" href="#2-1-在阿里云配置域名解析"> </a><strong>2.1 在阿里云配置域名解析</strong></h3>
-<p>如果你使用的是 <strong>阿里云</strong> 购买的域名，需要在 <strong>阿里云 DNS 控制台</strong> 添加解析记录。</p>
+              <p>在这篇博客中，我将分享如何通过更换 DNS 服务器来管理你的域名，特别是如何将域名从阿里云迁移到 Cloudflare，并在 GitHub Pages 上成功配置自定义域名。我会详细介绍每一步的操作，确保你能够顺利完成 DNS 设置，避免常见的错误，并启用 HTTPS 保证站点的安全。</p>
+<h2 id="1-在阿里云更换-DNS-服务器"><a class="header-anchor" href="#1-在阿里云更换-DNS-服务器"> </a><strong>1. 在阿里云更换 DNS 服务器</strong></h2>
+<h3 id="步骤："><a class="header-anchor" href="#步骤："> </a>步骤：</h3>
 <ol>
-<li>进入 <strong>阿里云控制台</strong> → <strong>公网 DNS 解析</strong> → <strong>权威域名解析</strong>。</li>
-<li>选择你的域名，点击 <strong>添加记录</strong> 或 <strong>新手引导</strong>。</li>
-<li><strong>记录类型</strong> 为 <code>CNAME</code> 或 <code>A</code>。</li>
-<li><strong>主机记录</strong> 选择：
+<li>
+<p><strong>登录到阿里云控制台</strong>：</p>
 <ul>
-<li><code>www</code>（用于 <code>www.yourdomain.com</code>）</li>
-<li><code>@</code>（用于 <code>yourdomain.com</code>）。</li>
+<li>打开 <a target="_blank" rel="noopener" href="https://www.aliyun.com/">阿里云官网</a>。</li>
+<li>使用你的账户登录。</li>
 </ul>
 </li>
-<li><strong>记录值</strong> 中填写你的 GitHub Pages 地址，例如：<code>artintyt.github.io</code></li>
-<li>点击 <strong>保存</strong>。</li>
-<li><strong>具体参考下面格式</strong>：只需要修改你的 Github Pages 地址即可，其他不变。
+<li>
+<p><strong>进入域名管理</strong>：</p>
+<ul>
+<li>在左侧菜单中选择 <strong>“域名与网站”</strong> -&gt; <strong>“域名管理”</strong>。</li>
+<li>找到你要修改的域名，点击右侧的 <strong>“管理”</strong> 按钮。</li>
+</ul>
+</li>
+<li>
+<p><strong>修改 DNS 服务器</strong>：</p>
+<ul>
+<li>
+<p>在域名管理页面，选择 <strong>“DNS 服务器设置”</strong>。</p>
+</li>
+<li>
+<p>点击 <strong>“修改DNS服务器”</strong>。</p>
+</li>
+<li>
+<p>选择 <strong>“自定义DNS服务器”</strong>，并输入 <strong>Cloudflare 提供的 DNS 地址</strong> 例如：</p>
+<ul>
+<li><code>ns1.cloudflare.com</code></li>
+<li><code>ns2.cloudflare.com</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>提交修改</strong>：</p>
+<ul>
+<li>点击 <strong>提交修改</strong>，完成 DNS 服务器的更换。</li>
+</ul>
+</li>
+<li>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>在阿里云中将域名的 DNS服务器改为其他DNS服务商（如Cloudflare、腾讯云、自建DNS等） 后，阿里云就不再负责该域名的解析工作了。</li>
+<li>阿里云控制台中的“云解析”页面仍然会显示该域名，只是这些解析记录不会再生效 。</li>
+<li>这些旧的解析记录仍然保留在阿里云上，是因为你没有主动删除它们，也不会自动清除。</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-在-Cloudflare-设置-DNS-配置"><a class="header-anchor" href="#2-在-Cloudflare-设置-DNS-配置"> </a><strong>2. 在 Cloudflare 设置 DNS 配置</strong></h2>
+<h3 id="步骤：-v2"><a class="header-anchor" href="#步骤：-v2"> </a>步骤：</h3>
+<ol>
+<li>
+<p><strong>登录到 Cloudflare 控制台</strong>：</p>
+<ul>
+<li>访问 <a target="_blank" rel="noopener" href="https://www.cloudflare.com/">Cloudflare 官网</a> 并登录你的账户。</li>
+</ul>
+</li>
+<li>
+<p><strong>添加你的域名</strong>：</p>
+<ul>
+<li>在 <strong>Cloudflare Dashboard</strong> 中，点击 <strong>Add</strong> -&gt; <strong>Connect a domain</strong>，然后输入你刚才修改 DNS 的域名（如 <code>neurowave.tech</code>）。</li>
+<li>点击 <strong>Add Site</strong>，Cloudflare 会自动扫描并导入你的 DNS 记录。</li>
+</ul>
+</li>
+<li>
+<p><strong>添加 DNS 记录</strong>：</p>
 <ul>
 <li>
 <p><strong>根域名 <code>@</code> 设置 A 记录</strong>，指向 GitHub Pages 的 IP 地址。确保你添加以下四条 A 记录：</p>
@@ -446,24 +494,14 @@
 </li>
 </ul>
 </li>
-</ol>
-<h3 id="2-2-生成-CNAME-文件"><a class="header-anchor" href="#2-2-生成-CNAME-文件"> </a><strong>2.2 生成 <code>CNAME</code> 文件</strong></h3>
-<p>如果你的博客使用自定义域名（如 <code>neurowave.tech</code>），你需要在 <code>source/</code> 目录下创建 <code>CNAME</code> 文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;neurowave.tech&quot;</span> &gt; <span class="hljs-built_in">source</span>/CNAME<br></code></pre></td></tr></table></figure>
-<p>然后提交到 <code>main</code> branch：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add <span class="hljs-built_in">source</span>/CNAME<br>git commit -m <span class="hljs-string">&quot;Add CNAME file&quot;</span><br>git push origin main<br></code></pre></td></tr></table></figure>
-<p>你也可以手动创建一个叫 <code>CNAME</code> 文件到 <code>source/</code>。</p>
-<h3 id="2-3-确保-CNAME-在-Hexo-部署时不会丢失"><a class="header-anchor" href="#2-3-确保-CNAME-在-Hexo-部署时不会丢失"> </a><strong>2.3 确保 <code>CNAME</code> 在 Hexo 部署时不会丢失</strong></h3>
-<p>在 Hexo 的 <code>_config.yml</code> 文件中，确保 <code>deploy</code> 部分包含 <code>cname</code> 和你的自定义域名：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span>  <span class="hljs-comment"># 你的 GitHub Pages 分支</span><br>  <span class="hljs-attr">message:</span> <span class="hljs-string">&quot;Deploy blog updates&quot;</span><br>  <span class="hljs-attr">cname:</span> <span class="hljs-string">neurowave.tech</span>  <span class="hljs-comment"># 自定义域名</span><br></code></pre></td></tr></table></figure>
-<h3 id="2-4-在-GitHub-Pages-启用自定义域名"><a class="header-anchor" href="#2-4-在-GitHub-Pages-启用自定义域名"> </a><strong>2.4 在 GitHub Pages 启用自定义域名</strong></h3>
-<ol>
-<li><strong>进入 GitHub 仓库</strong> → <strong>Settings</strong> → <strong>Pages</strong>。</li>
-<li>在 <strong>Custom domain</strong> 输入 <code>neurowave.tech</code>。</li>
-<li><strong>勾选 &quot;Enforce HTTPS&quot;</strong>，确保 HTTPS 正常工作。</li>
-<li>等待 GitHub 解析你的域名，通常需要几分钟。</li>
-</ol>
-<h3 id="2-5-添加-TXT-记录用于域名认证"><a class="header-anchor" href="#2-5-添加-TXT-记录用于域名认证"> </a><strong>2.5 添加 TXT 记录用于域名认证</strong></h3>
+<li>
+<p><strong>启用 Proxied 模式</strong>：</p>
+<ul>
+<li>确保 <strong><code>www</code></strong> 和 <strong>根域名（<code>@</code>）</strong> 的记录状态为 <strong>“Proxied”</strong>（橙色云标志），这将使得 Cloudflare 的 CDN 和加速服务生效。</li>
+</ul>
+</li>
+<li>
+<p><strong>添加 TXT 记录用于域名认证</strong></p>
 <ul>
 <li>
 <p>GitHub Pages 要求你在 DNS 中添加一个 TXT 记录 来验证你对域名的所有权。以下是你需要在 Cloudflare DNS 中添加的记录：</p>
@@ -485,45 +523,35 @@
 <p>你可以参考 GitHub 官方文档的详细步骤：<a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages">GitHub Pages 配置域名验证</a></p>
 </li>
 </ul>
+</li>
+</ol>
 <blockquote>
 <p><strong>重要提示：防止域名盗用</strong>:<br>
 为了 防止域名被盗用，确保你按照 GitHub 的要求在 DNS 中添加正确的 TXT 记录，通过 GitHub 验证你对域名的所有权。这个步骤可以防止他人伪造和篡改你的域名配置，从而保护你的站点不受恶意攻击。</p>
 <p>在完成 TXT 记录配置后，GitHub 会自动检测并验证你对域名的所有权。这样不仅确保了你对域名的控制权，还提升了安全性。</p>
 </blockquote>
 <img src="/images/DNS.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto;" />
-<h2 id="3-提交并触发-GitHub-Actions"><a class="header-anchor" href="#3-提交并触发-GitHub-Actions"> </a><strong>3. 提交并触发 GitHub Actions</strong></h2>
-<p>执行以下命令，将 <code>deploy.yml</code> 配置文件提交到 GitHub：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .github/workflows/deploy.yml<br>git commit -m <span class="hljs-string">&quot;Add GitHub Actions for Hexo deployment&quot;</span><br>git push origin main  <span class="hljs-comment"># 如果你的远程分支是 main</span><br></code></pre></td></tr></table></figure>
-<p>推送代码后，GitHub Actions 会自动执行部署。</p>
-<h2 id="4-检查-GitHub-Actions-是否成功"><a class="header-anchor" href="#4-检查-GitHub-Actions-是否成功"> </a><strong>4. 检查 GitHub Actions 是否成功</strong></h2>
-<ul>
-<li>
-<p><strong>查看 Actions 运行状态</strong></p>
+<h2 id="3-配置-SSL-和安全设置"><a class="header-anchor" href="#3-配置-SSL-和安全设置"> </a><strong>3. 配置 SSL 和安全设置</strong></h2>
 <ol>
-<li>打开 GitHub 仓库。</li>
-<li>点击 <strong>Actions</strong> 选项卡。</li>
-<li>查看最新的 Workflow 运行记录。</li>
-<li>如果显示绿色 ✅，说明部署成功；如果失败，则查看日志分析问题。</li>
-</ol>
+<li>
+<p><strong>启用 HTTPS</strong>：</p>
+<ul>
+<li>在 <strong>Cloudflare Dashboard</strong> 中，点击 <strong>SSL/TLS</strong>，启用 <strong>Flexible</strong> 或 <strong>Full</strong> SSL。</li>
+<li>启用 <strong>“Always Use HTTPS”</strong>，强制所有访问者通过 HTTPS 访问你的网站。</li>
+</ul>
 </li>
 <li>
-<p><strong>访问你的博客</strong><br>
-GitHub Pages 更新可能需要几分钟，稍等后访问：<code>https://neurowave.tech</code> 如果看到最新内容，说明部署成功！🎉</p>
-</li>
-</ul>
-<h2 id="5-本地更新博客并推送"><a class="header-anchor" href="#5-本地更新博客并推送"> </a><strong>5. 本地更新博客并推送</strong></h2>
-<p>当你本地修改博客内容后，使用以下命令提交并触发 GitHub Actions：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br>git commit -m <span class="hljs-string">&quot;Update blog content&quot;</span><br></code></pre></td></tr></table></figure>
-<p>然后清除缓存，生成新的静态页面，并部署到 Github：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo generate <br>hexo deploy<br></code></pre></td></tr></table></figure>
-<h2 id="6-总结"><a class="header-anchor" href="#6-总结"> </a><strong>6. 总结</strong></h2>
+<p><strong>自动重写 HTTPS</strong>：</p>
 <ul>
-<li><strong>配置 GitHub Actions</strong>，让博客自动部署。</li>
-<li><strong>创建 <code>CNAME</code> 文件，并确保 Hexo 部署时不会丢失自定义域名</strong>。</li>
-<li><strong>每次 <code>hexo deploy</code>，GitHub Actions 自动触发部署</strong>。</li>
-<li><strong>GitHub Pages 自动更新，无需手动运行 <code>git push</code></strong>。</li>
+<li>启用 <strong>Automatic HTTPS Rewrites</strong>，将所有 HTTP 链接自动重写为 HTTPS，避免混合内容错误。</li>
 </ul>
-<p>这样，你的 Hexo 博客就实现了 <strong>全自动化部署，并且保留自定义域名</strong> 🎉！</p>
+</li>
+</ol>
+<h2 id="4-等待-DNS-配置生效"><a class="header-anchor" href="#4-等待-DNS-配置生效"> </a><strong>4. 等待 DNS 配置生效</strong></h2>
+<ul>
+<li><strong>DNS 生效时间</strong>：通常会在 <strong>10 分钟到 1 小时</strong> 内完成，最长 24 小时内生效。</li>
+<li>你可以使用 <strong><a target="_blank" rel="noopener" href="https://dnschecker.org/">DNS Checker</a></strong> 检查 DNS 记录是否已经生效。</li>
+</ul>
 
               
             </div>
@@ -585,11 +613,13 @@ GitHub Pages 更新可能需要几分钟，稍等后访问：<code>https://neuro
       
         <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
       
-        <a href="/tags/GitHub/" class="print-no-link">#GitHub</a>
-      
-        <a href="/tags/SSH/" class="print-no-link">#SSH</a>
+        <a href="/tags/js/" class="print-no-link">#js</a>
       
         <a href="/tags/domain/" class="print-no-link">#domain</a>
+      
+        <a href="/tags/DNS/" class="print-no-link">#DNS</a>
+      
+        <a href="/tags/Github/" class="print-no-link">#Github</a>
       
     </div>
   
@@ -601,8 +631,8 @@ GitHub Pages 更新可能需要几分钟，稍等后访问：<code>https://neuro
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>5.配置自定义域名</div>
-      <div>http://neurowave.tech/2025/01/17/1-5-配置自定义域名/</div>
+      <div>12. 更换域名的 DNS 服务器</div>
+      <div>http://neurowave.tech/2025/06/05/1-12-更换域名托管到Cloudflare/</div>
     </div>
     <div class="license-meta">
       
@@ -614,7 +644,7 @@ GitHub Pages 更新可能需要几分钟，稍等后访问：<code>https://neuro
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月17日</div>
+          <div>2025年6月5日</div>
         </div>
       
       
@@ -635,18 +665,12 @@ GitHub Pages 更新可能需要几分钟，稍等后访问：<code>https://neuro
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/18/1-6-%E6%96%87%E7%AB%A0%E6%98%BE%E7%A4%BA%E6%9B%B4%E6%96%B0%E6%A0%87%E5%BF%97/" title="6.文章在首页显示“更新”标志">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">6.文章在首页显示“更新”标志</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/15/1-4-%E4%BD%BF%E7%94%A8GitHub-Actions%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/" title="4.使用 GitHub Actions 自动部署 Hexo 博客">
-                        <span class="hidden-mobile">4.使用 GitHub Actions 自动部署 Hexo 博客</span>
+                      <a href="/2025/04/21/9-2-Transformer/" title="2. Transformer(书)">
+                        <span class="hidden-mobile">2. Transformer(书)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
