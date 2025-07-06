@@ -25,17 +25,19 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。   1. 临时设置（仅对当前终端会话有效） 在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot; 之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。   2. 永">
+    <meta name="description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。  1. 临时设置（仅对当前终端会话有效） 在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot; 之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。  2. 永久设">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macOS 环境变量">
 <meta property="og:url" content="http://neurowave.tech/2025/03/01/3-2-macOS%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。   1. 临时设置（仅对当前终端会话有效） 在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot; 之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。   2. 永">
+<meta property="og:description" content="在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。  1. 临时设置（仅对当前终端会话有效） 在终端中直接使用 export 命令可以设置环境变量，这个变量只在当前会话内有效。例如： 1export MY_VAR&#x3D;&quot;my_value&quot; 之后，你可以通过 echo $MY_VAR 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。  2. 永久设">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-01T10:28:12.000Z">
-<meta property="article:modified_time" content="2025-03-01T10:49:57.726Z">
+<meta property="article:modified_time" content="2025-07-06T17:02:23.124Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="macOS">
+<meta property="article:tag" content="System">
+<meta property="article:tag" content="Shell">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -355,7 +357,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-03-01T18:49:57+08:00
+                    更新于 2025-07-07T01:02:23+08:00
                   
                   
 
@@ -369,12 +371,10 @@
             <div class="markdown-body">
               
               <p>在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。</p>
-<hr>
 <h2 id="1-临时设置（仅对当前终端会话有效）"><a class="header-anchor" href="#1-临时设置（仅对当前终端会话有效）"> </a>1. 临时设置（仅对当前终端会话有效）</h2>
 <p>在终端中直接使用 <code>export</code> 命令可以设置环境变量，这个变量只在当前会话内有效。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> MY_VAR=<span class="hljs-string">&quot;my_value&quot;</span><br></code></pre></td></tr></table></figure>
 <p>之后，你可以通过 <code>echo $MY_VAR</code> 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。</p>
-<hr>
 <h2 id="2-永久设置（对所有终端会话有效）"><a class="header-anchor" href="#2-永久设置（对所有终端会话有效）"> </a>2. 永久设置（对所有终端会话有效）</h2>
 <p>要永久设置环境变量，需要将 <code>export</code> 命令写入到 shell 的配置文件中。macOS 默认使用 zsh（macOS Catalina 及以上版本）：</p>
 <ul>
@@ -487,6 +487,10 @@
       
         <a href="/tags/macOS/" class="print-no-link">#macOS</a>
       
+        <a href="/tags/System/" class="print-no-link">#System</a>
+      
+        <a href="/tags/Shell/" class="print-no-link">#Shell</a>
+      
     </div>
   
 </div>
@@ -516,7 +520,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年3月1日</div>
+          <div>2025年7月7日</div>
         </div>
       
       
