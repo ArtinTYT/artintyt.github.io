@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://neurowave.tech/2025/04/18/8-2-CNN-%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF/</loc>
+    
+    <lastmod>2025-07-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/2025/04/17/5-2-RNN-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    
+    <lastmod>2025-07-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/2025/04/16/6-1-NLP-%E6%89%8B%E5%8A%A8DL%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2025-07-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/2025/01/24/2-2-conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2025-07-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/2025/04/19/7-6-%E5%A4%9A%E5%A4%B4%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</loc>
     
     <lastmod>2025-07-06</lastmod>
@@ -92,15 +128,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/2025/04/17/5-2-RNN-RNN%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
-    
-    <lastmod>2025-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/2025/04/17/5-1-RNN-%E6%96%87%E6%9C%AC%E9%A2%84%E5%A4%84%E7%90%86/</loc>
     
     <lastmod>2025-07-06</lastmod>
@@ -128,15 +155,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/2025/01/24/2-2-conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2025-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/2025/04/19/2-4-LLMs%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5/</loc>
     
     <lastmod>2025-07-06</lastmod>
@@ -146,25 +164,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/2025/04/16/6-1-NLP-%E6%89%8B%E5%8A%A8DL%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98/</loc>
-    
-    <lastmod>2025-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/2025/04/18/6-2-NLP-%E8%AF%8D%E5%B5%8C%E5%85%A5/</loc>
-    
-    <lastmod>2025-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/2025/04/18/8-2-CNN-%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF/</loc>
     
     <lastmod>2025-07-06</lastmod>
     
@@ -576,13 +576,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/CNNs/</loc>
-    <lastmod>2025-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/Transformer/</loc>
     <lastmod>2025-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -779,13 +772,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2025-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/LSTM/</loc>
     <lastmod>2025-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -815,13 +801,6 @@
   
   <url>
     <loc>http://neurowave.tech/tags/GRU/</loc>
-    <lastmod>2025-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2025-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -871,13 +850,6 @@
   
   <url>
     <loc>http://neurowave.tech/tags/conda/</loc>
-    <lastmod>2025-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2025-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -962,6 +934,20 @@
   
   <url>
     <loc>http://neurowave.tech/tags/Multi-Head-Attention/</loc>
+    <lastmod>2025-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Environment-configuration/</loc>
+    <lastmod>2025-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Tools/</loc>
     <lastmod>2025-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
