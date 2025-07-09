@@ -20,6 +20,4 @@ Questions or want to chat? Leave a comment or find me on GitHub. Let’s learn a
 
 Blog: https://neurowave.tech
 
----
-
 _Last updated: April 2024_
