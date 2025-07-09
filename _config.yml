@@ -122,7 +122,7 @@ deploy:
   repo: https://${MY_TOKEN}@github.com/ArtinTYT/artintyt.github.io.git
 
   branch: gh-pages
-  message: "Update blog content"
+  message: "🚀 Deploy via GitHub Actions"
   cname: neurowave.tech
 
 
