@@ -2,9 +2,11 @@
 title: 4. Self-Attention 自注意力
 date: 2025-04-19 14:11:10
 tags:
-    - Deep_Learning
-    - NLP
-    - Attention
+  - Self-Attention
+  - NLP
+  - Deep_Learning
+  - AI
+  - Mechanism
 categories:
     - Attention
 ---

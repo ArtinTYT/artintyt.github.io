@@ -2,8 +2,11 @@
 title: 4.长短期记忆网络 LSTM
 date: 2025-04-17 15:22:30
 tags:
+    - RNN
+    - LSTM
     - Deep_Learning
-    - RNNs
+    - NLP
+    - Sequence_Model
 categories:
     - RNNs
 ---

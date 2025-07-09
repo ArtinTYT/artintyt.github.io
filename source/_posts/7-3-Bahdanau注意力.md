@@ -2,9 +2,11 @@
 title: 3. Bahdanau 注意力（Seq2Seq + Attention）
 date: 2025-04-19 12:01:10
 tags:
-    - Deep_Learning
-    - NLP
+    - Bahdanau
     - Attention
+    - Seq2Seq
+    - NLP
+    - Deep_Learning
 categories:
     - Attention
 ---

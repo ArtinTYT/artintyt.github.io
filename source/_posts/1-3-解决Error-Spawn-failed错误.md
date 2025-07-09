@@ -9,6 +9,7 @@ tags:
   - Error
   - Git
   - Homebrew
+  - deploy
 ---
 
 
@@ -98,7 +99,7 @@ git status
 	To add an exception for this directory, call:
 	git config --global --add safe.directory /opt/homebrew
 	```
-	这个错误是因为 Git 检测到 `/opt/homebrew` 目录的所有权不匹配或不安全（通常发生在文件系统上的权限问题）。Git 出于安全原因默认会阻止不安全的目录操作，你可以通过添加目录为“安全”目录来解决这个问题。
+	这个错误是因为 Git 检测到 `/opt/homebrew` 目录的所有权不匹配或不安全（通常发生在文件系统上的权限问题）。Git 出于安全原因默认会阻止不安全的目录操作，你可以通过添加目录为"安全"目录来解决这个问题。
 	运行以下命令来将 `/opt/homebrew` 目录添加为 Git 的安全目录：
 		```bash
 		git config --global --add safe.directory /opt/homebrew
@@ -108,8 +109,8 @@ git status
 	```bash
 	(base) artin@Artins-MacBook-Air homebrew % git status
 	
-	On branch master
-	Your branch is up to date with 'origin/master'.
+	On branch main
+	Your branch is up to date with 'origin/main'.
 	
 	nothing to commit, working tree clean
    ```

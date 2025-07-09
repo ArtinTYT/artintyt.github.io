@@ -2,9 +2,11 @@
 title: 1. Attention 核心思想
 date: 2025-04-18 12:32:10
 tags:
-    - Deep_Learning
-    - NLP
-    - Attention
+  - Attention
+  - NLP
+  - Deep_Learning
+  - Mechanism
+  - AI
 categories:
     - Attention
 

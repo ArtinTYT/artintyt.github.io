@@ -2,8 +2,11 @@
 title: 1.从全连接层到卷积
 date: 2025-04-18 14:32:10
 tags:
+    - CNN
     - Deep_Learning
-    - CNNs
+    - FC-Layer
+    - convolution
+    - AI
 categories:
     - CNNs
 ---
@@ -18,7 +21,7 @@ categories:
 	    其中 $\mathbf{W}$ 是 $m \times n$ 的权重矩阵，$\mathbf{b}$ 是偏置项。
         
 - 卷积（Convolution）层
-	- **定义**：卷积是一种重要的线性运算，广泛用于信号和图像处理中。它通过一个小的“卷积核”（滤波器）在输入上滑动，局部地与输入片段相乘并求和，从而提取局部特征。
+	- **定义**：卷积是一种重要的线性运算，广泛用于信号和图像处理中。它通过一个小的"卷积核"（滤波器）在输入上滑动，局部地与输入片段相乘并求和，从而提取局部特征。
 	- **数学定义**：
 	    - **连续情形**：两个函数 $f$、$g$ 的卷积定义为
 	        $$(f * g)(x) = \int f(z)g(x-z)dz$$
@@ -75,5 +78,5 @@ categories:
 
 ## 参考资料
 
-- [李沐《动手学深度学习》：6.1. 从全连接层到卷积](https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html)
+- [李沐《动手学深度学习》：6.1. 从全连接层到卷积](https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html)
 - [Bilibili：从全连接层到卷积](https://www.bilibili.com/video/BV1L64y1m7Nh)

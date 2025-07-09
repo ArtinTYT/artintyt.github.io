@@ -1,32 +1,34 @@
 ---
-title: About Us
+title: 关于我们
 layout: about
 ---
 
-Welcome to **Neurowave**!
+欢迎关注 **Neurowave**！
 
-From 2021 to 2024, focused on theoretical statistical machine learning and scientific data research. In the future, we will share content about applied machine learning, deep learning, large model algorithms, and more. Looking forward to communicating and growing with everyone!
+在 2021 至 2024 年间，专注于理论统计机器学习以及科学数据的学习与研究。接下来，我们将不定期分享关于应用机器学习、深度学习、大模型算法等方面的内容，期待与大家一起交流与成长！
 
-More **ML**, **DL**, and **LLMs** projects will be open-sourced on Github in the future. Stay tuned!
+后期会逐渐开源一些**ML**、**DL**和 **LLMs**项目到 Github，敬请期待！
 
 --- 
 ### Projects
 
->**Organizing**
+>**整理ing**
 >
+
 >
+
 
 
 ### Education
 
->**Bachelor of Science in Data Science with Honours, Mathematics School, University of Bristol**  
+>**Bachelor of Science in Data Science with Honours, Mathematics School, Univeristy of Bristol**  
 
 
 ### Experience
 
 >**Data Analyst Intern (Dubai)**
 >
->#### Other:
+>#### Other：
 >
 >**Alumni Advisory Panel, University of Bristol (Now)**
 >

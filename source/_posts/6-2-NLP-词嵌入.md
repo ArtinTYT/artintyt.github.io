@@ -2,9 +2,11 @@
 title: 1.词嵌入（Word Embedding，Word2Vec）
 date: 2025-04-18 10:12:30
 tags:
-    - Deep_Learning
-    - NLP
+    - Word2Vec
     - Embedding
+    - NLP
+    - Deep_Learning
+    - AI
 
 categories:
     - NLP

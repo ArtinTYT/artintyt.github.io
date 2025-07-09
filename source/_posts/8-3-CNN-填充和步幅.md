@@ -2,8 +2,11 @@
 title: 3.填充和步幅（padding & stride）
 date: 2025-04-18 17:13:10
 tags:
-    - Deep_Learning
-    - CNNs
+	- CNN
+	- Padding
+	- Stride
+	- Deep_Learning
+	- AI
 categories:
     - CNNs
 ---

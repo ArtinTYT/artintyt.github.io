@@ -3,9 +3,10 @@ title: 李沐《手动深度学习》环境配置问题
 date: 2025-04-16 19:11:33
 tags:
   - Deep_Learning
-  - Error
-  - 配置
+  - NLP
   - PyTorch
+  - Environment_configuration
+  - Error
   - Jupyter
   - Python
 categories:

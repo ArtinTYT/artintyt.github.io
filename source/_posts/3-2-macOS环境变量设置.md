@@ -3,13 +3,14 @@ title: macOS 环境变量
 date: 2025-03-01 18:28:12
 tags:
   - macOS
+  - Shell
+  - System
 categories:
   - System
 ---
 
 在 macOS 系统中，可以通过以下方式来配置环境变量，查看环境变量。
 
----
 
 ## 1. 临时设置（仅对当前终端会话有效）
 
@@ -21,7 +22,6 @@ export MY_VAR="my_value"
 
 之后，你可以通过 `echo $MY_VAR` 来查看变量值。如果关闭终端或启动新的终端窗口，这个设置就会失效。
 
----
 
 ## 2. 永久设置（对所有终端会话有效）
 

@@ -2,8 +2,10 @@
 title: 2.RNN相关基础知识
 date: 2025-04-17 13:33:10
 tags:
-    - RNNs
+    - RNN
     - Deep_Learning
+    - NLP
+    - Sequence_Model
 categories:
     - RNNs
 ---

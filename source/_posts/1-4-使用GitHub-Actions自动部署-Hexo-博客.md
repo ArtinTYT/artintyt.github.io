@@ -5,6 +5,8 @@ tags:
   - Hexo
   - GitHub
   - SSH
+  - automation
+  - deploy
 categories:
   - Hexo
 ---
@@ -25,7 +27,7 @@ mkdir -p .github/workflows
 nano .github/workflows/deploy.yml
 ```
 
-在 **deploy.yml** 文件中添加以下内容（如果你的远程仓库默认分支为 `master`，则触发条件与拉取分支都使用 `master`；如果你使用其他分支，请相应调整）：
+在 **deploy.yml** 文件中添加以下内容（如果你的远程仓库默认分支为 `main`，则触发条件与拉取分支都使用 `main`；如果你使用其他分支，请相应调整）：
 
 ```yaml
 name: Deploy Hexo Blog             # GitHub Actions 的名称，可自行命名
@@ -34,7 +36,7 @@ name: Deploy Hexo Blog             # GitHub Actions 的名称，可自行命名
 on:
   push:
     branches:
-      - master                       # 当推送到 master 分支时触发部署（根据你的分支选择）
+      - main                       # 当推送到 main 分支时触发部署（根据你的分支选择）
 
 jobs:
   deploy:
@@ -45,7 +47,7 @@ jobs:
     - name: Checkout repository     # 从 GitHub 仓库拉取代码
       uses: actions/checkout@v2
       with:
-        ref: master                   # 拉取 master 分支代码
+        ref: main                   # 拉取 main 分支代码
 
     # 步骤 2：设置 Node 环境
     - name: Setup Node.js           # 安装 Node.js 环境
@@ -89,7 +91,7 @@ jobs:
 >      repo: git@github.com:你的用户名/你的仓库.git
 >      branch: gh-pages   # 或者根据你的实际情况设置为 ph-pages
 >    ```
-> 2. 这样可以保证你的源代码存放在 `master` 分支，而生成的静态页面将推送到 `gh-pages` 分支，从而使博客部署更清晰规范。
+> 2. 这样可以保证你的源代码存放在 `main` 分支，而生成的静态页面将推送到 `gh-pages` 分支，从而使博客部署更清晰规范。
 
 ---
 
@@ -153,7 +155,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```bash
 git add .github/workflows/deploy.yml
 git commit -m "Add GitHub Actions for Hexo deployment"
-git push origin master  # 如果你的远程分支是 master
+git push origin main  # 如果你的远程分支是 main
 ```
 
 推送代码后，GitHub Actions 会自动运行部署流程，并将 Hexo 生成的静态文件推送到 `gh-pages` 分支。
@@ -198,9 +200,9 @@ hexo deploy
 GitHub Actions 会自动运行并更新静态页面到 `gh-pages` 分支，GitHub Pages 会随之更新。
 
 然后等待 GitHub Actions 自动更新你的博客。
->注意：当要修改 `.github/workflows/deploy.yml` 文件时，记得切换到 `master` 分支，使用以下：
+>注意：当要修改 `.github/workflows/deploy.yml` 文件时，记得切换到 `main` 分支，使用以下：
 > ```bash
-> git checkout master 
+> git checkout main 
 > ```
 
 记得修改后要提交更改，使用一下命令：
@@ -254,7 +256,7 @@ env:
 
 - **配置 GitHub Actions**：实现博客自动部署，无需手动执行 `hexo deploy`。
 - **设置 SSH 密钥**：保证 GitHub Actions 有权限将生成的静态页面推送到 `gh-pages` 分支。
-- **分支管理**：源代码存放在 `master` 分支，生成的静态页面存放在 `gh-pages`（或 ph-pages）分支，使仓库结构清晰。
+- **分支管理**：源代码存放在 `main` 分支，生成的静态页面存放在 `gh-pages`（或 ph-pages）分支，使仓库结构清晰。
 - **持续自动化**：每次 `git push` 后，GitHub Actions 自动触发部署流程，确保博客内容始终保持最新状态。
 
 通过以上配置，你的 Hexo 博客将实现全自动化部署，并利用 GitHub Actions 强大的集成优势，让博客更新变得轻松高效！🎉
