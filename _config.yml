@@ -118,8 +118,7 @@ theme: fluid
 
 deploy:
   type: git
-  #repo: git@github.com:ArtinTYT/artintyt.github.io.git
-  repo: https://${MY_TOKEN}@github.com/ArtinTYT/artintyt.github.io.git
+  repo: git@github.com:ArtinTYT/artintyt.github.io.git
   branch: gh-pages
   message: "Update blog content"
   cname: neurowave.tech
