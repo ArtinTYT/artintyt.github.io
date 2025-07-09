@@ -2,8 +2,10 @@
 title: 4.多输入通道与多输出通道的卷积
 date: 2025-04-18 19:19:10
 tags:
+    - CNN
     - Deep_Learning
-    - CNNs
+    - AI
+    - Channel
 categories:
     - CNNs
 ---

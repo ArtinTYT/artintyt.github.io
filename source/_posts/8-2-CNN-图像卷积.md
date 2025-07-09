@@ -2,8 +2,11 @@
 title: 2.图像卷积
 date: 2025-04-18 15:55:10
 tags:
+    - CNN
     - Deep_Learning
-    - CNNs
+    - Image
+    - Convolution
+    - AI
 categories:
     - CNNs
 ---

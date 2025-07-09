@@ -35,7 +35,6 @@ More **ML**, **DL**, and **LLMs** projects will be open-sourced on Github in the
 >**Workshop Creator && Committee, Bristol Data Science Society** 
 >
 >**Course Rep in Data Science, Maths School**   
->
 
  
 

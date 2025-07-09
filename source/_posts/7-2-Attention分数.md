@@ -2,9 +2,11 @@
 title: 2. 注意力分数
 date: 2025-04-19 12:01:10
 tags:
-    - Deep_Learning
-    - NLP
     - Attention
+    - Score
+    - NLP
+    - Deep_Learning
+    - AI
 categories:
     - Attention
 ---

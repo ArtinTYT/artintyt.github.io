@@ -2,9 +2,11 @@
 title: 6. Multi-Head Self-Attention 多头自注意力
 date: 2025-04-19 15:55:19
 tags:
-    - Deep_Learning
-    - NLP
-    - Attention
+	- Multi-Head_Attention
+	- NLP
+	- Deep_Learning
+	- Transformer
+	- AI
 categories:
     - Attention
 ---

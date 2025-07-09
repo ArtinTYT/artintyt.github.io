@@ -2,8 +2,11 @@
 title: 3.门控循环单元 GRU
 date: 2025-04-17 14:53:30
 tags:
-    - Deep_Learning
-    - RNNs
+  - RNN
+  - GRU
+  - Deep_Learning
+  - NLP
+  - Sequence_Model
 categories:
     - RNNs
 ---

@@ -2,9 +2,12 @@
 title: 5. Positional Encoding 位置编码
 date: 2025-04-19 15:55:19
 tags:
-    - Deep_Learning
-    - NLP
-    - Attention
+  - Position_Encoding
+  - NLP
+  - Deep_Learning
+  - Transformer
+  - AI
+
 categories:
     - Attention
 ---
