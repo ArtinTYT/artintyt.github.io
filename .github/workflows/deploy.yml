@@ -41,6 +41,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE }}   # 使用 GitHub Secrets 中存储的 SSH 私钥
         GIT_NAME: ${{ secrets.GIT_NAME }}            # Git 用户名
         GIT_EMAIL: ${{ secrets.GIT_EMAIL }}          # Git 用户邮箱
+        MY_TOKEN: ${{ secrets.MY_TOKEN }}            # 使用 GitHub Secrets 中存储的 Token
       run: |
         mkdir -p ~/.ssh/            
         echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
