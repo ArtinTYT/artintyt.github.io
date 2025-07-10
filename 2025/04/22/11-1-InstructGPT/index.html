@@ -1,0 +1,1188 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+
+<head>
+  <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
+
+  
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/webicon.webp">
+  <link rel="icon" href="/img/webicon.webp">
+  
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Artin Tan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="InstructGPT 本文并非全部翻译，但尽可能的保持文章原意。有逻辑的描述论文的思路，实验。并加了一些理解与例子的备注，如果需要快速了解本文精华内容，可以参考另外一篇总结性文章。  Abstract   问题背景：只让语言模型变大，并不能更好的让它按用户的意图办事。模型规模再大，也可能胡说八道、输出有害内容或者根本没帮上忙。—— 模型和人类想法 没有对齐。   提出方法：本文探索了一条新路：用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1. InstructGPT 详细">
+<meta property="og:url" content="http://neurowave.tech/2025/04/22/11-1-InstructGPT/index.html">
+<meta property="og:site_name" content="Neurowave">
+<meta property="og:description" content="InstructGPT 本文并非全部翻译，但尽可能的保持文章原意。有逻辑的描述论文的思路，实验。并加了一些理解与例子的备注，如果需要快速了解本文精华内容，可以参考另外一篇总结性文章。  Abstract   问题背景：只让语言模型变大，并不能更好的让它按用户的意图办事。模型规模再大，也可能胡说八道、输出有害内容或者根本没帮上忙。—— 模型和人类想法 没有对齐。   提出方法：本文探索了一条新路：用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-22T04:12:30.000Z">
+<meta property="article:modified_time" content="2025-07-10T17:42:53.033Z">
+<meta property="article:author" content="Artin Tan">
+<meta property="article:tag" content="Deep_Learning">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="InstructGPT">
+<meta property="article:tag" content="RLHF">
+<meta property="article:tag" content="Paper">
+<meta property="article:tag" content="Alignment">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1. InstructGPT 详细 - Neurowave</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/reward.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/custom/quote-nav.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"neurowave.tech","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-FC96VM1C7N"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-FC96VM1C7N", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-FC96VM1C7N');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+</head>
+<body>
+    
+    <header>
+      
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Neurowave</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/say/" target="_self">
+                <i class="iconfont icon-comment"></i>
+                <span>说说</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1. InstructGPT 详细"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-22 12:12" pubdate>
+          2025年4月22日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+
+
+<!-- 在页面合适的位置添加显示评论数的占位符 
+<div class="article-meta-comments">
+  <span class="post-meta-item-icon"><i class="iconfont icon-comment"></i></span>
+  <span id="comment-count"></span>
+  条
+</div>
+
+-->
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+    </header>
+    <main>
+      
+        
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">1. InstructGPT 详细</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    更新于 2025-07-11T01:42:53+08:00
+                  
+                  
+
+                
+              </p>
+            
+
+
+
+            
+            <div class="markdown-body">
+              
+              <h1>InstructGPT</h1>
+<p>本文并非全部翻译，但尽可能的保持文章原意。有逻辑的描述论文的思路，实验。并加了一些理解与例子的备注，如果需要快速了解本文精华内容，可以参考另外一篇总结性文章。</p>
+<h2 id="Abstract"><a class="header-anchor" href="#Abstract"> </a>Abstract</h2>
+<ul>
+<li>
+<p><strong>问题背景</strong>：只让语言模型变大，并不能更好的让它按用户的意图办事。模型规模再大，也可能胡说八道、输出有害内容或者根本没帮上忙。—— 模型和人类想法 <strong>没有对齐</strong>。</p>
+</li>
+<li>
+<p><strong>提出方法</strong>：本文探索了一条新路：<strong>用人类的反馈 微调模型</strong>（fine-tuning models with human feedback），让模型更好地对齐用户意图、适应各种任务。</p>
+<ol>
+<li>首先：收集人工编写的指令（prompts）和用户API提交的指令，再加上人工演示的理想回答，用这些数据对GPT-3做监督微调。</li>
+<li>然后：让人类给不同模型输出结果打分，收集“排名数据”，用<strong>人类反馈的强化学习</strong>（Reinforcement Learning from Human Feedback，RLHF）再做一轮微调。</li>
+</ol>
+<ul>
+<li>这种通过 <strong>人类反馈微调</strong> 得到的模型，被命名为<strong>InstructGPT</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>实验结论</strong></p>
+<ul>
+<li>在人类真实评价中，即使InstructGPT参数只有1.3B，也比超大号的175B GPT-3更受欢迎。</li>
+<li>InstructGPT在减少虚假、有害内容上表现更好，在公开NLP任务上几乎没有性能损失。</li>
+</ul>
+</li>
+<li>
+<p><strong>意义与前景</strong>：虽然InstructGPT还会犯一些简单错误，但实验证明，“用人类反馈来微调大模型”是一条让AI更懂人、更合用户心意的可行路线。</p>
+</li>
+</ul>
+<h2 id="1-Introduction"><a class="header-anchor" href="#1-Introduction"> </a>1. Introduction</h2>
+<p>大语言模型（LMs）可以通过给定一些任务示例作为输入来执行多种NLP 任务。然而，这些模型经常表现出一些不期望的行为，比如<strong>编造事实</strong>、<strong>生成有偏见</strong>或<strong>有害</strong>的文本，或根本<strong>不遵循用户指令</strong>。</p>
+<p>根本原因在于，现有语言模型的训练目标是预测下一个词，而不是遵循用户的意图。大语言模型的目标更多地是在网络语料上进行语言生成，而不是按用户的要求生成准确且有帮助的内容。</p>
+<p>因此，我们认为语言建模目标是“未对齐”的，需要调整目标方向，特别是在这些模型应用于许多实际场景时，行为“对齐”用户意图显得尤为重要。</p>
+<p>我们通过训练语言模型，使其按照用户的意图执行任务，取得了进展。这包括明确的意图，如遵循指令，以及隐含的意图，如保持真实、不偏见、不有害等。</p>
+<p><strong>定义模型目标</strong>：</p>
+<ul>
+<li>希望语言模型是<strong>有用的</strong>（它们应该帮助用户完成任务）</li>
+<li><strong>诚实的</strong>（它们不应编造信息或误导用户）</li>
+<li><strong>无害的</strong>（它们不应对人类或环境造成身体、心理或社会上的伤害）</li>
+</ul>
+<p><strong>核心方法</strong>：使用来自人类反馈的强化学习对GPT-3进行微调，让其遵循更广泛的书面指令。</p>
+<ul>
+<li>第一阶段：雇佣人员来标注数据，基于其在筛选测试中的表现来选取合适的标签员。这是微调的第一步，确保数据质量。</li>
+<li>第二阶段：通过收集人类写的示范数据，包括OpenAI API上提交的提示语（英文）和标签员编写的指令，来训练基准模型。这样做可以帮助我们了解理想输出的表现。</li>
+<li>第三阶段：收集更多的人工标注数据，进行模型输出之间的比较，进一步完善模型的行为。</li>
+<li>第四阶段：训练一个奖励模型（Reward Model, RM），用于预测标注人员更偏好的模型输出。最后，我们将这个 RM 作为奖励函数，结合PPO算法对初始的监督学习模型进行微调。微调后的模型名称：InstructGPT。</li>
+<li>如图展示过程，这个微调过程专注于满足特定群体（如标签员和研究员）的偏好，而不是广泛的“人类价值观”概念，后续会进一步探讨这一点。</li>
+</ul>
+<p>![[Pasted image 20250710173722.png]]</p>
+<p><strong>Step 1：收集示范数据，训练监督模型</strong></p>
+<ol>
+<li>从prompt数据集中随机抽取一个指令（比如“用6岁小孩能懂的话解释登月”）。</li>
+<li>标注员写出理想的回答（比如“有些人去了月球…”）。</li>
+<li>用这些高质量的“人类演示”数据，做GPT-3的监督微调（SFT，Supervised Fine-Tuning）。</li>
+</ol>
+<ul>
+<li><strong>目的</strong>：让模型先学会“照着人类做”怎么答题。</li>
+</ul>
+<p><strong>Step 2：收集比较数据，训练奖励模型</strong></p>
+<ol>
+<li>用同样的prompt（比如“用6岁小孩能懂的话解释登月”），让多个模型输出不同答案（A、B、C、D）。</li>
+<li>标注员把这些答案从好到坏排个序（比如 <mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="16.058ex" height="1.805ex" role="img" focusable="false" viewBox="0 -716 7097.7 798" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(1105.8,0)"><path data-c="3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2161.6,0)"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(3199.3,0)"><path data-c="3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(4255.1,0)"><path data-c="1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(5282.9,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(6338.7,0)"><path data-c="1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z" style="stroke-width: 3;"/></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>D</mi><mo>&gt;</mo><mi>C</mi><mo>&gt;</mo><mi>A</mi><mo>=</mo><mi>B</mi></math></mjx-assistive-mml></mjx-container>）。</li>
+<li>用这些“人类偏好排序”数据训练一个奖励模型（Reward Model，RM），让RM学会“猜出”人类会喜欢哪个答案。</li>
+</ol>
+<ul>
+<li><strong>目的</strong>：奖励模型相当于一个“裁判”，用来给新生成的答案打分。</li>
+</ul>
+<p><strong>Step 3：用奖励模型做强化学习</strong></p>
+<ol>
+<li>再来一个新prompt（比如“写个关于青蛙的故事”）。</li>
+<li>让模型（policy）生成输出（比如“一只青蛙从前有个梦想…”）。</li>
+<li>奖励模型（RM）对这个答案打分，输出奖励值 <mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.042ex" height="1.357ex" role="img" focusable="false" viewBox="0 -442 902.4 599.8" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(484,-150) scale(0.707)"><path data-c="1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z" style="stroke-width: 3;"/></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mi>k</mi></msub></math></mjx-assistive-mml></mjx-container>。</li>
+<li>利用PPO算法（Proximal Policy Optimization），根据奖励值更新模型，让它下次输出得分更高的答案。</li>
+</ol>
+<ul>
+<li><strong>目的</strong>：通过“试错+打分+学习”，让模型不断进步，更贴合人类喜好。</li>
+</ul>
+<blockquote>
+<p>先让模型学会人类怎么做（监督微调），<br>
+再让它知道什么样的答案更受欢迎（奖励模型），<br>
+最后用强化学习（PPO），不断调整自己，让输出越来越“人味儿”。</p>
+</blockquote>
+<hr>
+<p><strong>标签员更喜欢InstructGPT的输出</strong></p>
+<ul>
+<li><strong>结论</strong>：即使InstructGPT参数只有1.3B，也比175B的GPT-3更受欢迎</li>
+<li><strong>原因</strong>：架构相同，唯一不同点是InstructGPT用人类反馈做了微调。</li>
+<li><strong>细节</strong>：在测试集上，标签员在85% ± 3%的情况下更喜欢InstructGPT（vs 175B GPT-3的few-shot设置下是71% ± 4%）。</li>
+</ul>
+<p><strong>InstructGPT的“诚实度”比GPT-3提升</strong></p>
+<ul>
+<li><strong>TruthfulQA基准测试</strong>：InstructGPT回答得更真实、更有信息量，正确率约是GPT-3的2倍。</li>
+<li><strong>不仅如此</strong>：在一些非针对性选择的问题子集上表现同样优秀。</li>
+<li><strong>闭域任务（Closed-domain）</strong>：InstructGPT编造信息的概率比GPT-3低很多（幻觉率21% vs 41%）。</li>
+<li><strong>一句话</strong>：InstructGPT胡说八道（幻觉hallucination）的次数直接砍半！</li>
+</ul>
+<p><strong>有害内容（toxicity）略有改善，偏见（bias）没变</strong></p>
+<ul>
+<li><strong>测试方式</strong>：用RealToxicityPrompts数据集，自动+人工一起评测。</li>
+<li><strong>结果</strong>：InstructGPT比GPT-3生成有害内容的概率低约25%。</li>
+<li><strong>局限性</strong>：
+<ul>
+<li>在要求模型“尊重”时，InstructGPT并没有比GPT-3更好。</li>
+<li>偏见方面（用Winogender和CrowSPairs测试），InstructGPT没啥改进。</li>
+</ul>
+</li>
+</ul>
+<p><strong>公开NLP数据集上的性能下降可以被控制</strong></p>
+<ul>
+<li><strong>问题</strong>：在用人类反馈强化学习（RLHF）微调时，InstructGPT在某些公开NLP任务（如SQuAD、DROP、HellaSwag、WMT翻译）上的表现比GPT-3差（叫做“alignment tax”，对齐成本）。</li>
+<li><strong>解决办法</strong>：作者通过调整PPO更新方式（比如混合一些让模型更贴合原始预训练分布的数据），可以大幅减少这类性能下降，同时不损失人类偏好分数。</li>
+</ul>
+<p><strong>模型泛化到新标签员（Held-out Labelers）</strong></p>
+<ul>
+<li><strong>实验结果</strong> ：使用一组从未参与训练的全新标签员对模型输出进行评估，结果显示他们也倾向于更喜欢 InstructGPT 生成的结果，这与训练中使用的标签员的偏好一致。</li>
+<li><strong>局限性</strong> ：尽管如此，仍需进一步研究模型在更广泛用户群体中的泛化能力，尤其是在不同用户对“理想输出”存在分歧的情况下，模型会如何表现。</li>
+</ul>
+<blockquote>
+<p><strong>举个例子来说明</strong>：<br>
+假设你训练了一个语言模型来回答问题，比如写一篇关于“是否应该吃肉”的议论文。</p>
+<ol>
+<li>
+<p><strong>情况一：用户 A（素食主义者）</strong><br>
+他希望模型写出一篇反对吃肉的文章，强调环保、动物权利和健康饮食。</p>
+</li>
+<li>
+<p><strong>情况二：用户 B（肉食爱好者）</strong><br>
+他希望模型写出中立甚至支持吃肉的文章，强调营养均衡、文化传统和食品自由。</p>
+</li>
+</ol>
+<p>这两个用户对“理想输出”有<strong>完全不同的看法</strong>。这时候，模型就会面临一个难题：</p>
+<ul>
+<li>如果偏向 A，B 会不满意；</li>
+<li>如果偏向 B，A 又会觉得模型立场偏颇；</li>
+<li>如果保持中立，可能两方都不满意。</li>
+</ul>
+<p>它指出当前模型（如 InstructGPT）虽然在多数情况下可以生成高质量、符合人类偏好的回答，但在面对<strong>主观性强、意见分歧大的问题</strong>时，其泛化能力仍然存在不确定性。</p>
+</blockquote>
+<p><strong>公开NLP数据集不代表真实用法</strong></p>
+<ul>
+<li><strong>发现</strong>：用人类偏好数据微调的InstructGPT，和在公开NLP任务集（如FLAN、T0）上微调的GPT-3做对比，发现：
+<ul>
+<li>在API真实用户任务分布上，公开NLP集微调的模型略差于SFT基线，标签员明显更喜欢InstructGPT。</li>
+<li>InstructGPT在API用户的实际任务中胜率（73.4%±2%）远高于T0（26.8%±2%）和FLAN（29.8%±2%）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>泛化能力：新任务/语言也能对齐</strong></p>
+<ul>
+<li><strong>实验</strong>：InstructGPT不仅能做微调集里常见的任务，还能做如代码总结、回答编程问题、处理多语言指令等新任务（虽然这些任务在微调数据中很稀少）。</li>
+<li><strong>对比</strong>：GPT-3虽然也能做这些任务，但需要更多技巧性prompt，且通常执行指令的能力不如InstructGPT。</li>
+</ul>
+<p><strong>依然会犯低级错误</strong></p>
+<ul>
+<li><strong>缺点</strong>：模型有时还是会，
+<ul>
+<li>没按指令来</li>
+<li>编造事实</li>
+<li>简单问题回答太啰嗦</li>
+<li>没识别出假设错误的指令</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>提醒</strong>：AI没变成完美助理，还在进化路上。</p>
+</blockquote>
+<h2 id="2-Related-work"><a class="header-anchor" href="#2-Related-work"> </a>2. Related work</h2>
+<h3 id="1-对齐和从人类反馈中学习的研究"><a class="header-anchor" href="#1-对齐和从人类反馈中学习的研究"> </a>1. <strong>对齐和从人类反馈中学习的研究</strong></h3>
+<ul>
+<li>RLHF最早不是给大语言模型设计的，而是用在<strong>机器人训练</strong>（比如仿真环境下的机器人、Atari游戏等）。</li>
+<li>后来，这套技术才被引入到<strong>大语言模型微调</strong>（比如做摘要、对话、翻译、语义解析、故事生成、评论生成、证据抽取等任务）。（引用一大堆论文。）</li>
+<li>现在，RLHF被用来增强GPT-3类模型的prompt响应能力，让模型在各种NLP任务中更贴合用户需求。</li>
+<li>还有一些工作在<strong>文本环境下对齐智能体行为</strong>（比如给定规范性先验，让智能体行动更“合规”）。</li>
+<li>本文就是直接把RLHF用来对齐大语言模型在各种NLP任务上的行为，是“人类反馈对齐技术”的一次大规模实战应用。</li>
+<li>近期也有不少论文在讨论 “什么才算对齐”。（Gabriel 2020）</li>
+<li>有人系统梳理了对齐失败会带来的坏处，比如生成有害内容、玩规则漏洞等（Kenton等2021）。</li>
+<li>还有人提出用“语言助手”做对齐测试平台，研究对齐基线和可扩展性（Askell等2021）。</li>
+</ul>
+<h3 id="2-训练语言模型遵循指令（Instruction-Following）"><a class="header-anchor" href="#2-训练语言模型遵循指令（Instruction-Following）"> </a>2. <strong>训练语言模型遵循指令（Instruction Following）</strong></h3>
+<ul>
+<li>这类工作一般把大模型在各种带有指令的数据集上做微调，然后用其他NLP任务评测模型泛化能力。</li>
+<li>实验上大家关注点不同：训练/测试用的数据、指令格式、预训练模型大小等。</li>
+<li><strong>一致结论</strong>：只要让模型在多种指令类任务上微调，模型在未见过的新任务（zero-shot/few-shot）上的表现都会提升。</li>
+<li>还有一类研究关注<strong>用自然语言指令控制机器人/导航智能体</strong>，即在仿真环境里让模型学会“听指令走路”。</li>
+</ul>
+<h3 id="3-评估和缓解语言模型的“有害行为”"><a class="header-anchor" href="#3-评估和缓解语言模型的“有害行为”"> </a>3. <strong>评估和缓解语言模型的“有害行为”</strong></h3>
+<ul>
+<li>很多研究在总结/揭示大模型在真实世界的风险，比如：
+<ul>
+<li>生成有害内容（toxic）、偏见输出（biased）、泄露隐私、生成虚假信息（misinformation），甚至被用于恶意用途等。</li>
+</ul>
+</li>
+<li>现在也有很多基准数据集，专门用来<strong>量化评测</strong>这些风险（toxicity、stereotypes、social bias等）。</li>
+<li><strong>难点</strong>：想通过技术手段让大模型变“更好”，结果可能会产生副作用，比如让模型更少输出有害内容的同时，也让它更难表达“弱势群体”的内容（训练数据偏见带来的问题）。</li>
+</ul>
+<h3 id="4-如何调控大模型，减少有害输出"><a class="header-anchor" href="#4-如何调控大模型，减少有害输出"> </a>4. 如何调控大模型，减少有害输出</h3>
+<ul>
+<li>微调在小规模、价值导向的数据集上，可以提升模型遵守特定价值观的能力，但会略微降低整体性能。</li>
+<li>过滤预训练数据，去掉容易引发有害输出的内容，让模型学不到“危险话术”，代价是部分任务表现下降。</li>
+<li>对话/生成安全性提升手段包括：数据过滤、屏蔽某些词/n-gram、加入安全控制token、人工循环采集等。</li>
+<li>降低偏见与有害输出的方法包括：词嵌入正则化、数据增强、分布均匀化、不同优化目标、因果分析等。</li>
+<li>有研究尝试用第二个（较小）语言模型“驾驭”主模型，或变体方法来进一步减少有害内容。</li>
+</ul>
+<h2 id="3-Methods-and-experimental-details"><a class="header-anchor" href="#3-Methods-and-experimental-details"> </a>3. Methods and experimental details</h2>
+<h3 id="3-1-High-level-methodology"><a class="header-anchor" href="#3-1-High-level-methodology"> </a>3.1 High-level methodology</h3>
+<ul>
+<li>如Intro里面讲的详细例子</li>
+<li>以一个预训练语言模型为起点，准备一套prompts和一支受过训练的人工标注团队。</li>
+<li>方法分为三步：
+<ul>
+<li><strong>Step 1:</strong> 收集人类演示数据，并用其训练监督模型
+<ul>
+<li>标注员针对prompts演示理想输出，用这些数据对GPT-3进行监督微调。</li>
+</ul>
+</li>
+<li><strong>Step 2:</strong> 收集对比数据，并训练奖励模型
+<ul>
+<li>收集同一输入下不同模型输出的偏好排序数据，训练奖励模型预测人类更喜欢的输出。</li>
+</ul>
+</li>
+<li><strong>Step 3:</strong> 使用PPO强化学习优化模型
+<ul>
+<li>以奖励模型的分数为奖励，使用PPO算法对模型进行强化学习微调，让其最大化人类偏好。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>步骤2和3可以循环迭代，每次用最新策略收集更多对比数据，训练更好的奖励模型和新策略。</li>
+<li>实际操作中，大部分对比数据来自监督模型，小部分来自PPO微调模型。</li>
+</ul>
+<h3 id="3-2-Dataset"><a class="header-anchor" href="#3-2-Dataset"> </a>3.2 Dataset</h3>
+<ul>
+<li>主要数据集来自用户通过OpenAI API（Playground界面）提交的文本prompts，部分用早期InstructGPT模型生成。</li>
+<li>用户被明确告知数据可能会用于后续模型训练，每次使用Playground时会收到提醒。</li>
+<li>论文不使用生产环境API用户的数据，只用Playground和实验用数据。</li>
+<li>去重方式：检测长前缀重复的prompts，并限制每个用户最多200条。</li>
+<li>按用户ID划分 train/validation/test 集，保证同一用户的数据只在一个分集里，防止“数据泄漏”。</li>
+<li>所有训练集prompts都做了个人敏感信息（PII）过滤，避免模型学习到隐私内容。</li>
+<li>早期InstructGPT模型训练时，还需要标注员自己编写三类prompt来补充：
+<ul>
+<li><strong>Plain</strong>：随机构思多样任务，保证任务多样性。</li>
+<li><strong>Few-shot</strong>：写一条指令和多个输入/输出示例，模拟few-shot学习。</li>
+<li><strong>User-based</strong>：根据API用户排队等候申请时给出的实际用例，由标注员写出真实需求相关的prompt。</li>
+</ul>
+</li>
+<li>从前述prompts中，InstructGPT训练过程用到了三种数据集：
+<ul>
+<li><strong>SFT dataset</strong>：标注员演示“理想答案”的数据（约13k条，来自API和人工编写），用来做监督微调（Supervised Fine-Tuning）。</li>
+<li><strong>RM dataset</strong>：模型输出的对比排序数据（约33k条，API和人工编写），用于训练奖励模型（Reward Model）。</li>
+<li><strong>PPO dataset</strong>：只有模型自己生成、没有人工标注的prompts（约31k条，只来自API），用于PPO强化学习微调。</li>
+</ul>
+</li>
+<li>关于数据集构成：以RM数据集为例，大多数用例是“生成型任务”，而不是分类或问答任务。(附录里还展示了一些典型prompt示例、数据分布细节)</li>
+</ul>
+<blockquote>
+<ol>
+<li><strong>Plain（朴素方式）</strong>：随机构思保证任务多样性<br>
+- 随意写一个任务指令，不需要示例。<br>
+- 例子：请帮我列出5个常见的蔬菜名称<br>
+- 西红柿、胡萝卜、紫甘蓝、包菜、生菜</li>
+<li><strong>Few-shot（少样本方式）</strong>：写一条指令 + 多个输入/输出示例<br>
+- 每个 prompt 包含一个<strong>明确的任务指令</strong>，再加上几个<strong>输入输出对作为例子</strong>。<br>
+- 这是为了模拟人类在看到少量示例后就能理解任务的方式（类似 few-shot learning）。<br>
+- 例子：把中文翻译成英文<br>
+- 输入：我喜欢苹果。<br>
+- 输出：I like apples.<br>
+- 输入：今天天气不错。<br>
+- 输出：The weather is nice today.<br>
+- 现在请翻译：这本书很有趣。</li>
+<li><strong>User-based（用户驱动方式）</strong>：基于真实用户需求构造prompt<br>
+- 根据<strong>真实 API 用户在申请访问时提供的使用场景</strong>，由标注员构造与之相关的 prompt。<br>
+- 更贴近实际应用场景，用于评估模型在真实用户需求下的表现。<br>
+- 例子：假设某个用户申请 API 时说：我想让模型帮我生成社交媒体上的产品推广文案。<br>
+- 于是标注员根据这个需求构造了如下 prompt：<br>
+- 根据以下信息生成一段 Instagram 推广文案：<br>
+- 产品名称：夏日柠檬气泡水<br>
+- 特点：低糖、无卡路里、天然风味<br>
+- 风格：轻松、年轻、适合夏天</li>
+</ol>
+</blockquote>
+<h3 id="3-3-Tasks"><a class="header-anchor" href="#3-3-Tasks"> </a>3.3 Tasks</h3>
+<ul>
+<li>任务数据来自：标注员自写prompt和API用户提交的prompt。</li>
+<li>涉及内容：文本生成、问答、对话、摘要、信息抽取等多种NLP任务，绝大多数为英文。</li>
+<li>指令形式：包括直接自然语言指令、few-shot示例和续写任务。</li>
+<li>标注员需判断用户意图、避免不明确任务，并关注回答真实性和有害内容。</li>
+</ul>
+<h3 id="3-4-Human-data-collection"><a class="header-anchor" href="#3-4-Human-data-collection"> </a>3.4 Human data collection</h3>
+<ul>
+<li>雇佣约40名标注员（Upwork、ScaleAI），涵盖多样人群，专注识别有害内容和敏感话题。</li>
+<li>通过筛选测试选出表现优异的标注员，培训并持续答疑。</li>
+<li>训练过程中如遇用户请求有害内容，优先考虑“有用性”；评估时则更重视“真实性”和“无害性”。</li>
+<li>另设未参与训练的标注员做泛化测试，结果显示不同标注员之间的一致性较高（72.6%±1.5%），与同行论文一致。</li>
+</ul>
+<h2 id="3-5-Models"><a class="header-anchor" href="#3-5-Models"> </a>3.5 Models</h2>
+<p>论文以GPT-3的预训练语言模型（Brown等，2020）为基础，作者通过三种不同的技术对模型进行训练：</p>
+<h4 id="监督微调（SFT）"><a class="header-anchor" href="#监督微调（SFT）"> </a><strong>监督微调（SFT）</strong></h4>
+<ul>
+<li>在标注员演示的数据上对GPT-3进行监督微调。</li>
+<li>训练过程为16个epoch，采用余弦学习率衰减和0.2的残差dropout。</li>
+<li>最终SFT模型的选择是基于验证集上的奖励模型（RM）分数。</li>
+<li>与Wu等（2021）类似，作者发现SFT模型在1个epoch后就会在验证损失上过拟合；但即使存在过拟合，增加训练epoch数仍然有助于提升奖励模型分数和人工偏好评分。</li>
+</ul>
+<h4 id="奖励建模（RM）"><a class="header-anchor" href="#奖励建模（RM）"> </a><strong>奖励建模（RM）</strong></h4>
+<ul>
+<li>在SFT模型的基础上，去掉最后一层embedding，再训练一个奖励模型，使其能够输入prompt和response，输出一个标量奖励分数。</li>
+<li>本文只用6B参数规模的奖励模型（RM），这样计算开销较小，同时作者发现175B规模的RM训练起来不稳定，不适合作为强化学习中的价值函数（详细见附录C）。</li>
+<li>参照Stiennon等（2020），奖励模型是在一个对比数据集上训练的，该数据集包含同一输入下两个模型输出的对比。</li>
+<li>奖励模型的训练采用交叉熵损失，比较哪个输出更受人工标注员青睐。奖励分数之差代表一个输出被人类偏好于另一个输出的对数概率。</li>
+</ul>
+<h2 id="参考资料"><a class="header-anchor" href="#参考资料"> </a>参考资料</h2>
+<ul>
+<li>InstructGPT: Training language models to follow instructions with human feedback</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hd4y187CR/?spm_id_from=333.788&amp;vd_source=71b548de6de953e10b96b6547ada83f2">InstructGPT 论文精读【论文精读·48】</a></li>
+</ul>
+
+              
+            </div>
+          
+
+
+            <hr/>
+
+
+            <!-- 添加打赏模块 -->
+            <div class="reward-container">
+              
+                <button id="rewardBtn" class="reward-btn">
+                   
+                    ❤ 打赏
+                   
+                </button>
+                <p class="tea">“觉得不错的话，给点打赏吧 ୧(๑•̀⌄•́๑)૭”</p>
+                <div id="rewardImgContainer" class="reward-img-container">
+                      <div class="singleImgContainer">
+                          <img id="wechatImg" class="reward-img" src="/img/wechatpay.webp" srcset="/img/loading.gif" lazyload alt="微信二维码">
+                            <p class="wechatPay">微信支付</p>
+                        </div>
+                        <div class="singleImgContainer">
+                            <img id="alipayImg" class="reward-img" src="/img/alipay.webp" srcset="/img/loading.gif" lazyload alt="支付宝二维码">
+                            <p class="aliPay">支付宝支付</p>
+                        </div>
+                </div>
+              
+            </div>
+            
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Deep-Learning/" class="print-no-link">#Deep_Learning</a>
+      
+        <a href="/tags/NLP/" class="print-no-link">#NLP</a>
+      
+        <a href="/tags/InstructGPT/" class="print-no-link">#InstructGPT</a>
+      
+        <a href="/tags/RLHF/" class="print-no-link">#RLHF</a>
+      
+        <a href="/tags/Paper/" class="print-no-link">#Paper</a>
+      
+        <a href="/tags/Alignment/" class="print-no-link">#Alignment</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>1. InstructGPT 详细</div>
+      <div>http://neurowave.tech/2025/04/22/11-1-InstructGPT/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Artin Tan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月22日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年7月11日</div>
+        </div>
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/22/10-2-LNN-softmax/" title="2. Softmax 回归">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2. Softmax 回归</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/22/10-1-LNN-LinearRegression/" title="1. Linear Regression">
+                        <span class="hidden-mobile">1. Linear Regression</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  
+  <div id="valine"></div>
+
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"请输入评论内容...（支持html）","avatar":"monsterid","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+
+    </article>
+  
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+      
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+    </main>
+    <footer>
+      <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/vvd_js/duration.js"></script>
+<p>Copyright © 2025 Artin Tan. All rights reserved.</p> </div> 
+    </div>
+
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div> 
+
+
+    </footer>
+    <!-- Scripts -->
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="/js/reward.js"></script>
+
+
+
+
+<script src="/js/tag-animation.js"></script>
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- 显示"updated"标志 -->
+<script src="/js/update-flag.js" defer></script>
+
+
+    
+    <noscript>
+      <div class="noscript-warning">本博客需要启用 JavaScript 才能正常工作</div>
+    </noscript>
+
+</body>
+</html>
