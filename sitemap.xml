@@ -2,7 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://neurowave.tech/2023/12/11/11-2-Bradley-Terry/</loc>
+    <loc>http://neurowave.tech/2023/12/12/11-5-Maher/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/2023/12/11/11-4-Davidson/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/2023/12/11/11-3-Rao-Kupper/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -12,6 +30,15 @@
   
   <url>
     <loc>http://neurowave.tech/2023/12/01/11-1-Thurston/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/2023/12/11/11-2-Bradley-Terry/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1206,6 +1233,41 @@
   
   <url>
     <loc>http://neurowave.tech/tags/ELMo/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/RaoKupper/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/BradleyTerry/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Maher/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/FootballPrediction/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Poisson/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
