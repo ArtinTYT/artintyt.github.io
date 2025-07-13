@@ -36,10 +36,10 @@
 <meta property="article:modified_time" content="2025-07-09T16:53:23.011Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="LNN">
-<meta property="article:tag" content="LinearRegression">
-<meta property="article:tag" content="Regression">
 <meta property="article:tag" content="Deep_Learning">
 <meta property="article:tag" content="Supervised_Learning">
+<meta property="article:tag" content="LinearRegression">
+<meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -604,13 +604,13 @@
       
         <a href="/tags/LNN/" class="print-no-link">#LNN</a>
       
-        <a href="/tags/LinearRegression/" class="print-no-link">#LinearRegression</a>
-      
-        <a href="/tags/Regression/" class="print-no-link">#Regression</a>
-      
         <a href="/tags/Deep-Learning/" class="print-no-link">#Deep_Learning</a>
       
         <a href="/tags/Supervised-Learning/" class="print-no-link">#Supervised_Learning</a>
+      
+        <a href="/tags/LinearRegression/" class="print-no-link">#LinearRegression</a>
+      
+        <a href="/tags/Regression/" class="print-no-link">#Regression</a>
       
     </div>
   
@@ -682,30 +682,31 @@
   
     <article id="comments" lazyload>
       
-  
-  <div id="valine"></div>
-
   <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"请输入评论内容...（支持html）","avatar":"monsterid","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ArtinTYT/artintyt.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
-
 
 
     </article>

@@ -33,7 +33,7 @@
 <meta property="og:description" content="重要通知：网站更新计划变更 自 2025年4月20日 起，建站内容将全面转向 AI Agent 自动更新。  建站相关技术更新主要作为本人对博客更新日志  其他内容聚焦 机器学习（ML）、深度学习（DL）、大语言模型（LLMs） 等领域的核心思考。 历史文章仍可查阅，感谢支持，一起探索 AI 前沿！  学习过程+心得   李沐《手动深度学习》视频 + 书  李沐老师的讲解非常清晰，无论理论、实践">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-09T21:04:15.035Z">
+<meta property="article:modified_time" content="2025-07-12T11:28:46.604Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="通知">
 <meta property="article:tag" content="学习心得">
@@ -356,7 +356,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-10T05:04:15+08:00
+                    更新于 2025-07-12T19:28:46+08:00
                   
                   
 
@@ -488,7 +488,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年7月10日</div>
+          <div>2025年7月12日</div>
         </div>
       
       
@@ -513,8 +513,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/19/7-5-Attention%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" title="5. Positional Encoding 位置编码">
-                        <span class="hidden-mobile">5. Positional Encoding 位置编码</span>
+                      <a href="/2025/04/19/7-6-Attention%E5%A4%9A%E5%A4%B4/" title="6. Multi-Head Self-Attention 多头自注意力">
+                        <span class="hidden-mobile">6. Multi-Head Self-Attention 多头自注意力</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -529,30 +529,31 @@
   
     <article id="comments" lazyload>
       
-  
-  <div id="valine"></div>
-
   <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"请输入评论内容...（支持html）","avatar":"monsterid","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ArtinTYT/artintyt.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
-
 
 
     </article>

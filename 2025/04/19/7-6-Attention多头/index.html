@@ -38,8 +38,8 @@
 <meta property="article:tag" content="Deep_Learning">
 <meta property="article:tag" content="NLP">
 <meta property="article:tag" content="AI">
-<meta property="article:tag" content="Transformer">
 <meta property="article:tag" content="Multi-Head_Attention">
+<meta property="article:tag" content="Transformer">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -480,9 +480,9 @@
       
         <a href="/tags/AI/" class="print-no-link">#AI</a>
       
-        <a href="/tags/Transformer/" class="print-no-link">#Transformer</a>
-      
         <a href="/tags/Multi-Head-Attention/" class="print-no-link">#Multi-Head_Attention</a>
+      
+        <a href="/tags/Transformer/" class="print-no-link">#Transformer</a>
       
     </div>
   
@@ -528,9 +528,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/19/7-5-Attention%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" title="5. Positional Encoding 位置编码">
+                      <a href="/2025/04/20/1-0-%E9%80%9A%E7%9F%A5/" title="通知 + 学习心得">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">5. Positional Encoding 位置编码</span>
+                        <span class="hidden-mobile">通知 + 学习心得</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -538,8 +538,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/19/7-4-Attention%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/" title="4. Self-Attention 自注意力">
-                        <span class="hidden-mobile">4. Self-Attention 自注意力</span>
+                      <a href="/2025/04/19/7-5-Attention%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" title="5. Positional Encoding 位置编码">
+                        <span class="hidden-mobile">5. Positional Encoding 位置编码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -554,30 +554,31 @@
   
     <article id="comments" lazyload>
       
-  
-  <div id="valine"></div>
-
   <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"请输入评论内容...（支持html）","avatar":"monsterid","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ArtinTYT/artintyt.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
-
 
 
     </article>

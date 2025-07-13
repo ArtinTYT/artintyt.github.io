@@ -38,9 +38,9 @@
 <meta property="article:modified_time" content="2025-07-12T11:38:59.184Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Deep_Learning">
+<meta property="article:tag" content="Paper">
 <meta property="article:tag" content="InstructGPT">
 <meta property="article:tag" content="RLHF">
-<meta property="article:tag" content="Paper">
 <meta property="article:tag" content="NLP">
 <meta property="article:tag" content="Alignment">
 <meta name="twitter:card" content="summary_large_image">
@@ -902,11 +902,11 @@
       
         <a href="/tags/Deep-Learning/" class="print-no-link">#Deep_Learning</a>
       
+        <a href="/tags/Paper/" class="print-no-link">#Paper</a>
+      
         <a href="/tags/InstructGPT/" class="print-no-link">#InstructGPT</a>
       
         <a href="/tags/RLHF/" class="print-no-link">#RLHF</a>
-      
-        <a href="/tags/Paper/" class="print-no-link">#Paper</a>
       
         <a href="/tags/NLP/" class="print-no-link">#NLP</a>
       
@@ -982,30 +982,31 @@
   
     <article id="comments" lazyload>
       
-  
-  <div id="valine"></div>
-
   <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"enable":true,"appId":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","appKey":"piHBMiVSqE1bKRiQekLsqTCj","recordIP":true,"visitor":true,"path":"window.location.pathname","placeholder":"请输入评论内容...（支持html）","avatar":"monsterid","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"count":true},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ArtinTYT/artintyt.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
-
 
 
     </article>
