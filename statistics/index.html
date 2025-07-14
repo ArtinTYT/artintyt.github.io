@@ -25,21 +25,21 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这里是博客的统计页面内容。你可以在这里添加访问量、文章数等统计信息。    🌍 访问来源国家统计：   加载中...     fetch(&quot;https:&#x2F;&#x2F;little-cherry-aa02.artin-tan.workers.dev&#x2F;&quot;, {     headers: {       &quot;Access-Control-Allow-Origin&quot;: &quot;*&quot;,     }   })     .th">
+    <meta name="description" content="访问统计           body { font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }     h2 { margin-top: 2em; }     canvas { max-width: 100%; }        🌍 网站访问统计   加载中...   国家分布">
 <meta property="og:type" content="website">
-<meta property="og:title" content="统计">
+<meta property="og:title" content="访问统计">
 <meta property="og:url" content="http://neurowave.tech/statistics/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="这里是博客的统计页面内容。你可以在这里添加访问量、文章数等统计信息。    🌍 访问来源国家统计：   加载中...     fetch(&quot;https:&#x2F;&#x2F;little-cherry-aa02.artin-tan.workers.dev&#x2F;&quot;, {     headers: {       &quot;Access-Control-Allow-Origin&quot;: &quot;*&quot;,     }   })     .th">
+<meta property="og:description" content="访问统计           body { font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }     h2 { margin-top: 2em; }     canvas { max-width: 100%; }        🌍 网站访问统计   加载中...   国家分布">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-06-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-13T20:39:36.758Z">
+<meta property="article:published_time" content="2025-07-14T07:56:06.342Z">
+<meta property="article:modified_time" content="2025-07-14T07:56:06.342Z">
 <meta property="article:author" content="Artin Tan">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>统计 - Neurowave</title>
+  <title>访问统计 - Neurowave</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -262,7 +262,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="统计"></span>
+            <span id="subtitle" data-typed-text="访问统计"></span>
           
         </div>
 
@@ -291,35 +291,63 @@
                   
 
 <article class="page-content">
-  <p>这里是博客的统计页面内容。你可以在这里添加访问量、文章数等统计信息。</p>
-<div id="country-stats">
-  <h3>🌍 访问来源国家统计：</h3>
-  <ul id="country-list">加载中...</ul>
-</div>
-<script>
-  fetch("https://little-cherry-aa02.artin-tan.workers.dev/", {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>访问统计</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }
+    h2 { margin-top: 2em; }
+    canvas { max-width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>🌍 网站访问统计</h1>
+  <p id="total">加载中...</p>
+  <h2>国家分布</h2>
+  <canvas id="chart-countries"></canvas>
+  <h2>设备类型</h2>
+  <canvas id="chart-devices"></canvas>
+  <h2>浏览器类型</h2>
+  <canvas id="chart-browsers"></canvas>
+  <script>
+    const apiURL = "https://little-cherry-aa02.artin-tan.workers.dev/"; // <-- 改成你的 Worker 地址
+
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("total").textContent = `📈 总访问量：${data.totalRequests.toLocaleString()}`;
+
+        renderChart("chart-countries", data.countries, "国家分布");
+        renderChart("chart-devices", data.devices, "设备类型");
+        renderChart("chart-browsers", data.browsers, "浏览器类型");
+      })
+      .catch(err => {
+        document.getElementById("total").textContent = "❌ 加载失败：" + err.message;
+        console.error(err);
+      });
+
+    function renderChart(id, data, label) {
+      const ctx = document.getElementById(id);
+      const keys = Object.keys(data);
+      const values = keys.map(k => data[k]);
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: keys,
+          datasets: [{
+            label: label,
+            data: values,
+            backgroundColor: keys.map((_, i) => `hsl(${i * 45 % 360}, 70%, 60%)`)
+          }]
+        }
+      });
     }
-  })
-    .then(res => res.json())
-    .then(data => {
-      const list = document.getElementById("country-list");
-      list.innerHTML = "";
-
-      const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]); // 按访问量排序
-
-      for (const [country, count] of sorted) {
-        const li = document.createElement("li");
-        li.textContent = `${country}: ${count} 次`;
-        list.appendChild(li);
-      }
-    })
-    .catch(err => {
-      document.getElementById("country-list").innerText = "加载失败 😢";
-      console.error("Error fetching country stats:", err);
-    });
-</script>
+  </script>
+</body>
+</html>
 
 
   
