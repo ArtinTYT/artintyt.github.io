@@ -25,16 +25,15 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="用 Cloudflare GraphQL API 打造博客访问统计面板（踩坑记录） 最近想给博客搞一个访问量可视化功能，最好能显示每天有多少访问、访客来自哪里、用什么设备等等。于是打起了 Cloudflare Web Analytics 的主意，想着用官方 GraphQL API 直接抓数据，部署到 Cloudflare Workers，再前端用 ECharts 展示。 过程不复杂，但结局有点唏嘘">
+    <meta name="description" content="用 Cloudflare GraphQL API 打造博客访问统计面板（踩坑记录） 想给博客加个访问统计面板？我尝试用 Cloudflare Web Analytics 的 GraphQL API 实现数据可视化，结果踩了一堆坑——免费版连国家来源、设备类型都查不了！折腾12小时后，我转向开源工具 Umami ，终于搞定了实时 PV&#x2F;UV、访客分布、设备统计等全维度数据展示。 本文记录从 Clou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="13. 添加博客访问统计面板">
 <meta property="og:url" content="http://neurowave.tech/2025/07/15/1-13-%E6%B7%BB%E5%8A%A0%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1%E9%9D%A2%E6%9D%BF/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="用 Cloudflare GraphQL API 打造博客访问统计面板（踩坑记录） 最近想给博客搞一个访问量可视化功能，最好能显示每天有多少访问、访客来自哪里、用什么设备等等。于是打起了 Cloudflare Web Analytics 的主意，想着用官方 GraphQL API 直接抓数据，部署到 Cloudflare Workers，再前端用 ECharts 展示。 过程不复杂，但结局有点唏嘘">
+<meta property="og:description" content="用 Cloudflare GraphQL API 打造博客访问统计面板（踩坑记录） 想给博客加个访问统计面板？我尝试用 Cloudflare Web Analytics 的 GraphQL API 实现数据可视化，结果踩了一堆坑——免费版连国家来源、设备类型都查不了！折腾12小时后，我转向开源工具 Umami ，终于搞定了实时 PV&#x2F;UV、访客分布、设备统计等全维度数据展示。 本文记录从 Clou">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://docs.umami.is/assets/share-url.png">
 <meta property="article:published_time" content="2025-07-15T02:14:04.000Z">
-<meta property="article:modified_time" content="2025-07-15T08:55:13.934Z">
+<meta property="article:modified_time" content="2025-07-15T09:32:16.102Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Cloudflare">
@@ -42,7 +41,6 @@
 <meta property="article:tag" content="ECharts">
 <meta property="article:tag" content="Umami">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://docs.umami.is/assets/share-url.png">
   
   
   
@@ -309,7 +307,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.2k 字
         
       </span>
     
@@ -320,7 +318,7 @@
         
         
         
-          16 分钟
+          19 分钟
         
       </span>
     
@@ -384,7 +382,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-15T16:55:13+08:00
+                    更新于 2025-07-15T17:32:16+08:00
                   
                   
 
@@ -397,7 +395,16 @@
             
             <div class="markdown-body">
               
-              <h1>用 Cloudflare GraphQL API 打造博客访问统计面板（踩坑记录）</h1>
+              <p>用 Cloudflare GraphQL API 打造博客访问统计面板（踩坑记录）<br>
+想给博客加个访问统计面板？我尝试用 <strong>Cloudflare Web Analytics</strong> 的 GraphQL API 实现数据可视化，结果踩了一堆坑——免费版连国家来源、设备类型都查不了！折腾12小时后，我转向开源工具 Umami ，终于搞定了实时 PV/UV、访客分布、设备统计等全维度数据展示。</p>
+<p>本文记录从 Cloudflare API 接入到放弃的全过程，并手把手教你用 <strong>Umami</strong> 快速搭建功能完整的统计面板。适合想避开 Cloudflare 权限限制、追求轻量级开源方案的开发者。</p>
+<p><strong>核心亮点：</strong></p>
+<ul>
+<li>避坑指南 ：Cloudflare 免费版 API 的真实权限限制（无独立访客、国家/设备数据）</li>
+<li>实战方案 ：Umami 从注册、部署到嵌入 Hexo 的完整流程</li>
+<li>对比分析 ：Cloudflare vs. Umami 功能差异一目了然</li>
+</ul>
+<h1>Cloudflare（踩坑记录）</h1>
 <p>最近想给博客搞一个访问量可视化功能，最好能显示每天有多少访问、访客来自哪里、用什么设备等等。于是打起了 Cloudflare Web Analytics 的主意，想着用官方 GraphQL API 直接抓数据，部署到 Cloudflare Workers，再前端用 ECharts 展示。</p>
 <p>过程不复杂，但结局有点唏嘘。只弄出访客记录，但是国家、设备无法抓取，但我的 Web Analytics 的记录很丰富。</p>
 <h2 id="1-安装依赖并初始化项目"><a class="header-anchor" href="#1-安装依赖并初始化项目"> </a>1. 安装依赖并初始化项目</h2>
@@ -425,17 +432,13 @@
 </ul>
 <p>于是尝试把 GraphQL 查询改成使用 <code>httpRequestsAdaptiveGroups</code>，并加上 <code>sum.uniques</code>、<code>countryMap</code> 等字段：</p>
 <figure class="highlight graphql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs graphql">httpRequestsAdaptiveGroups <span class="hljs-punctuation">&#123;</span><br>  dimensions <span class="hljs-punctuation">&#123;</span> date <span class="hljs-punctuation">&#125;</span><br>  sum <span class="hljs-punctuation">&#123;</span> requests uniques <span class="hljs-punctuation">&#125;</span><br>  countryMap <span class="hljs-punctuation">&#123;</span> clientCountryName requests <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
 <p>但是现实是，无论我怎么更换国家和设备字段，拉取的内容都是空，<br>
 使用 <a target="_blank" rel="noopener" href="https://cf-analytics.artin-tan.workers.dev/api/stats?days=7">https://cf-analytics.artin-tan.workers.dev/api/stats?days=7</a><br>
 来查看拉取的数据如下：</p>
-</blockquote>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prolog">&#123;<span class="hljs-string">&quot;daily&quot;</span>:[&#123;<span class="hljs-string">&quot;dimensions&quot;</span>:&#123;<span class="hljs-string">&quot;date&quot;</span>:<span class="hljs-string">&quot;2025-07-08&quot;</span>&#125;,<span class="hljs-string">&quot;sum&quot;</span>:&#123;<span class="hljs-string">&quot;pageViews&quot;</span>:<span class="hljs-number">135</span>&#125;,<span class="hljs-string">&quot;uniq&quot;</span>:&#123;<span class="hljs-string">&quot;uniques&quot;</span>:<span class="hljs-number">136</span>&#125;&#125;,&#123;<span class="hljs-string">&quot;dimensions&quot;</span>:&#123;<span class="hljs-string">&quot;date&quot;</span>:<span class="hljs-string">&quot;2025-07-09&quot;</span>&#125;,<span class="hljs-string">&quot;sum&quot;</span>:&#123;<span class="hljs-string">&quot;pageViews&quot;</span>:<span class="hljs-number">154</span>&#125;,<span class="hljs-string">&quot;uniq&quot;</span>:&#123;<span class="hljs-string">&quot;uniques&quot;</span>:<span class="hljs-number">147</span>&#125;&#125;,&#123;<span class="hljs-string">&quot;dimensions&quot;</span>:&#123;<span class="hljs-string">&quot;date&quot;</span>:<span class="hljs-string">&quot;2025-07-10&quot;</span>&#125;,<span class="hljs-string">&quot;sum&quot;</span>:&#123;<span class="hljs-string">&quot;pageViews&quot;</span>:<span class="hljs-number">194</span>&#125;,<span class="hljs-string">&quot;uniq&quot;</span>:&#123;<span class="hljs-string">&quot;uniques&quot;</span>:<span class="hljs-number">224</span>&#125;&#125;,&#123;<span class="hljs-string">&quot;dimensions&quot;</span>:&#123;<span class="hljs-string">&quot;date&quot;</span>:<span class="hljs-string">&quot;2025-07-11&quot;</span>&#125;,<span class="hljs-string">&quot;sum&quot;</span>:&#123;<span class="hljs-string">&quot;pageViews&quot;</span>:<span class="hljs-number">176</span>&#125;,<span class="hljs-string">&quot;uniq&quot;</span>:&#123;<span class="hljs-string">&quot;uniques&quot;</span>:<span class="hljs-number">148</span>&#125;&#125;,&#123;<span class="hljs-string">&quot;dimensions&quot;</span>:&#123;<span class="hljs-string">&quot;date&quot;</span>:<span class="hljs-string">&quot;2025-07-12&quot;</span>&#125;,<span class="hljs-string">&quot;sum&quot;</span>:&#123;<span class="hljs-string">&quot;pageViews&quot;</span>:<span class="hljs-number">246</span>&#125;,<span class="hljs-string">&quot;uniq&quot;</span>:&#123;<span class="hljs-string">&quot;uniques&quot;</span>:<span class="hljs-number">221</span>&#125;&#125;,&#123;<span class="hljs-string">&quot;dimensions&quot;</span>:&#123;<span class="hljs-string">&quot;date&quot;</span>:<span class="hljs-string">&quot;2025-07-13&quot;</span>&#125;,<span class="hljs-string">&quot;sum&quot;</span>:&#123;<span class="hljs-string">&quot;pageViews&quot;</span>:<span class="hljs-number">192</span>&#125;,<span class="hljs-string">&quot;uniq&quot;</span>:&#123;<span class="hljs-string">&quot;uniques&quot;</span>:<span class="hljs-number">183</span>&#125;&#125;,&#123;<span class="hljs-string">&quot;dimensions&quot;</span>:&#123;<span class="hljs-string">&quot;date&quot;</span>:<span class="hljs-string">&quot;2025-07-14&quot;</span>&#125;,<span class="hljs-string">&quot;sum&quot;</span>:&#123;<span class="hljs-string">&quot;pageViews&quot;</span>:<span class="hljs-number">293</span>&#125;,<span class="hljs-string">&quot;uniq&quot;</span>:&#123;<span class="hljs-string">&quot;uniques&quot;</span>:<span class="hljs-number">184</span>&#125;&#125;],<span class="hljs-string">&quot;countryStats&quot;</span>:[],<span class="hljs-string">&quot;browserStats&quot;</span>:[],<span class="hljs-string">&quot;deviceStats&quot;</span>:[]&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
 <p><code>&quot;countryStats&quot;:[],&quot;browserStats&quot;:[],&quot;deviceStats&quot;:[]</code>这些改了很多次，利用ChatGPT搜了很多资料依然是不行。<br>
 结果是证实了 <strong>字段其实是对的</strong>，只是无法获取数据。<br>
 原因可能是免费用户的原因。</p>
-</blockquote>
 <p><strong>当前阶段能实现的内容</strong></p>
 <table>
 <thead>
@@ -473,7 +476,7 @@
 </tr>
 </tbody>
 </table>
-<h1>替换 Cloudflare 用 Umami 构建</h1>
+<h1>Umami（最终选择）</h1>
 <p>Cloudflare 免费版 Web Analytics 的 API 限制一堆，想拿个国家访问来源、独立访客数根本不可能。于是我直接切换到 <strong>Umami</strong> ——一个轻量级但强大的开源网站统计方案，支持可视化面板、API 拉数据、自定义追踪等。</p>
 <p>虽然很不情愿，但花了12个小时，各种尝试 Cloudflare 的可行性但终于是放弃了。</p>
 <p>手把手教你如何注册、配置和集成 <a target="_blank" rel="noopener" href="https://umami.is/">Umami Cloud</a>，让你的博客流量统计不再受限于 Cloudflare 免费版，享受真实 PV/UV、国家、设备、来源等全维度数据。</p>
@@ -547,16 +550,9 @@
 <li>
 <p>创建后，网站列表会显示你的站点信息</p>
 <ul>
-<li>
-<p><strong>Website ID</strong>（形如 <code>8c8b9955----------215ee339cb</code>）</p>
-</li>
-<li>
-<p><strong>Tracking script</strong> 地址：如</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cloud.umami.is/script.js&quot;</span> <span class="hljs-attr">data-website-id</span>=<span class="hljs-string">&quot;8c8b9955------------86215ee339cb&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>记住这个 website ID，后面用</p>
-</li>
+<li><strong>Website ID</strong>（形如 <code>8c8b9955----------215ee339cb</code>）</li>
+<li><strong>Tracking script</strong> 地址：如 <code>&lt;script defer src=&quot;https://cloud.umami.is/script.js&quot; data-website-id=&quot;8c8b9955------------86215ee339cb&quot;&gt;&lt;/script&gt;</code></li>
+<li>记住这个 website ID，后面用</li>
 </ul>
 </li>
 </ol>
@@ -585,16 +581,14 @@
 <p>Umami 自带分享页，开箱即用，无需自己拉 API 或做数据清洗。</p>
 <ol>
 <li>
-<p>打开网站设置，<strong>启用 Share URL</strong> 功能<br>
-<img src="https://docs.umami.is/assets/share-url.png" srcset="/img/loading.gif" lazyload alt="enable-share-url"></p>
+<p>打开网站设置，<strong>启用 Share URL</strong> 功能</p>
 </li>
 <li>
-<p>系统会生成一个独立的公开统计页面，例如：</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">https://cloud.umami.<span class="hljs-keyword">is</span>/<span class="hljs-keyword">share</span>/IDux<span class="hljs-comment">-----9lVV/neurowave.tech</span><br></code></pre></td></tr></table></figure>
+<p>系统会生成一个独立的公开统计页面，例如：<code>https://cloud.umami.is/share/IDux-----9lVV/neurowave.tech</code></p>
 </li>
 <li>
 <p>你可以在博客页面插入 <code>&lt;iframe&gt;</code> 展示这个统计面板：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 博客流量统计<br><span class="hljs-section">layout: page</span><br><span class="hljs-section">---</span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span></span></span><br><span class="hljs-tag"><span class="language-xml">  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cloud.umami.is/share/IDu--------D9lVV/neurowave.tech&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">  <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; height: 600px; border: none;&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs .yml">menu:<br>- &#123; key: &quot;home&quot;, link: &quot;/&quot;, icon: &quot;iconfont icon-home-fill&quot; &#125;<br>- &#123; key: &quot;archive&quot;, link: &quot;/archives/&quot;, icon: &quot;iconfont icon-archive-fill&quot; &#125;<br>- &#123; key: &quot;category&quot;, link: &quot;/categories/&quot;, icon: &quot;iconfont icon-category-fill&quot; &#125;<br>- &#123; key: &quot;tag&quot;, link: &quot;/tags/&quot;, icon: &quot;iconfont icon-tags-fill&quot; &#125;<br>- &#123; key: &quot;say&quot;, link: &quot;/say/&quot;, icon: &quot;iconfont icon-comment&quot; &#125;<br>###### 添加地址到 link ######<br>- &#123; key: &quot;my-stat&quot;, link: &quot;https://cloud.umami.is/share/IDuxEAjut0hD9lVV/neurowave.tech&quot;, icon: &quot;iconfont icon-chart&quot; &#125;<br>###########################<br>- &#123; key: &quot;about&quot;, link: &quot;/about/&quot;, icon: &quot;iconfont icon-user-fill&quot; &#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li>
 <p>发布后你就拥有了一个功能全面、可自定义的实时访问分析页，包含国家、设备、浏览器、来源、热门页面、趋势等所有信息。</p>
@@ -602,7 +596,7 @@
 </ol>
 <h2 id="7-配置参数模板"><a class="header-anchor" href="#7-配置参数模板"> </a>7. 配置参数模板</h2>
 <p>你的 <code>umami</code> 配置示例（适合写在 hexo/_config.yml 或类似地方）：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">umami:</span><br>  <span class="hljs-attr">src:</span> <span class="hljs-string">https://cloud.umami.is/script.js</span><br>  <span class="hljs-attr">website_id:</span> <span class="hljs-string">8c8b9955-4b6d-4b58-8e09-86215ee339cb</span><br>  <span class="hljs-attr">domains:</span> <span class="hljs-string">neurowave.tech</span><br>  <span class="hljs-attr">start_time:</span> <span class="hljs-number">2024-01-01</span><br>  <span class="hljs-attr">token:</span> <span class="hljs-string">api_LSzAvcXXJcDDxmu9cp3tKbTvoRuFb0Q1</span><br>  <span class="hljs-attr">api_server:</span> <span class="hljs-string">https://cloud.umami.is</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">umami:</span><br>  <span class="hljs-attr">src:</span> <span class="hljs-string">https://cloud.umami.is/script.js</span><br>  <span class="hljs-attr">website_id:</span> <span class="hljs-string">8c8b9955----------86215ee339cb</span><br>  <span class="hljs-attr">domains:</span> <span class="hljs-string">neurowave.tech</span><br>  <span class="hljs-attr">start_time:</span> <span class="hljs-number">2024-01-01</span><br>  <span class="hljs-attr">token:</span> <span class="hljs-string">api_LSzAvc----------RuFb0Q1</span><br>  <span class="hljs-attr">api_server:</span> <span class="hljs-string">https://cloud.umami.is</span><br></code></pre></td></tr></table></figure>
 
               
             </div>
