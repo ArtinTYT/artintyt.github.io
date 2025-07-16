@@ -25,18 +25,23 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在这篇笔记中，详细梳理一个完整的大语言模型（LLM）训练流程，包括：  模型预训练（Pretraining） Tokenizer 训练 指令微调（Instruction Tuning） 奖励模型（Reward Model） 强化学习（RLHF）   1. 预训练阶段（Pretraining Stage） 目前，常见做法是在已有基座模型基础上进行微调，例如 alpaca、vicuna。这种方式要求基">
+    <meta name="description" content="全文来自对 【LLM】从零开始训练大模型 的整理，但由于原文格式上阅读不太舒服，花了很长时间整理，同时也扩展了一些内容。 原文的配图会更丰富，如果需要可以去原文查阅，下文只包含重要的效果图展示。  在这篇笔记中，详细梳理一个完整的大语言模型（LLM）训练流程，包括：  模型预训练（Pretraining） Tokenizer 训练 指令微调（Instruction Tuning） 奖励模型（Re">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从0训练 LLM 的完整流程">
 <meta property="og:url" content="http://neurowave.tech/2025/04/24/2-5-LLM/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="在这篇笔记中，详细梳理一个完整的大语言模型（LLM）训练流程，包括：  模型预训练（Pretraining） Tokenizer 训练 指令微调（Instruction Tuning） 奖励模型（Reward Model） 强化学习（RLHF）   1. 预训练阶段（Pretraining Stage） 目前，常见做法是在已有基座模型基础上进行微调，例如 alpaca、vicuna。这种方式要求基">
+<meta property="og:description" content="全文来自对 【LLM】从零开始训练大模型 的整理，但由于原文格式上阅读不太舒服，花了很长时间整理，同时也扩展了一些内容。 原文的配图会更丰富，如果需要可以去原文查阅，下文只包含重要的效果图展示。  在这篇笔记中，详细梳理一个完整的大语言模型（LLM）训练流程，包括：  模型预训练（Pretraining） Tokenizer 训练 指令微调（Instruction Tuning） 奖励模型（Re">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.zhimg.com/v2-b0397eab31c5ef275d8fff85144c36a2_1440w.jpg">
 <meta property="og:image" content="https://pic4.zhimg.com/v2-f77a45bbebc5230c232169e57f5f507f_1440w.jpg">
 <meta property="og:image" content="https://pic4.zhimg.com/v2-696e5e19223e992ed0e5b085abec4ea5_1440w.jpg">
+<meta property="og:image" content="https://pica.zhimg.com/v2-9cabe6732f82f70878bfabed101034ba_1440w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-a7200f02326cb021340627aef3d81044_1440w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-060fa579c9a819a6816681462f79791d_1440w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-dc7024ad19656f05c64c5699f7de3e7c_1440w.jpg">
+<meta property="og:image" content="https://picx.zhimg.com/v2-f05535efaed913b54f5e680b84c383ab.png?source=7e7ef6e2&needBackground=1">
 <meta property="article:published_time" content="2025-04-24T02:11:10.000Z">
-<meta property="article:modified_time" content="2025-07-16T08:11:23.664Z">
+<meta property="article:modified_time" content="2025-07-16T09:04:11.369Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="RLHF">
 <meta property="article:tag" content="NLP">
@@ -313,7 +318,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.1k 字
+          9.1k 字
         
       </span>
     
@@ -324,7 +329,7 @@
         
         
         
-          68 分钟
+          76 分钟
         
       </span>
     
@@ -388,7 +393,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-16T16:11:23+08:00
+                    更新于 2025-07-16T17:04:11+08:00
                   
                   
 
@@ -401,7 +406,11 @@
             
             <div class="markdown-body">
               
-              <p>在这篇笔记中，<strong>详细梳理一个完整的大语言模型（LLM）训练流程</strong>，包括：</p>
+              <blockquote>
+<p>全文来自对 <a target="_blank" rel="noopener" href="http://zhuanlan.zhihu.com/p/636270877">【LLM】从零开始训练大模型</a> 的整理，但由于原文格式上阅读不太舒服，花了很长时间整理，同时也扩展了一些内容。<br>
+原文的配图会更丰富，如果需要可以去原文查阅，下文只包含重要的效果图展示。</p>
+</blockquote>
+<p>在这篇笔记中，<strong>详细梳理一个完整的大语言模型（LLM）训练流程</strong>，包括：</p>
 <ul>
 <li>模型预训练（Pretraining）</li>
 <li>Tokenizer 训练</li>
@@ -855,8 +864,68 @@ $$</p>
 <li><strong>Ref Model（Reference Model）：</strong> 参照模型，通过 KL 散度限制 Actor 的训练方向，避免模型“跑偏”</li>
 <li><strong>Reward Model：</strong> 用于为 Actor 输出提供奖励信号，指导其优化方向</li>
 </ul>
-<p>为了节省显存和计算资源，通常会让 Actor 与 Critic 共享同一个 backbone，这样只需同时加载 3 个模型。这也是 RLHF 训练“非常吃显卡”的核心原因之一。</p>
-<p>PPO 在训练 LLM 时，<strong>效果和收敛过程都可能很不稳定</strong>。下面常常会通过具体案例来说明和分析这种训练不稳定性。</p>
+<p>为了节省显存和计算资源，通常会让 Actor 与 Critic 共享同一个 backbone，这样只需同时加载 3 个模型。这也是 RLHF 训练“非常吃显卡”的核心原因之一。PPO 在训练 LLM 时，<strong>效果和收敛过程都可能很不稳定</strong>。</p>
+<p>下面常常会通过具体案例来说明和分析这种训练不稳定性。</p>
+<h3 id="4-3-Proximal-Policy-Optimization（PPO）-v2"><a class="header-anchor" href="#4-3-Proximal-Policy-Optimization（PPO）-v2"> </a>4.3 Proximal Policy Optimization（PPO）</h3>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.06347.pdf">PPO</a> 是强化学习中一种基于 Actor-Critic 架构的优化方法，其前身是 TRPO（Trust Region Policy Optimization）。PPO 通过引入重要性采样（Importance Sampling），解决了 on-policy 方法“一次采样只能更新一次模型”的低效率问题，大幅提升了数据利用率和模型训练速度。</p>
+<p>在大语言模型（LLM）训练中，用 PPO 通常需要同时加载 4 个模型：</p>
+<ul>
+<li><strong>Actor Model</strong>：参与训练进化的主生成模型。</li>
+<li><strong>Critic Model</strong>：为 Actor 生成内容打分，评判优劣。</li>
+<li><strong>Ref Model</strong>：参考模型，用于计算 KL 散度，限制 Actor 的训练方向。</li>
+<li><strong>Reward Model</strong>：奖励模型，为训练过程提供进化方向的奖励信号。</li>
+</ul>
+<p>为了节省显存，实际工程中经常将 Actor 和 Critic 共享一个 backbone，这样只需同时载入 3 个模型。这也是 RLHF（基于人类反馈的强化学习）对显存和计算资源要求极高的主要原因之一。</p>
+<p><strong>工程特点和挑战</strong>：</p>
+<ul>
+<li><strong>训练过程和效果容易不稳定</strong>，对超参数、采样和模型设计非常敏感；</li>
+<li>对硬件资源要求极高，显存消耗大、训练慢；</li>
+<li>但 PPO 具备极强的策略优化能力，能不断探索并提升生成模型的“人类偏好”表现。</li>
+</ul>
+<p>PPO 以其「训练过程不稳定」和「效果不稳定」著称，这里我们通过列出一些具体的 case 来说明。</p>
+<p><strong>1. 训练过程不稳定</strong></p>
+<ul>
+<li>
+<p>PPO 训练过程中经常出现不稳定现象，尤其是 reward（奖励）曲线剧烈波动。例如，下图中蓝色折线是 actor 的 reward 曲线，粉红色是 ref_model（不参与训练）的 reward 曲线。可以看到，actor 的奖励曲线抖动非常明显。<br>
+<img src="https://pica.zhimg.com/v2-9cabe6732f82f70878bfabed101034ba_1440w.jpg" srcset="/img/loading.gif" lazyload width="450" style="display: block; margin: 0 auto;"/></p>
+</li>
+<li>
+<p>经过实验，发现影响 PPO 训练稳定性的几个关键因素：</p>
+<ul>
+<li><strong>KL Penalty</strong>：适当调高 KL 惩罚项有助于抑制训练过程中的“发散”，动态调整 KL 系数会更稳妥。</li>
+<li><strong>Reward Model（RM）</strong>：选择一个更稳定、训练充分的 RM 能显著缓解 reward 抖动问题。</li>
+<li><strong>Reward Scaling</strong>：对 reward 进行归一化（scaling/normalization）能提升训练稳定性，避免极端值影响训练。</li>
+<li><strong>Batch Size</strong>：适当增大 batch size，有助于缓冲训练噪声，提高曲线平滑度和收敛速度。</li>
+</ul>
+</li>
+<li>
+<p>PPO 对超参数极度敏感。为获得稳定训练过程，需要在 KL、reward scaling、RM 质量和 batch size 上多做实验和调优。</p>
+</li>
+</ul>
+<p><strong>2. 训练结果不稳定</strong></p>
+<ul>
+<li>即使你在训练过程中看到了平稳且漂亮的 Reward 曲线，也别高兴太早——reward 的提升<strong>不一定代表模型真正变得更好</strong>。</li>
+<li>例如：
+<ul>
+<li>下图展示了一条看起来很理想的训练 reward 曲线（右下角橙色为当前模型的 reward 分布，高分区域占比很大）：<br>
+<img src="https://pic3.zhimg.com/v2-a7200f02326cb021340627aef3d81044_1440w.jpg" srcset="/img/loading.gif" lazyload width="400" style="display: block; margin: 0 auto;" /></li>
+<li>但实际上，模型最终生成的内容却是<strong>乱码</strong>：<br>
+<img src="https://pic4.zhimg.com/v2-060fa579c9a819a6816681462f79791d_1440w.jpg" srcset="/img/loading.gif" lazyload width="400" style="display: block; margin: 0 auto;" /></li>
+</ul>
+</li>
+<li>这往往是因为 Reward Model（例如情绪识别 RM）错误地对这些“乱码”给出了高分（见上图最后一列 RM 打分），导致模型学会了某种 <strong>reward hacking</strong>（通过取巧而非真正提升能力来获得高分）。</li>
+<li>应对措施
+<ul>
+<li><strong>提升 Reward Model 质量</strong>是基础。</li>
+<li>也可以通过<strong>组合多个 RM</strong>来打分，防止 reward hacking。例如 Llama 2 训练时用 Safety RM + Helpful RM，虽然官方理由是“目标冲突”，但综合多 RM 本身就能降低 reward hacking 风险。</li>
+<li>通过多 RM 混合策略，最终训练 reward 曲线会更加平稳，模型输出也不会崩掉：<br>
+<img src="https://pic3.zhimg.com/v2-dc7024ad19656f05c64c5699f7de3e7c_1440w.jpg" srcset="/img/loading.gif" lazyload width="400" style="display: block; margin: 0 auto;"/></li>
+<li>关于稳定训练 PPO 的更多技巧和经验，可以参考 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2307.04964.pdf">Secrets of RLHF in Large Language Models Part I: PPO</a> 论文和相关实战经验总结：<br>
+<img src="https://picx.zhimg.com/v2-f05535efaed913b54f5e680b84c383ab.png?source=7e7ef6e2&needBackground=1" srcset="/img/loading.gif" lazyload width="400" style="display: block; margin: 0 auto;"/></li>
+<li>推荐阅读：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/666455333">何枝：【RLHF】怎样让 PPO 训练更稳定？早期人类征服 RLHF 的驯化经验</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="参考资料"><a class="header-anchor" href="#参考资料"> </a>参考资料</h2>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://zhuanlan.zhihu.com/p/636270877">【LLM】从零开始训练大模型</a></li>
