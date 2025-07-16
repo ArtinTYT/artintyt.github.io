@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://neurowave.tech/2025/04/19/2-4-LLM-LLMs%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5/</loc>
+    
+    <lastmod>2025-07-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/2025/04/24/2-5-LLM/</loc>
     
     <lastmod>2025-07-16</lastmod>
@@ -327,15 +336,6 @@
   
   <url>
     <loc>http://neurowave.tech/2025/04/17/5-3-RNN-GRU/</loc>
-    
-    <lastmod>2025-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/2025/04/19/2-4-LLM-LLMs%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5/</loc>
     
     <lastmod>2025-07-06</lastmod>
     
