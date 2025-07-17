@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://neurowave.tech/say/index.html</loc>
+    
+    <lastmod>2025-07-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/2025/04/20/1-0-%E9%80%9A%E7%9F%A5/</loc>
     
     <lastmod>2025-07-17</lastmod>
@@ -101,6 +110,15 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/about/index.html</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/2025/04/20/11-7-InstructGPT/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -122,15 +140,6 @@
     <loc>http://neurowave.tech/2025/06/05/1-12-%E6%9B%B4%E6%8D%A2%E5%9F%9F%E5%90%8D%E6%89%98%E7%AE%A1%E5%88%B0Cloudflare/</loc>
     
     <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/about/index.html</loc>
-    
-    <lastmod>2025-07-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -505,15 +514,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://neurowave.tech/say/index.html</loc>
-    
-    <lastmod>2025-06-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://neurowave.tech/</loc>
@@ -524,35 +524,7 @@
 
   
   <url>
-    <loc>http://neurowave.tech/tags/%E9%80%9A%E7%9F%A5/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/Hexo/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Fluid/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/GitHub/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/deploy/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -601,6 +573,55 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/tags/deploy/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Fluid/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/GitHub/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Cloudflare/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Web-Analytics/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/ECharts/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Umami/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/tags/SSH/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -622,6 +643,20 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/tags/%E9%80%9A%E7%9F%A5/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/%E5%BF%83%E5%BE%97/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/tags/Error/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -637,20 +672,6 @@
   
   <url>
     <loc>http://neurowave.tech/tags/Homebrew/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Sort/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Category/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -685,6 +706,20 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/tags/Sort/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Category/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/tags/Draft/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -706,14 +741,14 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/LinearRegression/</loc>
+    <loc>http://neurowave.tech/tags/MLP/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Regression/</loc>
+    <loc>http://neurowave.tech/tags/NeuralNetwork/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -748,20 +783,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/MLP/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/NeuralNetwork/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/ModelSelection/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -783,20 +804,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/WeightDecay/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Regularization/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/Dropout/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -804,35 +811,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/InstructGPT/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/RLHF/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Paper/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/NLP/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Alignment/</loc>
+    <loc>http://neurowave.tech/tags/Regularization/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -847,6 +826,13 @@
   
   <url>
     <loc>http://neurowave.tech/tags/Initialization/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/WeightDecay/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -881,56 +867,35 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/LLMs/</loc>
+    <loc>http://neurowave.tech/tags/Paper/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Theory/</loc>
+    <loc>http://neurowave.tech/tags/BradleyTerry/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/AI/</loc>
+    <loc>http://neurowave.tech/tags/Maher/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/macOS/</loc>
+    <loc>http://neurowave.tech/tags/FootballPrediction/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/M2/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/SIP/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/System-security/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/System/</loc>
+    <loc>http://neurowave.tech/tags/Poisson/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -952,6 +917,83 @@
   
   <url>
     <loc>http://neurowave.tech/tags/parameters/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/AI/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/LLMs/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/InstructGPT/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/RLHF/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/NLP/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Alignment/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/RaoKupper/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/LinearRegression/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Regression/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Prompt-engineering/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Theory/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -986,7 +1028,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Shell/</loc>
+    <loc>http://neurowave.tech/tags/DixonColes/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1035,21 +1077,70 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/tags/Pretraining/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Instruction-Tuning/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Reward-Model/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/macOS/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Shell/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/System/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/M2/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/SIP/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/System-security/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/tags/RNN/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Sequence-Model/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Prompt-engineering/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1063,7 +1154,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Text-preprocessing/</loc>
+    <loc>http://neurowave.tech/tags/Sequence-Model/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1091,6 +1182,20 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/tags/PyTorch/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Jupyter/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/tags/Attention/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1099,6 +1204,13 @@
   
   <url>
     <loc>http://neurowave.tech/tags/Mechanism/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Text-preprocessing/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1126,20 +1238,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/PyTorch/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Jupyter/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/Position-Encoding/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1154,7 +1252,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Self-Attention/</loc>
+    <loc>http://neurowave.tech/tags/Multi-Head-Attention/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1162,27 +1260,6 @@
   
   <url>
     <loc>http://neurowave.tech/tags/CNN/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/FC-Layer/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/convolution/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Multi-Head-Attention/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1203,14 +1280,21 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Channel/</loc>
+    <loc>http://neurowave.tech/tags/FC-Layer/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Structure/</loc>
+    <loc>http://neurowave.tech/tags/convolution/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Self-Attention/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1225,6 +1309,13 @@
   
   <url>
     <loc>http://neurowave.tech/tags/Stride/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Structure/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1259,98 +1350,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/RaoKupper/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/BradleyTerry/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Maher/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/FootballPrediction/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Poisson/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/DixonColes/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Cloudflare/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Web-Analytics/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/ECharts/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Umami/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Pretraining/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Instruction-Tuning/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Reward-Model/</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/%E5%BF%83%E5%BE%97/</loc>
+    <loc>http://neurowave.tech/tags/Channel/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1387,14 +1387,14 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/categories/System/</loc>
+    <loc>http://neurowave.tech/categories/Projects/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/categories/Projects/</loc>
+    <loc>http://neurowave.tech/categories/System/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
