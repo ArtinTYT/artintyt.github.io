@@ -25,12 +25,12 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE） 这个部分继续讲 架构 + DeepSeekMoE 里面的部分，主要包括传统 MoE架构，DeepSeekMoE，load balancing，Switch Transformers（Loss control）, Switch Transformer的问题，Loss-Free。   Transformer里面有两大层，FF">
+    <meta name="description" content="DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE） 这个部分继续讲 架构 + DeepSeekMoE 里面的部分，主要包括传统 MoE架构，DeepSeekMoE，load balancing，Switch Transformers（Loss control）, Switch Transformer的问题，Loss-Free。    1. Transformer结构简述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="8. DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE）">
 <meta property="og:url" content="http://neurowave.tech/2025/06/22/11-8.2-Deepseek-V3/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE） 这个部分继续讲 架构 + DeepSeekMoE 里面的部分，主要包括传统 MoE架构，DeepSeekMoE，load balancing，Switch Transformers（Loss control）, Switch Transformer的问题，Loss-Free。   Transformer里面有两大层，FF">
+<meta property="og:description" content="DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE） 这个部分继续讲 架构 + DeepSeekMoE 里面的部分，主要包括传统 MoE架构，DeepSeekMoE，load balancing，Switch Transformers（Loss control）, Switch Transformer的问题，Loss-Free。    1. Transformer结构简述">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-14.png">
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-15.png">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-18.png">
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-2.png">
 <meta property="article:published_time" content="2025-06-22T01:01:30.000Z">
-<meta property="article:modified_time" content="2025-07-25T18:39:22.643Z">
+<meta property="article:modified_time" content="2025-07-27T08:39:16.519Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Paper">
 <meta property="article:tag" content="DeepSeekV3">
@@ -395,7 +395,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-26T02:39:22+08:00
+                    更新于 2025-07-27T16:39:16+08:00
                   
                   
 
@@ -410,40 +410,65 @@
               
               <h1>DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE）</h1>
 <p>这个部分继续讲 <strong>架构 + DeepSeekMoE</strong> 里面的部分，主要包括传统 MoE架构，DeepSeekMoE，load balancing，Switch Transformers（Loss control）, Switch Transformer的问题，Loss-Free。</p>
-<hr>
 <blockquote>
-<p>Transformer里面有两大层，FFN（也就是MLP层）和Attention，</p>
+<hr>
+<h3 id="1-Transformer结构简述"><a class="header-anchor" href="#1-Transformer结构简述"> </a>1. Transformer结构简述</h3>
 <ul>
-<li>Attention：<br>
-- Transformer的主要计算量集中在Attention层，<br>
-- Attention层没有太多参数量</li>
-<li>FFN:<br>
-- 有很多参数<br>
-- 现在language model之所以很强大，是因为可以将很多知识压缩要参数里面<br>
-- FFN主要储存language model的knowledge<br>
-- LLM在scale up的时候，FFN的参数会急剧上升，FFN也会贡献一定的计算量</li>
+<li>Transformer由两大核心层组成：<strong>Attention</strong> 和 <strong>FFN（Feed-Forward Network/MLP）</strong>。
+<ul>
+<li><strong>Attention层</strong>：负责信息交互与全局建模，参数量较少，但计算量较大。</li>
+<li><strong>FFN层</strong>：
+<ul>
+<li>负责存储模型知识（参数量大），是模型scale-up时体量激增的主要来源。</li>
+<li>LLM的强大部分依赖于FFN的高容量，但FFN也带来了计算与资源的挑战。</li>
 </ul>
-<img src="/images/img/img_deepseek-14.png" srcset="/img/loading.gif" lazyload width=500 style="display: block; margin: 0 auto;"/>
+</li>
+</ul>
+</li>
+</ul>
 </blockquote>
 <hr>
 <blockquote>
-<p>我们先看一下review Paper介绍的什么是MoE（Mixture of experts）：</p>
+<h3 id="2-MoE（Mixture-of-Experts）原理简述"><a class="header-anchor" href="#2-MoE（Mixture-of-Experts）原理简述"> </a>2. MoE（Mixture of Experts）原理简述</h3>
+<p>先看一下 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2407.06204">review paper</a>  介绍的什么是MoE。</p>
 <ul>
-<li>简单讲就是把Transformer的FFN层分组</li>
-<li>当输入 X，Gate算一个概率p</li>
-<li>常见的MoE有两种
+<li><strong>核心思想：把 Transformer 的 FFN 层拆分为多个专家（Expert）组，输入经过gate分配给不同expert。</strong></li>
+<li><strong>Gate（门控）</strong>
 <ul>
-<li>Dense MoE：p就会变成一个weight，经过不同的FFN层，weight会乘以到输出上面，可以理解为dense moe就是对输出做了一个加权平均</li>
-<li>Sparse MoE：现在LLM用的最多是的Sparse moe，也就是输入X经过gate产生一系列p，把它们rank一下，取top k，如图就是在所有p中选2个最高的p，也就是图中FFN2和FFN3，FFN1和4就不用了，然后FFN的输出和p做一个乘积，再sum起来，简单说就是weighted sum，这个加权平均是经过top k选择的。</li>
+<li>输入 <mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.928ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 852 683" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44B" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z" style="stroke-width: 3;"/></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>X</mi></math></mjx-assistive-mml></mjx-container>，Gate网络通常也是一个小MLP/FFN，计算每个expert的权重/概率 <mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z" style="stroke-width: 3;"/></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi></math></mjx-assistive-mml></mjx-container></li>
+<li>类似于分类模型的softmax输出，每个expert像是一个类别</li>
 </ul>
 </li>
-<li>这个gate，也是一个FFN层或者是MLP层，可以理解为一个简单的多分类的网络的最后一部分，类似Classification的最后一部分就是做softmax层，输出每个Class的probability，可以把gate看成softmax层。每个expert对应的就是类别。</li>
-<li>MoE的好处就是我们很容易把这个模型给<br>
-1. scale up，<br>
-2. cost减少：推理和训练的时候是一样的，只需要算少数几个expert，其他expert都不会参与计算，这样computation就会减少。所以MoE是个非常积极实惠的架构</li>
-<li>缺点：<br>
-- 在训练数据很多的时候，分配给experts，这些experts学到的knowledge有可能会重合，也就是说会有冗余的部分在不同的experts里面<br>
-- experts之间没有太多的区分度，我们希望有些experts擅长数学，有些expers擅长coding</li>
+<li><strong>常见两大MoE：</strong>
+<ul>
+<li><strong>Dense MoE</strong>
+<ul>
+<li>图(a)，全连接，每个都参与</li>
+<li>每个 expert 都参与计算，Gate 生成的 p 作为权重，加权所有 expert 输出，做加权平均。</li>
+</ul>
+</li>
+<li><strong>Sparse MoE</strong>（主流）
+<ul>
+<li>输入 <mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.928ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 852 683" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44B" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z" style="stroke-width: 3;"/></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>X</mi></math></mjx-assistive-mml></mjx-container>，经过Gate计算出一些列 <mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z" style="stroke-width: 3;"/></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi></math></mjx-assistive-mml></mjx-container>, 把他们排序取 top k 个experts参与计算。</li>
+<li>只激活权重Top-k的expert，其他expert不参与本次计算</li>
+<li>图(b)，使用 FFN2 和 FFN3，FFN1 和 FFN4 就不用了，然后FFN的输出和<mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z" style="stroke-width: 3;"/></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi></math></mjx-assistive-mml></mjx-container>做一个乘积，再sum起来。<br>
+<img src="/images/img/img_deepseek-14.png" srcset="/img/loading.gif" lazyload width=500 style="display: block; margin: 0 auto;"/></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>优点</strong>
+<ol>
+<li>易扩展（scale up）：可以轻松增大模型容量。</li>
+<li>成本低（lower cost）：只需激活一小部分expert，computation就会减少</li>
+</ol>
+</li>
+<li><strong>缺点</strong>
+<ul>
+<li><strong>知识冗余</strong>：数据量大时，不同 expert 学到的知识可能重合（产生冗余），导致参数浪费。</li>
+<li><strong>区分度低</strong>：不同 expert 之间的能力不明显，容易所有 expert 学到类似的内容。希望某些expert擅长数学，某些擅长coding，但实际中这种区分<strong>往往不明显</strong>。</li>
+</ul>
+</li>
 </ul>
 </blockquote>
 <hr>
@@ -704,7 +729,7 @@ $$P_i = \frac{1}{T} \sum_{x \in \mathcal{B}} p_i(x)$$<br>
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年7月26日</div>
+          <div>2025年7月27日</div>
         </div>
       
       
