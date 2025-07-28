@@ -37,6 +37,33 @@
   
   
   <entry>
+    <title>8. DeepSeek-V3（V2）详读 4 （架构 + MTP）</title>
+    <link href="/2025/06/23/11-8.3-Deepseek-V3/"/>
+    <url>/2025/06/23/11-8.3-Deepseek-V3/</url>
+    
+    <content type="html"><![CDATA[<h1>DeepSeek-V3（V2）详读 4 （架构 + MTP）</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>Paper阅读</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Paper</tag>
+      
+      <tag>DeepSeekV3</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>8. DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE）</title>
     <link href="/2025/06/22/11-8.2-Deepseek-V3/"/>
     <url>/2025/06/22/11-8.2-Deepseek-V3/</url>
@@ -59,23 +86,15 @@
       
       <tag>MoE</tag>
       
-      <tag>MLA</tag>
-      
-      <tag>MultiTokenPrediction</tag>
-      
-      <tag>FP8</tag>
-      
       <tag>LoadBalancing</tag>
       
       <tag>LLM</tag>
       
       <tag>Architecture</tag>
       
-      <tag>TrainingOptimization</tag>
+      <tag>AuxiliaryLossFree</tag>
       
-      <tag>Evaluation</tag>
-      
-      <tag>OpenSource</tag>
+      <tag>SharedExpert</tag>
       
     </tags>
     
@@ -102,27 +121,19 @@
       
       <tag>Paper</tag>
       
-      <tag>DeepSeekV3</tag>
+      <tag>Transformer</tag>
       
-      <tag>MoE</tag>
+      <tag>DeepSeekV3</tag>
       
       <tag>MLA</tag>
       
-      <tag>MultiTokenPrediction</tag>
-      
-      <tag>FP8</tag>
-      
-      <tag>LoadBalancing</tag>
-      
-      <tag>LLM</tag>
-      
       <tag>Architecture</tag>
       
-      <tag>TrainingOptimization</tag>
+      <tag>KVCache</tag>
       
-      <tag>Evaluation</tag>
+      <tag>RoPE</tag>
       
-      <tag>OpenSource</tag>
+      <tag>DecoupledRoPE</tag>
       
     </tags>
     
@@ -166,10 +177,6 @@
       <tag>Architecture</tag>
       
       <tag>TrainingOptimization</tag>
-      
-      <tag>Evaluation</tag>
-      
-      <tag>OpenSource</tag>
       
     </tags>
     
@@ -233,8 +240,6 @@
       
       <tag>NLP</tag>
       
-      <tag>LLMs</tag>
-      
       <tag>AI</tag>
       
       <tag>Pretraining</tag>
@@ -242,6 +247,8 @@
       <tag>Instruction_Tuning</tag>
       
       <tag>Reward_Model</tag>
+      
+      <tag>LLM</tag>
       
     </tags>
     
@@ -501,13 +508,13 @@
       
       <tag>NLP</tag>
       
-      <tag>LLMs</tag>
-      
       <tag>Theory</tag>
       
       <tag>Transformer</tag>
       
       <tag>Structure</tag>
+      
+      <tag>LLM</tag>
       
     </tags>
     
@@ -606,8 +613,6 @@
       
       <tag>NLP</tag>
       
-      <tag>LLMs</tag>
-      
       <tag>Word2Vec</tag>
       
       <tag>Embedding</tag>
@@ -623,6 +628,8 @@
       <tag>one-hot</tag>
       
       <tag>ELMo</tag>
+      
+      <tag>LLM</tag>
       
     </tags>
     
@@ -841,11 +848,11 @@
       
       <tag>NLP</tag>
       
-      <tag>LLMs</tag>
-      
       <tag>Theory</tag>
       
       <tag>AI</tag>
+      
+      <tag>LLM</tag>
       
     </tags>
     
@@ -1264,11 +1271,11 @@
       
       <tag>NLP</tag>
       
-      <tag>LLMs</tag>
-      
       <tag>AI</tag>
       
       <tag>Prompt_engineering</tag>
+      
+      <tag>LLM</tag>
       
     </tags>
     
@@ -1293,8 +1300,6 @@
     
     <tags>
       
-      <tag>LLMs</tag>
-      
       <tag>AI</tag>
       
       <tag>OpenAI</tag>
@@ -1302,6 +1307,8 @@
       <tag>API</tag>
       
       <tag>parameters</tag>
+      
+      <tag>LLM</tag>
       
     </tags>
     
