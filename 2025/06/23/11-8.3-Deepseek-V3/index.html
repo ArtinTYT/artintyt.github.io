@@ -25,12 +25,12 @@
   <meta name="author" content="Artin Tan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DeepSeek-V3（V2）详读 4 （架构 + MTP）  （Multi-Token prediction，MTP），是DeepSeek提出的一个搞笑训练以及增强模型推理能力的技术，也是DeepSeek降低成本的一个关机因素。 DeepSeek MTP来自于两篇文章：  Meta MTP EAGLE   LLM training：Meta用 parallel heads的方式去做MTP，主要解">
+    <meta name="description" content="DeepSeek-V3（V2）详读 4 （架构 + MTP） 今天我们继续撸 DeepSeek-v3 的 technical report，这一部分要讲的就是 Multi-Token Prediction（MTP）。MTP 是 DeepSeek 提升训练效率、增强推理能力的关键技术，也是一大 cost‑saving 技术。可以说，MTP就是 DeepSeek 降本增效的法宝。在正式讲细节前，还是t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="8. DeepSeek-V3（V2）详读 4 （架构 + MTP）">
 <meta property="og:url" content="http://neurowave.tech/2025/06/23/11-8.3-Deepseek-V3/index.html">
 <meta property="og:site_name" content="Neurowave">
-<meta property="og:description" content="DeepSeek-V3（V2）详读 4 （架构 + MTP）  （Multi-Token prediction，MTP），是DeepSeek提出的一个搞笑训练以及增强模型推理能力的技术，也是DeepSeek降低成本的一个关机因素。 DeepSeek MTP来自于两篇文章：  Meta MTP EAGLE   LLM training：Meta用 parallel heads的方式去做MTP，主要解">
+<meta property="og:description" content="DeepSeek-V3（V2）详读 4 （架构 + MTP） 今天我们继续撸 DeepSeek-v3 的 technical report，这一部分要讲的就是 Multi-Token Prediction（MTP）。MTP 是 DeepSeek 提升训练效率、增强推理能力的关键技术，也是一大 cost‑saving 技术。可以说，MTP就是 DeepSeek 降本增效的法宝。在正式讲细节前，还是t">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://neurowave.tech/2025/06/23/11-8.3-Deepseek-V3/img/img_deepseek-3.png">
 <meta property="og:image" content="http://neurowave.tech/2025/06/23/11-8.3-Deepseek-V3/img/img_deepseek-4.png">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://neurowave.tech/2025/06/23/11-8.3-Deepseek-V3/img/img_deepseek-10.png">
 <meta property="og:image" content="http://neurowave.tech/2025/06/23/11-8.3-Deepseek-V3/img/img_deepseek-10.png">
 <meta property="article:published_time" content="2025-06-23T12:11:23.000Z">
-<meta property="article:modified_time" content="2025-07-28T17:53:11.033Z">
+<meta property="article:modified_time" content="2025-07-29T08:57:15.171Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Paper">
 <meta property="article:tag" content="DeepSeekV3">
@@ -313,7 +313,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.8k 字
+          8.3k 字
         
       </span>
     
@@ -324,7 +324,7 @@
         
         
         
-          74 分钟
+          70 分钟
         
       </span>
     
@@ -388,7 +388,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-29T01:53:11+08:00
+                    更新于 2025-07-29T16:57:15+08:00
                   
                   
 
@@ -402,64 +402,47 @@
             <div class="markdown-body">
               
               <h1>DeepSeek-V3（V2）详读 4 （架构 + MTP）</h1>
+<p>今天我们继续撸 DeepSeek-v3 的 technical report，这一部分要讲的就是 Multi-Token Prediction（MTP）。MTP 是 DeepSeek 提升训练效率、增强推理能力的关键技术，也是一大 cost‑saving 技术。可以说，MTP就是 DeepSeek 降本增效的法宝。在正式讲细节前，还是top-down路线，先来一波大致框架，帮大家建立一个模糊的全局观。</p>
+<hr>
 <blockquote>
-<p>（Multi-Token prediction，MTP），是DeepSeek提出的一个搞笑训练以及增强模型推理能力的技术，也是DeepSeek降低成本的一个关机因素。<br>
-DeepSeek MTP来自于两篇文章：</p>
+<h3 id="1-背景知识"><a class="header-anchor" href="#1-背景知识"> </a>1. 背景知识</h3>
+<p>先整体看 paper 背景结构，DeepSeek MTP 採用了两类已有方法：</p>
 <ul>
-<li>Meta MTP</li>
-<li>EAGLE</li>
+<li><strong>Meta MTP</strong> Gloeckle et al. (2024) 提出 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2404.19737">Parallel Heads MTP</a>，目标是：<br>
+- 一次预测多个 future tokens；<br>
+- 增加训练信号密度（densify training signals）；<br>
+- 提升 generalization 能力；<br>
+- 降低训练成本。</li>
+<li><strong>Speculative Decoding 方法体系（用于加速 inference）</strong>：主要是提升推理效率，先去猜一些输出 token，然后主模型去验证。大致分为两类思路<br>
+- <strong>Independent 流派</strong>：用外部轻量（小）模型生成 draft（代表作来自 Google / DeepMind）；<br>
+- <strong>Self 流派</strong>：用模型自身的一部分来 draft，进一步细分为<br>
+- <strong>Medusa</strong>：用 parallel heads 生成多个 draft tokens（并行）；<br>
+- <strong>EAGLE</strong>：用 causal/sequential heads（自回归方式）生成 draft tokens，更接近原生语言模型结构，准确率更高。</li>
 </ul>
-<ol>
-<li>LLM training：Meta用 parallel heads的方式去做MTP，主要解决training的时候的问题，也是在做predict future tokens，</li>
-<li>LLM inference：speculative decoding（其实也是在做predict future tokens），简单说就是用一个小的语言模型，或者模型自身的一部分去猜测可能得输出，而加快模型的inference速度。有两个流派：</li>
-</ol>
+<p><strong>Training 阶段的问题</strong>：</p>
 <ul>
-<li>
-<p>independent：代表作有两个 来自Google/deepmind</p>
-</li>
-<li>
-<p>self：用模型自己的某些heads来做。也有两个方法，medusa（用的parallel heads）/ EAGLE（用的causal，也就是跟现在language model一样的，一个sequential heads来预测future tokens）</p>
-</li>
-<li>
-<p>所以可以把上面meta MTP和speculative decoding抽象成一个方法，因为他们都是在做predict future tokens，</p>
-</li>
-<li>
-<p>DeepSeek MTP的思想就是，把Meta MTP的parallel heads 换成 ealge里面的causal heads。</p>
-</li>
-<li>
-<p>为什么呢，因为eagle这篇文章已经证明causal heads其实比parallel heads更有效一些，但是eagle和medusa这两篇文章在speculative decoding这个框架提出的并不是用来解决training问题的，所以DeepSeek就借用了EAGLE里面这 样的一个网络架构  然后把Meta MTP的这部分给替换掉  所以就变成了一个causal heads去predict future token解决training的问题</p>
-</li>
-<li>
-<p>所以等大家明白了这所有的背景之后  去理解DeepSeek MTP就非常容易了。</p>
-</li>
-<li>
-<p>我想在这里借这个机会给大家分享一下我的科研或者是自学的哲学  大家可以看到整个领域的发展其实都是连续的  DeepSeek MTP的想法其实建立在很多前人的想法之上  就好像我们看一篇paper  这是一篇paper  它其实是由很多之前的paper作为输入</p>
-</li>
-<li>
-<p>所以我们在看一篇paper的时候  知道what  我们还需要去看它之前的一些背景  它是怎么来的  我们要知道why  因为我觉得仅仅停留在what而不知道why的话  也就是没有intuitive understanding的话  其实你是没有真正的理解这个知识点  那当你真正理解了这些知识点之后  那么你就可以把这些知识再外推  创造一些新的知识  这个就是create  也就是创造力  至少对我来说</p>
-</li>
-<li>
-<p>我的创造力就是这么来的  我把一个知识它的来龙去脉都弄清楚了之后  然后找知识点  然后再外推  就可以创造出一些新的东西  另外现在因为手机、电脑等的普及  导致我们现在人的时间都碎片化  这个碎片化的最直接的一个后果就是我们的知识也碎片化了  这样就导致我们在摄取知识的时候  往往只能看到这个点  而看不到其他的这些点  所以至少在我的视频里面  我希望不光把这当前的paper给大家讲清楚  把它的来龙去脉给大家讲清楚</p>
-</li>
-</ul>
-<p>帮大家建立这样的一个context  然后剩下的事情就是你利用我给你讲的这些知识  你自己去创造  去create一些新的东西  这就好像水流一样  它其实是有一个flow的  把flow的前半部分讲解给大家  那后半部分就大家自己去创造了  我们现在开始  首先我要给大家介绍一下大语言模型training的一些细节  为了帮大家理解  我先回顾一下language model inference是怎么做的</p>
-<ul>
-<li>LLM training：
-<ul>
-<li>但是training就稍微有点不一样了  因为training我们其实是有一个ground truth  假如说我们的ground truth是欢迎来到 这样的一个句子  在training的时候其实就用到了一个概念  叫做teacher forcing。</li>
-<li></li>
-<li></li>
-</ul>
-</li>
-<li>LLM inference：<code>欢迎来</code>
-<ul>
-<li>还是用我之前举的那个例子  <code>欢迎来到</code>  我想language model产生这样的一个句子  首先我会输入一个起始token到这个language model里面  然后language model会产生一个欢字  然后我会把第一次的输出作为第二次的输入放到这里  和这个start token一起再送到这个language model里  这个language model就会产生迎。</li>
-<li>然后以此类推  接着产生来  这里我举的是一个perfect例子  所谓perfect例子就是说在inference时候  这个大语言模型是没有犯任何错误的  但其实大语言模型在inference的时候可能会犯错误  比如说这个迎字  它可能就没有生成迎字  可能就生成了欢乐的乐  这么一来  在inference的时候  因为它没有ground truth  所以这个乐字就会进到下一次的输入。</li>
-<li>那么接下来所有的输入都会基于这个错误的输出  就会导致后面这个输出越错越离谱  这是inference存在的一个问题。</li>
-</ul>
-</li>
+<li>传统 LLM 只做 next‑token prediction，信号稀薄导致效率低。</li>
+<li><strong>Meta MTP</strong> 方法可以 densify 信号，通过多个 heads 并行预测多个 tokens, 提升训练效果。<br>
+<strong>Inference 阶段的问题</strong>：</li>
+<li>传统 autoregressive decoding 一步一步出 token太慢。</li>
+<li><strong>Speculative decoding</strong> 用 draft 模型或额外 heads 先预猜 tokens，再让主模型验证，可以提升 throughput。</li>
 </ul>
 </blockquote>
+<p>不管是 <strong>Meta MTP</strong>，还是 <strong>Medusa/EAGLE</strong> 的 speculative decoding，本质都在做一件事：<strong>Predict Future Tokens</strong>。所以可以把它们抽象为一个统一的大类方法，<strong>多 token 预测</strong>。</p>
+<blockquote></blockquote>
+<p>DeepSeek 的做法非常巧妙，它把 <strong>Meta MTP 中的 parallel heads</strong> 替换成了 <strong>EAGLE 中的 causal heads</strong>；因为 EAGLE 已经实验证明：<strong>causal heads（顺序预测）比 parallel heads 更准确、更有效</strong>；不过需要注意的是：</p>
+<blockquote>
+<ul>
+<li><strong>EAGLE 和 Medusa 原本是用于 inference 加速</strong>；</li>
+<li><strong>而 DeepSeek 是把它们借来用在训练阶段</strong>，解决 training signal sparse 的问题。</li>
+</ul>
+<p>DeepSeek MTP = EAGLE 的 causal heads + Meta MTP 的训练思路 = 更强的训练效率 + 兼容推理加速！</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>一篇 paper 其实它本身就是前人多篇论文的“输入”结果。所以我们在读一篇 paper 的时候，光知道 <strong>what</strong>（这篇 paper 讲了啥）还不够，更要追溯它的背景，搞懂它的“前世今生”——也就是 <strong>why</strong>。如果只知道 what，不理解 why，也没有建立自己的直觉，那对知识的掌握其实还很浅。只有把 why 也搞清楚，建立了直觉理解（intuitive understanding），我们才能真正理解知识、并举一反三。一个知识点的来龙去脉都理顺，理解深了之后，找到不同知识点之间的联系，再进行外推和创新，这样就能产出自己的新东西。现在知识摄取也变得碎片化，大部分人只能关注某一个小点，忽略了知识的整体脉络。梳理整体脉络让知识变得立体、有“生长感”。</p>
+</blockquote>
+<hr>
 <h3 id="2-2-多-token-预测（Multi-Token-Prediction）"><a class="header-anchor" href="#2-2-多-token-预测（Multi-Token-Prediction）"> </a>2.2. 多 token 预测（Multi-Token Prediction）</h3>
 <img src="img/img_deepseek-3.png" srcset="/img/loading.gif" lazyload width=500 style="display: block; margin: 0 auto;"/>
 <p>受 Gloeckle 等人启发，DeepSeek-V3 采用多 token 预测（MTP）目标，将每个位置的预测范围扩展为多个未来 token。这样既增强了训练信号密度，提高了数据利用率，也有助于模型提前规划、优化预测。不同于以往直接并行预测 <mjx-container class="MathJax" jax="SVG" style="direction: ltr; position: relative;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.873ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 828 683" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z" style="stroke-width: 3;"/></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline" style="top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; padding: 1px 0px 0px 0px; border: 0px; display: block; width: auto; overflow: hidden;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>D</mi></math></mjx-assistive-mml></mjx-container> 个 token 并用独立输出头的方法，DeepSeek-V3 采用顺序预测方式，每一层都保持完整的因果链。</p>
