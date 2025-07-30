@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-22.png">
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-3.png">
 <meta property="article:published_time" content="2025-06-23T04:11:23.000Z">
-<meta property="article:modified_time" content="2025-07-30T19:38:26.749Z">
+<meta property="article:modified_time" content="2025-07-30T19:48:09.921Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Paper">
 <meta property="article:tag" content="DeepSeekV3">
@@ -391,7 +391,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-31T03:38:26+08:00
+                    更新于 2025-07-31T03:48:09+08:00
                   
                   
 
@@ -531,9 +531,7 @@
 <hr>
 <blockquote>
 <h3 id="3-Transformer-并行训练机制"><a class="header-anchor" href="#3-Transformer-并行训练机制"> </a>3. Transformer 并行训练机制</h3>
-</blockquote>
 <p>其实 Transformer 本身是可以做并行计算的，所以实际训练大语言模型的时候，流程比我前面说的“一步步输一个 token”要高效复杂不少。</p>
-<blockquote>
 <ol>
 <li>如何利用 Transformer 的并行计算？</li>
 </ol>
@@ -568,9 +566,7 @@
 <hr>
 <blockquote>
 <h3 id="4-Meta-2024-MTP-论文（Multi-token-Prediction）"><a class="header-anchor" href="#4-Meta-2024-MTP-论文（Multi-token-Prediction）"> </a>4. Meta 2024 MTP 论文（Multi-token Prediction）</h3>
-</blockquote>
 <p>Meta 在 2024 年 4 月提出的 Multi-token Prediction（MTP）方案。论文提出：<strong>模型不再只预测下一个 token，而是“一次预测多个 future tokens”（这里以预测 4 个 future tokens 为例）</strong></p>
-<blockquote>
 <img src="/images/img/img_deepseek-19.png" srcset="/img/loading.gif" lazyload width=380 style="display: block; margin: 0 auto;"/>
 <p><strong>Head 分组</strong></p>
 <ul>
@@ -584,44 +580,39 @@
 </li>
 <li><strong>拆开理解每个 head</strong>
 <ul>
-<li><strong>只看 Head 1：</strong><br>
-这就是标准的 Transformer 并行训练，输入序列是 1,2,3,4，输出是 2,3,4,5，也就是说，input 1 通过 Head 1 预测 Token 2，input 2通过 Head 1 预测 Token 3，以此类推。<strong>shift by 1 token</strong>（输入序列右移一位）就是 ground truth（GT）。</li>
-<li><strong>看 Head 2：</strong><br>
-类似地，输入还是 1,2,3,4，但输出要预测 3,4,5,6（相当于 <strong>shift by 2 tokens</strong>）。也就是每个 token 不再预测下一个，而是预测它后面第二个 token。</li>
-<li><strong>Head 3/Head 4 也是同理：</strong><br>
-比如 Head 3 是 <strong>shift 3 个 token</strong>（输出 4,5,6,7），Head 4 <strong>shift 4 个 token</strong>（输出 5,6,7,8），每个 head 负责预测更远的 future。</li>
+<li><strong>只看 Head 1：</strong>  这就是标准的 Transformer 并行训练，输入序列是 1,2,3,4，输出是 2,3,4,5，也就是说，input 1 通过 Head 1 预测 Token 2，input 2通过 Head 1 预测 Token 3，以此类推。<strong>shift by 1 token</strong>（输入序列右移一位）就是 ground truth（GT）。</li>
+<li><strong>看 Head 2：</strong>  类似地，输入还是 1,2,3,4，但输出要预测 3,4,5,6（相当于 <strong>shift by 2 tokens</strong>）。也就是每个 token 不再预测下一个，而是预测它后面第二个 token。</li>
+<li><strong>Head 3/Head 4 也是同理：</strong>  比如 Head 3 是 <strong>shift 3 个 token</strong>（输出 4,5,6,7），Head 4 <strong>shift 4 个 token</strong>（输出 5,6,7,8），每个 head 负责预测更远的 future。</li>
 </ul>
 </li>
 </ul>
 <p><strong>这样做带来了什么好处？</strong></p>
 <ol>
-<li>更丰富的 Training Signal</li>
-</ol>
+<li>更丰富的 Training Signal
 <ul>
 <li>原来只预测 next token，训练信号有限（比如只学 2,3,4,5），</li>
 <li>现在每个 head 都会计算 loss，模型能同时学到更多 future 的信息，训练信号更密集、更丰富，学习更高效。</li>
 </ul>
-<ol start="2">
-<li>解决模型“近视”问题</li>
-</ol>
+</li>
+<li>解决模型“近视”问题
 <ul>
 <li>原来的 next-token prediction，本质上是“近视眼”，只能考虑下一个 token，planning 能力弱。</li>
 <li>如果一次预测 4 个 token，模型就需要考虑更长远的序列（近视好了），planning 能力明显增强。</li>
 </ul>
-<ol start="3">
-<li>teacher forcing gap 减少</li>
-</ol>
+</li>
+<li>teacher forcing gap 减少
 <ul>
 <li>传统 next-token prediction，Training 用的是 GT，在做 inference 时只能用模型上次输出，二者 gap 比较大；</li>
 <li>MTP 让模型能学到更长依赖（long distance transition），即使有些关键 token 预测错了，模型也能更快适应、恢复。</li>
 </ul>
+</li>
+</ol>
 </blockquote>
 <hr>
 <blockquote>
 <h3 id="5-MTP-如何解决-Teacher-Forcing-问题-实验现象"><a class="header-anchor" href="#5-MTP-如何解决-Teacher-Forcing-问题-实验现象"> </a>5. MTP 如何解决 Teacher Forcing 问题 &amp; 实验现象</h3>
 <ol>
-<li>直观解释：MTP 为什么更强</li>
-</ol>
+<li>直观解释：MTP 为什么更强
 <ul>
 <li>作者用一个“transition”例子来说明 multi-token prediction 的优势。</li>
 <li>假设 ground truth 序列是 <code>1 2 3 4 5 A B</code>，其中 <code>5→A</code> 是个难预测的“hard transition”，其它 transition 都很简单。</li>
@@ -630,21 +621,17 @@
 <li>总结：<strong>MTP 让模型自然而然学会如何跨越那些最难的、最有意义的序列转折点。</strong></li>
 <li>![[Pasted image 20250729201519.png]]</li>
 </ul>
-<ol start="2">
-<li>图示理解</li>
-</ol>
-<ul>
-<li>如图展示了用 4-token prediction 后，各种规模模型的 MBPP Pass@1 提升幅度：
+</li>
+<li>图示理解：如图展示了用 4-token prediction 后，各种规模模型的 MBPP Pass@1 提升幅度：
 <ul>
 <li>大模型（13B/6.7B/3B）提升明显；</li>
 <li>小模型（0.3B/0.6B）反而性能下降，出现负提升（-1.7）。<br>
 <img src="/images/img/img_deepseek-20.png" srcset="/img/loading.gif" lazyload width=300 style="display: block; margin: 0 auto;"/></li>
-</ul>
-</li>
 <li>MTP 对大模型的效果是正向的，但对小模型可能“难度太大”，导致泛化能力反而下降。</li>
 </ul>
-<ol start="3">
-<li>MTP 的两大优点</li>
+</li>
+<li>MTP 的两大优点
+<ol>
 <li><strong>提高 training efficiency</strong>
 <ul>
 <li>更密集的监督信号，不浪费每一批数据，提升收敛速度。</li>
@@ -657,37 +644,37 @@
 <li>强化模型对复杂跨步逻辑、长距离依赖的掌控。</li>
 </ul>
 </li>
-<li>Meta MTP 并行方案的缺陷</li>
 </ol>
+</li>
+<li>Meta MTP 并行方案的缺陷
 <ul>
 <li>虽然理论好，但它让每个 token 的未来输出是“并行”预测出来的：比如 input token 1 直接同时输出 2、3、4、5。</li>
 <li>这其实和我们真正使用 LLM 时的 autoregressive 生成流程有 gap：现实里，LLM 是一步步地基于前文条件分布，不断 sample 新 token。</li>
 <li>所以直觉上说，Meta MTP 并行 heads 方案违背了 autoregressive 的自然生成逻辑。比如生成 <code>4</code> 其实要依赖的 <code>2、3</code> 都已经被正确生成。</li>
 <li>这就引出了后续另一条线：EAGLE。EAGLE 把这些并行 heads 换成 autoregressive heads，更贴合 LLM 的本质，但它的原始动机其实是为了解决 inference效率问题（而不是 training 效率问题）。</li>
 </ul>
+</li>
+</ol>
 </blockquote>
 <hr>
 <blockquote>
 <h3 id="6-Speculative-Decoding-动机与直观例子"><a class="header-anchor" href="#6-Speculative-Decoding-动机与直观例子"> </a>6. Speculative Decoding 动机与直观例子</h3>
 <ol>
-<li><strong>大语言模型推理的最大痛点：慢！</strong></li>
-</ol>
+<li><strong>大语言模型推理的最大痛点：慢！</strong>
 <ul>
 <li><strong>主要问题</strong>：推理速度慢，带来的后果就是推理成本高、用户体验差。</li>
 <li><strong>领域现状</strong>：大家都在想办法提速。常见方法有 KV cache，另一种就是 speculative decoding。</li>
 </ul>
-<ol start="2">
-<li><strong>为什么推理会慢？（系统层面剖析）</strong></li>
-</ol>
+</li>
+<li><strong>为什么推理会慢？（系统层面剖析）</strong>
 <ul>
 <li>GPU 结构分 memory（主要存储数据和参数）和 cache（计算用的高速缓存），其实和 CPU 类似。</li>
 <li>真正的算力瓶颈不在于矩阵乘法本身，而在于<strong>数据从 memory 拷贝到 cache 的传输</strong>！</li>
 <li>大模型<strong>参数量极大</strong>，推理时数据搬运就慢，小模型虽快但精度不够。</li>
 <li>能不能用“小模型的速度”带动“大模型的精度”？</li>
 </ul>
-<ol start="3">
-<li><strong>Speculative Decoding 的核心思路</strong></li>
-</ol>
+</li>
+<li><strong>Speculative Decoding 的核心思路</strong>
 <ul>
 <li><strong>核心想法</strong>：用一个“快但不太准”的小模型（学徒）先猜，然后再由“慢但很准”的大模型（大师傅）来检查和修正。</li>
 <li><strong>类比一：学徒与大厨</strong>
@@ -731,22 +718,22 @@
 </ul>
 </li>
 </ul>
+</li>
+</ol>
 </blockquote>
 <hr>
 <blockquote>
 <h3 id="7-Speculative-Decoding-的核心思路"><a class="header-anchor" href="#7-Speculative-Decoding-的核心思路"> </a>7. Speculative Decoding 的核心思路</h3>
-</blockquote>
 <p>如果前面的“学徒/大厨”和“CPU分支预测”例子你已经明白了，那理解 speculative decoding 就非常容易了！</p>
-<blockquote>
 <ol>
-<li>Speculative Decoding 的两大关键</li>
-</ol>
+<li>Speculative Decoding 的两大关键
 <ul>
 <li><strong>Quick Guess（快速猜测）</strong>：由一个小而快、但精度一般的模型来生成初步结果。</li>
 <li><strong>Cheap Verification（低成本验证）</strong>：由一个大而慢、但很准的大语言模型来验证这些初步结果。</li>
 </ul>
-<ol start="2">
-<li>两种主流实现流派</li>
+</li>
+<li>两种主流实现流派
+<ol>
 <li><strong>Independent 流派</strong>
 <ul>
 <li>用一个完全独立的小模型负责 draft（比如 MiniLM、DistilLM 等），大模型用来做判断和修正。</li>
@@ -757,8 +744,9 @@
 <li>不引入独立模型，而是在大模型内部划分出一些 heads 来生成 draft，再由主模型本体验证。</li>
 </ul>
 </li>
-<li>以<code>欢迎来到这</code>为例讲 Independent 流派</li>
 </ol>
+</li>
+<li>以<code>欢迎来到这</code>为例讲 Independent 流派
 <ul>
 <li>假设大模型生成一句话需要 10 分钟，小模型只要 1 分钟。</li>
 <li>步骤如下：
@@ -771,16 +759,14 @@
 </li>
 <li>这样，大部分情况下只需要小模型的推理时间，只有出错时才用大模型补救，整体效率大幅提升。</li>
 </ul>
-<ol start="4">
-<li>Sampling 与分布一致性</li>
-</ol>
+</li>
+<li>Sampling 与分布一致性
 <ul>
 <li>上面是极简描述，实际上大模型每次生成 token 会采样（sampling），不是死取概率最大值。</li>
 <li>Google 和 DeepMind 的论文证明：<strong>这种 speculative decoding（小模型先 draft + 大模型再验证和修正）的方式，最终生成的概率分布与纯大模型单独推理出来的是一样的，结果不变，但推理速度更快</strong>。</li>
 </ul>
-<ol start="5">
-<li>Google 2023 Paper: Speculative Decoding 实际案例解析</li>
-</ol>
+</li>
+<li>Google 2023 Paper: Speculative Decoding 实际案例解析
 <ul>
 <li>我们来看 Google 2023 年 5 月的 Speculative Decoding 论文，这张图展示了用“小模型+大模型”生成长文本的全过程：
 <ul>
@@ -811,9 +797,8 @@
 </ul>
 </li>
 </ul>
-<ol start="6">
-<li>进阶思考：把小模型集成进大模型（Self流派）</li>
-</ol>
+</li>
+<li>进阶思考：把小模型集成进大模型（Self流派）
 <ul>
 <li>一个非常直接的想法是：<strong>能不能把小模型的功能直接做进大模型里？</strong></li>
 <li>答案是可以的！我们可以在大语言模型内部，<strong>额外加上一些参数量很小、计算很快的 heads</strong> 或小模块，让它们充当“小模型”角色。</li>
@@ -827,6 +812,8 @@
 </ul>
 </li>
 </ul>
+</li>
+</ol>
 </blockquote>
 <hr>
 <h3 id="2-2-多-token-预测（Multi-Token-Prediction）"><a class="header-anchor" href="#2-2-多-token-预测（Multi-Token-Prediction）"> </a>2.2. 多 token 预测（Multi-Token Prediction）</h3>
