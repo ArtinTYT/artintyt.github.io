@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-22.png">
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-3.png">
 <meta property="article:published_time" content="2025-06-23T04:11:23.000Z">
-<meta property="article:modified_time" content="2025-07-31T05:22:14.235Z">
+<meta property="article:modified_time" content="2025-07-31T05:34:16.214Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Paper">
 <meta property="article:tag" content="DeepSeekV3">
@@ -391,7 +391,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-31T13:22:14+08:00
+                    更新于 2025-07-31T13:34:16+08:00
                   
                   
 
@@ -794,9 +794,12 @@
 <li>进阶思考：把小模型集成进大模型（Self流派）
 <ul>
 <li>一个非常直接的想法是：<strong>能不能把小模型的功能直接做进大模型里？</strong></li>
-<li>答案是可以的！我们可以在大语言模型内部，<strong>额外加上一些参数量很小、计算很快的 heads</strong> 或小模块，让它们充当“小模型”角色。</li>
+<li>答案是可以的！我们可以在大语言模型内部，<strong>额外加上一些参数量很小、计算很快的 heads</strong> 或小模块，让它们充当“小模型”角色。
+<ul>
 <li>这样的话，实际部署时就只需要跑一个大模型，系统结构也变简单。</li>
 <li>这种方法对 7B 这样的中小模型也完全适用。</li>
+</ul>
+</li>
 <li><strong>注意点</strong>：这些额外的 heads（draft 头）需要单独训练，不是“买一送一”的那种一键加速方案。</li>
 <li>这就引出了下一个话题——这种“内置小模型”思路的两个代表作，接下来会详细讲解它们的原理和差异。
 <ul>
