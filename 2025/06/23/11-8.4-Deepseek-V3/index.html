@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-22.png">
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-3.png">
 <meta property="article:published_time" content="2025-06-23T04:11:23.000Z">
-<meta property="article:modified_time" content="2025-07-31T05:19:09.976Z">
+<meta property="article:modified_time" content="2025-07-31T05:22:14.235Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Paper">
 <meta property="article:tag" content="DeepSeekV3">
@@ -391,7 +391,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-31T13:19:09+08:00
+                    更新于 2025-07-31T13:22:14+08:00
                   
                   
 
@@ -612,15 +612,14 @@
 <li>假设 ground truth 序列是 <code>1 2 3 4 5 A B</code>，其中 <code>5→A</code> 是个难预测的“hard transition”，其它 transition 都很简单。</li>
 <li>如果用传统的 next-token prediction，模型每次只能学到 <code>1→2, 2→3, 3→4...</code>，整个训练集里 hard transition 的占比很低（如图只占 1/7≈0.14），模型对难点学得慢。</li>
 <li>如果一次预测多个 future tokens（比如预测 3 个），模型就被迫在同一序列上学到更多的 hard transitions：像 <code>3→A</code>、<code>4→A</code>、<code>5→A</code> 等，这些难点 transition 的占比一下提升（如图占 6/21≈0.28），这样的 hard transition 会多次出现在 loss 计算 ( loss被隐式加权) 里，权重提升了，模型会自动把精力多花在这些“难点”上。</li>
-<li>总结：<strong>MTP 让模型自然而然学会如何跨越那些最难的、最有意义的序列转折点。</strong></li>
-<li>![[Pasted image 20250729201519.png]]</li>
+<li>总结：<strong>MTP 让模型自然而然学会如何跨越那些最难的、最有意义的序列转折点。</strong><br>
+<img src="/images/img/img_deepseek-20.png" srcset="/img/loading.gif" lazyload width=300 style="display: block; margin: 0 auto;"/></li>
 </ul>
 </li>
 <li>图示理解：如图展示了用 4-token prediction 后，各种规模模型的 MBPP Pass@1 提升幅度：
 <ul>
 <li>大模型（13B/6.7B/3B）提升明显；</li>
-<li>小模型（0.3B/0.6B）反而性能下降，出现负提升（-1.7）。<br>
-<img src="/images/img/img_deepseek-20.png" srcset="/img/loading.gif" lazyload width=300 style="display: block; margin: 0 auto;"/></li>
+<li>小模型（0.3B/0.6B）反而性能下降，出现负提升（-1.7）。</li>
 <li>MTP 对大模型的效果是正向的，但对小模型可能“难度太大”，导致泛化能力反而下降。</li>
 </ul>
 </li>
