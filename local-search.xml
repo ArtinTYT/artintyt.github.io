@@ -4,6 +4,49 @@
   
   
   <entry>
+    <title>AutoDL GPU介绍</title>
+    <link href="/2025/08/01/2-9-LLM%20GPU%E9%80%89%E6%8B%A9/"/>
+    <url>/2025/08/01/2-9-LLM%20GPU%E9%80%89%E6%8B%A9/</url>
+    
+    <content type="html"><![CDATA[<p>所有价格来自AutoDL，下面分析内容来自 ChatGPT 4.1，2025年8月价格。</p><h2 id="【A类：NVIDIA-数据中心卡——主流大模型首选】"><a class="header-anchor" href="#【A类：NVIDIA-数据中心卡——主流大模型首选】"> </a>【A类：NVIDIA 数据中心卡——主流大模型首选】</h2><ol><li><p><strong>A100-PCIE-40GB / 40GB</strong></p><ul><li><strong>价格</strong>：3.45元/时</li><li><strong>配置</strong>：10核CPU，72GB内存</li><li><strong>点评</strong>：<ul><li><strong>大模型训练/微调/推理首选</strong>，兼容性拉满，社区主流模型官方支持，单卡 40GB 显存能推理 33B/微调 13B。</li><li><strong>唯一缺点就是贵</strong>，但绝对省心省力，生产级训练的王者。</li></ul></li><li><strong>适合</strong>：全量训练/微调/推理13B-33B级LLM，分布式多卡可扩展。</li></ul></li><li><p><strong>A800-80GB / 80GB</strong></p><ul><li><strong>价格</strong>：6.29元/时</li><li><strong>配置</strong>：14核CPU，100GB内存</li><li><strong>点评</strong>：<ul><li>国产A100平替，<strong>显存超级大</strong>，支持更大参数量推理/微调（70B级都能拼）。</li><li>性能略逊A100，但生态靠谱，分布式训练更省心。</li><li>贵但适合极限显存需求，长时间推理微调。</li></ul></li><li><strong>适合</strong>：推理/微调/训练33B~70B，分布式多卡堆大模型。</li></ul></li><li><p><strong>H20-NVLink / 96GB</strong></p><ul><li><strong>价格</strong>：7.35元/时</li><li><strong>配置</strong>：16核CPU，150GB内存</li><li><strong>点评</strong>：<ul><li>96GB显存暴力堆，<strong>分布式训练/推理超大模型神器</strong>。</li><li>价格高昂，推理33B/70B模型都随便跑。</li><li>比A100更适合极致大显存场景。</li></ul></li><li><strong>适合</strong>：分布式大模型训练/推理、极端显存需求。</li></ul></li><li><p><strong>vGPU-48GB / 48GB</strong></p><ul><li><strong>价格</strong>：3.14元/时</li><li><strong>配置</strong>：25核CPU，90GB内存</li><li><strong>点评</strong>：<ul><li>通常是A100/A800分卡，<strong>48GB显存能搞13B~33B微调/推理</strong>。</li><li>虚拟化有极小性能损耗，但多数场景无感知。</li><li>性价比OK，抢到就能用。</li></ul></li><li><strong>适合</strong>：实验/微调/推理大模型，预算有限又想显存大。</li></ul></li></ol><h2 id="【B类：NVIDIA-民用卡——极致性价比实验神器】"><a class="header-anchor" href="#【B类：NVIDIA-民用卡——极致性价比实验神器】"> </a>【B类：NVIDIA 民用卡——极致性价比实验神器】</h2><ol><li><p><strong>RTX 5090 / 32GB</strong></p><ul><li><strong>价格</strong>：3.14元/时</li><li><strong>配置</strong>：36核CPU，90GB内存</li><li><strong>点评</strong>：<ul><li>新一代卡皇，<strong>性能炸裂、显存比4090更大</strong>，FP16性能顶级。</li><li>社区适配逐步完善，推理/微调13B/33B体验极佳。</li><li>价格和数据中心卡接近，但更适合极限性价比爱好者。</li></ul></li><li><strong>适合</strong>：主流LLM推理/实验/微调，追求极致速度性价比。</li></ul></li><li><p><strong>RTX 4090 / 24GB</strong></p><ul><li><strong>价格</strong>：2.08元/时</li><li><strong>配置</strong>：16核CPU，120GB内存</li><li><strong>点评</strong>：<ul><li>性价比极高，推理/微调7B~13B LLM速度拉满，社区兼容性爆表。</li><li>单卡24GB显存有限，33B/70B只能分布式拼或者做推理。</li><li>极致卷性价比，用于实验极爽。</li></ul></li><li><strong>适合</strong>：主流7B/13B LLM微调/推理/实验。</li></ul></li><li><p><strong>RTX 3090 / 24GB</strong></p><ul><li><strong>价格</strong>：1.66元/时</li><li><strong>配置</strong>：15核CPU，60GB内存</li><li><strong>点评</strong>：<ul><li>性能略低于4090，性价比依旧顶尖。</li><li>24GB显存，推理/微调13B没压力。</li><li>对预算敏感用户友好。</li></ul></li><li><strong>适合</strong>：实验/推理/微调小模型，预算紧张。</li></ul></li></ol><h2 id="【C类：NVIDIA-专业AI卡——大显存-兼容稳定】"><a class="header-anchor" href="#【C类：NVIDIA-专业AI卡——大显存-兼容稳定】"> </a>【C类：NVIDIA 专业AI卡——大显存/兼容稳定】</h2><ol><li><strong>A40 / 48GB</strong><ul><li><strong>价格</strong>：3.14元/时</li><li><strong>配置</strong>：15核CPU，80GB内存</li><li><strong>点评</strong>：<ul><li>48GB大显存，适合大模型推理/微调。</li><li>性能比A100差一档，但比民用卡稳。</li><li>较适合长时间大批量推理。</li></ul></li><li><strong>适合</strong>：预算有限时的大显存推理/微调任务。</li></ul></li></ol><h2 id="【D类：NVIDIA-老旗舰卡-冷门卡——入门-经济选择】"><a class="header-anchor" href="#【D类：NVIDIA-老旗舰卡-冷门卡——入门-经济选择】"> </a>【D类：NVIDIA 老旗舰卡/冷门卡——入门/经济选择】</h2><ol><li><p><strong>V100-32GB / 32GB</strong></p><ul><li><strong>价格</strong>：1.98元/时</li><li><strong>配置</strong>：6核CPU，25GB内存</li><li><strong>点评</strong>：<ul><li>老牌深度学习稳定卡，兼容性好，32GB显存可跑13B模型。</li><li>性能落后新卡，但跑传统项目稳。</li><li>适合新手实验或兼容性场景。</li></ul></li><li><strong>适合</strong>：经济型小中型模型训练/推理/微调。</li></ul></li><li><p><strong>RTX 2080 Ti x2 / 22GB</strong></p><ul><li><strong>价格</strong>：1.24元/时</li><li><strong>配置</strong>：9核CPU，48GB内存</li><li><strong>点评</strong>：<ul><li>两卡拼接22GB显存，<strong>分布式并行很麻烦</strong>。</li><li>已经明显过时，只适合极度省钱练手。</li></ul></li><li><strong>适合</strong>：新手低价实验、预算极度紧张。</li></ul></li><li><p><strong>TITAN Xp / 12GB</strong></p><ul><li><strong>价格</strong>：0.52元/时</li><li><strong>配置</strong>：7核CPU，15GB内存</li><li><strong>点评</strong>：<ul><li>上古卡皇，12GB显存，<strong>只够跑极小模型</strong>。</li><li>学习用可以，真项目别考虑。</li></ul></li><li><strong>适合</strong>：玩具模型、小实验、省钱看log。</li></ul></li><li><p><strong>RTX 3060 / 12GB</strong></p><ul><li><strong>价格</strong>：0.63元/时</li><li><strong>配置</strong>：7核CPU，15GB内存</li><li><strong>点评</strong>：<ul><li>显存太小，大模型基本告辞。</li><li>仅适合基础深度学习入门。</li></ul></li><li><strong>适合</strong>：入门深度学习、极省钱。</li></ul></li><li><p><strong>RTX A4000 / 16GB</strong></p><ul><li><strong>价格</strong>：0.97元/时</li><li><strong>配置</strong>：6核CPU，45GB内存</li><li><strong>点评</strong>：<ul><li>性能/显存一般般，勉强够用小模型。</li><li>主要靠价格便宜。</li></ul></li><li><strong>适合</strong>：新手入门/小模型实验。</li></ul></li><li><p><strong>Tesla T4 / 16GB</strong></p><ul><li><strong>价格</strong>：0.82元/时</li><li><strong>配置</strong>：8核CPU，56GB内存</li><li><strong>点评</strong>：<ul><li>显存和性能都不够用，跑大模型只能望梅止渴。</li><li>仅适合部署低需求推理服务。</li></ul></li><li><strong>适合</strong>：低负载推理/开发者测试环境。</li></ul></li><li><p><strong>GTX 1080 Ti / 11GB</strong></p><ul><li><strong>价格</strong>：0.63元/时</li><li><strong>配置</strong>：7核CPU，30GB内存</li><li><strong>点评</strong>：<ul><li>考古级显卡，只适合深度学习教学入门。</li></ul></li><li><strong>适合</strong>：深度学习入门教学。</li></ul></li></ol><h2 id="【E类：NVIDIA-vGPU分卡——大显存分布式实验】"><a class="header-anchor" href="#【E类：NVIDIA-vGPU分卡——大显存分布式实验】"> </a>【E类：NVIDIA vGPU分卡——大显存分布式实验】</h2><ol><li><p><strong>vGPU-32GB / 32GB</strong></p><ul><li><strong>价格</strong>：1.66元/时</li><li><strong>配置</strong>：12核CPU，90GB内存</li><li><strong>点评</strong>：<ul><li>A100/A800等大卡虚拟分卡，32GB显存很香。</li><li>兼容性与物理卡几乎无差别，性价比高。</li></ul></li><li><strong>适合</strong>：分布式实验、多模型推理/训练。</li></ul></li><li><p><strong>vGPU-48GB / 48GB</strong></p><ul><li><strong>价格</strong>：3.14元/时</li><li><strong>配置</strong>：25核CPU，90GB内存</li><li><strong>点评</strong>：<ul><li>分卡显存更大，实验微调33B模型妥妥的。</li><li>抢得到就上，实验效率高。</li></ul></li><li><strong>适合</strong>：显存敏感型微调/实验。</li></ul></li></ol><h2 id="【F类：国产-华为-特殊生态——别碰-unless-信仰或特殊需求】"><a class="header-anchor" href="#【F类：国产-华为-特殊生态——别碰-unless-信仰或特殊需求】"> </a>【F类：国产/华为/特殊生态——别碰 unless 信仰或特殊需求】</h2><ol><li><p><strong>MTT S4000 / 48GB</strong></p><ul><li><strong>价格</strong>：2.30元/时</li><li><strong>配置</strong>：15核CPU，100GB内存</li><li><strong>点评</strong>：<ul><li>国产摩尔线程，主流深度学习生态适配差。</li><li>只有搞国产任务/政采/特殊需求才用。</li></ul></li><li><strong>适合</strong>：国产生态研究/国产AI适配。</li></ul></li><li><p><strong>910B2×鲲鹏920 / 64GB</strong></p><ul><li><strong>价格</strong>：3.14元/时</li><li><strong>配置</strong>：24核CPU，220GB内存</li><li><strong>点评</strong>：<ul><li>只能跑MindSpore，PyTorch/HF生态不支持。</li><li>日常深度学习项目基本不建议。</li></ul></li><li><strong>适合</strong>：华为生态专用场景。</li></ul></li></ol><h2 id="【G类：超高端烧钱卡】"><a class="header-anchor" href="#【G类：超高端烧钱卡】"> </a>【G类：超高端烧钱卡】</h2><ol><li><strong>H800 / 80GB</strong><ul><li><strong>价格</strong>：14.72元/时</li><li><strong>配置</strong>：20核CPU，100GB内存</li><li><strong>点评</strong>：<ul><li>80GB显存王炸，适合极致大模型训练/推理。</li><li>性能顶尖，价格也离谱，老板买单可以上。</li></ul></li><li><strong>适合</strong>：企业/机构大项目、大规模推理、烧钱实验。</li></ul></li></ol><h2 id="二、怎么选？场景决策表"><a class="header-anchor" href="#二、怎么选？场景决策表"> </a>二、怎么选？场景决策表</h2><table><thead><tr><th>场景</th><th>推荐机型</th><th>说明</th></tr></thead><tbody><tr><td><strong>全量训练/大规模微调 13B/33B+ LLM</strong></td><td>A100 / A800 / H20-NVLink / vGPU-48G</td><td>显存大、性能强，分布式能力好，社区支持全</td></tr><tr><td><strong>主流中等规模训练/微调/推理 7B~13B</strong></td><td>RTX 5090 / 4090 / 3090 / V100 / vGPU-32G / A40</td><td>性价比卷王，速度快，适合绝大部分LLM实验与微调</td></tr><tr><td><strong>大显存推理/极限大模型推理</strong></td><td>H20-NVLink / A800-80GB</td><td>显存顶级，推理33B/70B级模型不慌</td></tr><tr><td><strong>性价比练手/轻量实验/穷学生</strong></td><td>V100 / 3090 / vGPU-32G / 2080Ti</td><td>入门实验够用，别奢望全量大模型训练</td></tr><tr><td><strong>特殊生态/国产项目专用</strong></td><td>MTT S4000 / 910B2（鲲鹏920/昇腾910）</td><td>只建议国产AI/政采/国产生态布道者入手</td></tr><tr><td><strong>千万别碰（玩具/古董卡）</strong></td><td>Titan Xp / RTX 3060 / RTX A4000 / GTX 1080Ti / Tesla T4</td><td>显存太小、年代久远，玩LLM纯属自虐或浪费钱</td></tr><tr><td><strong>老板掏钱/顶级大活</strong></td><td>H800</td><td>性能无敌，价格也无敌，土豪专属</td></tr></tbody></table><h2 id="三、结论"><a class="header-anchor" href="#三、结论"> </a>三、结论</h2><ul><li><strong>主流 LLM 项目</strong>，优先选<strong>A100/A800/H20/vGPU-48G</strong>，不差钱选<strong>4090/5090</strong>，穷一点<strong>V100/3090/vGPU-32G</strong>也能搞定小中型项目。</li><li><strong>大模型推理/超大显存需求</strong>，直接奔着<strong>A800-80GB/H20-NVLink/H800</strong>，极限堆显存。</li><li><strong>只搞国产或华为生态</strong>，才考虑<strong>MTT S4000/鲲鹏/昇腾</strong>，别玩主流PyTorch等框架。</li><li><strong>老卡/双卡/玩具卡</strong>能不用就别用，体验拉胯，不适合做正经AI实验。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>LLMs</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI</tag>
+      
+      <tag>LLM</tag>
+      
+      <tag>GPU</tag>
+      
+      <tag>Hardware</tag>
+      
+      <tag>AutoDL</tag>
+      
+      <tag>A100</tag>
+      
+      <tag>V100</tag>
+      
+      <tag>RTX</tag>
+      
+      <tag>Training</tag>
+      
+      <tag>Inference</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>13. 添加博客访问统计面板</title>
     <link href="/2025/07/15/1-13-%E6%B7%BB%E5%8A%A0%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1%E9%9D%A2%E6%9D%BF/"/>
     <url>/2025/07/15/1-13-%E6%B7%BB%E5%8A%A0%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1%E9%9D%A2%E6%9D%BF/</url>
