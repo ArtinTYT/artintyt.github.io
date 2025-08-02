@@ -67,11 +67,11 @@
       
       <tag>Cloudflare</tag>
       
-      <tag>Web Analytics</tag>
-      
       <tag>ECharts</tag>
       
       <tag>Umami</tag>
+      
+      <tag>WebAnalytics</tag>
       
     </tags>
     
@@ -340,8 +340,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>Transformer</tag>
@@ -356,13 +354,15 @@
       
       <tag>Finetuning</tag>
       
-      <tag>Selfsupervised_Learning</tag>
-      
       <tag>Language_Model</tag>
       
       <tag>RMSNorm</tag>
       
       <tag>SwiGLU</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SelfSupervisedLearning</tag>
       
     </tags>
     
@@ -387,8 +387,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>Attention</tag>
@@ -399,17 +397,19 @@
       
       <tag>LLM</tag>
       
-      <tag>Sparse_Attention</tag>
-      
       <tag>FlashAttention</tag>
-      
-      <tag>Multi_Query_Attention</tag>
-      
-      <tag>Multi_Head_Latent_Attention</tag>
       
       <tag>Optimization</tag>
       
       <tag>MQA</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SparseAttention</tag>
+      
+      <tag>MultiQueryAttention</tag>
+      
+      <tag>MultiHeadLatentAttention</tag>
       
     </tags>
     
@@ -434,8 +434,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>Regularization</tag>
       
       <tag>NLP</tag>
@@ -448,11 +446,13 @@
       
       <tag>Finetuning</tag>
       
-      <tag>Selfsupervised_Learning</tag>
-      
-      <tag>Language_Model</tag>
-      
       <tag>GPT</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SelfSupervisedLearning</tag>
+      
+      <tag>LanguageModel</tag>
       
     </tags>
     
@@ -485,11 +485,11 @@
       
       <tag>Pretraining</tag>
       
-      <tag>Instruction_Tuning</tag>
-      
-      <tag>Reward_Model</tag>
-      
       <tag>LLM</tag>
+      
+      <tag>InstructionTuning</tag>
+      
+      <tag>RewardModel</tag>
       
     </tags>
     
@@ -516,13 +516,13 @@
       
       <tag>LNN</tag>
       
-      <tag>Deep_Learning</tag>
-      
-      <tag>Supervised_Learning</tag>
-      
       <tag>NumericalStability</tag>
       
       <tag>Initialization</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SupervisedLearning</tag>
       
     </tags>
     
@@ -549,13 +549,13 @@
       
       <tag>LNN</tag>
       
-      <tag>Deep_Learning</tag>
-      
-      <tag>Supervised_Learning</tag>
-      
       <tag>WeightDecay</tag>
       
       <tag>Regularization</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SupervisedLearning</tag>
       
     </tags>
     
@@ -582,13 +582,13 @@
       
       <tag>LNN</tag>
       
-      <tag>Deep_Learning</tag>
-      
-      <tag>Supervised_Learning</tag>
-      
       <tag>Regularization</tag>
       
       <tag>Dropout</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SupervisedLearning</tag>
       
     </tags>
     
@@ -615,15 +615,15 @@
       
       <tag>LNN</tag>
       
-      <tag>Deep_Learning</tag>
-      
-      <tag>Supervised_Learning</tag>
-      
       <tag>ModelSelection</tag>
       
       <tag>Overfitting</tag>
       
       <tag>Underfitting</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SupervisedLearning</tag>
       
     </tags>
     
@@ -650,13 +650,13 @@
       
       <tag>LNN</tag>
       
-      <tag>Deep_Learning</tag>
-      
-      <tag>Supervised_Learning</tag>
-      
       <tag>MLP</tag>
       
       <tag>NeuralNetwork</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SupervisedLearning</tag>
       
     </tags>
     
@@ -683,13 +683,13 @@
       
       <tag>LNN</tag>
       
-      <tag>Deep_Learning</tag>
-      
-      <tag>Supervised_Learning</tag>
-      
       <tag>Softmax</tag>
       
       <tag>Classification</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SupervisedLearning</tag>
       
     </tags>
     
@@ -720,9 +720,9 @@
       
       <tag>Regression</tag>
       
-      <tag>Deep_Learning</tag>
+      <tag>DeepLearning</tag>
       
-      <tag>Supervised_Learning</tag>
+      <tag>SupervisedLearning</tag>
       
     </tags>
     
@@ -780,8 +780,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>InstructGPT</tag>
       
       <tag>RLHF</tag>
@@ -791,6 +789,8 @@
       <tag>NLP</tag>
       
       <tag>Alignment</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -815,8 +815,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>InstructGPT</tag>
       
       <tag>RLHF</tag>
@@ -826,6 +824,8 @@
       <tag>NLP</tag>
       
       <tag>Alignment</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -850,8 +850,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>Word2Vec</tag>
@@ -871,6 +869,8 @@
       <tag>ELMo</tag>
       
       <tag>LLM</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -922,15 +922,15 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>AI</tag>
       
-      <tag>Position_Encoding</tag>
-      
       <tag>Transformer</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>PositionEncoding</tag>
       
     </tags>
     
@@ -955,15 +955,15 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>AI</tag>
       
       <tag>Transformer</tag>
       
-      <tag>Multi-Head_Attention</tag>
+      <tag>DeepLearning</tag>
+      
+      <tag>MultiHeadAttention</tag>
       
     </tags>
     
@@ -988,15 +988,15 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>AI</tag>
       
       <tag>Mechanism</tag>
       
-      <tag>Self-Attention</tag>
+      <tag>DeepLearning</tag>
+      
+      <tag>SelfAttention</tag>
       
     </tags>
     
@@ -1021,8 +1021,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>AI</tag>
@@ -1030,6 +1028,8 @@
       <tag>Attention</tag>
       
       <tag>Score</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1054,8 +1054,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>Attention</tag>
@@ -1063,6 +1061,8 @@
       <tag>Bahdanau</tag>
       
       <tag>Seq2Seq</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1118,13 +1118,13 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>AI</tag>
       
       <tag>CNN</tag>
       
       <tag>Channel</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1149,8 +1149,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>AI</tag>
       
       <tag>CNN</tag>
@@ -1158,6 +1156,8 @@
       <tag>Padding</tag>
       
       <tag>Stride</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1182,8 +1182,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>AI</tag>
       
       <tag>CNN</tag>
@@ -1191,6 +1189,8 @@
       <tag>Image</tag>
       
       <tag>Convolution</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1215,15 +1215,15 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>AI</tag>
       
       <tag>CNN</tag>
       
       <tag>FC-Layer</tag>
       
-      <tag>convolution</tag>
+      <tag>Convolution</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1248,8 +1248,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>AI</tag>
@@ -1257,6 +1255,8 @@
       <tag>Attention</tag>
       
       <tag>Mechanism</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1281,8 +1281,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>AI</tag>
@@ -1290,6 +1288,8 @@
       <tag>Word2Vec</tag>
       
       <tag>Embedding</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -1314,15 +1314,15 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>RNN</tag>
       
-      <tag>Sequence_Model</tag>
-      
       <tag>LSTM</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SequenceModel</tag>
       
     </tags>
     
@@ -1347,15 +1347,15 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>RNN</tag>
       
-      <tag>Sequence_Model</tag>
-      
       <tag>GRU</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>SequenceModel</tag>
       
     </tags>
     
@@ -1380,13 +1380,13 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>RNN</tag>
       
-      <tag>Sequence_Model</tag>
+      <tag>DeepLearning</tag>
+      
+      <tag>SequenceModel</tag>
       
     </tags>
     
@@ -1411,15 +1411,15 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
       
       <tag>RNN</tag>
       
-      <tag>Sequence_Model</tag>
+      <tag>DeepLearning</tag>
       
-      <tag>Text_preprocessing</tag>
+      <tag>TextPreprocessing</tag>
+      
+      <tag>SequenceModel</tag>
       
     </tags>
     
@@ -1446,17 +1446,17 @@
       
       <tag>Error</tag>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>NLP</tag>
-      
-      <tag>Environment_configuration</tag>
       
       <tag>Python</tag>
       
       <tag>PyTorch</tag>
       
       <tag>Jupyter</tag>
+      
+      <tag>DeepLearning</tag>
+      
+      <tag>EnvironmentConfiguration</tag>
       
     </tags>
     
@@ -1494,11 +1494,11 @@
   
   
   <entry>
-    <title>Prompt Engineering</title>
+    <title>Prompt 工程基础</title>
     <link href="/2025/02/27/2-3-LLM-prompt-engineering/"/>
     <url>/2025/02/27/2-3-LLM-prompt-engineering/</url>
     
-    <content type="html"><![CDATA[<h2 id="1-Prompt"><a class="header-anchor" href="#1-Prompt"> </a>1. Prompt</h2><h3 id="1-1-Prompt-是什么？"><a class="header-anchor" href="#1-1-Prompt-是什么？"> </a>1.1 Prompt 是什么？</h3><p>Prompt 是一种人为构造的输入序列，用于引导 GPT 模型根据先前输入的内容生成相关的输出。简单来说，就是你向模型提供的 &quot;提示词&quot;。<br>在 ChatGpt 中，我们可以通过设计不同的 prompt，让模型生成与之相关的文本。例如，假设我们想让 ChatGpt 担任英语翻译。我们可以给模型提供以下 prompt：</p><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 1c">我希望你能担任英语翻译、拼写校对和修辞改进的角色。<br>我会用任何语言和你交流，你会识别语言，将其翻译并用更为优美和精炼的英语回答我。<br>请将我简单的词汇和句子替换成更为优美和高雅的表达方式，确保意思不变，但使其更具文学性。<br>请仅回答更正和改进的部分，不要写解释。我的第一句话是<span class="hljs-string">&quot;how are you ?，请翻译它。</span><br></code></pre></td></tr></table></figure><p>这样，我们就可以期待模型生成一段文本了。</p><h3 id="1-2-Prompt-如何生成？"><a class="header-anchor" href="#1-2-Prompt-如何生成？"> </a>1.2 Prompt 如何生成？</h3><p>我们应该怎么去写一个好的 prompt 呢？Github 上有位大佬 Matt Nigh 基于ChatGPT3 Prompt Engineering的分享, <a href="https://github.com/mattnigh/ChatGPT3-Free-Prompt-List">https://github.com/mattnigh/ChatGPT3-Free-Prompt-List</a></p><h2 id="2-Prompt-Engineering-实践"><a class="header-anchor" href="#2-Prompt-Engineering-实践"> </a>2. Prompt Engineering 实践</h2><h2 id="3-指示技术"><a class="header-anchor" href="#3-指示技术"> </a>3. 指示技术</h2><h2 id="4-结构化输出"><a class="header-anchor" href="#4-结构化输出"> </a>4. 结构化输出</h2><h2 id="5-Prompt-应用"><a class="header-anchor" href="#5-Prompt-应用"> </a>5. Prompt 应用</h2><h2 id="6-GPT-4o-图像提示工程技术"><a class="header-anchor" href="#6-GPT-4o-图像提示工程技术"> </a>6. GPT-4o 图像提示工程技术</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-两种大语言模型"><a class="header-anchor" href="#1-两种大语言模型"> </a>1. 两种大语言模型</h2><ol><li><p>基础大模型（Base LLM）</p><ul><li><strong>训练方式</strong>：基于大规模文本语料，通过<strong>预测下一个词</strong>来学习语言规律。</li><li><strong>能力特点</strong>：<ul><li>会生成自然语言（如讲故事）：在很久很久以前，有一只小白兔……</li><li>具备一定常识问答能力，但容易出错：中国的首都是哪座城市？（基础模型可能不一定回答准确）</li></ul></li></ul></li><li><p>指令调优大模型（Instruction Tuned LLM）</p><ul><li><strong>训练方式</strong>：<ul><li>在基础大模型上继续训练，<strong>输入是人类写的指令</strong>，输出是跟随指令的回答。</li><li>使用 <strong>RLHF（人类反馈强化学习）</strong> 微调，使模型<strong>更符合人类预期、更听话</strong>。</li></ul></li><li><strong>关键词</strong>：听指令、遵循任务、回答精准</li><li><strong>目标价值观</strong>：通常希望模型具备求真、务实、善良</li></ul></li></ol><h2 id="2-ChatGPT-提示词工程"><a class="header-anchor" href="#2-ChatGPT-提示词工程"> </a>2. ChatGPT 提示词工程</h2><h3 id="原则-1：清晰、具体地写提示词"><a class="header-anchor" href="#原则-1：清晰、具体地写提示词"> </a>原则 1：清晰、具体地写提示词</h3><ol><li><p>在提示词中使用“定界符”</p><ul><li>用<strong>三重引号（```）</strong>、XML 标签、章节标题等明确界定要处理的内容范围。</li><li>好处：<ul><li>避免歧义，增强上下文清晰度；</li><li>减少模型误解，输出更精准。</li></ul></li></ul></li><li><p>向模型请求<strong>结构化输出</strong></p><ul><li>举例：生成一个包含虚构书籍名、作者、类型的列表：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;book_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;The Lost Kingdom&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Jane Johnson&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;genre&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Historical Fiction&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  ...<br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure></li><li>✅ 格式化输出 = 易于读取 + 可编程处理</li></ul></li><li><p><strong>要求模型检查任务条件是否满足</strong></p><ul><li><strong>用法说明</strong>：让模型判断输入文本是否包含一系列明确指令，并用<strong>格式化步骤</strong>输出。</li><li><strong>实操示例</strong>：<ul><li>输入文本有步骤：让模型按“第一步、第二步……”格式输出具体步骤。</li><li>输入文本无步骤：直接让模型输出“没有发现您给出的步骤。”</li></ul></li><li><strong>范例1</strong>：<ul><li>三重引号文本：泡一杯茶非常简单！首先，你需要烧开水……</li><li><strong>模型输出</strong>：<br>第一节：准备材料……<br>第二步：将水烧开……<br>……</li></ul></li><li><strong>范例2</strong>：<ul><li>三重引号文本：今天阳光灿烂，鸟儿在歌唱……</li><li><strong>模型输出</strong>：没有发现您给出的步骤。</li></ul></li></ul></li><li><p><strong>输入多范例提示（Few-Shot Prompting）</strong></p><ul><li><strong>定义</strong>：给模型多组输入输出样例，帮助其学习一致的风格或格式。</li><li><strong>用法举例</strong>：<ul><li>你的任务是用成语风格回答：<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">&lt;孩子&gt;: 教我耐心。<br>&lt;爷爷&gt;: 绳锯木断。<br>&lt;孩子&gt;: 教我包容。<br>&lt;爷爷&gt;: 宽以待人。<br></code></pre></td></tr></table></figure></li></ul></li></ul></li></ol><ul><li><strong>总结要点：</strong><ul><li>在提示词中使用<strong>定界符</strong></li><li>向模型请求结构化的输出</li><li>要求模型检查任务条件是否满足</li><li>输入多范例提示</li></ul></li></ul><h3 id="原则-2：给模型充足的思考时间"><a class="header-anchor" href="#原则-2：给模型充足的思考时间"> </a>原则 2：给模型充足的思考时间</h3><ol><li>指定完成任务所需的<strong>详细步骤</strong><ul><li><strong>建议</strong>：将复杂任务拆分成多步，让模型逐步思考、输出，保证结果准确。</li><li><strong>常见指令格式</strong>：<ol><li>总结文本</li><li>翻译内容</li><li>按要求统计并输出</li><li>用 JSON 结构返回</li></ol></li><li><strong>例子</strong>：<ul><li>输入要求：<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">1. 用一句话总结以下文本。<br>2. 将总结翻译成英语。<br>3. 在英语摘要中列出每个名字。<br>4. 输出包含摘要和名字数量的 JSON 对象。<br></code></pre></td></tr></table></figure></li><li><strong>标准化输出示例：</strong><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">摘要：在一个美丽的村庄里，小明和花花兄妹两遭遇不幸，但他们的冒险精神丝毫未减，继续愉快地探索。<br>翻译：In a beautiful village, Xiao Ming and Hua Hua, the siblings, encountered misfortune, but their adventurous spirit remained undiminished as they continued to explore joyfully.<br>名字：Xiao Ming, Hua Hua<br>JSON输出：&#123;&quot;摘要&quot;:&quot;在一个美丽的村庄里，小明和花花兄妹两遭遇不幸，但他们的冒险精神丝毫未减，继续愉快地探索。&quot;, &quot;名字数量&quot;:2&#125;<br></code></pre></td></tr></table></figure></li></ul></li><li><strong>实用性</strong>：这样的输出可以直接传递到其他地方，便于进一步使用。</li></ul></li></ol><h2 id="3-如何更好地迭代提示词？"><a class="header-anchor" href="#3-如何更好地迭代提示词？"> </a>3. 如何更好地迭代提示词？</h2><h3 id="3-1-让模型推理并制定解决方案"><a class="header-anchor" href="#3-1-让模型推理并制定解决方案"> </a>3.1 让模型推理并制定解决方案</h3><ul><li><p><strong>用法说明</strong>：不要让模型直接判断正误，而是让它<strong>先独立思考、详细推理，再与用户答案比对</strong>。</p></li><li><p><strong>操作流程</strong>：</p><ol><li>让模型独立计算或推理，写出自己的解题步骤和结果。</li><li>用自己的答案和用户的答案进行比对，再判断用户结果是否正确。</li><li>这样做能防止模型直接“抄答案”，提升准确性。</li></ol></li><li><p><strong>标准化提示模板：</strong></p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs text">任务是确定学生解决方案是否正确。解决该问题，执行以下操作：<br>  1. 先解决问题。<br>  2. 再将你的方案与学生的比较并评估学生解决方案是否正确。<br>在你自己完成问题之前，不要判断学生的解决方案是否正确。<br><br>使用下列格式：<br>  问题：...<br>  回答：...<br>  学生的回答：...<br>  实际的回答：...<br>  解决方案与步骤：...<br>  评估学生回答和你刚刚计算出来的答案（是/否）：...<br>  学生的分数：...<br>  正确/错误：...<br><br>目标问题：xxxxxxxxxxx<br>学生的回答：xxxxxxxxxxx<br>实际回答：...<br></code></pre></td></tr></table></figure></li><li><p><strong>优点</strong>：给模型<strong>更多思考时间</strong>，回复更精准、更严谨。</p></li><li><p><strong>规避模型局限</strong></p><ul><li>常见问题：语义理解有限、知识覆盖有盲区、长输出易偏离、常识推理出错、存在偏见。</li><li>建议：<strong>保持批判性思维</strong>，重要场合需人工校验。</li></ul></li></ul><h3 id="3-2-迭代提示词的三大方法"><a class="header-anchor" href="#3-2-迭代提示词的三大方法"> </a>3.2 迭代提示词的三大方法</h3><ol><li><p><strong>持续打磨、反复迭代</strong></p><ul><li>不求“一刀见血”，要反复测试、不断堆样本，多维度调整，逐步摸索出适合自己的提示词套路。</li><li>核心：<strong>优质提示词是不断调出来的</strong>。</li></ul></li><li><p><strong>明确输出限制与约束条件</strong></p><ul><li>限制字数/句数（如：“回答不能超过50个字”/“不超过三句话”）</li><li>必须包含或排除哪些内容</li><li>强调结构化输出（如代码、表格、HTML 等格式）</li></ul></li><li><p><strong>复杂场景下，多层嵌套、多轮细化</strong></p><ul><li>示例一：多重限制与内容指定<br>“在描述的末尾，包括技术规范中每一个出现过的7个字符的产品ID。你的回答不能超过50个字。”</li><li>示例二：输出结构与格式要求<br>“将上述所有内容格式化为可在网站中使用的 HTML 代码。将你在开始给出的说明放在 <code>&lt;div&gt;</code> 元素中。”</li></ul></li></ol><h2 id="4-如何用大语言模型总结文本？"><a class="header-anchor" href="#4-如何用大语言模型总结文本？"> </a>4. 如何用大语言模型总结文本？</h2><ol><li><p>基本任务形式：生成简洁摘要</p><ul><li><strong>示例1：总结产品评论为简短摘要</strong><ul><li><strong>提示词设计</strong>：<ul><li>你的任务是生成来自电子商务网站关于产品评论的简短摘要。</li><li>使用三重反引号（```）分隔，最多30个字。</li></ul></li><li><strong>原始评论</strong>：“买了个三阶魔方给我儿子当生日礼物……”</li><li><strong>模型输出</strong>：三阶魔方质量好、手感佳，快速旋转效果佳，孩子喜爱，培养手脑配合的能力。</li></ul></li></ul></li><li><p>强化任务目标：突出指定信息维度</p><ul><li><strong>示例2：重点提取价格与价值反馈</strong><ul><li><strong>提示词设计</strong>：请以“价格维度”进行总结，最多50个字，提炼有关<strong>产品价格与价值</strong>的信息。</li><li><strong>模型输出</strong>：商品质量好但价格偏高，建议降价以提升性价比。</li></ul></li></ul></li><li><p>多评论汇总能力：跨多个样本生成摘要</p><ul><li><strong>示例3：多个评论统一总结（评论1~3）</strong><ul><li><strong>提示词设计</strong>：请用不超过15个字<strong>汇总以下多个用户评论内容</strong>。</li><li><strong>示意内容</strong>：<ul><li>评论1：衣服质感好，尺寸合适</li><li>评论2：杯子酷炫，超出预期</li><li>评论3：茶叶包装精致，茶汤清亮</li></ul></li><li><strong>可能输出</strong>：材质优良，体验佳，超出预期</li></ul></li></ul></li><li><p>小结</p><ul><li>总结任务要配合<strong>明确限制</strong>（字数、维度）</li><li>可逐步增加复杂度，从<strong>单评论总结 → 多评论聚合</strong></li><li>强化信息聚焦（如价格、功能、感受）可提升质量</li></ul></li></ol><h2 id="5-让大模型进行语义推理和结构化输出"><a class="header-anchor" href="#5-让大模型进行语义推理和结构化输出"> </a>5. 让大模型进行语义推理和结构化输出</h2><ol><li><p>传统ML vs 大语言模型</p><ul><li><strong>传统机器学习</strong>：一个模型只做一个任务（图左：一排木棍）。</li><li><strong>大语言模型</strong>：一个模型能应对多种任务（图右：树状分支）。</li></ul></li><li><p>语义推理与多样输出</p><ul><li><strong>核心思路</strong>：让模型<strong>根据文本内容分析/归纳/标签化/提取字段</strong>，而不是简单摘要。</li><li><strong>常用任务类型</strong>：<ul><li>情感分析（正/负面、one-hot编码、情感词表）</li><li>关键词提取（列表、分词、标签）</li><li>实体/字段识别（如商品、品牌、公司名、人物）</li><li>复杂结构化（JSON、多字段嵌套、one-hot/多热编码等）</li></ul></li></ul></li><li><p>操作方法举例</p><ul><li><strong>限制输出种类</strong><br>例：只能用“积极的/消极的”回答。</li><li><strong>输出情感词表</strong><br>例：最多列出5项情绪，逗号分隔。</li><li><strong>提取实体信息，结构化成json</strong><br>例：{&quot;物品项目&quot;: &quot;桌子&quot;, &quot;品牌&quot;: &quot;飞旺藤达&quot;}</li><li><strong>多字段标签，缺失用“未知”补齐</strong><br>例：{&quot;情感&quot;: &quot;积极的&quot;, &quot;愤怒&quot;: false, …}</li><li><strong>多标签one-hot编码</strong><br>例：关键词列表 [微波炉, 火灾, 安全, …] → 0/1标记</li></ul></li><li><p>总结</p><ul><li><strong>大模型结构化能力远强于传统ML</strong>，一套prompt可适配多类型任务</li><li><strong>设计prompt时应明确定义输出结构、格式、词表/标签集</strong></li><li>复杂任务可多级嵌套提问，按需求定制输出（如提取、标注、编码、归类）</li></ul></li></ol><h2 id="6-让大模型进行语文本转化"><a class="header-anchor" href="#6-让大模型进行语文本转化"> </a>6. 让大模型进行语文本转化</h2><ol><li><p><strong>多语种/多语体翻译</strong></p><ul><li><p><strong>任务思路</strong>：</p><ul><li>明确指定“从X语翻译成Y语”</li><li>可以要求区分正式/口语/书面体等语体差异</li></ul></li><li><p>示例：</p>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css">将以下英文文本翻译成书面中文和口语中文：<br>&quot;Would you like <span class="hljs-selector-tag">to</span> <span class="hljs-attribute">order</span> <span class="hljs-selector-tag">a</span> pillow?&quot;<br></code></pre></td></tr></table></figure></li><li><p>书面中文：您想要订购一个枕头吗？</p></li><li><p>口语中文：你要不要订一个枕头？</p></li></ul></li><li><p><strong>多语言识别与分类</strong></p><ul><li><p><strong>任务思路</strong>：</p><ul><li>给多条多语种文本，要求模型识别每一句的语言类型</li></ul></li><li><p>示例：</p>  <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs smali">用户回复下面每一行的文本的语言是什么？用 Python 列表形式输出。<br>- La performance du système est plus lente que d&#x27;habitude.<br>- Mi<span class="hljs-built_in"> monitor </span>tiene píxeles que no se iluminan.<br>- 我的鼠标用不了了<br></code></pre></td></tr></table></figure></li><li><p>输出：[‘法语’, ‘西班牙语’, ‘中文’]</p></li></ul></li><li><p><strong>语体/场景转换（口语↔书面、随意↔商务）</strong></p><ul><li><strong>任务思路</strong>：明确指定转换后的语体或场景</li><li>示例：  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">将以下俚语翻译成商业书信体：<br>“兄弟，我是张三，看下这个灯泡的说明书”<br></code></pre></td></tr></table></figure></li><li>商务体结果：  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs">尊敬的先生/女士：<br>我是张三，想请您帮忙查看一下这个灯的说明书，谢谢！<br>此致<br>敬礼<br></code></pre></td></tr></table></figure></li></ul></li><li><p><strong>结构化格式转换（如 JSON↔HTML 表格）</strong></p><ul><li><strong>任务思路</strong>：<ul><li>明确要求把数据结构转化为目标格式</li><li>指定表头、样式、分隔符等细节</li></ul></li><li>示例：  <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">将以下 Python 字典从 <span class="hljs-built_in">JSON</span> 翻译成 HTML 表格，并需带有列标题和总标题：<br>&#123;<span class="hljs-string">&quot;餐厅员工&quot;</span>: [&#123;<span class="hljs-string">&quot;名字&quot;</span>: <span class="hljs-string">&quot;李明&quot;</span>, <span class="hljs-string">&quot;电话&quot;</span>: <span class="hljs-string">&quot;18023333333&quot;</span>&#125;, ...]&#125;<br></code></pre></td></tr></table></figure></li><li>结果：  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">caption</span>&gt;</span>餐厅员工<span class="hljs-tag">&lt;/<span class="hljs-name">caption</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>名字<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>电话<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>李明<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>18023333333<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br></code></pre></td></tr></table></figure></li></ul></li><li><p><strong>拼写语法纠错任务</strong></p><ul><li><strong>任务思路</strong>：<ul><li>明确要求模型纠错，但不得增删内容和加标点</li><li>保持原有结构</li></ul></li><li>示例：  <figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs node-repl">将文本中的拼写和语法错误进行修正，不要在文本周围加任何标点符号。<br>1. 我国高铁建设已取得丰硕成果，但因市场规模巨大，仍不能完全满足物流线运输需求<br><span class="hljs-meta prompt_">...</span><br></code></pre></td></tr></table></figure></li><li>结果：全部为修正后的语句列表</li></ul></li><li><p>结论&amp;技巧</p><ul><li>明确输出格式（如“只能输出 X 格式/语体”）</li><li>明确限制（如“不得超过 N 个字/句”）</li><li>对于结构转换，尽量给出<strong>目标格式示例</strong>和<strong>字段说明</strong></li><li>持续测试和微调 prompt，找到最优表达方式</li></ul></li></ol><h2 id="7-如何使用ChatGPT的温度值（temperature）"><a class="header-anchor" href="#7-如何使用ChatGPT的温度值（temperature）"> </a>7. 如何使用ChatGPT的温度值（temperature）</h2><ul><li><p>什么是 temperature？</p><ul><li><strong>temperature</strong> 是大模型的采样参数，控制生成内容的<strong>随机性与创造性</strong>。</li><li><strong>temperature=0</strong> 时，模型总是选概率最大的词，输出结果趋于唯一且确定（保守、无新意）。</li><li><strong>temperature=1</strong> 时，模型输出变得<strong>更有创意、更随机</strong>，不确定性增强，内容可能多样但也容易飘。</li><li>实际应用中，常用<strong>temperature=0.7</strong>，能平衡创意与可靠性。</li></ul></li><li><p>举例说明</p><ul><li><strong>temperature=0</strong>：模型总是选出“最可能”的答案，比如“我最喜欢的动物是——狗”，每次输出都一致。</li><li><strong>temperature=1</strong>：模型可能会输出“狗”、“猫”、“马”、“海豚”等，各种合理但概率低的选项都有机会被选中。</li><li>代码调用示例：  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">response = get_completion(prompt, temperature=<span class="hljs-number">0.7</span>)<br><span class="hljs-built_in">print</span>(response)<br></code></pre></td></tr></table></figure></li></ul></li><li><p>应用建议</p><ul><li><strong>写作文案、创意文案、对话生成</strong>：建议 temperature 取高一点（如 0.8 ~ 1.0）。</li><li><strong>做知识问答、数据分析、代码生成</strong>：建议 temperature 低一些（如 0 ~ 0.3），保证准确稳定。</li></ul></li></ul><h2 id="8-聊天机器人"><a class="header-anchor" href="#8-聊天机器人"> </a>8. 聊天机器人</h2><p>如何用 OpenAI Playground 构建和自定义自己的聊天机器人流程，大致步骤：</p><ol><li><p>聊天消息结构</p><ul><li><strong>user message</strong>：用户输入的消息内容。</li><li><strong>assistant message</strong>：助手（ChatGPT）返回的内容。</li></ul></li><li><p>使用 Playground 搭建</p><ul><li>访问平台：<a href="https://platform.openai.com/playground">platform.openai.com/playground</a></li><li>右侧可以选择模型（如 gpt-3.5-turbo）、温度值（temperature）、回复长度（maximum length）、Top P、惩罚项等参数。</li><li>左侧有 system message，可以设定“角色”或风格，比如让 AI 只说喵喵叫、模拟猫咪或者餐厅点单机器人。</li></ul></li><li><p>system message 作用</p><ul><li><strong>system message</strong> 用于定义助手的基础行为和身份，比如“你是一只猫，用户说什么你都要翻译成猫叫”。</li><li>可以详细描述 AI 的性格、回复风格、应答范围。</li><li>控制助手的“人格”和任务边界，非常适合实现角色扮演、客服、特定风格输出等自定义场景。</li></ul></li><li><p>示例应用</p><ul><li><strong>猫咪角色扮演</strong>：system message 写明“你只能用猫叫回复”。</li><li><strong>点餐机器人</strong>：system message 指定菜单、点单规则和流程。</li></ul></li><li><p>Playground 聊天流程</p><ul><li>system message（左上角）→ 用户发消息（右上）→ 助手自动回复 → 支持多轮对话。</li><li>可以自由切换角色设定、实验 prompt 效果。</li></ul></li></ol><h2 id="参考资料"><a class="header-anchor" href="#参考资料"> </a>参考资料</h2><ul><li><a href="%5Bhttps://www.bilibili.com/video/BV16g4y1F7dN%5D(https://www.bilibili.com/video/BV16g4y1F7dN)">chatGPT提示词工程进阶教学 | 汉化：跃迁AI</a></li></ul>]]></content>
     
     
     <categories>
@@ -1510,13 +1510,15 @@
     
     <tags>
       
-      <tag>NLP</tag>
-      
       <tag>AI</tag>
       
-      <tag>Prompt_engineering</tag>
-      
       <tag>LLM</tag>
+      
+      <tag>PromptEngineering</tag>
+      
+      <tag>ChatGPT</tag>
+      
+      <tag>InstructionTuning</tag>
       
     </tags>
     
@@ -1580,9 +1582,9 @@
       
       <tag>SIP</tag>
       
-      <tag>System-security</tag>
-      
       <tag>System</tag>
+      
+      <tag>SystemSecurity</tag>
       
     </tags>
     
@@ -1640,15 +1642,15 @@
       
       <tag>ML</tag>
       
-      <tag>Data_Science</tag>
-      
       <tag>Projects</tag>
-      
-      <tag>Customer_Churn</tag>
       
       <tag>Analysing</tag>
       
-      <tag>Data_Mining</tag>
+      <tag>DataScience</tag>
+      
+      <tag>CustomerChurn</tag>
+      
+      <tag>DataMining</tag>
       
     </tags>
     
@@ -1768,11 +1770,11 @@
       
       <tag>conda</tag>
       
-      <tag>Environment_configuration</tag>
-      
       <tag>Python</tag>
       
       <tag>Tools</tag>
+      
+      <tag>EnvironmentConfiguration</tag>
       
     </tags>
     
@@ -2030,8 +2032,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>Paper</tag>
       
       <tag>Statistics</tag>
@@ -2041,6 +2041,8 @@
       <tag>Poisson</tag>
       
       <tag>DixonColes</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -2065,8 +2067,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>Paper</tag>
       
       <tag>Statistics</tag>
@@ -2076,6 +2076,8 @@
       <tag>FootballPrediction</tag>
       
       <tag>Poisson</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -2100,8 +2102,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>Paper</tag>
       
       <tag>PairwiseComparison</tag>
@@ -2111,6 +2111,8 @@
       <tag>Statistics</tag>
       
       <tag>RaoKupper</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -2135,8 +2137,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>Paper</tag>
       
       <tag>PairwiseComparison</tag>
@@ -2146,6 +2146,8 @@
       <tag>Statistics</tag>
       
       <tag>RaoKupper</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -2170,8 +2172,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>Paper</tag>
       
       <tag>PairwiseComparison</tag>
@@ -2181,6 +2181,8 @@
       <tag>Statistics</tag>
       
       <tag>BradleyTerry</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
@@ -2205,8 +2207,6 @@
     
     <tags>
       
-      <tag>Deep_Learning</tag>
-      
       <tag>Paper</tag>
       
       <tag>Thurstone</tag>
@@ -2216,6 +2216,8 @@
       <tag>Psychometrics</tag>
       
       <tag>Statistics</tag>
+      
+      <tag>DeepLearning</tag>
       
     </tags>
     
