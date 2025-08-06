@@ -386,6 +386,443 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2025/06/28/2-14-LLM-Rag/" target="_self">
+          RAG（检索增强生成）及本地知识库开发实践
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/28/2-14-LLM-Rag/" target="_self">
+        <div>
+          1. 背景 大模型应用开发的三种模式，在选择使用哪种模式时，需要考虑 知识实时性、专业深度 以及 模型幻觉控制：  Prompt（提示词工程） – 问题没问清楚  通过精心设计提示词，引导大模型生成期望输出。   RAG（Retrieval-Augmented Generation） – 缺乏背景知识  结合信息检索与文本生成，实时检索外部知识增强生成能力。   Fine-tuning（微调）
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-28 15:31" pubdate>
+              2025-06-28
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-08-06T14:49:39.807Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/Embedding/">#Embedding</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/RetrievalAugmentedGeneration/">#RetrievalAugmentedGeneration</a>
+            
+              <a href="/tags/VectorDatabase/">#VectorDatabase</a>
+            
+              <a href="/tags/KnowledgeBase/">#KnowledgeBase</a>
+            
+              <a href="/tags/FAISS/">#FAISS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/06/28/2-13-LLM-Langchain4/" target="_self">
+          LangChain 4 服务部署与链路监控
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/28/2-13-LLM-Langchain4/" target="_self">
+        <div>
+          LangServe 服务部署 LangSmith Tracing（跟踪） Verbose（详细日志打印） Debug（调试日志打印）  内容会参数版本冲突问题，Pydantic 需要 v2.x 才能访问openapi.json，但是 LangServe需要 v1 才能使用。所以仅供学习参考，暂时我没有解决的方法。我感觉作者演示的时候使用的 v1 的 langserve app 打开的 API 文
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-28 15:31" pubdate>
+              2025-06-28
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-08-06T14:46:11.300Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/Framework/">#Framework</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/Agent/">#Agent</a>
+            
+              <a href="/tags/LCEL/">#LCEL</a>
+            
+              <a href="/tags/Chain/">#Chain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/06/27/2-12-LLM-Langchain3/" target="_self">
+          LangChain 3 工作流编排
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/27/2-12-LLM-Langchain3/" target="_self">
+        <div>
+          1. 工作流编排是什么？  就是把多个步骤（如提示词构建、模型推理、输出解析、工具调用等）组合成一条自动化流水线。 你可以像搭积木一样，把 Prompt、LLM、OutputParser、甚至外部 API、数据库、工具（Tool/Agent）串起来，实现复杂业务流程。   2. 编排方式 LangChain 推荐的工作流编排方式有两种主流：   Pipe（管道式）编排  用 | 把每一步组件串联
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-27 17:13" pubdate>
+              2025-06-27
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-08-06T14:45:58.100Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/Framework/">#Framework</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/Agent/">#Agent</a>
+            
+              <a href="/tags/LCEL/">#LCEL</a>
+            
+              <a href="/tags/Chain/">#Chain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/06/26/2-11-LLM-Langchain2/" target="_self">
+          LangChain 2 基础用法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/26/2-11-LLM-Langchain2/" target="_self">
+        <div>
+          1. LangChain 聊天模板（ChatPromptTemplate）用法  1.1 通过消息数组创建聊天消息模板   用 ChatPromptTemplate.from_messages() 创建聊天消息模板。   每条消息由“角色/类型”+“内容”组成。常见角色有：  system：系统消息 human：用户消息 ai：AI/助手回复    消息内容支持插入参数（如 &#123;name
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-26 07:51" pubdate>
+              2025-06-26
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-08-06T14:45:42.041Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/Framework/">#Framework</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/Agent/">#Agent</a>
+            
+              <a href="/tags/LCEL/">#LCEL</a>
+            
+              <a href="/tags/Chain/">#Chain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/06/25/2-10-LLM-Langchain1/" target="_self">
+          LangChain 1 基础概念
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/25/2-10-LLM-Langchain1/" target="_self">
+        <div>
+          定位: 开源 Python AI 应用开发框架。   核心: 基于大型语言模型，提供模块和工具，简化与 LLM 的集成。 支持模型: OpenAI 的 GPT 系列、Claude 3.5、千问模型等主流大语言模型。 能力: 支持文本生成、问答、翻译、对话等任务。 解决问题: 降低 AI 应用开发的门槛，使开发者能轻松构建创意 AI 应用。   1. LangChain 特性总结   LLM 和提
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-25 11:31" pubdate>
+              2025-06-25
+            </time>
+
+                        
+            
+              
+                <span class="updated-flag" data-updated="2025-08-06T14:45:27.822Z">Updated within 7 days</span>
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/Framework/">#Framework</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/Agent/">#Agent</a>
+            
+              <a href="/tags/LCEL/">#LCEL</a>
+            
+              <a href="/tags/Chain/">#Chain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2025/02/27/2-3-LLM-prompt-engineering/" target="_self">
           Prompt 工程基础
         </a>
@@ -713,421 +1150,6 @@
               <a href="/tags/NLP/">#NLP</a>
             
               <a href="/tags/Alignment/">#Alignment</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/20/11-7.1-InstructGPT/" target="_self">
-          7. InstructGPT 详读
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/20/11-7.1-InstructGPT/" target="_self">
-        <div>
-          InstructGPT 详读 本文并非全部翻译，但尽可能的保持文章原意。有逻辑的描述论文的思路，实验。并加了一些理解与例子的备注，如果需要快速了解本文精华内容，可以参考另外一篇总结性文章。  Abstract   问题背景：只让语言模型变大，并不能更好的让它按用户的意图办事。模型规模再大，也可能胡说八道、输出有害内容或者根本没帮上忙。—— 模型和人类想法 没有对齐。   提出方法：本文探索了一条新
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-20 19:01" pubdate>
-              2025-04-20
-            </time>
-
-                        
-            
-              
-                <span class="updated-flag" data-updated="2025-08-02T07:35:19.551Z">Updated within 7 days</span>
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/InstructGPT/">#InstructGPT</a>
-            
-              <a href="/tags/RLHF/">#RLHF</a>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/NLP/">#NLP</a>
-            
-              <a href="/tags/Alignment/">#Alignment</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/13/11-6-Dixon-Coles/" target="_self">
-          6. The Dixon-Coles Model
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/13/11-6-Dixon-Coles/" target="_self">
-        <div>
-          The Dixon-Coles Model 声明：本文为本人毕业研究报告《The Exploration of Pairwise Comparison in Football Application》中的部分内容摘录与整理，仅用于学习与交流。  Introduction The Dixon-Coles model [1] addresses the challenges of football b
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-13 12:11" pubdate>
-              2023-12-13
-            </time>
-
-                        
-            
-              
-                <span class="updated-flag" data-updated="2025-08-02T07:35:15.311Z">Updated within 7 days</span>
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/Statistics/">#Statistics</a>
-            
-              <a href="/tags/FootballPrediction/">#FootballPrediction</a>
-            
-              <a href="/tags/Poisson/">#Poisson</a>
-            
-              <a href="/tags/DixonColes/">#DixonColes</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/12/11-5-Maher/" target="_self">
-          5. The Maher Model
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/12/11-5-Maher/" target="_self">
-        <div>
-          The Maher Model 声明：本文为本人毕业研究报告《The Exploration of Pairwise Comparison in Football Application》中的部分内容摘录与整理，仅用于学习与交流。  Introduction Firstly, according to Maher’s research [2], we provide a brief introdu
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-12 17:01" pubdate>
-              2023-12-12
-            </time>
-
-                        
-            
-              
-                <span class="updated-flag" data-updated="2025-08-02T07:35:11.902Z">Updated within 7 days</span>
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/Statistics/">#Statistics</a>
-            
-              <a href="/tags/Maher/">#Maher</a>
-            
-              <a href="/tags/FootballPrediction/">#FootballPrediction</a>
-            
-              <a href="/tags/Poisson/">#Poisson</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/11/11-4-Davidson/" target="_self">
-          4. The Davidson Model
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/11-4-Davidson/" target="_self">
-        <div>
-          The Davidson Model 声明：本文为本人毕业研究报告《The Exploration of Pairwise Comparison in Football Application》中的部分内容摘录与整理，仅用于学习与交流。  Introduction Roger R. Davidson [3] introduced a scaling constant v, and based o
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-11 14:01" pubdate>
-              2023-12-11
-            </time>
-
-                        
-            
-              
-                <span class="updated-flag" data-updated="2025-08-02T07:35:07.843Z">Updated within 7 days</span>
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/PairwiseComparison/">#PairwiseComparison</a>
-            
-              <a href="/tags/Psychometrics/">#Psychometrics</a>
-            
-              <a href="/tags/Statistics/">#Statistics</a>
-            
-              <a href="/tags/RaoKupper/">#RaoKupper</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/11/11-3-Rao-Kupper/" target="_self">
-          3. The Rao-Kupper Model
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/11-3-Rao-Kupper/" target="_self">
-        <div>
-          The Rao-Kupper Model  声明：本文为本人毕业研究报告《The Exploration of Pairwise Comparison in Football Application》中的部分内容摘录与整理，仅用于学习与交流。   Introduction Rao and Kupper [1] extended the Bradley-Terry model [2] for pai
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-11 14:01" pubdate>
-              2023-12-11
-            </time>
-
-                        
-            
-              
-                <span class="updated-flag" data-updated="2025-08-02T07:35:03.628Z">Updated within 7 days</span>
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/PairwiseComparison/">#PairwiseComparison</a>
-            
-              <a href="/tags/Psychometrics/">#Psychometrics</a>
-            
-              <a href="/tags/Statistics/">#Statistics</a>
-            
-              <a href="/tags/RaoKupper/">#RaoKupper</a>
             
               <a href="/tags/DeepLearning/">#DeepLearning</a>
             

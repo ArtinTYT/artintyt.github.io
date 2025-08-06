@@ -1,0 +1,1049 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+
+<head>
+  <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
+
+  
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/webicon.webp">
+  <link rel="icon" href="/img/webicon.webp">
+  
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Artin Tan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="LangServe 服务部署 LangSmith Tracing（跟踪） Verbose（详细日志打印） Debug（调试日志打印）  内容会参数版本冲突问题，Pydantic 需要 v2.x 才能访问openapi.json，但是 LangServe需要 v1 才能使用。所以仅供学习参考，暂时我没有解决的方法。我感觉作者演示的时候使用的 v1 的 langserve app 打开的 API 文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangChain 4 服务部署与链路监控">
+<meta property="og:url" content="http://neurowave.tech/2025/06/28/2-13-LLM-Langchain4/index.html">
+<meta property="og:site_name" content="Neurowave">
+<meta property="og:description" content="LangServe 服务部署 LangSmith Tracing（跟踪） Verbose（详细日志打印） Debug（调试日志打印）  内容会参数版本冲突问题，Pydantic 需要 v2.x 才能访问openapi.json，但是 LangServe需要 v1 才能使用。所以仅供学习参考，暂时我没有解决的方法。我感觉作者演示的时候使用的 v1 的 langserve app 打开的 API 文">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-28T07:31:23.000Z">
+<meta property="article:modified_time" content="2025-08-06T14:46:11.300Z">
+<meta property="article:author" content="Artin Tan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="LangChain">
+<meta property="article:tag" content="Framework">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="LCEL">
+<meta property="article:tag" content="Chain">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>LangChain 4 服务部署与链路监控 - Neurowave</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/reward.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"neurowave.tech","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-FC96VM1C7N"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":"https://cloud.umami.is/script.js","website_id":"8c8b9955-4b6d-4b58-8e09-86215ee339cb","domains":"neurowave.tech","start_time":"2024-01-01T00:00:00.000Z","token":"api_LSzAvcXXJcDDxmu9cp3tKbTvoRuFb0Q1","api_server":"https://cloud.umami.is"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-FC96VM1C7N", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-FC96VM1C7N');
+        });
+      }
+    </script>
+  
+
+  
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        let umami = document.createElement('script');
+        umami.async = true;
+        umami.src = "https://cloud.umami.is/script.js";
+        umami.setAttribute("data-website-id", "8c8b9955-4b6d-4b58-8e09-86215ee339cb");
+        umami.setAttribute("data-domains", "neurowave.tech");
+        document.head.appendChild(umami);
+      }
+    </script>
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+</head>
+<body>
+    
+    <header>
+      
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Neurowave</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/say/" target="_self">
+                <i class="iconfont icon-comment"></i>
+                <span>说说</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://cloud.umami.is/share/IDuxEAjut0hD9lVV/neurowave.tech" target="_self">
+                <i class="iconfont icon-chart"></i>
+                <span>统计</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LangChain 4 服务部署与链路监控"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-28 15:31" pubdate>
+          2025年6月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+
+
+<!-- 在页面合适的位置添加显示评论数的占位符 
+<div class="article-meta-comments">
+  <span class="post-meta-item-icon"><i class="iconfont icon-comment"></i></span>
+  <span id="comment-count"></span>
+  条
+</div>
+
+-->
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+    </header>
+    <main>
+      
+        
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">LangChain 4 服务部署与链路监控</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    更新于 2025-08-06T22:46:11+08:00
+                  
+                  
+
+                
+              </p>
+            
+
+
+
+            
+            <div class="markdown-body">
+              
+              <ol>
+<li>LangServe 服务部署</li>
+<li>LangSmith Tracing（跟踪）</li>
+<li>Verbose（详细日志打印）</li>
+<li>Debug（调试日志打印）</li>
+</ol>
+<p><strong>内容会参数版本冲突问题</strong>，<code>Pydantic</code> 需要 v2.x 才能访问<code>openapi.json</code>，但是 <code>LangServe</code>需要 v1 才能使用。所以仅供学习参考，暂时我没有解决的方法。我感觉作者演示的时候使用的 v1 的 langserve app 打开的 API 文档（当然，这个可以去官文看），具体实操是后台访问可能使用的 v2，我也可以成功复现，只是打不开 API 文档。</p>
+<h2 id="1-LangServe-服务部署"><a class="header-anchor" href="#1-LangServe-服务部署"> </a>1. LangServe 服务部署</h2>
+<ul>
+<li><strong>LangServe</strong> 是一个帮助开发者将 <strong>LangChain</strong> 可运行对象和链部署为 REST API 的库。</li>
+<li>该库集成了 FastAPI，并使用 pydantic 进行数据验证。</li>
+<li><strong>LangServe/FastAPI/Pydantic 的兼容性大坑</strong>
+<ul>
+<li><strong>LangServe 用 FastAPI + Pydantic</strong> 做 API 验证和文档。</li>
+<li><strong>Pydantic 1.x</strong> 和 <strong>2.x</strong> 差异巨大，<strong>LangServe 的 OpenAPI 文档（Swagger UI）只有在 Pydantic v1 下能用</strong>。</li>
+<li><strong>用 Pydantic v2，OpenAPI 文档就挂掉了</strong></li>
+<li>如果装了 Pydantic v2.x，访问 <code>/openapi.json</code> 就会 500，Swagger UI 也打不开。</li>
+<li>所以务必锁定 v1.x，写法如下：  <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-attr">pydantic</span> = <span class="hljs-string">&quot;&lt;2.0&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>以后如果装 langserve/langchain/fastapi 项目，一遇到 schema 生成或 swagger 挂掉，<strong>第一时间检查是不是 pydantic 2.x，降级！</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-Pydantic-简介"><a class="header-anchor" href="#1-1-Pydantic-简介"> </a>1.1 Pydantic 简介</h3>
+<ul>
+<li><strong>Pydantic</strong> 是 Python 中广泛使用的数据验证和解析第三方库。
+<ul>
+<li>利用声明式方式定义数据模型和类型提示，强大功能用于数据验证和序列化，使代码更可靠、更易读、更简洁、易于调试。</li>
+<li>可以从模型生成 JSON 架构，自动生成文档，方便与其他工具集成。</li>
+<li>提供客户端（比如 JS 客户端），可用于远程调用部署在服务器上的 LangChain 对象。</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-特性"><a class="header-anchor" href="#1-2-特性"> </a>1.2 特性</h3>
+<ul>
+<li>自动推断 LangChain 对象的输入/输出模式，每次 API 调用执行时提供丰富错误信息</li>
+<li>带有 <strong>JSONSchema</strong> 和 <strong>Swagger</strong> 的 API 文档页面（插入示例链接）</li>
+<li>高效的 <code>/invoke</code>、<code>/batch</code> 和 <code>/stream</code> 端点，支持服务器多并发请求</li>
+<li><code>/stream_log</code> 端点：用于流式传输链/代理的全部（或部分）中间步骤</li>
+<li><strong>新功能</strong>：0.0.40 版本起支持 <code>/stream_events</code>，使流式传输更方便，无需解析 <code>/stream_log</code> 输出</li>
+<li>使用经过严格测试的开源 Python 库：FastAPI、Pydantic、uvloop、asyncio</li>
+<li>使用客户端 SDK 调用 LangServe 服务端，像本地一样运行可运行对象（或直接 HTTP API 调用）</li>
+</ul>
+<h3 id="1-3-限制"><a class="header-anchor" href="#1-3-限制"> </a>1.3 限制</h3>
+<ul>
+<li>暂不支持由服务器发起的事件的客户端回调</li>
+<li>使用 Pydantic V2 时，不会生成 OpenAPI 文档（FastAPI 支持混用 pydantic v1/v2 命名空间，详见后文）</li>
+</ul>
+<h2 id="2-安装-LangServe"><a class="header-anchor" href="#2-安装-LangServe"> </a>2. 安装 LangServe</h2>
+<ol>
+<li>
+<p>客户端+服务器端同时装（conda）：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install --upgrade <span class="hljs-string">&quot;langserve[all]&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>仅装客户端：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install <span class="hljs-string">&quot;langserve[client]&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>仅装服务器端：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install <span class="hljs-string">&quot;langserve[server]&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-快速初始化与设置"><a class="header-anchor" href="#3-快速初始化与设置"> </a>3. 快速初始化与设置</h2>
+<ol>
+<li>
+<p><strong>LangChain CLI 初始化新项目，先装 langchain-cli（conda）：</strong></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install -U langchain-cli<br></code></pre></td></tr></table></figure>
+<ul>
+<li>创建新应用 <code>langserve_app</code>（默认安装到当前项目目录）：</li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">langchain app new &lt;langserve_app&gt;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>可以在Terminal 测试：<code>langchian</code></li>
+</ul>
+</li>
+<li>
+<p><strong>在 <code>add_routes</code> 中定义可运行对象（转 <a target="_blank" rel="noopener" href="http://server.py">server.py</a> 并编辑）</strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">add_routes(app, <span class="hljs-literal">NotImplemented</span>)<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>（示例：需替换为你的链或模型实例）</p>
+<ol start="3">
+<li>
+<p><strong>用 poetry 管理依赖/装第三方包</strong></p>
+<ul>
+<li>推荐用 poetry 做依赖管理（配合 pipx 装 poetry，推荐官方文档）。</li>
+<li>例：装 langchain-openai 等插件
+<ol>
+<li>安装pipx，参考：<a target="_blank" rel="noopener" href="https://pipx.pypa.io/stable/installation/">https://pipx.pypa.io/stable/installation/</a> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install pipx<br></code></pre></td></tr></table></figure>
+<ul>
+<li>Terminal验证安装：pipx</li>
+</ul>
+</li>
+<li>加入到环境变量，需要重启PyCharm
+<ul>
+<li>加入到你的 shell 环境变量 PATH 里，通常是 ~/.local/bin</li>
+</ul>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pipx ensurepath<br></code></pre></td></tr></table></figure>
+</li>
+<li>安装poetry，参考：<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/">https://python-poetry.org/docs/</a>
+<ul>
+<li>Terminal验证安装：<code>poetry</code></li>
+</ul>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">pipx install poetry<br><span class="hljs-meta prompt_"># </span><span class="language-bash">先初始化项目</span><br>poetry init<br></code></pre></td></tr></table></figure>
+<ul>
+<li>Package name [langserve]:  回车就是默认的</li>
+<li>如果你的项目目录是 <code>LangServe</code>，那么它默认会填充 <code>langserve</code>（转换成小写，避免 Python 模块名大小写混乱）。</li>
+</ul>
+ <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs livescript">Package name [langserve]: <br>Version [<span class="hljs-number">0.1</span>.<span class="hljs-number">0</span>]: <br>Description []:<br>Author [Artin &lt;xxxxxxx@outlook.com&gt;, n <span class="hljs-keyword">to</span> skip]: n <br>License []: MIT <br>Compatible Python versions [&gt;=<span class="hljs-number">3.13</span>]: <br>Would you like <span class="hljs-keyword">to</span> define your main dependencies interactively? (<span class="hljs-literal">yes</span>/<span class="hljs-literal">no</span>) [<span class="hljs-literal">yes</span>] <br>Would you like <span class="hljs-keyword">to</span> define your development dependencies interactively? (<span class="hljs-literal">yes</span>/<span class="hljs-literal">no</span>) [<span class="hljs-literal">yes</span>]<br></code></pre></td></tr></table></figure>
+</li>
+<li>安装 langchain-openai 库
+<ul>
+<li>默认没有这两个：pyproject.toml</li>
+</ul>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">poetry add langchain langchain-openai<br></code></pre></td></tr></table></figure>
+<ul>
+<li>把下面手动敲上去也可以</li>
+<li>如果默认有<code>pydantic = &quot;&lt;2&quot;</code>，可以删除让<code>langchain</code>自动安装，或者手动改一下版本，根据报错。</li>
+</ul>
+ <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-attr">langchain</span> = <span class="hljs-string">&quot;^0.3.27&quot;</span>  <br><span class="hljs-attr">langchain-openai</span> = <span class="hljs-string">&quot;^0.3.28&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>配置环境变量</strong></p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">export OPENAI_API_KEY=&quot;sk-...&quot;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>启动你的 LangServe 应用</strong></p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">poetry run langchain serve --port=8000<br></code></pre></td></tr></table></figure>
+<ul>
+<li>默认端口 8000，可根据需要指定</li>
+<li>切换到 <code>langserve_app</code> 这个目录打开 Terminal 启动</li>
+<li>Python版本建议选稳定版，不然冲突</li>
+</ul>
+</li>
+</ol>
+<h2 id="参考资料"><a class="header-anchor" href="#参考资料"> </a>参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BgfBYoEpQ/?p=4&amp;share_source=copy_web&amp;vd_source=8d35cf5786680af0d12d60f16ff554fb">2025吃透LangChain大模型</a></li>
+</ul>
+
+              
+            </div>
+          
+
+
+            <hr/>
+
+
+            <!-- 添加打赏模块 -->
+            <div class="reward-container">
+              
+                <button id="rewardBtn" class="reward-btn">
+                   
+                    ❤ 打赏
+                   
+                </button>
+                <p class="tea">“觉得不错的话，给点打赏吧 ୧(๑•̀⌄•́๑)૭”</p>
+                <div id="rewardImgContainer" class="reward-img-container">
+                      <div class="singleImgContainer">
+                          <img id="wechatImg" class="reward-img" src="/img/wechatpay.webp" srcset="/img/loading.gif" lazyload alt="微信二维码">
+                            <p class="wechatPay">微信支付</p>
+                        </div>
+                        <div class="singleImgContainer">
+                            <img id="alipayImg" class="reward-img" src="/img/alipay.webp" srcset="/img/loading.gif" lazyload alt="支付宝二维码">
+                            <p class="aliPay">支付宝支付</p>
+                        </div>
+                </div>
+              
+            </div>
+            
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
+      
+        <a href="/tags/LLM/" class="print-no-link">#LLM</a>
+      
+        <a href="/tags/LangChain/" class="print-no-link">#LangChain</a>
+      
+        <a href="/tags/Framework/" class="print-no-link">#Framework</a>
+      
+        <a href="/tags/RAG/" class="print-no-link">#RAG</a>
+      
+        <a href="/tags/Agent/" class="print-no-link">#Agent</a>
+      
+        <a href="/tags/LCEL/" class="print-no-link">#LCEL</a>
+      
+        <a href="/tags/Chain/" class="print-no-link">#Chain</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LangChain 4 服务部署与链路监控</div>
+      <div>http://neurowave.tech/2025/06/28/2-13-LLM-Langchain4/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Artin Tan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月28日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月6日</div>
+        </div>
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/07/15/1-13-%E6%B7%BB%E5%8A%A0%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1%E9%9D%A2%E6%9D%BF/" title="13. 添加博客访问统计面板">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">13. 添加博客访问统计面板</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/06/28/2-14-LLM-Rag/" title="RAG（检索增强生成）及本地知识库开发实践">
+                        <span class="hidden-mobile">RAG（检索增强生成）及本地知识库开发实践</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ArtinTYT/artintyt.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+      
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+    </main>
+    <footer>
+      <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/vvd_js/duration.js"></script>
+<p>Copyright © 2025 Artin Tan. All rights reserved.</p> </div> 
+    </div>
+
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div> 
+
+
+    </footer>
+    <!-- Scripts -->
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="/js/reward.js"></script>
+
+
+
+
+<script src="/js/tag-animation.js"></script>
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- 显示"updated"标志 -->
+<script src="/js/update-flag.js" defer></script>
+
+
+    
+    <noscript>
+      <div class="noscript-warning">本博客需要启用 JavaScript 才能正常工作</div>
+    </noscript>
+
+</body>
+</html>

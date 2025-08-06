@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+
+<head>
+  <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
+
+  
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/webicon.webp">
+  <link rel="icon" href="/img/webicon.webp">
+  
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Artin Tan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="定位: 开源 Python AI 应用开发框架。   核心: 基于大型语言模型，提供模块和工具，简化与 LLM 的集成。 支持模型: OpenAI 的 GPT 系列、Claude 3.5、千问模型等主流大语言模型。 能力: 支持文本生成、问答、翻译、对话等任务。 解决问题: 降低 AI 应用开发的门槛，使开发者能轻松构建创意 AI 应用。   1. LangChain 特性总结   LLM 和提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangChain 1 基础概念">
+<meta property="og:url" content="http://neurowave.tech/2025/06/25/2-10-LLM-Langchain1/index.html">
+<meta property="og:site_name" content="Neurowave">
+<meta property="og:description" content="定位: 开源 Python AI 应用开发框架。   核心: 基于大型语言模型，提供模块和工具，简化与 LLM 的集成。 支持模型: OpenAI 的 GPT 系列、Claude 3.5、千问模型等主流大语言模型。 能力: 支持文本生成、问答、翻译、对话等任务。 解决问题: 降低 AI 应用开发的门槛，使开发者能轻松构建创意 AI 应用。   1. LangChain 特性总结   LLM 和提">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://neurowave.tech/2025/06/25/2-10-LLM-Langchain1/img/img_langchian1.png">
+<meta property="article:published_time" content="2025-06-25T03:31:23.000Z">
+<meta property="article:modified_time" content="2025-08-06T14:45:27.822Z">
+<meta property="article:author" content="Artin Tan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="LangChain">
+<meta property="article:tag" content="Framework">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="LCEL">
+<meta property="article:tag" content="Chain">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://neurowave.tech/2025/06/25/2-10-LLM-Langchain1/img/img_langchian1.png">
+  
+  
+  
+  <title>LangChain 1 基础概念 - Neurowave</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/reward.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"neurowave.tech","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-FC96VM1C7N"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":"https://cloud.umami.is/script.js","website_id":"8c8b9955-4b6d-4b58-8e09-86215ee339cb","domains":"neurowave.tech","start_time":"2024-01-01T00:00:00.000Z","token":"api_LSzAvcXXJcDDxmu9cp3tKbTvoRuFb0Q1","api_server":"https://cloud.umami.is"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-FC96VM1C7N", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-FC96VM1C7N');
+        });
+      }
+    </script>
+  
+
+  
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        let umami = document.createElement('script');
+        umami.async = true;
+        umami.src = "https://cloud.umami.is/script.js";
+        umami.setAttribute("data-website-id", "8c8b9955-4b6d-4b58-8e09-86215ee339cb");
+        umami.setAttribute("data-domains", "neurowave.tech");
+        document.head.appendChild(umami);
+      }
+    </script>
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+</head>
+<body>
+    
+    <header>
+      
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Neurowave</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/say/" target="_self">
+                <i class="iconfont icon-comment"></i>
+                <span>说说</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://cloud.umami.is/share/IDuxEAjut0hD9lVV/neurowave.tech" target="_self">
+                <i class="iconfont icon-chart"></i>
+                <span>统计</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LangChain 1 基础概念"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-25 11:31" pubdate>
+          2025年6月25日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+
+
+<!-- 在页面合适的位置添加显示评论数的占位符 
+<div class="article-meta-comments">
+  <span class="post-meta-item-icon"><i class="iconfont icon-comment"></i></span>
+  <span id="comment-count"></span>
+  条
+</div>
+
+-->
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+    </header>
+    <main>
+      
+        
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">LangChain 1 基础概念</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    更新于 2025-08-06T22:45:27+08:00
+                  
+                  
+
+                
+              </p>
+            
+
+
+
+            
+            <div class="markdown-body">
+              
+              <ul>
+<li><strong>定位</strong>: 开源 Python AI 应用开发框架。</li>
+</ul>
+<ul>
+<li><strong>核心</strong>: 基于大型语言模型，提供模块和工具，简化与 LLM 的集成。</li>
+<li><strong>支持模型</strong>: OpenAI 的 GPT 系列、Claude 3.5、千问模型等主流大语言模型。</li>
+<li><strong>能力</strong>: 支持文本生成、问答、翻译、对话等任务。</li>
+<li><strong>解决问题</strong>: 降低 AI 应用开发的门槛，使开发者能轻松构建创意 AI 应用。</li>
+</ul>
+<h2 id="1-LangChain-特性总结"><a class="header-anchor" href="#1-LangChain-特性总结"> </a>1. LangChain 特性总结</h2>
+<ol>
+<li>
+<p><strong>LLM 和提示（Prompt）</strong></p>
+<ul>
+<li>提供统一的 API 抽象，兼容各种 LLM（如 OpenAI, Anthropic 等），统一访问方式。。</li>
+<li>内建 Prompt 模板管理机制，简化提示编写流程。</li>
+</ul>
+</li>
+<li>
+<p><strong>Chains (链式调用)</strong></p>
+<ul>
+<li>复杂任务可拆分为多步模块，链式串联。</li>
+<li>场景如：上下文问答、自动SQL生成、流水线式处理。</li>
+<li>支持将多个调用（LLM、工具等）连接起来，形成工作流，按顺序执行。</li>
+</ul>
+</li>
+<li>
+<p><strong>LCEL（LangChain Expression Language）</strong></p>
+<ul>
+<li>LangChain 新版本的核心特性。</li>
+<li>用来灵活地自定义任务处理流程，<strong>解决工作流编排问题</strong>。</li>
+<li>写法类似声明式语言，通过表达式定义链（Chain）。</li>
+</ul>
+</li>
+<li>
+<p><strong>RAG（数据增强生成）</strong></p>
+<ul>
+<li>LLM 本身不知道“新知识”，RAG 模式通过<strong>外部信息检索</strong>提升回答质量（推理）。</li>
+<li>一种内容增强技术，用于解决 LLM 知识的静态性问题（数据截止日期）。</li>
+<li>关键步骤：
+<ul>
+<li>先“检索”外部数据（如 PDF/数据库）</li>
+<li>再“生成”内容（LLM）</li>
+</ul>
+</li>
+<li>全称：<strong>Retrieval-Augmented Generation</strong></li>
+<li>与微调对比: RAG 用于内容增强；微调用于改变模型回答方式、语气（如客服机器人）。</li>
+</ul>
+</li>
+<li>
+<p><strong>Agents（智能代理）</strong></p>
+<ul>
+<li>LLM 主动调用工具/API 的高级玩法。</li>
+<li>根据用户需求，自动调用外部系统或设备来完成任务。</li>
+</ul>
+<ul>
+<li><strong>示例</strong>: 用户只需说“明天请假一天”，Agent 即可自动调用内部 OA 系统完成请假流程。</li>
+<li>LangChain 在 Agent 开发方面提供了丰富的组件和库（如 LangGraph）。</li>
+</ul>
+</li>
+<li>
+<p><strong>Model Memory (模型记忆)</strong>:</p>
+<ul>
+<li>允许 LLM 记住之前的对话内容。</li>
+<li>提供存储功能：
+<ul>
+<li><strong>内存存储</strong>: 临时记忆，程序重启后丢失。</li>
+<li><strong>持久化存储</strong>: 需要数据库（如 MongoDB, Redis）来保存对话历史。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-LangChain-框架结构"><a class="header-anchor" href="#2-LangChain-框架结构"> </a>2. LangChain 框架结构</h2>
+<ul>
+<li>
+<p><strong>LangChain 库</strong>：Python 和 JavaScript 的核心库，提供接口和集成多种组件：</p>
+<ul>
+<li><code>langchain-core</code>：基础抽象和 LangChain 表达语言。</li>
+<li><code>langchain-community</code>：第三方集成，主要包括 langchain 集成的第三方组件。</li>
+<li><code>langchain</code>：主要包括链（chain）、代理（agent）和检索策略。</li>
+</ul>
+</li>
+<li>
+<p><strong>Templates（模板）</strong>：LangChain 官方提供的 AI 任务模板库，帮助开发者快速启动和搭建项目。</p>
+</li>
+<li>
+<p><strong>LangServe</strong>：基于 FastAPI，可以将 LangChain 定义的链（Chain）发布为 RESTful API 服务，方便外部系统调用。</p>
+</li>
+<li>
+<p><strong>LangSmith</strong>：云端开发平台，为 LangChain 应用提供<strong>可观测性</strong>（Observability），支持链路追踪、监控和调试，助力开发和运维。</p>
+</li>
+<li>
+<p><strong>LangChain</strong></p>
+<ul>
+<li><strong>Chains</strong>: 链式调用。将模型、提示、工具等组件串成多步任务流。</li>
+<li><strong>Agents</strong>: 智能体框架，能动态选择工具和决策路径完成复杂任务。</li>
+<li><strong>Retrieval</strong>: 文本检索和文档相关功能（如向量数据库查询），现在更常单独拆分为“Retrieval组件”。</li>
+</ul>
+</li>
+<li>
+<p><strong>LangChain-Community</strong>:</p>
+<ul>
+<li><strong>Model I/O</strong>:
+<ul>
+<li><strong>LLMs</strong>: 主流大模型的 API 封装（如 OpenAI、Anthropic、Hugging Face 等）。</li>
+<li><strong>Chat Models</strong>: 专为多轮对话设计，支持消息结构和函数调用。</li>
+<li><strong>Prompt Templates</strong>: 管理和格式化提示词模板。</li>
+<li><strong>Output Parsers</strong>: 格式化 LLM 输出（如 Markdown 转 J SON）。</li>
+<li><strong>Example Selectors</strong>: 在调用时提供示例。</li>
+</ul>
+</li>
+<li><strong>Retrieval</strong>:
+<ul>
+<li><strong>Document Loaders</strong>: 加载各种格式的文档（PDF, TXT, Markdown）。</li>
+<li><strong>Text Splitters</strong>: 分割长文本。</li>
+<li><strong>Embeddings</strong>: 将文本转换为向量（调用 LLM 能力实现）。</li>
+<li><strong>Vector Stores</strong>: 存储和检索向量（支持 Chroma, FAISS 等）。</li>
+</ul>
+</li>
+<li><strong>Agent Tooling</strong>:
+<ul>
+<li><strong>Tools</strong>: Agent 可调用的外部工具（API）。</li>
+<li><strong>Agent Executors</strong>: 协调 Agent 逻辑。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>LangChain-Core (LangChain Expression Language, LCEL)</strong>:</p>
+<ul>
+<li><strong>作用</strong>：提供一套表达式语言，让你用声明式方式组合各种方法、接口和模块。</li>
+<li><strong>核心能力</strong>：
+<ul>
+<li><strong>方法执行</strong>：轻松定义任务/方法的执行流程。</li>
+<li><strong>接口调用</strong>：统一管理不同模型或服务的 API 调用。</li>
+<li><strong>并行 (Parallelization)</strong>：支持任务并发处理，提升效率。</li>
+<li><strong>批量处理 (Batching/Fallbacks)</strong>：支持批量任务、出错时自动降级回退。</li>
+<li><strong>流式 (Streaming)</strong>：支持流式数据处理，比如流式输出LLM生成内容。</li>
+<li><strong>异步调用 (Async)</strong>：支持异步执行，提升响应速度。</li>
+<li><strong>组合 (Composition)</strong>：任意拼装/嵌套不同组件，实现复杂流程。</li>
+<li><strong>追踪 (Tracing)</strong>：内置调用链路追踪，方便调试和监控。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>LangChain 的常见应用场景</p>
+<ul>
+<li><strong>对话机器人</strong>: 构建智能对话助手、客服机器人、聊天机器人。</li>
+<li><strong>知识库管理</strong>: 实现 RAG 场景，结合知识图谱进行开放域问答。</li>
+<li><strong>智能写作</strong>: 用于写文章、创意写作、文本摘要等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Model-I-O-流程示例"><a class="header-anchor" href="#3-Model-I-O-流程示例"> </a>3. Model I/O 流程示例</h2>
+<ol>
+<li><strong>Format（格式化）</strong>
+<ul>
+<li>使用 <strong>Prompts（提示词工具）</strong>，把变量（如 <code>x=&quot;foo&quot;, y=&quot;bar&quot;</code>）填充到模板（如“Does {x} like {y}, and why?”）中，生成具体的问题：“Does foo like bar, and why?”</li>
+</ul>
+</li>
+<li><strong>Predict（预测）</strong>
+<ul>
+<li>把格式化后的提示词输入到 <strong>模型</strong>：
+<ul>
+<li><strong>LLM（基础模型）</strong>：接收文本输入，返回文本输出。</li>
+<li><strong>Chat Models（聊天模型）</strong>：专为多轮消息交互设计，<strong>支持输入多条消息</strong>（用户、AI、系统、函数等），输出聊天消息。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Parse（解析）</strong>
+<ul>
+<li>利用 <strong>Output Parsers（输出解析器）</strong>，将 LLM 返回的原始输出（如自然语言、Markdown）解析为结构化数据（如 JSON），便于后续处理或调用。<br>
+<img src="img/img_langchian1.png" srcset="/img/loading.gif" lazyload width=400 style="display: block; margin: 0 auto;"/></li>
+</ul>
+</li>
+</ol>
+<h2 id="4-LangChain-实战入门（以-OpenAI-为例）"><a class="header-anchor" href="#4-LangChain-实战入门（以-OpenAI-为例）"> </a>4. LangChain 实战入门（以 OpenAI 为例）</h2>
+<ol>
+<li>
+<p><strong>环境准备</strong>: Python 环境。</p>
+</li>
+<li>
+<p><strong>安装</strong>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install langchain<br>pip install langchain-openai<br>pip install langchain-community<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>导入库</strong>:</p>
+<ul>
+<li><code>ChatPromptTemplate</code> (用于聊天场景的提示词模板)。</li>
+<li><code>ChatOpenAI</code> (用于与 OpenAI 的 Chat 模型交互)。</li>
+<li><code>StrOutputParser</code> (用于将输出解析为字符串，或自定义解析器如 JSON）。</li>
+</ul>
+</li>
+<li>
+<p><strong>配置环境变量</strong>: 设置 <code>OPENAI_API_KEY</code>。</p>
+</li>
+<li>
+<p><strong>实例化 LLM</strong>: <code>llm = ChatOpenAI(model=&quot;gpt-3.5-turbo&quot;)</code> (或其他模型)。</p>
+</li>
+<li>
+<p><strong>定义提示词模板</strong>: 使用 <code>ChatPromptTemplate.from_messages()</code>，例如：</p>
+<ul>
+<li><code>System + Message</code> (定义角色，如“世界级技术专家”)</li>
+<li><code>Human + Message</code> (用户输入，可带参数)。</li>
+</ul>
+</li>
+<li>
+<p><strong>构建 Chain</strong>: 使用 <code>|</code> 将提示词模板和 LLM 连接起来：<code>chain = prompt | llm</code>。</p>
+</li>
+<li>
+<p><strong>执行 Chain</strong>: 调用 <code>chain.invoke(&#123;&quot;input&quot;: &quot;你的问题&quot;&#125;)</code>。</p>
+</li>
+<li>
+<p><strong>格式化输出</strong>: 在 Chain 中加入 Output Parser，如 <code>chain = prompt | llm | StrOutputParser</code>，先调用<code>chain</code>的同时把用户写的<code>input</code> 回填到<code>prompt</code>的<code>input</code>中然后调用<code>llm</code>，最后调用<code>StrOutputParser</code> 格式化输出（只有纯文本）。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 导入 LangChain 的聊天提示词模板</span><br><span class="hljs-keyword">from</span> langchain_core.prompts <span class="hljs-keyword">import</span> ChatPromptTemplate<br><br><span class="hljs-comment"># 导入 LangChain 的 OpenAI 聊天模型封装</span><br><span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> ChatOpenAI<br><br><span class="hljs-comment"># 1. 初始化 LLM（以 OpenAI GPT-3.5/4 为例）</span><br>llm = ChatOpenAI()  <span class="hljs-comment"># 需要提前配置 OpenAI API 密钥</span><br><br><span class="hljs-comment"># 2. 创建一个聊天提示词模板，包含 system 角色和 user 角色</span><br>prompt = ChatPromptTemplate.from_messages([<br>    (<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;你是世界级的技术专家。&quot;</span>),<br>    (<span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-string">&quot;&#123;input&#125;&quot;</span>),  <span class="hljs-comment"># &#123;input&#125; 是模板变量</span><br>])<br><br><span class="hljs-comment"># 3. 将 prompt 和 llm 组合成一个 chain（链式调用，自动拼装输入和输出）</span><br><br>chain = prompt | llm<br><br><span class="hljs-comment"># 4. 调用 chain，传入用户实际输入（这里要求生成一篇关于 AI 的技术短文）</span><br>result = chain.invoke(&#123;<br>    <span class="hljs-string">&quot;input&quot;</span>: <span class="hljs-string">&quot;帮我写一篇关于AI的技术文章，100个字&quot;</span><br>&#125;)<br><br><span class="hljs-comment"># 5. 打印 LLM 返回的结果</span><br><span class="hljs-built_in">print</span>(result)<br><br><span class="hljs-comment"># 输出格式：content: ‘xxxxxx’</span><br></code></pre></td></tr></table></figure>
+<h3 id="LangChain-输出解析器（Output-Parser）用法"><a class="header-anchor" href="#LangChain-输出解析器（Output-Parser）用法"> </a>LangChain 输出解析器（Output Parser）用法</h3>
+<p>LLM 的原始输出通常是一条消息对象。为了方便后续处理，可以用输出解析器将其转为字符串、JSON 或其它结构化数据。</p>
+<ul>
+<li><strong>代码示例：</strong>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain_core.output_parsers <span class="hljs-keyword">import</span> StrOutputParser<br><br><span class="hljs-comment"># 创建一个字符串输出解析器</span><br>output_parser = StrOutputParser()<br><br><span class="hljs-comment"># 将输出解析器串联进链（Prompt | LLM | OutputParser）</span><br>chain = prompt | llm | output_parser<br><br><span class="hljs-comment"># 调用链并传入输入，得到字符串输出</span><br>result = chain.invoke(&#123;<span class="hljs-string">&quot;input&quot;</span>: <span class="hljs-string">&quot;帮我写一篇 langchain 的技术文章，100 个字&quot;</span>&#125;)<br><span class="hljs-built_in">print</span>(result)<br><br><span class="hljs-comment"># 输出格式：‘xxxxxx’</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>核心说明：</strong></p>
+<ul>
+<li><code>StrOutputParser()</code> 负责把 LLM 输出的消息对象转为纯字符串，适合直接打印或写入文件。</li>
+<li>你可以在链式工作流中，随时追加不同类型的 Output Parser，得到自己想要的数据格式。</li>
+<li>实际开发中，如果需要结构化数据（如 JSON），可用 <code>JsonOutputParser()</code> 或自定义解析器。</li>
+</ul>
+<h2 id="参考资料"><a class="header-anchor" href="#参考资料"> </a>参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BgfBYoEpQ/?share_source=copy_web&amp;vd_source=8d35cf5786680af0d12d60f16ff554fb">2025吃透LangChain大模型</a></li>
+</ul>
+
+              
+            </div>
+          
+
+
+            <hr/>
+
+
+            <!-- 添加打赏模块 -->
+            <div class="reward-container">
+              
+                <button id="rewardBtn" class="reward-btn">
+                   
+                    ❤ 打赏
+                   
+                </button>
+                <p class="tea">“觉得不错的话，给点打赏吧 ୧(๑•̀⌄•́๑)૭”</p>
+                <div id="rewardImgContainer" class="reward-img-container">
+                      <div class="singleImgContainer">
+                          <img id="wechatImg" class="reward-img" src="/img/wechatpay.webp" srcset="/img/loading.gif" lazyload alt="微信二维码">
+                            <p class="wechatPay">微信支付</p>
+                        </div>
+                        <div class="singleImgContainer">
+                            <img id="alipayImg" class="reward-img" src="/img/alipay.webp" srcset="/img/loading.gif" lazyload alt="支付宝二维码">
+                            <p class="aliPay">支付宝支付</p>
+                        </div>
+                </div>
+              
+            </div>
+            
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
+      
+        <a href="/tags/LLM/" class="print-no-link">#LLM</a>
+      
+        <a href="/tags/LangChain/" class="print-no-link">#LangChain</a>
+      
+        <a href="/tags/Framework/" class="print-no-link">#Framework</a>
+      
+        <a href="/tags/RAG/" class="print-no-link">#RAG</a>
+      
+        <a href="/tags/Agent/" class="print-no-link">#Agent</a>
+      
+        <a href="/tags/LCEL/" class="print-no-link">#LCEL</a>
+      
+        <a href="/tags/Chain/" class="print-no-link">#Chain</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LangChain 1 基础概念</div>
+      <div>http://neurowave.tech/2025/06/25/2-10-LLM-Langchain1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Artin Tan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月25日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月6日</div>
+        </div>
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/06/26/2-11-LLM-Langchain2/" title="LangChain 2 基础用法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LangChain 2 基础用法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/06/24/11-8.5-Deepseek-V3/" title="8. DeepSeek-V3（V2）详读 5 (设施+预训练+后训练)">
+                        <span class="hidden-mobile">8. DeepSeek-V3（V2）详读 5 (设施+预训练+后训练)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ArtinTYT/artintyt.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+      
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+    </main>
+    <footer>
+      <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/vvd_js/duration.js"></script>
+<p>Copyright © 2025 Artin Tan. All rights reserved.</p> </div> 
+    </div>
+
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div> 
+
+
+    </footer>
+    <!-- Scripts -->
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="/js/reward.js"></script>
+
+
+
+
+<script src="/js/tag-animation.js"></script>
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- 显示"updated"标志 -->
+<script src="/js/update-flag.js" defer></script>
+
+
+    
+    <noscript>
+      <div class="noscript-warning">本博客需要启用 JavaScript 才能正常工作</div>
+    </noscript>
+
+</body>
+</html>

@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+
+<head>
+  <meta name="google-site-verification" content="cnOWbCdVjOE1hzvGpOW0a2AjpTZMUTGuFseBvrSMLRY" />
+
+  
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/webicon.webp">
+  <link rel="icon" href="/img/webicon.webp">
+  
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Artin Tan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. 工作流编排是什么？  就是把多个步骤（如提示词构建、模型推理、输出解析、工具调用等）组合成一条自动化流水线。 你可以像搭积木一样，把 Prompt、LLM、OutputParser、甚至外部 API、数据库、工具（Tool&#x2F;Agent）串起来，实现复杂业务流程。   2. 编排方式 LangChain 推荐的工作流编排方式有两种主流：   Pipe（管道式）编排  用 | 把每一步组件串联">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangChain 3 工作流编排">
+<meta property="og:url" content="http://neurowave.tech/2025/06/27/2-12-LLM-Langchain3/index.html">
+<meta property="og:site_name" content="Neurowave">
+<meta property="og:description" content="1. 工作流编排是什么？  就是把多个步骤（如提示词构建、模型推理、输出解析、工具调用等）组合成一条自动化流水线。 你可以像搭积木一样，把 Prompt、LLM、OutputParser、甚至外部 API、数据库、工具（Tool&#x2F;Agent）串起来，实现复杂业务流程。   2. 编排方式 LangChain 推荐的工作流编排方式有两种主流：   Pipe（管道式）编排  用 | 把每一步组件串联">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-27T09:13:20.000Z">
+<meta property="article:modified_time" content="2025-08-06T14:45:58.100Z">
+<meta property="article:author" content="Artin Tan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="LangChain">
+<meta property="article:tag" content="Framework">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="LCEL">
+<meta property="article:tag" content="Chain">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>LangChain 3 工作流编排 - Neurowave</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/reward.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"neurowave.tech","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-FC96VM1C7N"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"8ON9qkshljV8oxXGxtVAtnnA-gzGzoHsz","app_key":"piHBMiVSqE1bKRiQekLsqTCj","server_url":"https://8on9qksh.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":"https://cloud.umami.is/script.js","website_id":"8c8b9955-4b6d-4b58-8e09-86215ee339cb","domains":"neurowave.tech","start_time":"2024-01-01T00:00:00.000Z","token":"api_LSzAvcXXJcDDxmu9cp3tKbTvoRuFb0Q1","api_server":"https://cloud.umami.is"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-FC96VM1C7N", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-FC96VM1C7N');
+        });
+      }
+    </script>
+  
+
+  
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        let umami = document.createElement('script');
+        umami.async = true;
+        umami.src = "https://cloud.umami.is/script.js";
+        umami.setAttribute("data-website-id", "8c8b9955-4b6d-4b58-8e09-86215ee339cb");
+        umami.setAttribute("data-domains", "neurowave.tech");
+        document.head.appendChild(umami);
+      }
+    </script>
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+</head>
+<body>
+    
+    <header>
+      
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Neurowave</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/say/" target="_self">
+                <i class="iconfont icon-comment"></i>
+                <span>说说</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://cloud.umami.is/share/IDuxEAjut0hD9lVV/neurowave.tech" target="_self">
+                <i class="iconfont icon-chart"></i>
+                <span>统计</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LangChain 3 工作流编排"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-27 17:13" pubdate>
+          2025年6月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+
+
+<!-- 在页面合适的位置添加显示评论数的占位符 
+<div class="article-meta-comments">
+  <span class="post-meta-item-icon"><i class="iconfont icon-comment"></i></span>
+  <span id="comment-count"></span>
+  条
+</div>
+
+-->
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+    </header>
+    <main>
+      
+        
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">LangChain 3 工作流编排</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    更新于 2025-08-06T22:45:58+08:00
+                  
+                  
+
+                
+              </p>
+            
+
+
+
+            
+            <div class="markdown-body">
+              
+              <h3 id="1-工作流编排是什么？"><a class="header-anchor" href="#1-工作流编排是什么？"> </a>1. 工作流编排是什么？</h3>
+<ul>
+<li>就是把<strong>多个步骤</strong>（如提示词构建、模型推理、输出解析、工具调用等）<strong>组合成一条自动化流水线</strong>。</li>
+<li>你可以像搭积木一样，把 Prompt、LLM、OutputParser、甚至外部 API、数据库、工具（Tool/Agent）串起来，实现复杂业务流程。</li>
+</ul>
+<h3 id="2-编排方式"><a class="header-anchor" href="#2-编排方式"> </a>2. 编排方式</h3>
+<p>LangChain 推荐的工作流编排方式有两种主流：</p>
+<ol>
+<li>
+<p>Pipe（管道式）编排</p>
+<ul>
+<li>用 <code>|</code> 把每一步组件串联起来，数据自动在各环节流转。</li>
+<li>常见于 Prompt → LLM → OutputParser。</li>
+<li><strong>代码举例</strong>（最基础串联）：  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">chain = prompt | llm | output_parser<br>result = chain.invoke(&#123;<span class="hljs-string">&quot;input&quot;</span>: <span class="hljs-string">&quot;帮我写一篇AI科普文章&quot;</span>&#125;)<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>控制流（Chain/Router/Branch）编排</p>
+<ul>
+<li>用 Chain 对象（如 SequentialChain, SimpleSequentialChain, MultiRouteChain 等），灵活实现多步、条件分支、循环、工具调用等更复杂的流程。</li>
+<li>可以实现：
+<ul>
+<li>串行多步任务</li>
+<li>动态分支</li>
+<li>结果汇总/路由/多模型混合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-单模型的同步流式输出（Streaming）"><a class="header-anchor" href="#3-单模型的同步流式输出（Streaming）"> </a>3. 单模型的同步流式输出（Streaming）</h3>
+<p><strong>适用场景</strong>： 只需要调用单一模型（如 ChatOpenAI），获取输出的每一小段（chunk）并实时处理，无需异步。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> ChatOpenAI<br><br>model = ChatOpenAI(model=<span class="hljs-string">&quot;gpt-4&quot;</span>)<br><br>chunks = []<br><span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> model.stream(<span class="hljs-string">&quot;天空是什么颜色？&quot;</span>):<br>    chunks.append(chunk)<br>    <span class="hljs-built_in">print</span>(chunk.content, end=<span class="hljs-string">&quot;|&quot;</span>, flush=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>model.stream()</code> 方法可以实时获取 LLM 输出的每一小段内容（chunk）。</li>
+<li>适合做“打字机”效果、对话流式显示、前端体验增强等场景。</li>
+<li>你可以边收集结果（append），边在终端/网页实时展示。</li>
+<li>属于同步方式调用</li>
+</ul>
+<h3 id="4-基于-Chain-的异步流式输出"><a class="header-anchor" href="#4-基于-Chain-的异步流式输出"> </a>4. 基于 Chain 的异步流式输出</h3>
+<p><strong>适用场景</strong>： 多步链式工作流（如 prompt → model → output_parser），需要异步处理和流式消费大模型输出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> ChatOpenAI<br><span class="hljs-keyword">from</span> langchain_core.output_parsers <span class="hljs-keyword">import</span> StrOutputParser<br><span class="hljs-keyword">from</span> langchain_core.prompts <span class="hljs-keyword">import</span> ChatPromptTemplate<br><span class="hljs-keyword">import</span> asyncio<br><br>prompt = ChatPromptTemplate.from_template(<span class="hljs-string">&quot;给我讲一个关于&#123;topic&#125;的笑话&quot;</span>)<br>model = ChatOpenAI(model=<span class="hljs-string">&quot;gpt-4&quot;</span>)<br>parser = StrOutputParser()<br>chain = prompt | model | parser<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">async_stream</span>():<br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> chain.astream(&#123;<span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;鹦鹉&quot;</span>&#125;):<br>        <span class="hljs-built_in">print</span>(chunk, end=<span class="hljs-string">&quot;|&quot;</span>, flush=<span class="hljs-literal">True</span>)<br><br>asyncio.run(async_stream())<br><br></code></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>chain.astream()</code> 支持异步流式消费，可以实时输出每一段内容，适合 WebSocket、前端“打字机”体验。</li>
+<li>多步链路自动传递数据，链式结构可扩展性强。</li>
+</ul>
+<h3 id="5-LangChain-异步流式输出-JSON-格式"><a class="header-anchor" href="#5-LangChain-异步流式输出-JSON-格式"> </a>5. LangChain 异步流式输出 JSON 格式</h3>
+<p><strong>基本用法</strong></p>
+<ul>
+<li>通过 <code>JsonOutputParser</code> 让大模型输出自动解析为 JSON 格式。</li>
+<li>结合异步流式 (<code>chain.astream</code>) 实现边生成边消费，适合大数据量、实时展示等场景。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> asyncio<br><span class="hljs-keyword">from</span> langchain_core.output_parsers <span class="hljs-keyword">import</span> JsonOutputParser<br><span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> ChatOpenAI<br><br><span class="hljs-comment"># 初始化大模型</span><br>model = ChatOpenAI(model=<span class="hljs-string">&quot;gpt-4&quot;</span>)<br><br><span class="hljs-comment"># 构建链式工作流：模型输出 | JSON解析器</span><br>chain = (<br>	model | JsonOutputParser()<br>)<br><br><span class="hljs-comment"># 异步流式消费模型输出，自动解析为 JSON 结构</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">async_stream</span>():<br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> text <span class="hljs-keyword">in</span> chain.astream(<br>        <span class="hljs-string">&quot;以JSON格式输出法国、西班牙和日本的国家及其人口列表。&quot;</span><br>        <span class="hljs-string">&quot;使用一个带有&#x27;countries&#x27;外部键的字典，其中包含国家列表。&quot;</span><br>        <span class="hljs-string">&quot;每个国家都应该有键&#x27;name&#x27;和&#x27;population&#x27;&quot;</span><br>    ):<br>        <span class="hljs-built_in">print</span>(text, flush=<span class="hljs-literal">True</span>)<br><br>asyncio.run(async_stream())<br><br></code></pre></td></tr></table></figure>
+<p><strong>输出：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;&#x27;<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">670</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">670810</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">67081000</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">67081000</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">67081000</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;&#x27;<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">67081000</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;Spain&#x27;<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">67081000</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;Spain&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">467</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#123;</span>&#x27;countries&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;France&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">67081000</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span>&#x27;name&#x27;<span class="hljs-punctuation">:</span> &#x27;Spain&#x27;<span class="hljs-punctuation">,</span> &#x27;population&#x27;<span class="hljs-punctuation">:</span> <span class="hljs-number">467330</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>如果不用 <code>JsonOutputParser()</code> 会返回一堆很乱的东西</li>
+</ul>
+<h2 id="6-Stream-events（事件流）"><a class="header-anchor" href="#6-Stream-events（事件流）"> </a>6. Stream events（事件流）</h2>
+<ul>
+<li>
+<p><strong>事件流（Stream Events）</strong> 是 LangChain 新引入的功能（beta API），用于追踪/监听 LLM 流式输出过程中的事件，比如每一步产出的 token、消息或阶段性结果。</p>
+</li>
+<li>
+<p>这相比传统的 <code>stream</code> 和 <code>astream</code> 更细粒度，适合更高级的流式控制、前端交互、链路追踪等需求。</p>
+</li>
+<li>
+<p>需 <code>langchain-core &gt;= 0.2</code>，推荐使用 async/await，流式操作建议用 <code>.astream()</code>。</p>
+</li>
+<li>
+<p>事件流的典型应用与注意事项</p>
+<ul>
+<li>用于前端进度条、可视化展示、链路调试和详细日志追踪。</li>
+<li>在流式传输中，只有<strong>输入全部消费完成</strong>才会触发 end 事件（inputs 通常只在 end 事件里完整返回）。</li>
+</ul>
+</li>
+<li>
+<p><strong>常见事件参考表</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>名称</th>
+<th>输入（示例）</th>
+<th>输出（示例）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>on_chat_model_start</td>
+<td>[模型名称]</td>
+<td><code>&#123;&quot;messages&quot;: [[SystemMessage, HumanMessage]]&#125;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>on_chat_model_end</td>
+<td>[模型名称]</td>
+<td><code>&#123;&quot;messages&quot;: [[SystemMessage, HumanMessage]]&#125;</code></td>
+<td><code>AIMessageChunk(content=&quot;hello world&quot;)</code></td>
+</tr>
+<tr>
+<td>on_llm_start</td>
+<td>[模型名称]</td>
+<td><code>&#123;'input': 'hello'&#125;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>on_llm_stream</td>
+<td>[模型名称]</td>
+<td></td>
+<td><code>'Hello'</code></td>
+</tr>
+<tr>
+<td>on_llm_end</td>
+<td>[模型名称]</td>
+<td></td>
+<td><code>'Hello human!'</code></td>
+</tr>
+<tr>
+<td>on_chain_start</td>
+<td>format_docs</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>on_chain_stream</td>
+<td>format_docs</td>
+<td><code>&quot;hello world!, goodbye world!&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>on_chain_end</td>
+<td>format_docs</td>
+<td><code>[Document(...)]</code></td>
+<td><code>&quot;hello world!, goodbye world!&quot;</code></td>
+</tr>
+<tr>
+<td>on_tool_start</td>
+<td>some_tool</td>
+<td><code>&#123;&quot;x&quot;: 1, &quot;y&quot;: &quot;2&quot;&#125;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>on_tool_end</td>
+<td>some_tool</td>
+<td><code>&#123;&quot;x&quot;: 1, &quot;y&quot;: &quot;2&quot;&#125;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>on_retriever_start</td>
+<td>[检索器名称]</td>
+<td><code>&#123;&quot;query&quot;: &quot;hello&quot;&#125;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>on_retriever_end</td>
+<td>[检索器名称]</td>
+<td><code>&#123;&quot;query&quot;: &quot;hello&quot;&#125;</code></td>
+<td><code>[Document(...), ..]</code></td>
+</tr>
+<tr>
+<td>on_prompt_start</td>
+<td>[模板名称]</td>
+<td><code>&#123;&quot;question&quot;: &quot;hello&quot;&#125;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>on_prompt_end</td>
+<td>[模板名称]</td>
+<td><code>&#123;&quot;question&quot;: &quot;hello&quot;&#125;</code></td>
+<td><code>ChatPromptValue(messages: [SystemMessage, ...])</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>LangChain 事件流（astream_events）监听示例</strong>： 实时监听 LLM（如 gpt-4）推理过程中的所有事件，将事件对象逐一收集到列表（如日志、调试、追踪用途）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> ChatOpenAI<br><span class="hljs-keyword">import</span> asyncio<br><br>model = ChatOpenAI(model=<span class="hljs-string">&quot;gpt-4&quot;</span>)<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">async_stream</span>():<br>    events = []<br>    <span class="hljs-comment"># 监听 gpt-4 推理全过程中的事件（需指定 version=&quot;v2&quot;）</span><br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> model.astream_events(<span class="hljs-built_in">input</span>=<span class="hljs-string">&quot;hello&quot;</span>, version=<span class="hljs-string">&quot;v2&quot;</span>):<br>        events.append(event)<br>    <span class="hljs-built_in">print</span>(events)<br><br><span class="hljs-comment"># 运行异步事件流监听</span><br>asyncio.run(async_stream())<br></code></pre></td></tr></table></figure>
+<h2 id="7-LangChain-asyncio-同步-异步任务串行与并发调用"><a class="header-anchor" href="#7-LangChain-asyncio-同步-异步任务串行与并发调用"> </a>7. LangChain + asyncio 同步/异步任务串行与并发调用</h2>
+<p><strong>场景</strong>：需要依次执行多个 LLM 相关异步任务（比如先问 GPT-4 一个问题，再问 GPT-4o 另一个问题），<strong>每次等上一个任务流式结束才开始下一个</strong>。</p>
+<p><strong>Python asyncio ≠ 多线程，不是“真正的并行”！</strong></p>
+<ul>
+<li><strong>asyncio</strong> 提供的是<strong>协程</strong>（coroutine），本质上是<strong>单线程+多任务</strong>，任务之间是<strong>并发</strong>（concurrent），<strong>不是并行</strong>（parallel）。</li>
+<li><strong>并发</strong>：任务可以你一下我一下轮流执行，遇到I/O就切换（适合网络、文件流等“等”的场景）。</li>
+<li><strong>并行</strong>：同一时刻多个CPU核心真的<strong>同时</strong>干活，只有多线程/多进程才是真并行。</li>
+</ul>
+<p><strong>总结：</strong></p>
+<ul>
+<li>asyncio == 协程 == 并发 ≠ 并行（不是多线程/多进程）</li>
+<li>真正多核并行运算要用多线程/多进程（但API型I/O任务，协程足够了）。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> ChatOpenAI<br><span class="hljs-keyword">import</span> asyncio<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">task1</span>():<br>    gpt4 = ChatOpenAI(model=<span class="hljs-string">&quot;gpt-4&quot;</span>)<br>    chunks = []<br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> gpt4.astream(<span class="hljs-string">&quot;天空是什么颜色？&quot;</span>):<br>        chunks.append(chunk)<br>        <span class="hljs-comment"># 在收到第二个 chunk 时，输出它</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(chunks) == <span class="hljs-number">2</span>:<br>            <span class="hljs-built_in">print</span>(chunks[<span class="hljs-number">1</span>])<br>        <span class="hljs-built_in">print</span>(chunk.content, end=<span class="hljs-string">&quot;|&quot;</span>, flush=<span class="hljs-literal">True</span>)<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">task2</span>():<br>    gpt4o = ChatOpenAI(model=<span class="hljs-string">&quot;gpt-4o&quot;</span>)<br>    chunks = []<br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> gpt4o.astream(<span class="hljs-string">&quot;讲个笑话？&quot;</span>):<br>        chunks.append(chunk)<br>        <span class="hljs-comment"># 打印收到的第二块内容（chunks[1]），注意下标从0开始</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(chunks) == <span class="hljs-number">2</span>:<br>            <span class="hljs-built_in">print</span>(chunks[<span class="hljs-number">1</span>])<br>        <span class="hljs-built_in">print</span>(chunk.content, end=<span class="hljs-string">&quot;|&quot;</span>, flush=<span class="hljs-literal">True</span>) <span class="hljs-comment"># 实际流式场景可推送到前端</span><br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">main_sync</span>():<br>    <span class="hljs-comment"># 串行：task1完全结束后，才会跑task2</span><br>    <span class="hljs-comment"># 适用场景：上下游有依赖、必须一个一个排队执行。</span><br>    <span class="hljs-keyword">await</span> task1()<br>    <span class="hljs-keyword">await</span> task2()<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">main_async</span>():<br>    <span class="hljs-comment"># gather可以让多个任务“同时”启动、协作切换，I/O等待时不阻塞</span><br>    <span class="hljs-keyword">await</span> asyncio.gather(task1(), task2())<br><br><span class="hljs-comment"># 启动主函数</span><br>asyncio.run(main_async())<br><span class="hljs-comment"># asyncio.run(main_sync())</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>关键点</strong></p>
+<ul>
+<li><strong>await task1() / await task2()</strong>：表示<strong>串行/顺序</strong>调用，等 task1 完全执行结束后，才会执行 task2，适合有前后依赖关系的流程。</li>
+<li><strong>asyncio.gather(task1(), task2())</strong>：表示<strong>协程并发</strong>（不是多线程/并行），让多个任务“看起来同时”运行，I/O等待时自动切换，适合多个互不依赖的 I/O 密集型任务。</li>
+<li><strong>流式输出</strong>：<code>async for chunk in ... astream(...)</code>：能逐步获取 LLM 生成内容，每一块（chunk）立即处理，提高响应速度和用户体验。</li>
+</ul>
+</li>
+<li>
+<p><strong>应用场景</strong></p>
+<ul>
+<li><strong>有前后依赖/顺序要求</strong>的 LLM 数据处理/分析，建议用“串行”方式（await task1(); await task2()）。</li>
+<li><strong>多个任务互不依赖</strong>、需要加速整体效率时，可以用 asyncio.gather 实现“协程并发”。</li>
+<li><strong>记住</strong>：CPU密集型并行要用多线程/多进程；API/网络/流式I/O密集用协程即可。</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料"><a class="header-anchor" href="#参考资料"> </a>参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BgfBYoEpQ/?p=3&amp;share_source=copy_web&amp;vd_source=8d35cf5786680af0d12d60f16ff554fb">2025吃透LangChain大模型</a></li>
+</ul>
+
+              
+            </div>
+          
+
+
+            <hr/>
+
+
+            <!-- 添加打赏模块 -->
+            <div class="reward-container">
+              
+                <button id="rewardBtn" class="reward-btn">
+                   
+                    ❤ 打赏
+                   
+                </button>
+                <p class="tea">“觉得不错的话，给点打赏吧 ୧(๑•̀⌄•́๑)૭”</p>
+                <div id="rewardImgContainer" class="reward-img-container">
+                      <div class="singleImgContainer">
+                          <img id="wechatImg" class="reward-img" src="/img/wechatpay.webp" srcset="/img/loading.gif" lazyload alt="微信二维码">
+                            <p class="wechatPay">微信支付</p>
+                        </div>
+                        <div class="singleImgContainer">
+                            <img id="alipayImg" class="reward-img" src="/img/alipay.webp" srcset="/img/loading.gif" lazyload alt="支付宝二维码">
+                            <p class="aliPay">支付宝支付</p>
+                        </div>
+                </div>
+              
+            </div>
+            
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
+      
+        <a href="/tags/LLM/" class="print-no-link">#LLM</a>
+      
+        <a href="/tags/LangChain/" class="print-no-link">#LangChain</a>
+      
+        <a href="/tags/Framework/" class="print-no-link">#Framework</a>
+      
+        <a href="/tags/RAG/" class="print-no-link">#RAG</a>
+      
+        <a href="/tags/Agent/" class="print-no-link">#Agent</a>
+      
+        <a href="/tags/LCEL/" class="print-no-link">#LCEL</a>
+      
+        <a href="/tags/Chain/" class="print-no-link">#Chain</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LangChain 3 工作流编排</div>
+      <div>http://neurowave.tech/2025/06/27/2-12-LLM-Langchain3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Artin Tan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月27日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月6日</div>
+        </div>
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/06/28/2-14-LLM-Rag/" title="RAG（检索增强生成）及本地知识库开发实践">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">RAG（检索增强生成）及本地知识库开发实践</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/06/26/2-11-LLM-Langchain2/" title="LangChain 2 基础用法">
+                        <span class="hidden-mobile">LangChain 2 基础用法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ArtinTYT/artintyt.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+      
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+    </main>
+    <footer>
+      <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/vvd_js/duration.js"></script>
+<p>Copyright © 2025 Artin Tan. All rights reserved.</p> </div> 
+    </div>
+
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div> 
+
+
+    </footer>
+    <!-- Scripts -->
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="/js/reward.js"></script>
+
+
+
+
+<script src="/js/tag-animation.js"></script>
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- 显示"updated"标志 -->
+<script src="/js/update-flag.js" defer></script>
+
+
+    
+    <noscript>
+      <div class="noscript-warning">本博客需要启用 JavaScript 才能正常工作</div>
+    </noscript>
+
+</body>
+</html>
