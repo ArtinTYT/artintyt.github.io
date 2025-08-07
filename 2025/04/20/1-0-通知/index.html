@@ -34,7 +34,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://neurowave.tech/images/img/Pasted%20image%2020250802214929.png">
 <meta property="article:published_time" content="2025-04-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-07T05:52:04.764Z">
+<meta property="article:modified_time" content="2025-08-07T09:02:35.431Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="通知">
 <meta property="article:tag" content="心得">
@@ -305,7 +305,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          2.4k 字
         
       </span>
     
@@ -316,7 +316,7 @@
         
         
         
-          20 分钟
+          21 分钟
         
       </span>
     
@@ -380,7 +380,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-08-07T13:52:04+08:00
+                    更新于 2025-08-07T17:02:35+08:00
                   
                   
 
@@ -418,7 +418,7 @@
 <li>缺点：
 <ul>
 <li>中文有时候太简洁，突然冒出文言文的感觉，比如：<code>强烈建议系统学一遍</code> --&gt; <code>强建议系统学一遍</code></li>
-<li>之前 DeepSeek 出来后，ChatGPT 被卷出“Thinkin…”功能，强行输出推理过程，结果做得很烂，我有段时间直接弃坑。现在他们又回归正常。
+<li>之前 DeepSeek 出来后，ChatGPT 被卷出“Thinking…”功能，强行输出推理过程，结果做得很烂，我有段时间直接弃坑。现在他们又回归正常。
 <ul>
 <li>DeepSeek 的推理过程条理更清晰，直接能拿来当参考。</li>
 <li>但 ChatGPT 不是开源，内部规范复杂（还有法律/隐私问题），所以在输出推理过程时各种限制，实际参考价值很有限。</li>
@@ -436,7 +436,7 @@
 <li>技术储备丰富：
 <ul>
 <li>优点：讲解知识的时候，会比ChatGPT输出更多细节</li>
-<li>缺点：但有<strong>些</strong>东西是错误❎的，特别是讲解相对深奥一点的理论数学（这是弃坑的主要原因，科学和技术必须严谨）</li>
+<li>缺点：但有些东西是错误的，特别是讲解相对深奥一点的理论数学。还有就是会扩展回答，说一些我根本不需要的东西。</li>
 </ul>
 </li>
 <li><code>Thinking...</code> 功能有点意思，如果你想提升逻辑推理能力，可以照着 DeepSeek 的思路学一学。</li>
@@ -451,7 +451,7 @@
 <li>但也会翻车，比如：<code>对中文手写识别必须夸一下</code> --&gt; <code>对中文手写识别心页夸一下</code>（所以到底有没有校准过语义？）</li>
 </ul>
 </li>
-<li>修改代码挺不错的，比如我写了个ChatGPT API的小demo，里面使用了 Python 代码嵌入了 markdown+js+html，ChatGPT ChatGPT 改静态页面时会把 Python 代码一锅端，导致功能失效。但 Qwen 就可以很好识别出代码结构，只修改静态页面内容。</li>
+<li>修改代码挺不错的，比如我写了个 ChatGPT API 的小demo，里面使用了 Python 代码嵌入了 markdown+js+html，ChatGPT 改静态页面时会把 Python 代码一锅端，导致功能失效。但 Qwen 就可以很好识别出代码结构，只修改静态页面内容。</li>
 <li>“不听话”，对知识性内容边界感很差。让它整理笔记会自己乱加数据，比如：<strong>实测可减少约30%未登录词</strong>，我问数据怎么来的，它说<strong>可能源于经验总结和行业通用认知</strong>。ChatGPT给它说好话，说它可能是输入了很多业界的经验数据，建议我还是保留原文。</li>
 <li>其实想说 Qwen 是第二心头好，但是发现它非常不稳定，决定换成 DeepSeek+ChatGPT 联合使用了，Qwen放一放。</li>
 </ul>
@@ -489,13 +489,12 @@
 <li>
 <p><strong>Gemini</strong>：</p>
 <ul>
-<li>之前觉得不太好用，但是我最近弄了个插件可以识别学习视频内容，并整理成笔记做的太好了</li>
-<li>不是和某些视频平台弄得总结功能，那种总结功能有跟没有一样，视频内容总结约等于没看</li>
-<li>我把插件内默认免费的是Gemini 2.5 Flash Lite，整理一个32分钟的技术视频，做的非常好，没有缺失重要信息</li>
-<li>然后我把字幕copy到 ChatGPT-4o 和换了插件模型为DeepSeek-R1, ChatGPT确实在整理就是做的不行。但DeepSeek-R1 就是在 “总结”内容，把几千字的笔记 总结成一些废话。</li>
-<li>这里的难点就是，up在说的时候，口音识别出来的字幕有错的，这需要模型可以根据前后文纠正。</li>
-<li>再就是模型对内容的梳理分块，不知道Gemini怎么做的，反正跟视频up节奏是一样的。（比如，一个知识点，它可以是接着上面讲，也可以是下面的新知识点，模型把知识点放到 Chapter 1 还是放到Chapter 2 这是有讲究的。）</li>
-<li>准得简直像偷看了up屏幕一样<br>
+<li>我以前觉得Gemini不太好用，但最近发现了一个插件，能自动识别学习视频的内容并整理成笔记，体验太好了。这个插件默认用的是Gemini 2.5 Flash Lite模型，整理了一个32分钟的技术视频，重要信息一个不落，笔记结构清晰。</li>
+<li>不是那种视频网站自带的“总结功能”，那种总结纯属摆设，看完和没看差不多。</li>
+<li>我还试了下，把字幕丢到ChatGPT-4o和DeepSeek-R1。ChatGPT整理出来就不行（内容多且复杂且错误词语很多），DeepSeek-R1直接把几千字的内容总结成几句废话，完全没用。</li>
+<li>最大的难点在于，32分钟视频字幕巨长，UP主说话有口音，字幕识别经常出错，这就要求模型能根据上下文自动纠错。</li>
+<li>还有就是内容分块的逻辑，Gemini好像能跟着视频节奏梳理知识点，分章节分得很合理（比如一个知识点到底归到上一个章节还是下一个章节，这很重要）。</li>
+<li>准得简直像偷看了屏幕一样<br>
 <img src="/images/img/Pasted image 20250802214929.png" srcset="/img/loading.gif" lazyload width=400 style="display: block; margin: 0 auto;"/></li>
 </ul>
 </li>
@@ -522,7 +521,7 @@
 <h2 id="学习过程-心得"><a class="header-anchor" href="#学习过程-心得"> </a>学习过程+心得</h2>
 <ol>
 <li>
-<p>李沐《手动深度学习》视频 + 书</p>
+<p>李沐《手动深度学习+PyTorch》视频 + 书</p>
 <ul>
 <li>李沐老师的讲解非常清晰，无论理论、实践还是应用发展，都很有条理，强烈建议系统学一遍。</li>
 <li>全部笔记我博客有完整版，可以参考，最好还是自己写一遍。</li>
@@ -542,7 +541,17 @@
 </ol>
 <ul>
 <li>这本书我挺喜欢的，知识非常详细和扎实，严谨度高</li>
+<li>主要学的就是Transformer底层，GPT底层，DeepSeek-V3底层，一些Attention优化的思想</li>
 </ul>
+<ol start="3">
+<li>阅读量大核心 大模型论文InstructGPT 和 DeepSeek-V3</li>
+</ol>
+<ul>
+<li>里面有很多很棒的思想和技术</li>
+</ul>
+<ol start="4">
+<li>学习应用技术，Rag（LangChain,Llamaindex），LangGraph，Agent，MCP应用技术，Agent+MCP企业级高并发相关设计。dify,Coze可以玩一下。</li>
+</ol>
 
               
             </div>
