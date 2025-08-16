@@ -309,6 +309,261 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2025/06/28/2-13-LLM-Langchain4/" target="_self">
+          LangChain 4 服务部署与链路监控
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/28/2-13-LLM-Langchain4/" target="_self">
+        <div>
+          LangServe 服务部署 LangSmith Tracing（跟踪） Verbose（详细日志打印） Debug（调试日志打印）  内容会参数版本冲突问题，Pydantic 需要 v2.x 才能访问openapi.json，但是 LangServe需要 v1 才能使用。所以仅供学习参考，暂时我没有解决的方法。我感觉作者演示的时候使用的 v1 的 langserve app 打开的 API 文
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-28 15:31" pubdate>
+              2025-06-28
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/Framework/">#Framework</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/Agent/">#Agent</a>
+            
+              <a href="/tags/LCEL/">#LCEL</a>
+            
+              <a href="/tags/Chain/">#Chain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/06/27/2-12-LLM-Langchain3/" target="_self">
+          LangChain 3 工作流编排
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/27/2-12-LLM-Langchain3/" target="_self">
+        <div>
+          1. 工作流编排是什么？  就是把多个步骤（如提示词构建、模型推理、输出解析、工具调用等）组合成一条自动化流水线。 你可以像搭积木一样，把 Prompt、LLM、OutputParser、甚至外部 API、数据库、工具（Tool/Agent）串起来，实现复杂业务流程。   2. 编排方式 LangChain 推荐的工作流编排方式有两种主流：   Pipe（管道式）编排  用 | 把每一步组件串联
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-27 17:13" pubdate>
+              2025-06-27
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/Framework/">#Framework</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/Agent/">#Agent</a>
+            
+              <a href="/tags/LCEL/">#LCEL</a>
+            
+              <a href="/tags/Chain/">#Chain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/06/26/2-11-LLM-Langchain2/" target="_self">
+          LangChain 2 基础用法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/26/2-11-LLM-Langchain2/" target="_self">
+        <div>
+          1. LangChain 聊天模板（ChatPromptTemplate）用法  1.1 通过消息数组创建聊天消息模板   用 ChatPromptTemplate.from_messages() 创建聊天消息模板。   每条消息由“角色/类型”+“内容”组成。常见角色有：  system：系统消息 human：用户消息 ai：AI/助手回复    消息内容支持插入参数（如 &#123;name
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-26 07:51" pubdate>
+              2025-06-26
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LLMs/" class="category-chain-item">LLMs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/LLM/">#LLM</a>
+            
+              <a href="/tags/LangChain/">#LangChain</a>
+            
+              <a href="/tags/Framework/">#Framework</a>
+            
+              <a href="/tags/RAG/">#RAG</a>
+            
+              <a href="/tags/Agent/">#Agent</a>
+            
+              <a href="/tags/LCEL/">#LCEL</a>
+            
+              <a href="/tags/Chain/">#Chain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2025/06/25/2-10-LLM-Langchain1/" target="_self">
           LangChain 1 基础概念
         </a>
@@ -872,254 +1127,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/11/11-3-Rao-Kupper/" target="_self">
-          3. The Rao-Kupper Model
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/11-3-Rao-Kupper/" target="_self">
-        <div>
-          The Rao-Kupper Model  声明：本文为本人毕业研究报告《The Exploration of Pairwise Comparison in Football Application》中的部分内容摘录与整理，仅用于学习与交流。   Introduction Rao and Kupper [1] extended the Bradley-Terry model [2] for pai
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-11 14:01" pubdate>
-              2023-12-11
-            </time>
-
-                        
-            
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/PairwiseComparison/">#PairwiseComparison</a>
-            
-              <a href="/tags/Psychometrics/">#Psychometrics</a>
-            
-              <a href="/tags/Statistics/">#Statistics</a>
-            
-              <a href="/tags/RaoKupper/">#RaoKupper</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/11/11-2-Bradley-Terry/" target="_self">
-          2. The Bradley-Terry Model
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/11-2-Bradley-Terry/" target="_self">
-        <div>
-          The Bradley-Terry Model 声明：本文为本人毕业研究报告《The Exploration of Pairwise Comparison in Football Application》中的部分内容摘录与整理，仅用于学习与交流。  Introduction The core Bradley-Terry model was proposed by Ralph Allan Bradl
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-11 09:01" pubdate>
-              2023-12-11
-            </time>
-
-                        
-            
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/PairwiseComparison/">#PairwiseComparison</a>
-            
-              <a href="/tags/Psychometrics/">#Psychometrics</a>
-            
-              <a href="/tags/Statistics/">#Statistics</a>
-            
-              <a href="/tags/BradleyTerry/">#BradleyTerry</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/01/11-1-Thurston/" target="_self">
-          1. The Thurstone Model
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/01/11-1-Thurston/" target="_self">
-        <div>
-          The Thurstone Model 声明：本文为本人毕业研究报告《The Exploration of Pairwise Comparison in Football Application》中的部分内容摘录与整理，仅用于学习与交流。  Introduction The method of paired comparisons, originally proposed by Thurstone
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-01 15:01" pubdate>
-              2023-12-01
-            </time>
-
-                        
-            
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-chain-item">Paper阅读</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Paper/">#Paper</a>
-            
-              <a href="/tags/Thurstone/">#Thurstone</a>
-            
-              <a href="/tags/PairwiseComparison/">#PairwiseComparison</a>
-            
-              <a href="/tags/Psychometrics/">#Psychometrics</a>
-            
-              <a href="/tags/Statistics/">#Statistics</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
