@@ -309,6 +309,243 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2025/04/18/8-3-CNN-%E5%A1%AB%E5%85%85%E5%92%8C%E6%AD%A5%E5%B9%85/" target="_self">
+          3.填充和步幅（padding &amp; stride）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/8-3-CNN-%E5%A1%AB%E5%85%85%E5%92%8C%E6%AD%A5%E5%B9%85/" target="_self">
+        <div>
+          3. 填充和步幅（Padding &amp; Stride）  1.填充（Padding）  给定 32×32 的输入图像，应用 5×5 卷积核：  第1层输出大小为 28×28 第7层输出大小为 4×4   更大的卷积核会让输出尺寸更快减小  形状从 nh×nw 减少到 (nh−kh+1)×(nw−kw+1) 其中 nh,nw 是输入的高和宽，kh,kw 是卷积核的高和宽。   在输入周围添加格
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-18 17:13" pubdate>
+              2025-04-18
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CNNs/" class="category-chain-item">CNNs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/CNN/">#CNN</a>
+            
+              <a href="/tags/Padding/">#Padding</a>
+            
+              <a href="/tags/Stride/">#Stride</a>
+            
+              <a href="/tags/DeepLearning/">#DeepLearning</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/18/8-2-CNN-%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF/" target="_self">
+          2.图像卷积
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/8-2-CNN-%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF/" target="_self">
+        <div>
+          2. 图像卷积  1. 卷积运算 → 互相关运算 (cross-correlation)  二维互相关：  定义：将输入和核矩阵进行交叉相乘，加上偏移后得到输出。 示例：     2. 输入输出尺寸  输入 X：大小为 nh×nw（超参数）。 核 (kernel) W：大小为 kh×kw。 偏置 b∈R。 输出 Y：大小为 (nh−kh+1)×(nw−kw+1)。  原因：核滑动时，边缘位置无法完
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-18 15:55" pubdate>
+              2025-04-18
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CNNs/" class="category-chain-item">CNNs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/CNN/">#CNN</a>
+            
+              <a href="/tags/Image/">#Image</a>
+            
+              <a href="/tags/Convolution/">#Convolution</a>
+            
+              <a href="/tags/DeepLearning/">#DeepLearning</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/19/7-6-Attention%E5%A4%9A%E5%A4%B4/" target="_self">
+          6. Multi-Head Self-Attention 多头自注意力
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/19/7-6-Attention%E5%A4%9A%E5%A4%B4/" target="_self">
+        <div>
+          6. Multi-Head Self-Attention 多头自注意力  1. 核心思想  多头注意力（Multi-Head Attention） 是在自注意力（self-attention）基础上的扩展，通过并行设置多个&quot;注意力头&quot;（head），让模型能从不同子空间提取信息，提升表达能力和鲁棒性。   2. 基本结构  基本思路：将 query、key、value 线性投影到
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-19 15:55" pubdate>
+              2025-04-19
+            </time>
+
+                        
+            
+              
+            
+            
+          </div>
+        
+
+
+
+
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Attention/" class="category-chain-item">Attention</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/NLP/">#NLP</a>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+              <a href="/tags/Transformer/">#Transformer</a>
+            
+              <a href="/tags/DeepLearning/">#DeepLearning</a>
+            
+              <a href="/tags/MultiHeadAttention/">#MultiHeadAttention</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2025/04/19/7-5-Attention%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" target="_self">
           5. Positional Encoding 位置编码
         </a>
@@ -853,241 +1090,6 @@
               <a href="/tags/DeepLearning/">#DeepLearning</a>
             
               <a href="/tags/EnvironmentConfiguration/">#EnvironmentConfiguration</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/17/5-4-RNN-LSTM/" target="_self">
-          4.长短期记忆网络 LSTM
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/17/5-4-RNN-LSTM/" target="_self">
-        <div>
-          4. 长短期记忆网络（Long short-term memory, LSTM）  核心思想：LSTM 通过引入&quot;门控&quot;机制，能够选择性地记住有用信息、忘记无用信息，有效缓解RNN在处理长序列时的&quot;梯度消失&quot;和&quot;长期依赖&quot;问题。   1. 门结构与功能  忘记门（Forget Gate）Ft：决定前一时刻记忆 Ct−1 有多少被保留到当前
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-17 15:22" pubdate>
-              2025-04-17
-            </time>
-
-                        
-            
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/RNNs/" class="category-chain-item">RNNs</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NLP/">#NLP</a>
-            
-              <a href="/tags/RNN/">#RNN</a>
-            
-              <a href="/tags/LSTM/">#LSTM</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-              <a href="/tags/SequenceModel/">#SequenceModel</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/17/5-3-RNN-GRU/" target="_self">
-          3.门控循环单元 GRU
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/17/5-3-RNN-GRU/" target="_self">
-        <div>
-          3. 门控循环单元（Gated Recurrent Unit, GRU）  核心思想：GRU 能动态决定当前时刻要&quot;记住&quot;多少过去的信息、要&quot;遗忘&quot;多少无用内容，从而有效缓解传统RNN的长期依赖问题。它通过&quot;更新门&quot;和&quot;重置门&quot;两个机制，灵活调整信息流。   1. 信息处理机制  不是每个历史信息都同等重要，GRU能自
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-17 14:53" pubdate>
-              2025-04-17
-            </time>
-
-                        
-            
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/RNNs/" class="category-chain-item">RNNs</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NLP/">#NLP</a>
-            
-              <a href="/tags/RNN/">#RNN</a>
-            
-              <a href="/tags/GRU/">#GRU</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-              <a href="/tags/SequenceModel/">#SequenceModel</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/17/5-2-RNN-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" target="_self">
-          2.RNN相关基础知识
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/17/5-2-RNN-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" target="_self">
-        <div>
-          2. RNN 相关技术  1. 潜变量自回归模型与RNN   RNN用潜变量 ht 总结历史信息，适合处理序列数据。   隐藏状态更新公式： ht=ϕ(Whhht−1+Whxxt+bh) ht：当前时间步的隐藏状态（记忆） ht−1：上一个时间步的隐藏状态（过去的记忆） xt：当前输入（如词向量） Whh,Whx：可学习的权重矩阵，用于融合历史和当前输入 b：偏置项 ϕ：激活函数（如 tanh 或
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-17 13:33" pubdate>
-              2025-04-17
-            </time>
-
-                        
-            
-              
-            
-            
-          </div>
-        
-
-
-
-
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/RNNs/" class="category-chain-item">RNNs</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NLP/">#NLP</a>
-            
-              <a href="/tags/RNN/">#RNN</a>
-            
-              <a href="/tags/DeepLearning/">#DeepLearning</a>
-            
-              <a href="/tags/SequenceModel/">#SequenceModel</a>
             
           </div>
         

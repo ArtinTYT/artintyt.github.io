@@ -27,7 +27,7 @@
   
     <meta name="description" content="DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE） 本节主要内容：传统MoE架构、DeepSeekMoE、负载均衡（Load Balancing）、Switch Transformers（损失控制）、Switch Transformer的问题、DeepSeek的Loss-Free方法。  写在引用符号里的，都是添加的知识点和理解。没有添加的是原文翻译的concise整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="8. DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE）">
+<meta property="og:title" content="8. DeepSeek-V3（V2）详读 3（架构 + DeepSeekMoE）">
 <meta property="og:url" content="http://neurowave.tech/2025/06/22/11-8.3-Deepseek-V3/index.html">
 <meta property="og:site_name" content="Neurowave">
 <meta property="og:description" content="DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE） 本节主要内容：传统MoE架构、DeepSeekMoE、负载均衡（Load Balancing）、Switch Transformers（损失控制）、Switch Transformer的问题、DeepSeek的Loss-Free方法。  写在引用符号里的，都是添加的知识点和理解。没有添加的是原文翻译的concise整理">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-18.png">
 <meta property="og:image" content="http://neurowave.tech/images/img/img_deepseek-2.png">
 <meta property="article:published_time" content="2025-06-22T01:01:30.000Z">
-<meta property="article:modified_time" content="2025-07-30T19:12:06.492Z">
+<meta property="article:modified_time" content="2025-08-16T03:49:20.378Z">
 <meta property="article:author" content="Artin Tan">
 <meta property="article:tag" content="Paper">
 <meta property="article:tag" content="DeepSeekV3">
@@ -54,7 +54,7 @@
   
   
   
-  <title>8. DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE） - Neurowave</title>
+  <title>8. DeepSeek-V3（V2）详读 3（架构 + DeepSeekMoE） - Neurowave</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -293,7 +293,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="8. DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE）"></span>
+            <span id="subtitle" data-typed-text="8. DeepSeek-V3（V2）详读 3（架构 + DeepSeekMoE）"></span>
           
         </div>
 
@@ -386,12 +386,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">8. DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE）</h1>
+            <h1 id="seo-header">8. DeepSeek-V3（V2）详读 3（架构 + DeepSeekMoE）</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    更新于 2025-07-31T03:12:06+08:00
+                    更新于 2025-08-16T11:49:20+08:00
                   
                   
 
@@ -790,7 +790,7 @@ DeepSeek 在 2024 年提出了 Auxiliary-Loss-Free 的负载均衡方法。该 p
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>8. DeepSeek-V3（V2）详读 3 （架构 + DeepSeekMoE）</div>
+      <div>8. DeepSeek-V3（V2）详读 3（架构 + DeepSeekMoE）</div>
       <div>http://neurowave.tech/2025/06/22/11-8.3-Deepseek-V3/</div>
     </div>
     <div class="license-meta">
@@ -809,7 +809,7 @@ DeepSeek 在 2024 年提出了 Auxiliary-Loss-Free 的负载均衡方法。该 p
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年7月31日</div>
+          <div>2025年8月16日</div>
         </div>
       
       
@@ -824,9 +824,9 @@ DeepSeek 在 2024 年提出了 Auxiliary-Loss-Free 的负载均衡方法。该 p
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/23/11-8.4-Deepseek-V3/" title="8. DeepSeek-V3（V2）详读 4 （架构 + MTP）">
+                      <a href="/2025/06/23/11-8.4-Deepseek-V3/" title="8. DeepSeek-V3（V2）详读 4（架构 + MTP）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">8. DeepSeek-V3（V2）详读 4 （架构 + MTP）</span>
+                        <span class="hidden-mobile">8. DeepSeek-V3（V2）详读 4（架构 + MTP）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -834,8 +834,8 @@ DeepSeek 在 2024 年提出了 Auxiliary-Loss-Free 的负载均衡方法。该 p
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/21/11-8.2-Deepseek-V3/" title="8. DeepSeek-V3（V2）详读 2 （架构 + MLA）">
-                        <span class="hidden-mobile">8. DeepSeek-V3（V2）详读 2 （架构 + MLA）</span>
+                      <a href="/2025/06/21/11-8.2-Deepseek-V3/" title="8. DeepSeek-V3（V2）详读 2（架构 + MLA）">
+                        <span class="hidden-mobile">8. DeepSeek-V3（V2）详读 2（架构 + MLA）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
