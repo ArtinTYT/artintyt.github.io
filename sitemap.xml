@@ -726,20 +726,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Pin/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Home/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/DNS/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -803,6 +789,20 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/tags/Pin/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Home/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/tags/Error/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -825,6 +825,34 @@
   
   <url>
     <loc>http://neurowave.tech/tags/automation/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/HTML/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/css/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/update/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/tag/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -866,14 +894,14 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/LinearRegression/</loc>
+    <loc>http://neurowave.tech/tags/MLP/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Regression/</loc>
+    <loc>http://neurowave.tech/tags/NeuralNetwork/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -888,48 +916,6 @@
   
   <url>
     <loc>http://neurowave.tech/tags/SupervisedLearning/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/HTML/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/css/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Softmax/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Classification/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/MLP/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/NeuralNetwork/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -971,21 +957,35 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/update/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/tag/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/Dropout/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/LinearRegression/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Regression/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Softmax/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Classification/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1230,48 +1230,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Infrastructure/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/Pretraining/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/PostTraining/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/GRPO/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/SFT/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/RL/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/RAFT/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1315,6 +1273,48 @@
   
   <url>
     <loc>http://neurowave.tech/tags/AI/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Infrastructure/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Pretraining/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/PostTraining/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/GRPO/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/SFT/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/RL/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1720,6 +1720,27 @@
   </url>
   
   <url>
+    <loc>http://neurowave.tech/tags/RNN/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/TextPreprocessing/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/SequenceModel/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://neurowave.tech/tags/ML/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1762,21 +1783,7 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/RNN/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/TextPreprocessing/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/SequenceModel/</loc>
+    <loc>http://neurowave.tech/tags/GRU/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1784,13 +1791,6 @@
   
   <url>
     <loc>http://neurowave.tech/tags/LSTM/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://neurowave.tech/tags/GRU/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1818,14 +1818,14 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Mechanism/</loc>
+    <loc>http://neurowave.tech/tags/Score/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Score/</loc>
+    <loc>http://neurowave.tech/tags/Mechanism/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1853,14 +1853,14 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/MultiHeadAttention/</loc>
+    <loc>http://neurowave.tech/tags/PositionEncoding/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/PositionEncoding/</loc>
+    <loc>http://neurowave.tech/tags/MultiHeadAttention/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1916,13 +1916,6 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/tags/Structure/</loc>
-    <lastmod>2025-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://neurowave.tech/tags/pre-trained/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1945,6 +1938,13 @@
   
   <url>
     <loc>http://neurowave.tech/tags/ELMo/</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://neurowave.tech/tags/Structure/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1988,14 +1988,14 @@
   </url>
   
   <url>
-    <loc>http://neurowave.tech/categories/Projects/</loc>
+    <loc>http://neurowave.tech/categories/RNNs/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://neurowave.tech/categories/RNNs/</loc>
+    <loc>http://neurowave.tech/categories/Projects/</loc>
     <lastmod>2025-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
