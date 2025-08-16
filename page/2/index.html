@@ -309,15 +309,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/29/11-9-RAFT/" target="_self">
-          9. RAFT（RAG + SFT）：让LLM更聪明地做领域特定 RAG
+        <a href="/2025/06/24/11-8.5-Deepseek-V3/" target="_self">
+          8. DeepSeek-V3（V2）详读 5 (设施+预训练+后训练)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/29/11-9-RAFT/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/24/11-8.5-Deepseek-V3/" target="_self">
         <div>
-          RAFT（RAG + SFT）  1. 背景与问题 大语言模型（LLM）在通用知识推理上已经非常强，但在专业领域（医疗、法律、企业文档等）里，单靠预训练的“常识”并不够。通常有两条路来注入领域知识：  RAG（检索增强生成）：推理时调用检索器，给 LLM 提供相关文档参考。 微调（Fine-tuning）：直接用领域数据训练，让模型“学”到相关知识。   问题在于：  纯 RAG：像“开卷考试不复
+          这个部分涉及 基础设施，预训练，后训练。只是对原文的整理，暂时没有扩展内容。  3. 基础设施  3.1. 计算集群 DeepSeek-V3 训练使用 2048 块 NVIDIA H800 GPU 的集群。每节点有 8 块 GPU，通过 NVLink 和 NVSwitch 互联，节点间通过 InfiniBand（IB）通信。   图 4 | 前向和反向块的重叠策略（transformer 块的边界
         </div>
       </a>
 
@@ -325,14 +325,14 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-29 19:39" pubdate>
-              2025-04-29
+            <time datetime="2025-06-24 10:21" pubdate>
+              2025-06-24
             </time>
 
                         
             
               
-                <span class="updated-flag" data-updated="2025-08-16T04:02:46.198Z">Updated within 7 days</span>
+                <span class="updated-flag" data-updated="2025-08-16T04:05:36.039Z">Updated within 7 days</span>
               
             
             
@@ -370,21 +370,25 @@
             
               <a href="/tags/Paper/">#Paper</a>
             
+              <a href="/tags/DeepSeekV3/">#DeepSeekV3</a>
+            
+              <a href="/tags/FP8/">#FP8</a>
+            
+              <a href="/tags/TrainingOptimization/">#TrainingOptimization</a>
+            
               <a href="/tags/LLM/">#LLM</a>
             
-              <a href="/tags/RAFT/">#RAFT</a>
+              <a href="/tags/Infrastructure/">#Infrastructure</a>
             
-              <a href="/tags/RAG/">#RAG</a>
+              <a href="/tags/Pretraining/">#Pretraining</a>
             
-              <a href="/tags/RetrievalAugmentedFineTuning/">#RetrievalAugmentedFineTuning</a>
+              <a href="/tags/PostTraining/">#PostTraining</a>
             
-              <a href="/tags/SupervisedFineTuning/">#SupervisedFineTuning</a>
+              <a href="/tags/GRPO/">#GRPO</a>
             
-              <a href="/tags/ChainOfThought/">#ChainOfThought</a>
+              <a href="/tags/SFT/">#SFT</a>
             
-              <a href="/tags/DomainSpecific/">#DomainSpecific</a>
-            
-              <a href="/tags/AI/">#AI</a>
+              <a href="/tags/RL/">#RL</a>
             
           </div>
         
